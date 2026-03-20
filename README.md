@@ -39,6 +39,8 @@
     format: 
       html: 
         include-in-header: includes-header.html
+        theme: [night, custom.scss]
+        fontsize: 1.2em
         toc: false
         page-layout: full
         format-links: true

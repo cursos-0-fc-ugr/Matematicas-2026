@@ -3,7 +3,7 @@ title: Números complejos
 lang: es
 format: 
   html: 
-    #html-math-method: mathjax
+    theme: [night, custom.scss]
     include-in-header: includes-header.html
     fontsize: 1.2em
     toc: true
@@ -12,7 +12,6 @@ format:
     html-math-method:
             method: mathjax
             url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
-            # url: "https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.4/tex-mml-chtml.js"
 
 ---
 

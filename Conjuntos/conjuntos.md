@@ -3,6 +3,7 @@ title: Conjuntos
 lang: es
 format: 
   html: 
+    theme: [night, custom.scss]
     include-in-header: includes-header.html
     toc: false
     page-layout: full
