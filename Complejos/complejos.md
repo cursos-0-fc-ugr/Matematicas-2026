@@ -84,10 +84,9 @@ En forma binómica, $z_1+z_2=4i$ y $z_1-z_2=4-2i$.
 El producto es $z_1z_2=(-7,4)$, y en forma binómica, $-7+4i$. Por último, $\dfrac{z_1}{z_2}= \left(-\frac{1}{13},-\frac{8}{13} \right)$, que en forma binómica es $-\dfrac{1}13-\dfrac{8}{13} i.$
 :::
 
-
-::: {.callout title="Solución" collapse=true #e1-1}
+<!---::: {.callout title="Solución" collapse=true #e1-1}
 La suma y diferencia se hacen coordenada a coordenada a coordenada, por lo que $z_1+z_2=(0,4)$ y $z_1-z_2=(4,-2)$. En forma binómica, $z_1+z_2=4i$ y $z_1-z_2=4-2i$. El producto es $z_1z_2= (-7,4)$, y en forma binómica, $-7+4i$. Por último, $\dfrac{z_1}{z_2}= \left(-\frac{1}{13},-\frac{8}{13} \right)$, que en forma binómica es $-\dfrac{1}13-\dfrac{8}{13} i$.
-:::
+:::--->
 
 
 **Parte real, parte imaginaria, conjugado y módulo de un número complejo.** Sea $z=a+bi$ $\in\mathbb{C}$. Los números reales $a$ y $b$ reciben el nombre de *parte real* y *parte imaginaria*, respectivamente, de $z$. Escribimos $a=\operatorname{Re}(z)$ y $b=\operatorname{Im}(z)$. El complejo $a-bi$ se denomina *conjugado* de $z$ y el número real no negativo $\|z\|=\sqrt{a^2+b^2}$ recibe el nombre de *módulo de* $z$.
@@ -253,8 +252,7 @@ $z$.
 Describe geométricamente los conjuntos de números complejos definidos de la siguiente manera:
 
 
-1.  $\{z\in\mathbb{C}\colon
-    \operatorname{Re}(z) > 0\}$. <button id="e3-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+1.  $\{z\in\mathbb{C}\colon \operatorname{Re}(z) > 0\}$. <button id="e3-1" class="btn btn-light btn-sm" onclick="show('e3-1');">Solución</button>
 
     :::: {#solucion-e3-1 .callout .collapse}
     ::: {#ebox3-1 .jxgbox style="width:400px; height:400px;display:inline-block;text-align: center;"}

@@ -25,22 +25,6 @@ MathJax = {
 JXG.Options.text.useMathJax = true;
 JXG.Options.point.showInfobox = false;
 
-function show2(divID) {
-    var sol = document.getElementById("solucion-"+divID);
-    var div = document.getElementById(divID);
-
-    if(sol.style.display == "none"){
-    sol.style.display = "unset";
-    }else{
-    sol.style.display = "none";
-    }
-
-    if(div.innerHTML == "Solución"){
-    div.innerHTML = "Oculta solución";
-    }else{
-    div.innerHTML = "Solución";
-    }
-}
 function show(divID) {
     var sol = document.getElementById("solucion-"+divID);
     var div = document.getElementById(divID);
@@ -48,10 +32,13 @@ function show(divID) {
     console.log(sol);
     sol.classList.toggle('collapse');
 
-    if(div.innerHTML == "Solución"){
-    div.innerHTML = "Oculta solución";
+    console.log("texto: " + div.innerHTML);
+
+//    if(div.innerHTML === "Solución"){
+    if(!sol.classList.contains('collapse')){
+        div.innerHTML = "Oculta solución";
     }else{
-    div.innerHTML = "Solución";
+        div.innerHTML = "Solución";
     }
 
 }
