@@ -153,18 +153,19 @@ Como $0 < 4-r\leq 4$, entonces $i^{4-r}$ es una de las primeras potencias de exp
 
 2.  Expresa los números complejos $z_1=(-1,1)$, $z_2=(1,2)$ y $z_3=(4,-1)$ en forma binómica y realiza las operaciones siguientes:
 
-    1.  $\dfrac{z_1\overline{z_2}-{z_3}^2}{z_3}$. <button id="e2-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+    1.  $\dfrac{z_1\overline{z_2}-{z_3}^2}{z_3}$[$=-\dfrac{67}{17} +
+        \dfrac{30}{17}i$]{#solucion-e2-2 .callout .collapse}. <button id="e2-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
-        ::: {#solucion-e2-2 .callout .collapse}
+        <!-- ::: {#solucion-e2-2 .callout .collapse}
         $\dfrac{z_1\overline{z_2}-{z_3}^2}{z_3}=-\dfrac{67}{17} +
         \dfrac{30}{17}i$
-        :::
+        ::: -->
 
-    2.  $\dfrac{-(\overline{z_1}){(z_2)}^2+iz_3}{\overline{z_1}+\overline{z_3}}$. <button id="e2-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+    2.  $\dfrac{-(\overline{z_1}){(z_2)}^2+iz_3}{\overline{z_1}+\overline{z_3}}$[$=-2 + \dfrac{5}{3}i$]{#solucion-e2-3 .callout .collapse}. <button id="e2-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
-        ::: {#solucion-e2-3 .callout .collapse}
+        <!-- ::: {#solucion-e2-3 .callout .collapse}
         $\dfrac{-(\overline{z_1}){(z_2)}^2+iz_3}{\overline{z_1}+\overline{z_3}}=-2 + \dfrac{5}{3}i$. 
-        :::
+        ::: -->
 
 3.  Resuelve las siguientes ecuaciones con coeficientes complejos:
 
@@ -252,7 +253,7 @@ $z$.
 Describe geométricamente los conjuntos de números complejos definidos de la siguiente manera:
 
 
-1.  $\{z\in\mathbb{C}\colon \operatorname{Re}(z) > 0\}$. <button id="e3-1" class="btn btn-light btn-sm" onclick="show('e3-1');">Solución</button>
+1.  $\{z\in\mathbb{C}\colon \operatorname{Re}(z) > 0\}$. <button id="e3-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
     :::: {#solucion-e3-1 .callout .collapse}
     ::: {#ebox3-1 .jxgbox style="width:400px; height:400px;display:inline-block;text-align: center;"}
@@ -443,21 +444,22 @@ $$
 Calcula:
 
 
-1.  $\sqrt{i}$. <button id="e5-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+1.  $\sqrt{i}$[$=\left\{\dfrac{\sqrt{2}}{2}+i \dfrac{\sqrt{2}}{2}, -\dfrac{\sqrt{2}}{2}-i \dfrac{\sqrt{2}}{2}\right\}$]{#solucion-e5-1 .callout .collapse}. <button id="e5-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
-    ::: {#solucion-e5-1 .callout .collapse}
+    <!-- ::: {#solucion-e5-1 .callout .collapse}
     $\sqrt{i}=\left\{\dfrac{\sqrt{2}}{2}+i
     \dfrac{\sqrt{2}}{2}, -\dfrac{\sqrt{2}}{2}-i
     \dfrac{\sqrt{2}}{2}\right\}$.
-    :::
+    ::: -->
 
-2.  $\sqrt[3]{1}$. <button id="e5-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+2.  $\sqrt[3]{1}$[$=\left\{-\dfrac{1}{2}+i \dfrac{\sqrt{3}}{2}, -\dfrac{1}{2}-i \dfrac{\sqrt{3}}{2},1
+    \right\}$]{#solucion-e5-2 .callout .collapse}. <button id="e5-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
     
-    ::: {#solucion-e5-2 .callout .collapse}
+    <!-- ::: {#solucion-e5-2 .callout .collapse}
     $\sqrt[3]{1}=\left\{-\dfrac{1}{2}+i
     \dfrac{\sqrt{3}}{2}, -\dfrac{1}{2}-i \dfrac{\sqrt{3}}{2},1
     \right\}$. 
-    :::
+    ::: -->
 
 3.  $\sqrt[3]{-1+i}$. <button id="e5-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
     
