@@ -1,0 +1,446 @@
+---
+title: Ecuaciones polinomiales
+title-block-banner: true
+lang: es
+execute:
+  echo: false
+format: 
+  html: 
+    theme: [night, custom.scss]
+    include-in-header: includes-header.html
+    toc: true
+    fontsize: 1.2em
+    page-layout: full
+    format-links: true
+    html-math-method:
+            method: mathjax
+            url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
+---
+
+## Matrices {#matrices}
+
+Sean $I=\{1,2,\ldots,m\}$ y $J=\{1,2,\ldots,n\}$, y sea $K$ un cuerpo (puede ser $\mathbb{Q}$, el cuerpo de los números racionales, o $\mathbb{R}$, el cuerpo de los números reales, o $\mathbb{C}$ el cuerpo de los números complejos, \...). Una *matriz* de orden $m\times n$ sobre $K$ es una aplicación $$A:I\times J\to K,\ (i,j)\mapsto a_{ij}.$$ Normalmente a la matriz $A$ la representaremos de la siguiente forma 
+
+$$
+A=\begin{pmatrix}
+a_{11} & a_{12} & \ldots & a_{1n}\\
+a_{21} & a_{22} & \ldots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \ldots & a_{mn}
+\end{pmatrix},
+$$
+
+y a veces simplemente escribiremos $A=(a_{ij})$, si queda claro dónde varían $i$ y $j$. Diremos que $A$ es una matriz con $m$ filas y $n$ columnas.
+
+Denotaremos por $\mathcal M_{m\times n}(K)$ al conjunto de las matrices de orden $m\times n$ sobre $K$.
+
+Dada 
+
+$$
+A=\begin{pmatrix}
+a_{11} & a_{12} & \ldots & a_{1n}\\
+a_{21} & a_{22} & \ldots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \ldots & a_{mn}
+\end{pmatrix}\in \mathcal M_{m\times n}(K),
+$$ 
+
+y $\lambda$ en el cuerpo $K$, el producto de $\lambda$ por $A$ es 
+
+$$
+\lambda A=\begin{pmatrix}
+\lambda a_{11} & \lambda a_{12} & \ldots & \lambda a_{1n}\\
+\lambda a_{21} & \lambda a_{22} & \ldots & \lambda a_{2n}\\
+\vdots & \vdots & \ddots & \vdots \\
+\lambda a_{m1} & \lambda a_{m2} & \ldots & \lambda a_{mn}
+\end{pmatrix}\in \mathcal M_{m\times n}(K).
+$$
+
+A esta operación se le llama *producto por escalares*.
+
+Si definimos la suma de matrices como la suma coordenada a coordenada 
+
+$$
+\begin{pmatrix}
+a_{11} & a_{12} & \ldots & a_{1n}\\
+a_{21} & a_{22} & \ldots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \ldots & a_{mn}
+\end{pmatrix} +
+\begin{pmatrix}
+b_{11} & b_{12} & \ldots & b_{1n}\\
+b_{21} & b_{22} & \ldots & b_{2n}\\
+\vdots & \vdots & \ddots & \vdots \\
+b_{m1} & b_{m2} & \ldots & b_{mn}
+\end{pmatrix} =
+\begin{pmatrix}
+a_{11}+b_{11} & a_{12}+b_{12} & \ldots & a_{1n}+b_{1n}\\
+a_{21}+b_{21} & a_{22}+b_{22} & \ldots & a_{2n}+b_{2n}\\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1}+b_{m1} & a_{m2}+b_{m2} & \ldots & a_{mn}+b_{mn}
+\end{pmatrix},
+$$
+
+entonces esa operación tiene las siguientes propiedades:
+
+-   asociativa ($(A+B)+C=A+(B+C)$),
+
+-   tiene elemento neutro (la matriz con todas las entradas iguales a cero),
+
+-   toda matriz tiene inversa ($-A+A=0=A+(-A)$; $-A=(-1)A$), y
+
+-   es conmutativa ($A+B=B+A$).
+
+
+:::{exr-1}
+Calcula la suma de $\begin{pmatrix} 1 & -2 & 3\\ 3 & 4 & -2\end{pmatrix}$ y $\begin{pmatrix} 2 & 3 & -3\\ 3 & 0 & 2\end{pmatrix}$ en $\mathcal M_{2\times 3}(\mathbb{R})$.
+
+El producto por escalares de matrices tiene las siguientes propiedades. Sean $\lambda, \beta\in K$ y $A,B\in \mathcal M_{m\times n}$. Entonces
+
+-   $\lambda (\beta A)=(\lambda\beta)A$,
+
+-   $\lambda(A+B)=\lambda A+ \lambda B$,
+
+-   $(\lambda + \beta)A=\lambda A+\beta A$,
+
+-   $1A=A$.
+:::
+
+Sea $A=(a_{ij})\in \mathcal M_{m\times n}(K)$ y $B=(b_{jk})\in \mathcal M_{n\times p}(K)$. Podemos definir el *producto* de $A$ y $B$ como $AB=C=(c_{ik})\in \mathcal M_{m\times p}(K)$ con 
+$$
+c_{ik}=a_{i1}b_{1k}+a_{i2}b_{2k}+\cdots + a_{in}b_{nk}.
+$$
+
+
+::: {#exr-2}
+
+Sean $A=\begin{pmatrix} 1 & -2 & 3\\ -3 & 4 & -2\end{pmatrix}\in\mathcal M_{2\times 3}(\mathbb{Q})$ y $B=\begin{pmatrix} -1& 2& 1& -2\\ 2 & 0 & -1 & 0\\ -3& 1& 0 & 1 \end{pmatrix}\in \mathcal M_{3\times 4}(\mathbb{Q})$. Calcula $AB$.
+:::
+
+
+Una matriz de orden $n\times n$ diremos que es una matriz *cuadrada* de orden $n$.
+
+El producto de matrices tiene las siguientes propiedades:
+
+-   es asociativo ($(AB)C=A(BC)$),
+
+-   tiene elemento neutro (la *matriz identidad*, que es la matriz que tiene todas sus entradas cero salvo en la diagonal que tiene unos; a dicha matriz la denotamos por $I_n$, o simplemente $I$ cuando $n$ queda claro en el contexto),
+
+-   es distributivo respecto de la suma ($A(B+C)=AB+AC$ y $(A+B)C=AC+BC$).
+
+::: {#exr-3}
+Sean $A=\begin{pmatrix}
+1& 2\\ 3& 4
+\end{pmatrix}$ y $B=\begin{pmatrix}
+1& 2\\ 2& 0
+\end{pmatrix}$. Comprueba que $AB\neq BA$.
+:::
+
+## Determinantes
+
+Dada $A=(a_{ij})\in \mathcal M_{n\times n}(K)$, definimos $|A|$, el determinante de $A$, recursivamente de la siguiente forma.
+
+1.  Para $n=1$, $|(a_{11})|=a_{11}$ (el determinante de una matriz de orden $1\times 1$ es su único coeficiente).
+
+2.  Supuesto que sabemos calcular el determinante de matrices de orden $n-1$, dado $i\in\{1,\ldots,n\}$, 
+    $$
+    |A|=a_{i1}\alpha_{i1}+\cdots+a_{in}\alpha_{in},
+    $$ 
+
+    donde $\alpha_{ij}=(-1)^{i+j}|A_{ij}|$ se conoce como el *adjunto* de la entrada $a_{ij}$, con $A_{ij}\in \mathcal M_{(n-1)\times(n-1)}(K)$ la matriz que se obtiene al eliminar la fila $i$-ésima y la columna $j$-ésima de $A$. Esta fórmula se conoce como Desarrollo de Laplace por la fila $i$ del determinante de $A$, y el resultado no depende de $i$. Es más, también se puede desarrollar por cualquier columna. Dado $j$ el Desarrollo de Laplace por la columna $j$ es 
+    
+    $$|A|=a_{1j}\alpha_{1j}+\cdots+a_{nj}\alpha_{nj}.$$
+
+Se puede comprobar fácilmente que
+
+-   $\left| \begin{matrix}
+    a_{11} & a_{12} \\
+    a_{21} & a_{22}
+    \end{matrix}\right| = a_{11}a_{22}-a_{12}a_{21}$.
+
+-   $\left| \begin{matrix}
+    a_{11} & a_{12} & a_{13} \\
+    a_{21} & a_{22} & a_{23} \\
+    a_{31} & a_{32} & a_{33}
+    \end{matrix}\right| = a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{21}a_{32}a_{13}-a_{13}a_{22}a_{31}-a_{23}a_{32}a_{11}-a_{12}a_{21}a_{33}$.
+
+::: {#exr-4}
+Calcula el determinante de $\begin{pmatrix}
+1 & 2 & 3\\ 3& -12 &-1\\ -2& 2& -2
+\end{pmatrix}\in \mathcal M_{3\times 3}(\mathbb{Q})$.
+:::
+
+
+::: {#exr-5}
+Calcula el determinante de 
+
+$$
+\begin{pmatrix}
+1& 2& 3& 1\\
+-2& 0& 1& 1\\
+3&1 & 0& -1\\
+2& 0 & 1 &-3
+\end{pmatrix}\in \mathcal M_{4\times 4}(\mathbb{Q}).
+$$
+
+:::
+
+Si $A=(a_{ij})\in \mathcal M_{m\times n}(K)$, la *matriz traspuesta* de $A$ es 
+
+$$
+A^t =
+\begin{pmatrix}
+a_{11} & a_{21} & \ldots & a_{n1}\\
+a_{12} & a_{22} & \ldots & a_{n2}\\
+\vdots & \vdots & \ddots & \vdots \\
+a_{1m} & a_{2m} & \ldots & a_{nm}
+\end{pmatrix}\in \mathcal M_{n\times m}(K),
+$$
+
+esto es, la matriz que se obtiene a partir de $A$ intercambiando filas por columnas.
+
+### Propiedades de los determinantes {#propiedades-de-los-determinantes .unnumbered}
+
+Sea $A\in \mathcal M_{n\times n}(K)$.
+
+1.  $|A|=|A^t|$.
+
+2.  Si se intercambian dos filas (o dos columnas) de $A$ se obtiene una nueva matriz cuyo determinante es $-|A|$.
+
+3.  Si multiplicamos todos los elementos de una fila (o de una columna) de $A$ por $\alpha\in K$, obtenemos una matriz con determinante $\alpha |A|$.
+
+4.  Si a una fila de $A$ le sumamos otra fila de $A$ multiplicada por un elemento de $K$, entonces la nueva matriz tiene el mismo determinante que $A$ (lo mismo ocurre si hacemos esta operación con columnas).
+
+5.  Si $B\in \mathcal M_{n\times n}(K)$, entonces $|A B|=|A||B|$.
+
+Con estas propiedades podemos calcular el determinante de una matriz reduciéndola a una forma triangular superior o inferior, y luego multiplicando los elementos de la diagonal (el que el determinante de una matriz triangular sea el producto de los elementos de su diagonal es consecuencia del desarrollo de Laplace).
+
+$$
+\begin{vmatrix}
+1 & 0 &1 \\
+2 & -1 &3\\
+0 & -2 &1
+\end{vmatrix} \stackrel{f_2\leftarrow f_2-2f_1}{=}
+\begin{vmatrix}
+1 & 0 &1 \\
+0 & -1 &1\\
+0 & -2 &1
+\end{vmatrix} \stackrel{f_2\leftarrow -f_2}{=}
+-\begin{vmatrix}
+1 & 0 &1 \\
+0 & 1 &-1\\
+0 & -2 &1
+\end{vmatrix} \stackrel{f_3\leftarrow f_3+2f_2}{=}
+-\begin{vmatrix}
+1 & 0 &1 \\
+0 & 1 &-1\\
+0 & 0 &-1
+\end{vmatrix} = -(1\times1\times-1)=1.
+$$
+
+La notación $f_2\leftarrow f_2-2f_1$ significa que estamos cambiando la segunda fila por el resultado de restarle a la segunda fila dos veces la primera.
+
+
+:::{exr-6}
+
+Calcula el determinante de la matriz 
+
+$$
+\begin{pmatrix}
+-2 & 3& 4& 0\\
+3& 1& -2& 2\\
+4& -3& 3& -1\\
+2& 3& 3& -2
+\end{pmatrix}\in \mathcal M_{4\times 4}(\mathbb{Q}).
+$$
+
+:::
+
+Una matriz $A\in \mathcal M_{n\times n}(K)$ es *regular* si tiene inversa para el producto, esto es, si existe $B$ tal que $AB=BA=I_n$. En dicho caso, a la matriz $B$ se le denota por $A^{-1}$.
+
+La matriz *adjunta* de $A$ es la matriz formada por los adjuntos de las entradas de $A$, a saber, 
+
+$$
+\overline{A}=
+\begin{pmatrix}
+\alpha_{11} & \alpha_{12} & \ldots & \alpha_{1n}\\
+\alpha_{21} & \alpha_{22} & \ldots & \alpha_{2n}\\
+\vdots & \vdots & \ddots & \vdots \\
+\alpha_{1} & a_{m2} & \ldots & \alpha_{nn}
+\end{pmatrix}.
+$$
+
+::: {#thm-1} 
+
+Sea $A\in \mathcal M_{n\times n}(K)$. Entonces $A$ es regular si y sólo si $|A|\neq 0$. En ese caso 
+$$
+A^{-1}=|A|^{-1}\overline{A}^t.
+$$
+
+:::
+
+::: {#exr-7}
+
+Calcula la inversa de 
+
+$$
+\begin{pmatrix}
+-2 & 1& 2\\
+1 & 0 & 1\\
+1& -2 & -2
+\end{pmatrix}\in \mathcal M_{3\times 3}(\mathbb{R}).
+$$
+
+:::
+
+## Forma escalonada (por filas) de una matriz
+
+Sea $A\in \mathcal{M}_{m \times n}(K)$. Decimos que está en forma escalonada si
+
+-   todas las filas con entradas nulas están en la parte inferior de la matriz,
+
+-   el primer elemento no nulo de una fila que no sea la primera (empezando por la izquierda) está en una columna a la derecha del primer elemento no nulo de la fila anterior.
+
+Toda matriz se puede transformar en una matriz escalonada utilizando las siguientes operaciones elementales.
+
+-   Intercambio de filas.
+
+-   Multiplicar filas por escalares no nulos.
+
+-   Sumar a una fila el múltiplo de otra por un escalar.
+
+Usando el ejemplo del determinante que vimos antes, tenemos que una forma escalonada de 
+
+$$
+\begin{pmatrix}
+1 & 0 &1 \\
+2 & -1 &3\\
+0 & -2 &1
+\end{pmatrix}
+$$
+es 
+
+$$
+\begin{pmatrix}
+1 & 0 &1 \\
+0 & 1 &-1\\
+0 & 0 &-1
+\end{pmatrix}.
+$$
+
+El *rango* de una matriz es el número de filas no nulas de cualquiera de sus formas escalonadas. Se puede calcular como el tamaño de la submatriz cuadrada más grande con determinante no nulo.
+
+El rango de la matriz 
+
+$$
+\begin{pmatrix}
+1 & 0 &1 \\
+0 & 1 &-1\\
+0 & 0 &-1
+\end{pmatrix}
+$$ 
+
+es por tanto tres.
+
+Veamos otro ejemplo de cómo obtener la forma escalonada. 
+
+$$
+\begin{align*}
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+5 & 6 & 7 & 8 \\
+9 & 10 & 11 & 12
+\end{pmatrix} &
+\stackrel{f_2\leftarrow f_2-5f_1}{\sim}
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & -4 & -8 & -12 \\
+9 & 10 & 11 & 12
+\end{pmatrix}
+\stackrel{f_2\leftarrow f_2-5f_1}{\sim}
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & 1 & 2 & 3 \\
+9 & 10 & 11 & 12
+\end{pmatrix} \\
+& \stackrel{f_3\leftarrow f_3-9f_1}{\sim}
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & 1 & 2 & 3 \\
+0 & -8 & -16 & -24
+\end{pmatrix}
+\stackrel{f_3\leftarrow f_3+8f_2}{\sim}
+\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+0 & 1 & 2 & 3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}.
+\end{align*}
+$$
+
+## Cálculo de inversa con operaciones elementales
+
+Ya hemos visto que el rango de una matriz se puede calcular contando filas no nulas de una forma escalonada de esta matriz. Si a la matriz original le concatenamos a izquierda (o derecha) una matriz identidad, las operaciones elementales que efectuemos por filas se irán almacenando en esta matriz identidad. Si nuestra matriz tiene inversa, al final podremos conseguir una forma escalonada que sea la identidad, pues todos los escalones serán no nulos (las matrices con inversa tienen determinante no nulo, y por tanto su rango es máximo); en la parte derecha, tendremos la matriz inversa de la matriz original.
+
+$$
+\begin{align*}
+\left(\begin{array}{ccc|ccc}
+1 & 0 & 1 & 1 & 0 & 0 \\
+2 & -1 & 3 & 0 & 1 & 0\\
+0 & -2 & 1 & 0 & 0 & 1
+\end{array}\right) & \stackrel{f_2\leftarrow f_2-2f_1}{\sim}
+\left(\begin{array}{ccc|ccc}
+1 & 0 &1 & 1 & 0 & 0 \\
+0 & -1 &1 & -2 & 1 & 0 \\
+0 & -2 &1 & 0 & 0 & 1
+\end{array}\right) \stackrel{f_2\leftarrow -f_2}{\sim}
+\left(\begin{array}{ccc|ccc}
+1 & 0 &1 & 1 & 0 & 0 \\
+0 & 1 &-1 & 2 & -1 & 0\\
+0 & -2 &1 & 0 & 0 & 1
+\end{array}\right) \\ 
+& \stackrel{f_3\leftarrow f_3+2f_2}{\sim}
+\left(\begin{array}{ccc|ccc}
+1 & 0 &1 & 1 & 0 & 0\\
+0 & 1 &-1 & 2 & -1 & 0\\
+0 & 0 &-1 & 4 & -2 & 1
+\end{array}\right) \stackrel{f_3\leftarrow -f_3}{\sim}
+\left(\begin{array}{ccc|ccc}
+1 & 0 &1 & 1 & 0 & 0\\
+0 & 1 &-1 & 2 & -1 & 0\\
+0 & 0 & 1 & -4 & 2 & -1
+\end{array}\right) \\ 
+& \stackrel{f_2\leftarrow f_2+f_3}{\sim}
+\left(\begin{array}{ccc|ccc}
+1 & 0 &1 & 1 & 0 & 0\\
+0 & 1 & 0 & -2 & 1 & -1\\
+0 & 0 & 1 & -4 & 2 & -1
+\end{array}\right) \stackrel{f_1\leftarrow f_1-f_3}{\sim}
+\left(\begin{array}{ccc|ccc}
+1 & 0 & 0 & 5 & -2 & 1\\
+0 & 1 & 0 & -2 & 1 & -1\\
+0 & 0 & 1 & -4 & 2 & -1
+\end{array}\right).
+\end{align*}
+$$ 
+
+
+Así 
+
+$$
+\begin{pmatrix}
+1 & 0 &1 \\
+2 & -1 &3\\
+0 & -2 &1
+\end{pmatrix}^{-1}=
+\begin{pmatrix}
+5 & -2 & 1\\
+-2 & 1 & -1\\
+-4 & 2 & -1
+\end{pmatrix}.
+$$
+
+
+------------------------------------------------------------------------
+
+[Esta página está basada en los apuntes de J.C. Rosales y P. A. García-Sánchez, [Notas de de Álgebra Lineal y Estructuras Matemáticas](http://hdl.handle.net/10481/43099).]{.small}
