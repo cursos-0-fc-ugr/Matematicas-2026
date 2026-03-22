@@ -200,4 +200,4 @@ Simplifica las siguientes expresiones:
 
 ------------------------------------------------------------------------
 
-Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada.
+[Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada.]{.small}

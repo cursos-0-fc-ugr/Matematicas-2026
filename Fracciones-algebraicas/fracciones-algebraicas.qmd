@@ -232,5 +232,5 @@ Racionaliza las siguientes fracciones:
 
 ------------------------------------------------------------------------
 
-Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada. Las simplificaciones algebraicas están hechas con [Algebrite](http://algebrite.org)
+[Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada. Las simplificaciones algebraicas están hechas con [Algebrite](http://algebrite.org)]{.small}
 

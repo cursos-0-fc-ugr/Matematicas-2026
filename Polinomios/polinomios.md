@@ -405,4 +405,4 @@ Factoriza, cuando sea posible, los siguientes polinomios:
 
 ------------------------------------------------------------------------
 
-Esta página está basada en las transparencias de Javier Lobillo y Evangelina Santos Aláez para el Curso Cero de la ETSIIT de la Universidad de Granada. Maquetado y javascript por Pedro A. García Sánchez.
+[Esta página está basada en las transparencias de Javier Lobillo y Evangelina Santos Aláez para el Curso Cero de la ETSIIT de la Universidad de Granada. Maquetado y javascript por Pedro A. García Sánchez.]{.small}

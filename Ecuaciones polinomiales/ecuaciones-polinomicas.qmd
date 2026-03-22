@@ -1,0 +1,221 @@
+---
+title: Ecuaciones polinomiales
+title-block-banner: true
+lang: es
+execute:
+  echo: false
+format: 
+  html: 
+    theme: [night, custom.scss]
+    include-in-header: includes-header.html
+    toc: true
+    fontsize: 1.2em
+    page-layout: full
+    format-links: true
+    html-math-method:
+            method: mathjax
+            url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
+---
+
+
+## Ecuaciones y soluciones
+
+Una ecuación es una igualdad entre dos expresiones algebraicas. Una ecuación expresa una condición que debe cumplir una o varias cantidades desconocidas o *incógnitas*. En este epígrafe se estudian ecuaciones con una sola incógnita. Nos referimos a las expresiones situadas a uno y otro lado del signo $=$ como *primer miembro*, la que se encuentra en primer lugar en el sentido habitual de lectura, y *segundo miembro* a la que aparece en segundo lugar. Aunque como se trata de una igualdad el orden de los miembros puede cambiarse y la ecuación sigue siendo la misma.
+
+Una *solución* de una ecuación es cada número (en el conjunto que se considere admisible) que al ocupar la posición de la incógnita hace que la igualdad que expresa la ecuación ocurra. Resolver una ecuación es calcular **todas** sus soluciones. En el concepto de solución es muy importante el conjunto de números donde se permite que aparezca la solución. Por ejemplo, la ecuación $2x=3$ no tiene ninguna solución en $\mathbb{Z}$, puesto no hay ningún entero que al multiplicarlo por $2$ dé $3$. Sin embargo el número racional $\frac{3}{2}$ verifica la ecuación, es decir es una solución en el conjunto $\mathbb{Q}$.
+
+En lo que sigue se consideran ecuaciones cuyos coeficientes y soluciones son números reales o, en algunos ejemplos, complejos.
+
+## Ecuaciones polinómicas de grado uno
+
+
+Las *ecuaciones polinómicas* son aquellas que se pueden escribir de forma que el primer miembro sea un polinomio y el segundo sea $0$.
+
+1.  La ecuación $x^2+1=0$ es una ecuación polinómica de grado 2, puesto que ese es el grado del polinomio que aparece en el primer término.
+
+2.  La ecuación $\frac{1}{1+x}=\frac{2}{x}$ no tiene la apariencia de una ecuación polinómica, pero puede transformarse en una que sí lo es.
+
+3.  Sin embargo, las ecuaciones $2^x = 5$ y $\mathrm{sen}(x)=\frac{1}{2}$ no son ecuaciones polinómicas.
+
+Una ecuación polinómica de grado 1 tiene la forma $ax+b=0$ con $a\not = 0$ y puede resolverse utilizando las dos siguientes reglas:
+
+1.  Si en una igualdad se suma (o resta) en ambos miembros la misma cantidad, la igualdad resultante sigue siendo cierta.
+
+2.  Si en una igualdad ambos miembros se multiplican por un número que tenga inverso, la igualdad resultante sigue siendo cierta.
+
+que permiten transformar una ecuación en otra *equivalente*, es decir, que tiene exactamente las mismas soluciones.
+
+Usando la primera regla, la ecuación $ax+b=0$ nos permite obtener la ecuación $ax=-b$ sin más que restar en ambos miembros $b$ y luego es suficiente dividir por $a$ (que tiene inverso puesto que es $a\not =0$), para obtener $x=-\dfrac{b}{a}$.
+
+Exactamente las mismas reglas nos permiten transformar ecuaciones en otras de apariencia más sencilla. Tomemos la ecuación del ejemplo anterior
+
+$$\dfrac{1}{1+x}=\dfrac{2}{x}$$
+
+si multiplicamos ambos miembros por $(1+x)\cdot x$ podemos eliminar los denominadores:
+
+$$
+\require{cancel}\dfrac{\cancel{(1+x)}\cdot x}{\cancel{1+x}}=\dfrac{2\cdot (1+x)\cdot \cancel{x}}{\cancel{x}}
+$$ 
+
+y nos queda la ecuación
+
+$$
+x=2(1+x)
+$$ 
+
+desarrollando el paréntesis y restando $x$ en ambos miembros queda $$0=2+x, \mbox{ o bien } x+2=0$$ que es una ecuación polinómica de grado 1 con solución $x=-2$.
+
+
+## Ecuaciones polinómicas de segundo grado
+
+
+Una ecuación polinómica de grado 2 con coeficientes en $\mathbb{C}$ de la forma $$ax^2+bx+c=0$$ se resuelve usando la fórmula
+
+$$
+x=\dfrac{-b \pm \sqrt{b^2-4ac}}{2a}
+$$
+
+(observemos que $a\not =0$ puesto que la ecuación es de grado 2). El término $d=b^2-4ac$ se llama *discriminante* y según su valor la ecuación tiene una única solución (cuando $d=0$) o dos soluciones distintas. Si la ecuación tiene coeficientes reales suele restringirse la búsqueda de soluciones al conjunto de números reales. En ese caso, si $d<0$, su raíz cuadrada no es un número real, así que suele decirse:
+
+-   Si $d>0$ la ecuación tiene dos soluciones reales distintas.
+
+-   Si $d=0$ la ecuación tiene una raíz (o solución) *doble*.
+
+-   Si $d<0$ no tiene ninguna raíz real, sino dos soluciones complejas conjugadas.
+
+::: {#exr-1}
+Resuelve las siguientes ecuaciones.
+
+1.  $2x^2+5=0$.
+    <button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-1 .collapse}
+    $x= \dfrac{0\pm\sqrt{-4\times 2\times 5}}{2\times 2}=\pm\dfrac{\sqrt{-10}}2$.
+    :::
+
+2.  $2x^2+x=0$.
+    <button id="e1-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-2 .collapse}
+    $x= 0,\ x=-\frac{1}2$.
+    :::
+
+3.  $3x^2+5x-2=0$.
+    <button id="e1-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-3 .collapse}
+    $x= -2,\ x=\dfrac{1}3$.
+    :::
+
+4.  $x^2 -5x=2$.
+    <button id="e1-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-4 .collapse}
+    $x= \dfrac{5\pm\sqrt{33}}{2}$.
+    :::
+
+5.  $x^2 -5x-6=0$.
+    <button id="e1-5" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-5 .collapse}
+    $x= 6,\ x= -1$.
+    :::
+
+6.  $2x^2 -x +1=0$.
+    <button id="e1-6" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-6 .collapse}
+    $x= \dfrac{1\pm\sqrt{-7}}{4}$.
+    :::
+
+:::
+
+Para ecuaciones polinómicas de mayor grado, aunque en algunos casos hay una fórmula general, no suele requerirse la memorización del método y en la práctica se usan programas que calculan las soluciones. En algunos casos particulares sí puede intentarse el cálculo, por ejemplo cuando puede factorizarse, usando el método de Ruffini para calcular alguna raíz, o cuando puede reducirse a una ecuación de segundo grado.
+
+1.  La ecuación $x^4-9=0$ puede escribirse usando una de las identidades notables, como $(x^2-3)(x^2+3)=0$. Ahora puede descomponerse en resolver $x^2-3=0$ o bien $x^2+3=0$; La primera de ellas tiene como soluciones $\pm \sqrt{3}$ mientras que la segunda no tiene raices reales (sus raices complejas son $\pm\sqrt{3}i$).
+
+    ::: {#box .jxgbox style="width:400px; height:400px;"}
+    :::
+    ```{ojs}
+board = JXG.JSXGraph.initBoard('box', {boundingbox: [-14, 14, 14, -14], axis:true, showCopyright:false, showNavigation:false});
+curve = board.create('functiongraph', [function(t){ return(t*t*t*t-9)}, -10,10]);
+    ```
+
+2.  La ecuación $x^3-6x^2+9x=0$ puede resolverse sacando factor común $x$, con lo que obtenemos dos factores $x(x^2-6x+9)=0$ así que una solución es $x=0$ y la otra es $x=3$ que es la raíz doble de $x^2-6x+9=0$.
+
+    ::: {#box2 .jxgbox style="width:400px; height:400px;"}
+    ```{ojs}
+board2 = JXG.JSXGraph.initBoard('box2', {boundingbox: [-5, 5, 5, -5], axis:true, showCopyright:false, showNavigation:false});
+curve2 = board2.create('functiongraph', [function(t){ return(t*t*t-6*t*t+9*t)}, -10,10]);
+    ```
+    :::
+
+3.  Para $x^4-6x^2+9=0$ podemos usar la sustitución $t=x^2$ y obtenemos una ecuación de grado 2: $t^2-6t+9=0$ que tiene una raíz doble: $t=3$; así que nos queda resolver $x^2=3$ y obtenemos que hay dos soluciones dobles, $x=\sqrt{3}$ y $x=-\sqrt{3}$.
+
+    ::: {#box3 .jxgbox style="width:400px; height:400px;"}
+    :::
+    ```{ojs}
+board3 = JXG.JSXGraph.initBoard('box3', {boundingbox: [-5, 10, 5, -1], axis:true, showCopyright:false, showNavigation:false});
+curve3 = board3.create('functiongraph', [function(t){ return(t*t*t*t-6*t*t+9)}, -10,10]);
+    ```
+
+::: {#exr-2}
+Resuelve:
+
+1.  $x^6+28x^3+27=0$.
+    <button id="e2-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-1 .collapse}
+    Hacemos el cambio de variable $y=x^3$ y resolvemos $y^2+28y+27=0$. Esto nos da los valores $y=-1$ y $y=-27$. Por tanto $x=-1$ y $x=-3$ son soluciones de la ecuación original.
+    :::
+
+2.  $x^3-4x^2-7x-2=0$.
+    <button id="e2-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-2 .collapse}
+    Probamos, usando Ruffini, con los divisores del término independiente de la ecuación: $\pm 1$, $\pm 2$.\
+    Resulta que $-1$ es solución de la ecuación y que $x^3-4x^2-7x-2=(x^2 - 5x - 2)(x+1)$.\
+    Si resolvemos $x^2 - 5x - 2$ (ya lo hicimos arriba), obtenemos $x= \frac{5\pm\sqrt{33}}{2}$. Por tanto las soluciones son $x= \frac{5\pm\sqrt{33}}{2}$ y $x=-1$.
+    :::
+
+3.  $x+\dfrac{x^2}{2}= \dfrac{(x+2)^2}{2}$.
+    <button id="e2-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-3 .collapse}
+    Restando ambos términos de la igualdad llegamos a $x+2=0$, por lo que la solución es $x=-2$.
+    :::
+
+4.  $(3x+1)(x^2+x-2)=0$.
+    <button id="e2-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-4 .collapse}
+    Por la expresión de la ecuación, las soluciones serán las de $3x+1=0$ y $x^2+x-2=0$.
+
+    De la primera ecuación, deducimos que $x=-\frac{1}3$.
+
+    De la segunda $x=1$ y $x=-2$.
+    :::
+
+5.  $\sqrt{x+2} +3= x-1$.
+    <button id="e2-5" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-5 .collapse}
+    Dejamos la raíz en uno de los miembros de la igualdad para poder elevar al cuadrado y eliminarla. Así llegamos a $\sqrt{x+2}=x-4$.
+
+    Por tanto, $x+2=(x-4)^2=x^2-8x+16$ y en consecuencia $x^2-9x+14=0$.
+
+    Las soluciones son $x=2$ y $x=7$. ¿Estás seguro? Es fácil comprobar que $x=2$ no es solución. Cuidado al elevar al cuadrado que podemos estar añadiendo soluciones a la ecuación original.
+    :::
+
+6.  $\dfrac{1}{x^2}-2= \dfrac{3-x}{3x^2}$.
+    <button id="e2-6" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-6 .collapse}
+    Descartamos la solución $x=0$, porque al estar dividiendo por $x^{2}$ en la ecuación original dicha solución no es válidad, y multiplicamos en ambos lados de la igualdad por $3x^2$. Obtenemos así $3-6x^2=3-x$, que equivale a $6x^2-x=0$.\
+    Las soluciones de esta última ecuación $x=0$ y $x=-\frac{1}6$, pero $x=0$ lo habíamos descartado inicialmente, así que nos queda como única solución $x=-\frac{1}6$.
+    :::
+
+------------------------------------------------------------------------
+
+[Esta página está basada en las transparencias de Javier Lobillo y Evangelina Santos Aláez para el Curso Cero de la ETSIIT de la Universidad de Granada. Las representaciones gráficas se han realizado con [JSXGraph](http://jsxgraph.uni-bayreuth.de). El maquetado de la página ha sido realizado por Pedro A. García Sánchez.]{.small}
+

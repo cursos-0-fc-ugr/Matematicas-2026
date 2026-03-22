@@ -478,4 +478,4 @@ Calcula:
 
 ------------------------------------------------------------------------
 
-Esta página está basada en los apuntes de María Burgos, Moisés Villegas y Jesús Alcantud. Las representaciones gráficas se han realizado con [JSXGraph](http://jsxgraph.uni-bayreuth.de). Las animaciones en JSXGraph y el maquetado de la página han sido realizados por Pedro A. García Sánchez.
+[Esta página está basada en los apuntes de María Burgos, Moisés Villegas y Jesús Alcantud. Las representaciones gráficas se han realizado con [JSXGraph](http://jsxgraph.uni-bayreuth.de). Las animaciones en JSXGraph y el maquetado de la página han sido realizados por Pedro A. García Sánchez.]{.small}

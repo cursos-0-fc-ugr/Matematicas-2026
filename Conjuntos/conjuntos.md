@@ -449,4 +449,4 @@ De cómo hemos demostrado la sobreyectividad, se sigue que $f^{-1}(y)=\frac{1}2(
 
 ------------------------------------------------------------------------
 
-Esta página está basada en los apuntes de J.C. Rosales y P. A. García-Sánchez, [Notas de de Álgebra Lineal y Estructuras Matemáticas](https://hdl.handle.net/10481/43099) Las representaciones gráficas se han realizado con [JSXGraph](https://jsxgraph.uni-bayreuth.de) y con [viz.js](https://viz-js.com). Las animaciones en JSXGraph y el maquetado de la página han sido realizados por Pedro A. García Sánchez.
+[Esta página está basada en los apuntes de J.C. Rosales y P. A. García-Sánchez, [Notas de de Álgebra Lineal y Estructuras Matemáticas](https://hdl.handle.net/10481/43099) Las representaciones gráficas se han realizado con [JSXGraph](https://jsxgraph.uni-bayreuth.de) y con [viz.js](https://viz-js.com). Las animaciones en JSXGraph y el maquetado de la página han sido realizados por Pedro A. García Sánchez.]{.small}
