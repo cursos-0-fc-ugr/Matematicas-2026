@@ -7,6 +7,7 @@ format:
     theme: [night, custom.scss]
     include-in-header: includes-header.html
     toc: true
+    fontsize: 1.2em
     page-layout: full
     format-links: true
     html-math-method:
