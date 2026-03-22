@@ -1,5 +1,6 @@
 ---
 title: Números complejos
+title-block-banner: true
 lang: es
 format: 
   html: 

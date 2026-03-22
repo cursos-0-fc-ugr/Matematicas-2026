@@ -35,13 +35,14 @@
     ```yaml
     ---
     title: Título
+    title-block-banner: true
     lang: es
     format: 
       html: 
         include-in-header: includes-header.html
         theme: [night, custom.scss]
         fontsize: 1.2em
-        toc: false
+        toc: true
         page-layout: full
         format-links: true
         html-math-method:

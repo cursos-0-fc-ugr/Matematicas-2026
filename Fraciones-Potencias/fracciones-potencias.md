@@ -1,5 +1,6 @@
 ---
 title: Fracciones y potencias
+title-block-banner: true
 lang: es
 format: 
   html: 

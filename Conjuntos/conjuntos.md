@@ -1,17 +1,17 @@
 ---
 title: Conjuntos
+title-block-banner: true
 lang: es
 format: 
   html: 
     theme: [night, custom.scss]
     include-in-header: includes-header.html
-    toc: false
+    toc: true
     page-layout: full
     format-links: true
     html-math-method:
             method: mathjax
             url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
-
 ---
 
 ## Conjuntos

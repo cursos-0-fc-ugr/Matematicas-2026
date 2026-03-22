@@ -1,5 +1,6 @@
 ---
 title: Polinomios
+title-block-banner: true
 lang: es
 format: 
   html: 
