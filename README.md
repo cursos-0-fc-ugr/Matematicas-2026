@@ -10,19 +10,15 @@
 
 2. Eliminamos la cabecera `::: {#header}` (con el consiguiente `:::`). Cambiamos las cabeceras `#` por secciones `##`.
 
-3. Reemplazamos `\[\\\\\((.*?)\\\\\)\]\{.math .inline\}` (con regex) por `$$$1$$`. Comprobamos si se ha quedado algún `.math` por algún salto de línea. 
-
 4. Cambiamos, sin regex, `\\` por `\`.
 
-5. Buscamos las fórmulas centradas `\\\\\[(.*?)\\\\\]` (con regex) y las reemplazamos por `$$$$$1$$$$`.
+5. Reemplazamos con regex `\[(.*)\]\{.math(.*?)\}` por `$1`.
 
-6. Por si las moscas, `\[(.*?)\]\{.math .inline\}` (con regex) por `$$$1$$`.
-
-7. Quitamos los .display `\[(.*?)\]\{.math .display\}` (con regex) por `$1`.
+6. Buscamos si ha quedado algún `{.math}`.
 
 7. Cambiar `(\` y `\)` por `$`, sin regex.
 
-8. Cambiar `\_` y `\^` por `_` y `^`, sin regex, respectivamente. Lo mismo con `\'`.
+8. Cambiar `\_` y `\^` por `_` y `^`, sin regex, respectivamente. Lo mismo con `\'`, ' \>' y `\>`.
 
 8. Revisar espacios entre dólares y texto. Por ejemplo, `$ 5$` por `$5$`, o `$5 $` por `$5$`.
 
