@@ -1,0 +1,480 @@
+---
+title: Sistemas de ecuaciones lineales
+title-block-banner: true
+lang: es
+execute:
+  echo: false
+format: 
+  html: 
+    theme: [night, custom.scss]
+    include-in-header: includes-header.html
+    toc: true
+    fontsize: 1.2em
+    page-layout: full
+    format-links: true
+    html-math-method:
+            method: mathjax
+            url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
+---
+
+
+## Ecuaciones lineales
+
+Una ecuación lineal es aquella en la que las incógnitas aparecen multiplicadas por valores numéricos y sumadas tal y como aparecen en el siguiente ejemplo:
+
+$$3 x - \frac{2}{5}y + \frac{5}{3} z = -\frac{12}{18}$$
+
+Si la ecuación tiene 3 incógnitas, como en este ejemplo, cada solución consta de 3 números. Una solución es la terna $\left(-\frac{2}{9},0,0\right)$, es decir, $x=-\frac{2}{9}; \, y=0; \, z=0$.
+
+Esta ecuación anterior tiene otras muchas soluciones. Algunas de ellas son las siguientes:
+
+-   $x = 0$, $y=\dfrac{5}3$, $z= 0$,
+-   $x= 0$, $y= 0$, $z=-\dfrac{2}5$,
+-   $x=\dfrac{1}3$, $y=\dfrac{25}3$, $z= 1$.
+
+Una forma de hallar más soluciones consiste en despejar alguna de las variables en función de las demás. Por ejemplo, si despejamos $y$, tenemos la siguiente expresión
+
+$$
+\begin{aligned}
+3 x - \frac{2}{5}y + \frac{5}{3} z &= -\frac{12}{18} \\
+- \frac{2}{5}y &= -\frac{12}{18} - 3x - \frac{5}{3} z \\
+y &= \frac{5}{2} \cdot \frac{12}{18} + \frac{5}{2} \cdot 3 x + \frac{5}{2} \cdot \frac{5}{3} z \\
+y &= \frac{5}{3} + \frac{15}{2} x + \frac{25}{6} z.\end{aligned}
+$$
+
+
+De esta forma asignando valores cualesquiera a $x$ y $z$ obtenemos el correspondiente valor de $y$ que soluciona la ecuación. Para escribir todas las soluciones de esta ecuación solemos expresarlo de la siguiente forma: 
+$$
+\left\{\begin{array}{l}
+x=\lambda,\\
+y=\frac{5}{3} + \frac{15}{2} \lambda + \frac{25}{6} \mu,\\
+z=\mu,\\
+\end{array}\right. \hspace{.5cm} \lambda, \, \mu \in \mathbb{R}.
+$$ 
+
+Este proceso puede hacerse con cualquier variable, con lo que obtendríamos una forma diferente para la expresión de todas soluciones pero exactamente el mismo conjunto de soluciones.
+
+## Dos ecuaciones con dos incógnitas
+
+
+Vamos a dar algunas directrices para resolver sistemas de ecuaciones del tipo
+
+$$
+\left\{\begin{aligned}
+a_1 x + b_1 y &= c_1, \\
+a_2 x + b_2 y &= c_2.
+\end{aligned}\right.
+$$
+
+En la educación secundaria se suelen explicar tres formas de resolver este tipo de sistemas de ecuaciones: sustitución, igualación y reducción. Todos ellos se basan en realizar operaciones aritméticas que no cambian las soluciones de las ecuaciones presentes. El más interesante, porque puede aplicarse a sistemas de cualquier número de incógnitas, es el de **reducción**; realmente se trata de una versión del **Método de Gauss** para sistemas de dos ecuaciones y dos incógnitas.
+
+### Reducción
+
+El procedimiento de reducción se basa en lograr que una misma variable aparezca en ambas ecuaciones con coeficientes opuestos (mismo valor y distinto signo). Vayamos viendo el mismo resolviendo el sistema empleado en los dos casos anteriores,
+
+$$
+\left\{\begin{aligned}
+\frac{2}{7} x + 3 y &= -2, \\
+-\frac{12}{5} x + \frac{2}{5} y &= 7,
+\end{aligned}\right.
+$$
+
+::: {#box .jxgbox style="width:400px; height:400px;margin:auto"}
+:::
+
+    ```{ojs}
+board = JXG.JSXGraph.initBoard('box', {boundingbox: [-14, 14, 14, -14], axis:true, showCopyright:false, showNavigation:false});
+line1 = board.create('functiongraph', [function(t){ return(1/3*(-2-2/7*t))}, -14,14]);
+line2 = board.create('functiongraph', [function(t){ return(5/2*(7+12/5*t))}, -14,14]);
+    ```
+
+Vamos a reducir la variable $y$. Para ello multiplicamos la primera ecuación por $\frac{2}{5}$, y la segunda ecuación por $-3$, obteniendo
+
+$$
+\left\{\begin{aligned}
+\frac{2}{7} x + 3 y &= -2 ,\\
+-\frac{12}{5} x + \frac{2}{5} y &= 7,
+\end{aligned}\right.
+\quad \text{ que lleva a } \quad
+\left\{\begin{aligned}
+\frac{2}{5} \Bigg( \frac{2}{7} x + 3 y &= -2 \Bigg), \\
+-3 \Bigg( -\frac{12}{5} x + \frac{2}{5} y &= 7 \Bigg),
+\end{aligned}\right.
+\quad \text{ y equivale a } \quad
+\left\{\begin{aligned}
+\frac{4}{35} x + \frac{6}{5} y &= -\frac{4}{5}, \\
+\frac{36}{5} x - \frac{6}{5} y &= -21.
+\end{aligned}\right.
+$$
+
+Si sumamos las dos últimas ecuaciones obtenemos una nueva ecuación en la que no aparece la variable $y$ ya que los coeficientes son opuestos y se cancelan,
+
+$$
+\begin{aligned}
+\frac{4}{35} x + \frac{6}{5} y + \frac{36}{5} x - \frac{6}{5} y &= -\frac{4}{5} -21, \\
+\left( \frac{4}{35} + \frac{36}{5} \right) x + \left( \frac{6}{5} - \frac{6}{5} \right) y &= -\frac{4}{5} -21, \\
+\frac{256}{35} x &= -\frac{109}{5}, \\
+x &= -\frac{109}{5} \cdot \frac{35}{256} = -\frac{763}{256}.\end{aligned}
+$$
+
+Este valor de $x$ se sustituye en cualquiera de las ecuaciones iniciales para calcular el valor de $y$,
+
+$$
+\begin{aligned}
+\frac{2}{7} x + 3 y &= -2, \\
+\frac{2}{7} \left( -\frac{763}{256} \right) + 3 y &= -2, \\
+-\frac{109}{128} + 3y &= -2, \\
+3y &= -2 + \frac{109}{128} = -\frac{147}{128}, \\
+y &= -\frac{147}{128} \cdot \frac{1}{3} = - \frac{49}{128}.\end{aligned}
+$$
+
+Así obtenemos la única solución de este sistema:
+
+$$
+x = -\frac{763}{256}, \qquad y = -\frac{49}{128}.
+$$
+
+::: {#exr-1}
+Resuelve el siguiente sistema de ecuaciones:
+
+$$
+\left\{\begin{aligned}
+-\frac{3}{5} x + \frac{2}{5} y &= -\frac{3}{2}, \\
+\frac{2}{5} x - \frac{1}{3} y &= \frac{6}{5}.
+\end{aligned}\right.
+$$
+
+<button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e1-1 .collapse}
+$x=\dfrac{1}2,\, y=-3$.
+:::
+
+:::
+
+## Tres ecuaciones con tres incógnitas
+
+
+### Método de Gauss
+
+Vamos a dar un procedimiento clásico para resolver sistemas de ecuaciones lineales con tres ecuaciones y tres incógnitas
+
+$$
+\left\{\begin{aligned}
+a_1 x + b_1 y + c_1 z &= d_1, \\
+a_2 x + b_2 y + c_2 z &= d_2, \\
+a_3 x + b_3 y + c_3 z &= d_3.
+\end{aligned}\right.
+$$
+
+que además es fácil extender a cualquier sistema con $m$ ecuaciones y $n$ incógnitas. Este método se basa en cambiar el sistema por otro que tiene exactamente las mismas soluciones y que es más sencillo; para ello se utilizan una serie de transformaciones de entre las siguientes:
+
+1.  Intercambiar la posición de dos ecuaciones.
+
+2.  Multiplicar una ecuación por un número distinto de cero.
+
+3.  Sumar a una ecuación un múltiplo de otra.
+
+4.  Eliminar la ecuación $0=0$.
+
+Resolveremos el sistema
+
+$$
+\left\{\begin{aligned}
+2x - y + z &= 3,\\
+x + y - z &= 0, \\
+x - y + z &= 2. \\
+\end{aligned}\right.
+$$
+
+En primer lugar vamos a intercambiar la primera y la tercera ecuación, porque vamos a utilizar el coeficiente de $x$ para eliminar esta incógnita de las ecuaciones segunda y tercera, así que nos conviene tener un número sencillo.
+
+$$
+\left\{\begin{aligned}
+x + y - z &= 0, \\
+x - y + z &= 2, \\
+2x - y + z &=3.
+\end{aligned}\right.
+$$
+
+
+Ahora hacemos dos transformaciones: a la segunda ecuación le restamos la primera (es decir, le sumamos la primera multiplicada por $(-1)$) y a la tercera le restamos el doble de la primera (es decir, le sumamos la primera multiplicada por $2$). El objetivo de eliminar la $x$ de dos ecuaciones se cumple: 
+
+$$
+\left\{\begin{array}{rrrl}
+x &+ y& - z &= 0, \\
+&-2 y &+2 z &= 2, \\
+& -3 y &+3 z &= 3.
+\end{array}\right.$$ Ahora multiplicamos la segunda ecuación por $-\frac{1}{2}$ y nos queda $$\left\{\begin{array}{rrrl}
+x &+ y& - z &= 0, \\
+&y &- z &= -1, \\
+& -3 y &+3 z &= 3,
+\end{array}\right.
+$$
+
+y a la tercera ecuación le sumamos $3$ veces la segunda 
+
+$$
+\left\{\begin{array}{rrrl}
+x &+ y& - z &= 0, \\
+&y &- z &= -1, \\
+& &0 &= 0.
+\end{array}\right.$$ Como ha aparecido la ecuación $0=0$ la podemos eliminar y nos queda $$\left\{\begin{array}{rrrl}
+x &+ y& - z &= 0, \\
+&y &- z &= -1, \\
+\end{array}\right.
+$$
+
+en este sistema es fácil despejar la $y$ en la segunda ecuación: $y=-1+z$ y ahora sustituyendo $y$ en la primera despejamos también $x$ y obtenemos: $x+(-1+z)-z=0$ y por tanto $x=1$. Como $z$ no tiene que cumplir ninguna condición puede tomar cualquier valor, así que es un *parámetro*. Las soluciones de este sistema son:
+
+$$
+\left\{\begin{array}{l}
+x=1,\\
+y=-1+\lambda,\\
+z=\lambda,\\
+\end{array}\right. \hspace{.5cm} \lambda \in \mathbb{R}.
+$$
+
+Este método permite resolver cualquier sistema, o decidir que no tiene solución, cuando aparece una ecuación de la forma $0=b$ para un número $b$ distinto de cero.
+
+### Representación matricial de un sistema de ecuaciones lineales y determinante de una matriz $3 \times 3$
+
+Todo sistema de ecuaciones lineales puede representarse mediante una ecuación matricial haciendo uso del producto de matrices. Veamos cómo en el caso que nos ocupa de tres ecuaciones y tres incógnitas.
+
+$$
+\left\{\begin{aligned}
+a_1 x + b_1 y + c_1 z &= d_1, \\
+a_2 x + b_2 y + c_2 z &= d_2, \\
+a_3 x + b_3 y + c_3 z &= d_3,
+\end{aligned}\right. \text{ se representa como }
+\begin{pmatrix}
+a_1 & b_1 & c_1 \\
+a_2 & b_2 & c_2 \\
+a_3 & b_3 & c_3
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix} =
+\begin{pmatrix}
+d_1 \\ d_2 \\ d_3
+\end{pmatrix}.
+$$
+
+La matriz 
+
+$$
+\begin{pmatrix}
+a_1 & b_1 & c_1 \\
+a_2 & b_2 & c_2 \\
+a_3 & b_3 & c_3
+\end{pmatrix}
+$$ 
+
+se llama *matriz de coeficientes del sistema* y a 
+
+$$
+\begin{pmatrix}
+d_1 \\ d_2 \\ d_3
+\end{pmatrix}
+$$ 
+
+la llamamos *columna de términos independientes*. Reuniendo toda la información del sistema tenemos la *matriz ampliada del sistema*: 
+
+$$
+\begin{pmatrix}
+a_1 & b_1 & c_1 &d_1\\
+a_2 & b_2 & c_2 & d_2\\
+a_3 & b_3 & c_3 & d_3
+\end{pmatrix}.
+$$
+
+Recordemos que el determinante de una matriz cuadrada $3 \times 3$ puede calcularse mediante la regla de Sarrus
+
+$$
+\begin{align*}
+\begin{vmatrix}
+a\_{11} & a\_{12} & a\_{13} \\
+a\_{21} & a\_{22} & a\_{23} \\
+a\_{31} & a\_{32} & a\_{33}
+\end{vmatrix} = & a\_{11} a\_{22} a\_{33} + a\_{12} a\_{23} a\_{31} + a\_{13} a\_{21} a\_{32} \\
+&  - a\_{13} a\_{22} a\_{31} - a\_{11} a\_{23} a\_{32} - a\_{12} a\_{21} a\_{33},
+\end{align*}
+$$
+
+que puede recordarse de forma más sencilla mediante el diagrama
+
+![](./sarrus.svg){width="30%" fig-alt="Regla Sarrus"}
+
+en el que sumamos los productos asociados a líneas continuas y restamos los productos asociados a líneas discontinuas.
+
+## Regla de Cramer
+
+Basado en el cálculo de determinantes existe un procedimiento llamado *Regla de Cramer* que puede utilizarse para resolver sistemas de ecuaciones que cumplan dos condiciones: que el número de incógnitas sea igual al de ecuaciones (para que la matriz de coeficientes sea cuadrada) y que el determinante de la matriz de coeficientes sea distinto de cero. Es poco práctico para 3 ecuaciones con 3 incógnitas, y para cuatro o más incógnitas el procedimiento se puede aplicar (si se conoce el cálculo de determinantes de dicho tamaño), pero la cantidad de operaciones necesarias para su conclusión se incrementa de forma extraordinaria. Una vez descrito el sistema de ecuaciones lineales mediante su expresión matricial, la regla de Cramer nos da un método sencillo de resolución. Dado el sistema de ecuaciones lineales
+
+$$
+\begin{pmatrix}
+a_1 & b_1 & c_1 \\
+a_2 & b_2 & c_2 \\
+a_3 & b_3 & c_3
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix} =
+\begin{pmatrix}
+d_1 \\ d_2 \\ d_3
+\end{pmatrix}, \text{ con } \begin{vmatrix}
+a_1 & b_1 & c_1 \\
+a_2 & b_2 & c_2 \\
+a_3 & b_3 & c_3
+\end{vmatrix} \neq 0.
+$$
+
+la solución al mismo es
+
+$$
+x = \frac{\begin{vmatrix}
+{\color{red} d_1} & b_1 & c_1 \\
+\textcolor{red}{d_2} & b_2 & c_2 \\
+{\textcolor{red}d_3} & b_3 & c_3
+\end{vmatrix}}{\begin{vmatrix}
+a_1 & b_1 & c_1 \\
+a_2 & b_2 & c_2 \\
+a_3 & b_3 & c_3
+\end{vmatrix}}, \quad y = \frac{\begin{vmatrix}
+a_1 & {\color{red}d_1} & c_1 \\
+a_2 & {\color{red}d_2} & c_2 \\
+a_3 & {\color{red}d_3} & c_3
+\end{vmatrix}}{\begin{vmatrix}
+a_1 & b_1 & c_1 \\
+a_2 & b_2 & c_2 \\
+a_3 & b_3 & c_3
+\end{vmatrix}}, \quad z = \frac{\begin{vmatrix}
+a_1 & b_1 & {\color{red}d_1} \\
+a_2 & b_2 & {\color{red}d_2} \\
+a_3 & b_3 & {\color{red}d_3}
+\end{vmatrix}}{\begin{vmatrix}
+a_1 & b_1 & c_1 \\
+a_2 & b_2 & c_2 \\
+a_3 & b_3 & c_3
+\end{vmatrix}}.
+$$
+
+Vamos a resolver el sistema de ecuaciones lineales
+
+$$
+\left\{\begin{aligned}
+\frac{1}{2} x - 2 y + 2 z &= -2, \\
+- 3 x + \frac{2}{5} z &= 0, \\
+3 x + \frac{3}{5} y -5 z &= \frac{3}{4}.
+\end{aligned}\right.
+$$
+
+En primer lugar calculamos el determinante de la matriz de coeficientes de las variables, lo que podemos hacer aplicando la regla de Sarrus.
+
+$$
+\begin{split}
+\begin{vmatrix}
+\frac{1}{2} & -2 & 2 \\
+-3 & 0 & \frac{2}{5} \\
+3 & \frac{3}{5} & -5
+\end{vmatrix} &= \frac{1}{2} \cdot 0 \cdot (-5) + (-2) \cdot \frac{2}{5} \cdot 3 + 2 \cdot (-3) \cdot \frac{3}{5} \\
+&\quad - 2 \cdot 0 \cdot 3 - \frac{1}{2} \cdot \frac{2}{5} \cdot \frac{3}{5} - (-2) \cdot (-3) \cdot (-5) \\
+&= 0 - \frac{12}{5} - \frac{18}{5} - 0 - \frac{6}{50} + 30 = \frac{597}{25} \neq 0.
+\end{split}
+$$
+
+Como el resultado es distinto de $0$ podemos proseguir y aplicar la Regla de Cramer para obtener los valores de $x$, $y$ y $z$
+
+$$
+x = \frac{\begin{vmatrix}
+-2 & -2 & 2 \\
+0 & 0 & \frac{2}{5} \\
+\frac{3}{4} & \frac{3}{5} & -5
+\end{vmatrix}}{\frac{597}{25}} = -\frac{1}{199}, \quad
+y = \frac{\begin{vmatrix}
+\frac{1}{2} & -2 & 2 \\
+-3 & 0 & \frac{2}{5} \\
+3 & \frac{3}{4} & -5
+\end{vmatrix}}{\frac{597}{25}} = \frac{765}{796}, \quad
+z= \frac{\begin{vmatrix}
+\frac{1}{2} & -2 & -2 \\
+-3 & 0 & 0 \\
+3 & \frac{3}{5} & \frac{3}{4}
+\end{vmatrix}}{\frac{597}{25}} = -\frac{15}{398}.
+$$
+
+
+::: {#exr-2}
+
+Resuelve los siguientes sistemas de ecuaciones:
+
+1.  
+
+$$
+\left\{\begin{aligned}
+x - 2 y + 3 z &= \frac{1}{2} \\
+- 2 y + \frac{3}{5} z &= \frac{3}{10} \\
+2 x + \frac{2}{5} y + \frac{1}{3} z &= -\frac{11}{6}
+\end{aligned}\right.
+$$
+
+<button id="e2-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e2-1 .collapse}
+$x=-1,\, y=0,\, z=\dfrac{1}2$.
+:::
+
+2.  
+
+$$
+\left\{\begin{aligned}
+y -2 z &= -4 \\
+x + y -z &= 0 \\
+2 x - y + z &= 3
+\end{aligned}\right.
+$$
+
+<button id="e2-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e2-2 .collapse}
+$x=1,\, y=2,\, z=3$.
+:::
+
+3.  
+
+$$
+\left\{\begin{aligned}
+x -2 y +3 z &= -6 \\
+2x + y -z &= 5 \\
+5 x + y +3 z &= 4
+\end{aligned}\right.
+$$
+
+<button id="e2-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e2-3 .collapse}
+$x=1,\, y=2,\, z=-1$.
+:::
+
+4.  
+
+$$
+\left\{\begin{aligned}
+x -2 y +3 z &= -6 \\
+2x + y -z &= 5 \\
+3 x - y +2 z &= 2
+\end{aligned}\right.
+$$    
+
+<button id="e2-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e2-4 .collapse}
+No tiene solución: si sumamos las dos primeras ecuaciones y le restamos la tercera, nos da $0=3$, por lo que el sistema es incompatible.
+:::
+
+:::
+
+
+------------------------------------------------------------------------
+
+[Esta página está basada en las transparencias de Evangelina Santos Aláez para el Curso Cero de la ETSIIT de la Universidad de Granada. Las representaciones gráficas se han realizado con [JSXGraph](http://jsxgraph.uni-bayreuth.de)]{.small}

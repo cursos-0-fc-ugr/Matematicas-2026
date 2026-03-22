@@ -5,18 +5,22 @@
 
 1. Convertimos a markdown con 
     ```bash
-    pandoc -s --mathjax --wrap=preserve -t markdown 00-conjuntos.html -o conjuntos.md
+    pandoc  --wrap=preserve -t markdown 00-conjuntos.html -o conjuntos.md
     ```
 
 2. Eliminamos la cabecera `::: {#header}` (con el consiguiente `:::`). Cambiamos las cabeceras `#` por secciones `##`.
 
 4. Cambiamos, sin regex, `\\` por `\`.
 
-5. Reemplazamos con regex `\[(.*)\]\{.math(.*?)\}` por `$1`.
+4. Cambiamos `\\[` y `\\]` por `$$`.
+
+7. Cambiar `(\` y `\)` por `$`.
+
+5. Reemplazamos con regex `\[(.*?)\]\{.math(.*?)\}` por `$1`.
+
+6. Cambiamos `[$` por `$` y `]{.math}` por nada (sin regex).
 
 6. Buscamos si ha quedado algún `{.math}`.
-
-7. Cambiar `(\` y `\)` por `$`, sin regex.
 
 8. Cambiar `\_` y `\^` por `_` y `^`, sin regex, respectivamente. Lo mismo con `\'`, ' \>' y `\>`.
 
