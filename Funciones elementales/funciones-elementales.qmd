@@ -1,0 +1,368 @@
+---
+title: Funciones elementales
+title-block-banner: true
+lang: es
+execute:
+  echo: false
+format: 
+  html: 
+    theme: [night, custom.scss]
+    include-in-header: includes-header.html
+    toc: true
+    fontsize: 1.2em
+    page-layout: full
+    format-links: true
+    html-math-method:
+            method: mathjax
+            url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
+---
+
+## Generalidades de funciones
+
+En esta lección vamos a dar un repaso a las funciones más comunes que usaremos en el curso de cálculo. Aunque el concepto de función puede definirse en ambientes muy abstractos nosotros nos restringiremos al ámbito en el que vamos a trabajar, que es el de las funciones reales de variable real. Llamaremos [$\mathbb{R}$]{.math} al conjunto de los números reales. De forma rigurosa una función es un subconjunto [$F$]{.math} del conjunto de todos los pares [$\{ (x,y) : x\in \mathbb{R}, \ y \in \mathbb{R} \}$]{.math} (esto es lo que se llama el producto cartesiano [$\mathbb{R}\times \mathbb{R}$]{.math}) que verifica una la condición de que si [$(a,b)$]{.math} y [$(a,c)$]{.math} están en [$F$]{.math} entonces tiene que ocurrir que [$b=c$]{.math}.
+
+Esta definición puede parecer muy abstracta, y de hecho lo es, pero veremos enseguida que responde a la idea que todos tenemos de una función. La forma más común de representar las funciones reales de variable real es la siguiente. Entendemos por una función una fórmula [$f \colon A \to \mathbb{R}$]{.math} que nos hace corresponder a cada número [$x\in A$]{.math} otro número al que llamaremos [$f(x)\in \mathbb{R}$]{.math}
+
+Consideremos la función [$f \colon \mathbb{R}^{+}_{0}\to \mathbb{R}$]{.math} definida, para [$x\in \mathbb{R}^{+}_{0}$]{.math}, por [$f(x)=\sqrt{x}+1$]{.math}. En este caso la "fórmula" que representa la función es [$\sqrt{x}+1$]{.math}. No es difícil ver que esta función es *una función* con la definición que hemos dado antes. De hecho en este caso la función con la que estamos tratando sería [$$\left\{ (x,\sqrt{x}+1) : x\in \mathbb{R}^{+}_{0} \right\} .$$]{.math}
+
+La condición que hemos impuesto en la definición (que si dos pares de números de la función tienen la misma primera coordenada entonces tienen que ser el mismo par) no permite que nosotros le llamemos función a cosas como [$f \colon \mathbb{R}^{+}_{0}\to \mathbb{R}$]{.math} dada por [$f(x)=\pm \sqrt{x}+1$]{.math} ya que los pares [$(4,3)$]{.math} y [$(4,-1)$]{.math} formarían parte de la (supuesta) función.
+
+Es más usual, como he dicho antes, representar la funciones de la forma [$f \colon A\to B$]{.math} donde [$A$]{.math} y [$B$]{.math} son subconjuntos de [$\mathbb{R}$]{.math} y [$f$]{.math} es una "ley" o "fórmula" que nos permite calcular la función. En el caso de representarse de esta forma al conjunto [$A$]{.math} se le denomina **dominio** de la función y al conjunto [$B$]{.math} **codominio**. Un elemento que utilizaremos más adelante es el concepto de imagen de una función, ya sea de su dominio o de parte de él. Si tenemos una función y consideramos [$E\subset A$]{.math} la imagen mediante [$f$]{.math} del conjunto [$E$]{.math} es el conjunto [$$f(E)=\left\{ y\in B: \text{ existe } x\in E \text{ tal que } f(x)=y\right\} .$$]{.math}
+
+Cuando como subconjunto [$E$]{.math} de [$A$]{.math} nos tomamos el propio conjunto [$A$]{.math} a veces se dice simplemente "la imagen de [$f$]{.math}" y se puede notar como [$\operatorname{Im}(f)$]{.math}.
+
+## Propiedades de funciones
+
+
+Existen multitud de propiedades de funciones. Algunas más profundas como la continuidad o derivabilidad se estudiarán en capítulos aparte. Aquí estudiaremos algunas muy generales, sin pretender ser exhaustivos, son las siguientes.
+
+**Linealidad**
+
+Una función [$f \colon \mathbb{R} \to \mathbb{R}$]{.math} es lineal si verifica que [$f(ax+by)=af(x)+bf(y)$]{.math} para cualesquiera [$a,b,x$]{.math} e [$y$]{.math} números reales. En realidad las funciones lineales (con dominio en [$\mathbb{R}$]{.math}) no son ningún misterio y es que las únicas funciones lineales en este ambiente son las funciones para las que existe un [$m\in \mathbb{R}$]{.math} de forma que [$f(x)=mx$]{.math} para [$x\in \mathbb{R}$]{.math}.
+
+::: {#box .jxgbox style="width:400px; height:400px;margin:auto;"}
+:::
+```{ojs}
+board = JXG.JSXGraph.initBoard('box', {boundingbox: [-4, 4, 4, -4], axis:true, showCopyright:false, showNavigation:false});
+pend = board.create('slider', [[-3.5, 2], [-1.5, 2], [-5, 1, 5]],{name:'m',snapWidth:.1});
+curve = board.create('functiongraph',[function(t){ return(t*pend.Value())}, -10,10]);
+```
+
+**Paridad**
+
+Una función es par si se verifica que [$f(x)=f(-x)$]{.math} para [$x$]{.math} en su dominio. Evidentemente cuando hablamos de paridad el dominio de la función debe ser un conjunto de números reales simétrico respecto a [$0$]{.math}. La función es impar si se verifica que [$f(x)=-f(-x)$]{.math} para [$x$]{.math} en su dominio, que también tiene que ser simétrico respecto al [$0$]{.math}.
+Ejemplos claros de funciones pares son [$f(x)=x^2+1$]{.math style="color:blue;"} o [$f(x)=\frac{\cos (x)}{x^2+3}$]{.math style="color:red;"}. Ejemplos de funciones impares son [$f(x)=x$]{.math style="color:orange"}, quizá la más fácil, o [$f(x)=\mathrm{sen}(x^3+x)$]{.math style="color:magenta"}.
+
+<center>
+[]{#box2 .jxgbox style="width:300px; height:300px; display:inline-block;"} []{#box2b .jxgbox style="width:300px; height:300px; display:inline-block;"}
+</center>
+
+```{ojs}
+board2 = JXG.JSXGraph.initBoard('box2', {boundingbox: [-4, 4, 4, -4], axis:true, showCopyright:false, showNavigation:false});
+curve2 = board2.create('functiongraph',[function(t){ return(t*t+1)}, -10,10]);
+curve2_2 = board2.create('functiongraph',[function(t){ return(Math.cos(t)/(t*t+3))}, -10,10], {strokeColor:"red"});
+```
+
+
+```{ojs}
+board2b = JXG.JSXGraph.initBoard('box2b', {boundingbox: [-4, 4, 4, -4], axis:true, showCopyright:false, showNavigation:false});
+curve3 = board2b.create('functiongraph',
+                  [function(t){ return(t)}, -10,10], {strokeColor:"orange"});
+curve4 = board2b.create('functiongraph',
+                  [function(t){ return(Math.sin(t*t*t+t))}, -10,10], {strokeColor:"magenta"});
+```
+
+**Periodicidad**
+
+Una función [$f \colon \mathbb{R} \to \mathbb{R}$]{.math} es periódica si verifica que existe un número positivo [$T$]{.math} para el que se verifica que [$f(x+T)=f(x)$]{.math} para todo [$x\in \mathbb{R}$]{.math}. Al más pequeño [$T$]{.math} que verifica lo anterior se le llama periodo fundamental de la función [$f$]{.math}. Los ejemplos más típico de funciones periódicas hay que buscarlos en las funciones trigonométricas.
+Por ejemplo, las funciones [seno]{style="color:red;"} y [coseno]{style="color:blue"} son periódicas de periodo [$2\pi$]{.math} o la función [tangente]{style="color:orange"} que es de periodo [$\pi$]{.math} (aunque esta función no esté definida en [$\mathbb{R}$]{.math}).
+
+::: {#box3 .jxgbox style="width:400px; height:400px;margin:auto"}
+:::
+```{ojs}
+board3 = JXG.JSXGraph.initBoard('box3', {boundingbox: [-4, 4, 4, -4], axis:true, showCopyright:false, showNavigation:false});
+curve31 = board3.create('functiongraph', [function(t){ return(Math.cos(t))}, -10,10]);
+curve32 = board3.create('functiongraph', [function(t){ return(Math.sin(t))}, -10,10], {strokeColor:"red"});
+curve34 = board3.create('functiongraph', [function(t){ return(Math.tan(t))}, -10,10], {strokeColor:"orange"});
+```
+
+**Inyectividad**
+
+Una función es inyectiva si cumple que números distintos del dominio tienen siempre imágenes distintas. Dicho con nomenclatura matemática, si siempre que [$x,y\in \operatorname{dom}(f)$]{.math} con [$x\ne y$]{.math} entonces se verifica que [$f(x)\ne f(y)$]{.math}. Otra forma alternativa de enunciar la anterior propiedad es decir que si dos números del dominio tienen la misma imagen entonces tienen que ser el mismo; es decir, si para cualesquiera [$x,y \in \operatorname{dom}(f)$]{.math} con [$f(x)=f(y)$]{.math} entonces [$x=y$]{.math}. Piénsese que las dos afirmaciones que hemos dicho son exactamente la misma. Y otra cosa que hay que tener en cuenta es no confundir la noción de inyectividad con la condición que tiene que cumplir una función que es que cada elemento del dominio tiene una única imagen.
+
+Un ejemplo de una función inyectiva es la función [$f \colon \mathbb{R}\to \mathbb{R}$]{.math} definida por [$f(x)=x^3+1$]{.math style="color:blue;"}, para cada [$x\in \mathbb{R}$]{.math}.
+En efecto, si tenemos dos números [$x$]{.math} e [$y$]{.math} que verifican que [$x\ne y$]{.math} entonces [$x^3\ne y^3$]{.math} y si sumamos [$1$]{.math} siguen siendo distintos: [$x^3+1\ne y^3+1$]{.math} y entonces [$f(x)\ne f(y)$]{.math}.
+Un ejemplo de función no inyectiva es la función [$f \colon \mathbb{R}\to \mathbb{R}$]{.math} dada por [$f(x)=x^2$]{.math style="color:red"}, para [$x\in \mathbb{R}$]{.math}. Ahora no ocurre que si [$x$]{.math} e [$y$]{.math} son números distintos necesariamente tienen que ser distintos [$x^2$]{.math} e [$y^2$]{.math} ya que números opuestos tienen el mismo cuadrado.
+Nos referimos a la situación de que [$3^2=(-3)^2=9$]{.math}; es decir, [$f(3)=f(-3)$]{.math}. Este ejemplo nos muestra que cuando intentamos comprobar si una función es inyectiva no tenemos que mirar únicamente la "fórmula" de la función sino que también hay que fijarse en el dominio de la función. Si la función [$f(x)=x^2$]{.math} la definimos en [$\mathbb{R}^+$]{.math} en vez de en [$\mathbb{R}$]{.math} entonces la función será inyectiva.
+
+::: {#box4 .jxgbox style="width:400px; height:400px;margin:auto"}
+:::
+```{ojs}
+board4 = JXG.JSXGraph.initBoard('box4', {boundingbox: [-4, 4, 4, -4], axis:true, showCopyright:false, showNavigation:false});
+curve41 = board4.create('functiongraph',[function(t){ return(t*t*t+1)}, -10,10]);
+curve42 = board4.create('functiongraph',[function(t){ return(Math.pow(t,2))}, -10,10], {strokeColor:"red"});
+```
+
+
+**Sobreyectividad**
+
+Cuando tenemos una función [$f \colon A\to B$]{.math} una función diremos que es inyectiva si la imagen de [$f$]{.math} coincide con todo el codominio [$B$]{.math}. Esta propiedad de las funciones depende profundamente tanto del dominio como del codominio de forma que, si se modifican, cambie el hecho de que una función sea sobreyectiva o no lo sea. En este sentido ocurre algo parecido con la inyectividad. Por ejemplo la función [$f\colon \mathbb{R}\to \mathbb{R}$]{.math} definida por [$f(x)=x^2$]{.math} para [$x\in \mathbb{R}$]{.math} no es sobreyectiva (la imagen [$f(\mathbb{R})=
+\mathbb{R}^+_0$]{.math}) pero si cambiamos el codominio y definimos [$f \colon \mathbb{R}
+\to \mathbb{R}^+_0$]{.math} mediante la misma fórmula ahora sí que es sobreyectiva.
+
+Cuando una función es a la vez inyectiva y sobreyectiva se dice que es biyectiva, o que es una biyección.
+
+## Operaciones con funciones
+
+Podemos definir nuevas funciones a partir de unas dadas de varias formas.
+
+-   **Suma**
+
+    Si tenemos dos funciones con el mismo dominio (consideremos para simplificar que el codominio es [$\mathbb{R}$]{.math}) [$f,g \colon A\to \mathbb{R}$]{.math} entonces la función suma [$f+g \colon A\to \mathbb{R}$]{.math} es la función definida por [$(f+g)(x)=f(x)+g(x)$]{.math} para cada [$x\in A$]{.math}. Análogamente con la resta.
+
+-   **Producto**
+
+    Si tenemos dos funciones otra vez con el mismo dominio [$f,g
+    \colon A\to \mathbb{R}$]{.math} entonces la función producto [$fg \colon A\to \mathbb{R}$]{.math} es la función definida por [$(fg)(x)=f(x)g(x)$]{.math} para cada [$x\in A$]{.math}.
+
+    En este caso la división no es inmediata. Para poder definir el cociente de [$f$]{.math} entre [$g$]{.math} es necesario que [$g(x)\ne 0$]{.math} para todo [$x\in A$]{.math} (así no estamos dividiendo por [$0$]{.math}. Si [$g$]{.math} verifica esta condición entonces se tiene que el cociente [$\frac{f}{g} \colon A\to \mathbb{R}$]{.math} es la función definida por [$\frac{f}{g}(x)=\frac{f(x)}{g(x)}$]{.math} para cada [$x\in A$]{.math}.
+
+-   **Composición**
+
+    Esta operación no se corresponde con una operación aritmética clásica. Para poder componer dos funciones necesitamos que la imagen de una de ellas esté contenido en el dominio de la otra. Si tenemos [$f \colon A \to B$]{.math} y [$g \colon C\to D$]{.math} y se verifica que [$\operatorname{Im}(f)\subset C$]{.math} entonces se define la composición de [$f$]{.math} con [$g$]{.math} (también se dice [$f$]{.math} compuesta con [$g$]{.math}) a la función [$g\circ f \colon A\to D$]{.math} definida como [$g\circ f(x)=g(f(x))$]{.math} para cada [$x\in A$]{.math}.
+
+    Hay que puntualizar algunas cuestiones respecto a la composición. En principio no siempre se pueden componer dos funciones cualesquiera. Es absolutamente necesario que la imagen de una esté contenida en el dominio de la otra (en el sentido del párrafo anterior). Por lo tanto pueden darse ejemplos de funciones [$f$]{.math} y [$g$]{.math} de forma que se pueda hacer [$f\circ g$]{.math} pero no se pueda hacer la composición [$g\circ f$]{.math}. Esta situación nos hace presumir que la operación "composición de funciones" no es conmutativa. Incluso, en el caso de que se puedan realizar tanto [$f\circ g$]{.math} como [$g\circ f$]{.math}, en general los resultados pueden ser distintos. Veamos algunos ejemplos.
+
+    Vamos a trabajar con las funciones [$f \colon \mathbb{R}\to \mathbb{R}$]{.math} dada por la fórmula [$f(x)=x^2-4$]{.math style="color:red"} para [$x$]{.math} real y [$g \colon \mathbb{R}\to \mathbb{R}$]{.math} definida como [$g(x)=\frac{1}{x^2+1}$]{.math style="color:blue"} también para [$x$]{.math} real.
+    ¿Podemos hacer en este caso las dos composiciones [$f\circ g$]{.math style="color:green"} y [$g\circ f$]{.math style="color:orange"}?
+
+    <center>
+    ::: {#box5 .jxgbox style="width:300px;height:300px;display:inline-block;"}
+    :::
+
+    ::: {#box6 .jxgbox style="width:300px; height:300px;display:inline-block;"}
+    :::
+    </center>
+
+    Para poder hacer [$f\circ g$]{.math} es necesario que la imagen de [$g$]{.math} esté contenida en el dominio de [$f$]{.math}. La fórmula [$\displaystyle g(x)=\frac{1}{x^2+1}$]{.math} nos da que, cuando movemos [$x$]{.math} en los números reales, entonces [$x^2$]{.math} se mueve en los números mayores o iguales a [$0$]{.math} (solamente será [$0$]{.math} si [$x=0$]{.math}). Al sumarle [$1$]{.math} obtenemos un número [$\ge 1$]{.math} y al invertir obtenemos números positivos menores o iguales a [$1$]{.math} pero mayores que [$0$]{.math}. En este caso [$\operatorname{Im}(g)=[ 0, 1 [$]{.math} que está contenido en el dominio de [$f$]{.math}, que es todo [$\mathbb{R}$]{.math}. La composición [$f\circ g$]{.math} tiene por fórmula entonces
+
+    [$$\begin{align*}
+    f\circ g(x) =f(g(x)) &=f\left(\frac{1}{x^2+1}\right)=\left( \frac{1}{x^2+1}\right) ^2-4 \\
+    &= \left( \frac{1}{x^4+2x^2+1}\right) -4= \frac{1-4x^4-8x^2-4}{x^4+2x^2+1}\\ &=\frac{-4x^4-8x^2-3}{x^4+2x^2+1}.\end{align*}$$]{.math}
+
+    Por otro lado, si [$x$]{.math} lo movemos dentro de los números reales ya hemos comentado que [$x^2$]{.math} se mueve en los números mayores o iguales a [$0$]{.math} y si restamos [$4$]{.math} nos quedarán los números mayores o iguales que [$-4$]{.math}. Por tanto la imagen de [$f$]{.math} es el intervalo [$[-4,+\infty [$]{.math}, así que, como el dominio de [$g$]{.math} es [$\mathbb{R}$]{.math}, tendremos que podemos hacer [$g\circ f$]{.math} y nos quedará, para [$x\in \mathbb{R}$]{.math}, [\begin{align*} g\circ f(x) &=g(f(x))=g(x^4-4)\\ &= \frac{1}{(x^2-4)^2+1}= \frac{1}{(x^4-8x^2+16)+1} \\ & = \frac{1}{x^4-8x^2+17},\end{align*}]{.math} y queda claro que [$f\circ g \ne g\circ f$]{.math}. En este ejemplo hemos hecho un trabajo extra ya que, como los dominios de las dos funciones eran todos los números reales, entonces el cálculo de la imagen de las dos funciones era superfluo (son funciones reales así que su imagen tiene que ser un subconjunto de los números reales). Lo hemos hecho solo por complitud.
+
+    Veamos otro ejemplo donde no se pueden hacer las dos composiciones. Si consideramos la misma función [$f$]{.math} del ejemplo anterior y como función [$g$]{.math} consideramos [$g \colon \mathbb{R}^+ \to \mathbb{R}$]{.math} definida por [$g(x)=\log (x)$]{.math} para [$x$]{.math} positivo entonces se tiene que la imagen de [$g$]{.math} es todo [$\mathbb{R}$]{.math} y se puede hacer la composición [$f\circ g
+    \colon \mathbb{R}^+\to \mathbb{R}$]{.math} que resulta ser, para cualquier [$x\in \mathbb{R}^+$]{.math}, [$$f\circ g(x)=f(\log (x))=\left( \log(x)\right) ^2-4.$$]{.math}
+
+    Sin embargo [$f$]{.math} compuesta con [$g$]{.math} no se puede hacer ya que la imagen de [$f$]{.math} es [$[-4,+\infty ) \nsubseteq \mathbb{R}^+$]{.math}.
+
+    **Función inversa**
+
+    En el caso de que tengamos una función [$f \colon A\to B$]{.math} biyectiva se verifica que, dado [$y\in B$]{.math}, existe un elemento [$x\in A$]{.math} de forma que [$f(x)=y$]{.math} por la sobreyectividad. Además ese elemento [$x$]{.math} es único para cada [$y$]{.math} (por la inyectividad). Esto nos proporciona una función [$g \colon B\to A$]{.math} que le hace corresponder a cada elemento [$y\in B$]{.math} el único [$x\in A$]{.math} para el que se verifica que [$f(x)=y$]{.math}. Esta función se denomina la inversa de [$f$]{.math} y se suele notar como [$f^{-1}$]{.math}. Verifica que [$f\circ f^{-1} \colon B\to B$]{.math} es la identidad en [$B$]{.math} (es decir que [$f\circ f^{-1}(y)=y$]{.math} para todo [$y\in B$]{.math}), y por otro lado [$f^{-1}\circ f \colon A\to A$]{.math} es la identidad en [$A$]{.math}. Hay que tener cuidado con no confundir [$f^{-1}$]{.math}, la inversa que acabamos de definir con la función [$1/f$]{.math}. Son cosas totalmente distintas. El contexto nos dirá a que nos referimos.
+
+    Si consideramos la función [$f\colon \mathbb{R}\to \mathbb{R}$]{.math} la función definida por [$f(x)=x^3+2,\ \ \forall x\in \mathbb{R}$]{.math} es muy fácil ver que la función [$f$]{.math} es biyectiva y su inversa puede ser calculada fácilmente.
+    Si [$f(x)=x^3+2=y$]{.math} entonces [$x^3=y-2$]{.math} de donde se obtiene [$x=\sqrt[3]{y-2}$]{.math}, con lo que, el único [$x$]{.math} que verifica que [$f(x)=y$]{.math} es el número [$\sqrt[3]{y-2}$]{.math}. Entonces [$f^{-1}\colon \mathbb{R}\to \mathbb{R}$]{.math} es la función [$f^{-1}(x)=\sqrt[3]{x-2},\ \ \forall x\in \mathbb{R}$]{.math}.
+
+    ::: {#box7 .jxgbox style="width:400px; height:400px;margin:auto"}
+    :::
+
+
+Vamos ahora a repasar las principales funciones que aparecen en el cálculo.
+
+
+## Funciones polinómicas y racionales
+
+
+Son las más sencillas y las ponemos aquí solo para que el panorama sea más completo. Las funciones polinómicas o polinomios no creemos que sea necesario definirlas. Son funciones cuyo dominio es todo [$\mathbb{R}$]{.math} y son continuas y derivables en todo [$\mathbb{R}$]{.math}.
+
+Las funciones racionales son el cociente de dos polinomios. El dominio es todo [$\mathbb{R}$]{.math} salvo los números que hagan que el denominador sea [$0$]{.math} (para evitar dividir por [$0$]{.math}). También son continuas en su dominio y derivables y la derivada se obtiene con la regla de la derivada de un cociente.
+
+## Función exponencial
+
+
+Las funciones exponenciales son las funciones [$f$]{.math} para las que existe un número [$a>0$]{.math} de forma que [$f\colon \mathbb{R}\to \mathbb{R}$]{.math} viene dada por [$f(x)=a^x$]{.math}, [$\forall x\in \mathbb{R}$]{.math}. En este caso se le llama función exponencial de base [$a$]{.math}. Es continua y derivable en todo [$\mathbb{R}$]{.math} y su derivada vale [$f'(x)=a^x \log(a)$]{.math}.
+
+Teniendo en cuenta que, para [$x\in \mathbb{R}$]{.math}, se verifica que [$a^{-x}=\left( \frac{1}{a}\right) ^{x}$]{.math}, entonces las propiedades que tienen las funciones exponenciales de base mayor que [$1$]{.math} se traducen en propiedades de las funciones exponenciales de base [$<1$]{.math}.
+
+Veamos algunas características de estas funciones.
+
+-   El caso más trivial de este tipo de funciones corresponde al caso [$a=1$]{.math}. En este caso [$f(x)=1,\ \ \forall x\in \mathbb{R}$]{.math}.
+
+-   Si [$a\ne 1$]{.math} entonces la funcion exponencial de base [$a$]{.math} es inyectiva. De hecho es estrictamente creciente si [$a>1$]{.math} y, teniendo en cuenta la relación entre las funciones exponenciales de base mayor que [$1$]{.math} y las funciones exponenciales de base menor que [$1$]{.math}, se tiene que [$f$]{.math} es estrictamente decreciente si [$a<1$]{.math}.
+
+-   En el caso de que [$a>1$]{.math} se verifica que [$$\lim _{x\to - \infty } a^x=0,\ \ \ \lim_{x\to +\infty }a^x=+\infty.$$]{.math}
+
+    Si [$a<1$]{.math} se tiene entonces que
+
+    [$$\lim _{x\to - \infty } a^x=+\infty ,\ \ \ \lim_{x\to +\infty }a^x=0.$$]{.math}
+
+-   La imagen de la función exponencial de base [$a$]{.math}, con [$a\ne 1$]{.math}, es [$\mathbb{R}^+$]{.math}.
+
+-   Se verifica que [$a^0=1$]{.math} y que [$a^{x+y}=a^x a^y,\ \ \forall x,y\in \mathbb{R}.$]{.math}
+
+Puedes comprobar gráficamente las propiedades anteriores variando el valor de $a$ en la siguiente representación de la función exponencial.
+
+::: {#box8 .jxgbox style="width:600px; height:300px;margin:auto"}
+:::
+
+De entre todas las funciones exponenciales hay una destacada por su importancia en distintos campos de la ciencia y es la función exponencial de base [$e$]{.math}. En este caso la derivada es [$f'(x)=e^x$]{.math}. De hecho cuando se habla de la "función exponencial" sin hacer mención a ninguna base especial, nos referimos a ésta.
+
+## Función logarítmica
+
+
+Cuando hemos comentado las propiedades de las funciones exponenciales de base [$a\ne 1$]{.math} hemos visto que, tanto si [$a>1$]{.math} o [$a<1$]{.math}, dichas funciones son una biyección de [$\mathbb{R}$]{.math} sobre [$\mathbb{R}^+$]{.math}. Por tanto tienen inversa. A la inversa de la función exponencial de base [$a$]{.math} se le llama función logarítmica de base [$a$]{.math}. Atendiendo a esta definición está claro que, para [$a\ne 1$]{.math}, [$a>0$]{.math} la función logaritmo de base [$a$]{.math}, [$\log _a \colon \mathbb{R}^{+}\to \mathbb{R}$]{.math}. Es continua y derivable en [$\mathbb{R}^+$]{.math} y su derivada vale [$\displaystyle f^{\prime} (x)=\frac{1}{x\log(a)}$]{.math}.
+
+Las propiedades de [$\log _a$]{.math} de obtienen de su definición como inversa de la función exponencial de base [$a$]{.math}.
+
+-   Si [$a>1$]{.math} se verifica que [$\log _a$]{.math} es estrictamente creciente y [$$\lim _{x\to 0}\log _a(x)=-\infty ,\ \ \lim _{x\to +\infty}\log _a(x)=+\infty.$$]{.math}
+
+    Si [$0<a<1$]{.math} entonces [$\log _a$]{.math} es estrictamente decreciente y [$$\lim _{x\to 0}\log _a(x)=+\infty ,\ \ \lim _{x\to +\infty}\log _a(x)=-\infty.$$]{.math}
+
+-   Por ser la inversa de la función exponencial se verifica que [$$\log_a(a^x)=x,\ \ \forall x\in \mathbb{R},\ \ \ a^{\log _ a(x)}=x,\ \ \forall x\in \mathbb{R}^+.$$]{.math}
+
+-   [$\log _a(x^y)=y\log_a(x)$]{.math} para [$x$]{.math} real e [$y$]{.math} positivo, y [$\log_a (xy)=\log_a(x)+\log_a (y)$]{.math}, para [$x$]{.math} e [$y$]{.math} positivos.
+
+Puedes comprobar gráficamente las propiedades anteriores variando el valor de $a$ en la siguiente representación de la función logarítmica.
+
+::: {#box9 .jxgbox style="width:400px; height:400px;margin:auto"}
+:::
+
+Al igual que antes hay una función logarítmica destacada, y es cuando la base es el número [$e$]{.math}. En este caso se llama logaritmo neperiano o simplemente logaritmo, y 
+
+## Función potencial
+
+
+Dado un número [$b\in \mathbb{R}$]{.math} la función potencial de potencia [$b$]{.math} es la función [$f \colon \mathbb{R}^+\to \mathbb{R}^+$]{.math} definida para cada [$x\in \mathbb{R}^+$]{.math} por [$f(x)=x^b$]{.math}. Es continua y derivable en [$\mathbb {R}^+$]{.math} y su derivada vale [$f'(x)=bx^{b-1}$]{.math}.
+
+Algunas de las propiedades de estas funciones dependen del valor de [$b$]{.math}. El caso más trivial es cuando [$b=0$]{.math} ya que entonces [$f$]{.math} es la función constantemente igual a [$1$]{.math}.
+
+Si [$b>0$]{.math} entonces [$x^b$]{.math} es estrictamente creciente y cumple que [$\lim_{x\to 0} x^b=0$]{.math} y [$\lim_{x\to +\infty }x^b=+\infty$]{.math}, mientras que si [$b<0$]{.math} se tiene que [$x^b$]{.math} es estrictamente decreciente y [$\lim_{x\to 0}x^b=+\infty$]{.math} mientras que [$\lim_{x\to +\infty}x^b=0$]{.math}
+
+::: {#box10 .jxgbox style="width:400px; height:400px;margin:auto"}
+:::
+
+Tanto si [$b>0$]{.math} como si [$b<0$]{.math} la función potencial de potencia [$b$]{.math} es una biyección de [$\mathbb{R}^+$]{.math} sobre si mismo cuya función inversa es la función potencial de potencia [$\frac{1}{b}$]{.math}, [$x^{1/b}$]{.math}.
+
+## Funciones trigonométricas
+
+Las principales funciones trigonométricas son la función seno, la función coseno y la función tangente. A partir de estas se construyen sus inversas, arcoseno, arcocoseno y arcotangente.
+
+-   La función [seno]{style="color:red"} [$\mathrm{sen} \colon \mathbb{R}\to \mathbb{R}$]{.math} es una función periódica de periodo [$2\pi$]{.math} cuya imagen es el intervalo [$[-1,1[$]{.math}. Es una función impar ([$\mathrm{sen} (-x)=-\mathrm{sen} (x)$]{.math}, [$\forall x\in \mathbb{R}$]{.math}) y es estrictamente creciente en el intervalo [$[0,\pi/2[$]{.math} y estrictamente decreciente en [$[\pi /2,\pi[$]{.math} con [$\mathrm{sen} (0)=0$]{.math}, [$\mathrm{sen} (\pi/2)=1$]{.math} y [$\mathrm{sen}(\pi)=0$]{.math}. Es continua y derivable en todo [$\mathbb{R}$]{.math} y su derivada vale [$\cos(x)$]{.math}.
+
+-   La función [coseno]{style="color:blue"} [$\cos \colon \mathbb{R}\to \mathbb{R}$]{.math} es una función periódica de periodo [$2\pi$]{.math} cuya imagen es también el intervalo [$[-1,1[$]{.math}. Es una función par ([$\cos (-x)=\cos (x)$]{.math}, [$\forall x\in \mathbb{R}$]{.math}) y es estrictamente decreciente en el intervalo [$[0,\pi[$]{.math} con [$\cos (0)=1$]{.math}, [$\cos (\pi/2)=0$]{.math} y [$\cos(\pi)=-1$]{.math}. También es derivable en todo [$\mathbb{R}$]{.math} y su derivada vale [$-\mathrm{sen}(x)$]{.math}.
+
+    Tanto la función seno como coseno, al ser periódicas (y no constantes), no tienen límite ni en [$+\infty$]{.math} ni en [$-\infty$]{.math}.
+
+-   La función [tangente]{style="color:orange"} es el cociente entre seno y coseno. está definida en los números reales en los que coseno no vale [$0$]{.math}, es decir en todo [$\mathbb{R}$]{.math} salvo en los múltiplos impares de [$\pi /2$]{.math}. Es decir, [$$\tan \colon \mathbb{R}\setminus \{ (2k+1)\pi /2 : k\in \mathbb{Z} \} \to \mathbb{R},\ \ \tan(x)=\frac{\mathrm{sen}(x)}{\cos(x)} ,$$]{.math} para [$x\in \mathbb{R}\setminus \{ (2k+1)\pi /2 : k\in \mathbb{Z} \}$]{.math}.
+
+    Es una función periódica de periodo [$\pi$]{.math} y si restringimos su dominio a [$(-\pi/2,\pi/2)$]{.math} entonces es estrictamente creciente y se verifica que [$$\lim_{x\to -\pi/2 ^+}\tan (x)=-\infty,\ \ \ \lim_{x\to \pi/2 ^-}\tan (x)=+\infty .$$]{.math}
+
+    Es continua y derivable en su dominio y la derivada vale [$$f'(x)=\frac{1}{\cos ^2(x)}=1+\tan ^2(x),\ \ \forall x\in \mathbb{R}\setminus
+    \{ (2k+1)\pi /2 : k\in \mathbb{Z} \} .$$]{.math}
+
+    ::: {#box11 .jxgbox style="width:600px; height:400px;margin:auto"}
+    :::
+
+Hay dos o tres igualdades fundamentales que hay que conocer respecto a las funciones trigonométricas. Basándose en estas igualdades se obtienen todas las demás.
+
+-   La primera es la igualdad fundamental de la trigonometría; dice que para cualquier número real [$x$]{.math} se verifica que [$$\cos ^2 (x)+\mathrm{sen} ^2(x)=1.$$]{.math}
+
+-   Las otras dos igualdades importantes son las fórmulas para las razones trigonométricas de la suma de dos números. En el caso del seno queda que, [$\forall x,y \in \mathbb{R}$]{.math}, se verifica que [$$\mathrm{sen} (x+y)=\mathrm{sen}(x)\cos(y)+ \cos (x)\mathrm{sen} (y).$$]{.math}
+
+-   El coseno de la suma de dos números [$x$]{.math} e [$y$]{.math} vale [$$\cos(x+y)=\cos (x)\cos(y)-\mathrm{sen} (x)\mathrm{sen}(y).$$]{.math}
+
+A partir de estas propiedades fundamentales surgen todas las propiedades de las funciones trigonométricas, por ejemplo si en las fórmulas del coseno y el seno de una suma hacemos las dos variables la misma obtenemos las fórmulas del seno y el coseno del ángulo doble (suele decirse del ángulo doble aunque nosotros hayamos definido las funciones trigonométricas sobre los números reales y no sobre ángulos).
+
+[$$\begin{aligned}
+\cos(2x) & =\cos^2(x)-\mathrm{sen}^2(x) \\
+\mathrm{sen}(2x) & =2\mathrm{sen}(x)\cos(x)\end{aligned}$$]{.math}
+
+También es conveniente recordar las razones trigonométricas de algunos números destacados [$$\begin{array}{ccccc}
+\cos(0)=1, &\cos(\frac{\pi}{6})=\frac{\sqrt{3}}{2}, &\cos (\frac{\pi}{4})=\frac{\sqrt{2}}{2}, & \cos(\frac{\pi}{3})=\frac{1}{2},&\cos(\frac{\pi}{2})=0
+\\
+\mathrm{sen}(0)=0, &\mathrm{sen}(\frac{\pi}{6})=\frac{1}{2}, &\mathrm{sen} (\frac{\pi}{4})=\frac{\sqrt{2}}{2}, & \mathrm{sen}(\frac{\pi}{3})=\frac{\sqrt{3}}{2},&\mathrm{sen}(\frac{\pi}{2})=1
+\end{array}$$]{.math}
+
+Además podemos saber razones trigonométricas de otros muchos números utilizando las propiedades anteriores. Por ejemplo, tenemos que
+
+[$$\mathrm{sen}(x+\tfrac{\pi}{2})=\mathrm{sen}(x)\cdot 0+\cos(x)\cdot 1=\cos (x),$$]{.math} y también [$$\cos(x+\tfrac{\pi}{2})=\cos(x)\cdot 0-\mathrm{sen}(x)\cdot 1=-\mathrm{sen} (x).$$]{.math}
+
+
+## Funciones trigonométricas inversas
+
+Cuando restringimos la función seno al intervalo [$[-\pi /2,\pi/2[$]{.math} entonces seno es una biyección de dicho intervalo sobre el intervalo [$[-1,1[$]{.math} y su inversa es la función [ arcoseno]{style="color:orange"}, [$\mathrm{arcsen}$]{.math}, que verifica que
+
+[$$\begin{aligned}
+\mathrm{arcsen} (\mathrm{sen} (x)) & =x , \ \forall x\in [-\pi /2,\pi /2[,\\
+\mathrm{sen} (\mathrm{arcsen} (x)) & =x,\ \forall x\in [-1,1[.\end{aligned}$$]{.math}
+
+<center>
+::: {#box12b .jxgbox style="width:160px; height:314px; display:inline-block;"}
+:::
+
+::: {#box12a .jxgbox style="width:160px; height:314px; display:inline-block;"}
+:::
+</center>
+
+La función arcoseno es continua en [$[-1,1[$]{.math} y derivable en [$(-1,1)$]{.math} y su derivada vale [$\displaystyle \frac{1}{\sqrt{1-x^2}}$]{.math}.
+
+Análogamente la función coseno es una biyección decreciente del intervalo [$[0,\pi[$]{.math} sobre [$[-1,1[$]{.math} y su inversa es la función [arcocoseno]{style="color:blue"} que verifica
+
+[$$\begin{aligned}
+\arccos (\cos (x))& =x, \ \forall x\in [0,\pi [,\\
+\cos (\arccos (x)) & =x,\ \forall x\in [-1,1[.\end{aligned}$$]{.math}
+
+Al igual que arcoseno la función arcocoseno es continua en [$[-1,1[$]{.math} y derivable en [$(-1,1)$]{.math} y su derivada vale [$\displaystyle \frac{-1}{\sqrt{1-x^2}}$]{.math}.
+
+Finalmente arcotangente es la inversa de la función tangente, cuando ésta la restringimos al intervalo [$(-\pi /2, \pi /2)$]{.math} y verifica que [$$\arctan (\tan (x))=x\ \ \forall x\in ( -\pi /2, \pi /2),\ \ \tan (\arctan (x))=x,\ \ \forall
+x\in \mathbb{R}.$$]{.math}
+
+Es continua y derivable en todo [$\mathbb{R}$]{.math} y su derivada vale [$\displaystyle \frac{1}{1+x^2}$]{.math}.
+
+
+```{ojs}
+board5 = JXG.JSXGraph.initBoard('box5', {boundingbox: [-4, 4, 4, -4], axis:true, showCopyright:false, showNavigation:false});
+curve51 = board5.create('functiongraph',[function(t){ return(1/(t*t+1))}, -10,10]);
+curve52 = board5.create('functiongraph',[function(t){ return(Math.pow(t,2)-4)}, -10,10], {strokeColor:"red"});
+
+board6 = JXG.JSXGraph.initBoard('box6', {boundingbox: [-5, 5, 5, -5], axis:true, showCopyright:false, showNavigation:false});
+c61 = board6.create('functiongraph',[function(t){ return((-4*t*t*t*t-8*t*t-3)/(t*t*t*t+2*t*t+1))}, -10,10], {strokeColor:"green"});
+c62 = board6.create('functiongraph',[function(t){ return(1/(Math.pow(t,4)-8*t*t+17))}, -10,10], {strokeColor:"orange"});
+
+board7 = JXG.JSXGraph.initBoard('box7', {boundingbox: [-4, 4, 4, -4], axis:true, showCopyright:false, showNavigation:false});
+curve71 = board7.create('functiongraph', [function(t){ return(t*t*t+2)}, -10,10]);
+curve72 = board7.create('functiongraph', [function(t){return(Math.sqrt(Math.abs(t-2),3))}, 2,10], {strokeColor:"red"});
+curve73 = board7.create('functiongraph', [function(t){return(-Math.sqrt(Math.abs(t-2),3))}, -10,2], {strokeColor:"red"});
+
+board8 = JXG.JSXGraph.initBoard('box8', {boundingbox: [-8, 4, 8, -4], axis:true, showCopyright:false, showNavigation:false});
+aexp = board8.create('slider', [[-4, -2], [-2, -2], [.1, 2, 5]],{name:'a',snapWidth:.1});
+curve82 = board8.create('functiongraph',[function(t){return(Math.pow(aexp.Value(),t))}, -10,10], {strokeColor:"blue"});
+
+board9 = JXG.JSXGraph.initBoard('box9', {boundingbox: [0, 4, 8, -4], axis:true, showCopyright:false, showNavigation:false});
+alog = board9.create('slider', [[2, -2], [4, -2], [.1, 2.7, 5]],{name:'a',snapWidth:.15});
+curve92 = board9.create('functiongraph', [function(t){return(Math.log(t)/Math.log(alog.Value()))}, 0,10], {strokeColor:"blue"});
+
+//insertTicks = false;
+//JXG.Options.axis.ticks.ticksDistance = 1;
+
+board10 = JXG.JSXGraph.initBoard('box10', {boundingbox: [0, 4, 6, -2], axis:true, showCopyright:false, showNavigation:false});
+apot = board10.create('slider', [[2, -1], [4, -1], [-5, 1.5, 5]],{name:'a',snapWidth:.1});
+curve102 = board10.create('functiongraph',[function(t){return(Math.pow(t,apot.Value()))}, 0,10], {strokeColor:"blue"});
+
+board11 = JXG.JSXGraph.initBoard('box11', {boundingbox: [-5, 4, 5, -4], axis:true, showCopyright:false, showNavigation:false});
+curve111 = board11.create('functiongraph', [function(t){ return(Math.cos(t))}, -10,10]);
+curve112 = board11.create('functiongraph', [function(t){ return(Math.sin(t))}, -10,10], {strokeColor:"red"});
+curve114 = board11.create('functiongraph', [function(t){ return(Math.tan(t))}, -10,10], {strokeColor:"orange"});
+
+board12a = JXG.JSXGraph.initBoard('box12a', {boundingbox: [-1.3, Math.PI, 1.3, -0.2], axis:true, showCopyright:false, showNavigation:false});
+curve12a = board12a.create('functiongraph',[function(t){ return(Math.acos(t))}, -1,1]);
+
+board12b = JXG.JSXGraph.initBoard('box12b', {boundingbox: [-1.3, Math.PI/2, 1.3, -Math.PI/2], axis:true, showCopyright:false, showNavigation:false});
+curve12b = board12b.create('functiongraph', [function(t){ return(Math.asin(t))}, -1,1], {strokeColor:"orange"});
+
+```
+
+------------------------------------------------------------------------
+
+[Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada. Las representaciones gráficas se han realizado con [JSXGraph](http://jsxgraph.uni-bayreuth.de). Las animaciones en JSXGraph y el maquetado de la página han sido realizados por Pedro A. García Sánchez.]{.small}
