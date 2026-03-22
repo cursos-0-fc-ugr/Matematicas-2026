@@ -1,0 +1,80 @@
+<script src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/viz.js/1.8.2/viz.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/algebrite@1.4.0/dist/algebrite.bundle-for-browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
+
+<style>
+div {
+  &.callout {
+    font-size: 2rem !important;
+  }
+}
+.callout-body-container {
+    font-size: 1rem !important;
+}
+  
+</style>
+
+<script>
+MathJax = {
+    tex: {
+    inlineMath: [                    // start/end delimiter pairs for in-line math
+      ['\\(', '\\)'],
+        ['$', '$']
+    ],
+    displayMath: [                   // start/end delimiter pairs for display math
+      ['$$', '$$'],
+      ['\\[', '\\]']
+    ]
+    },
+    output: {
+        font: 'mathjax-fira'
+    }
+};
+
+JXG.Options.text.useMathJax = true;
+JXG.Options.point.showInfobox = false;
+
+function show(divID) {
+    var sol = document.getElementById("solucion-"+divID);
+    var div = document.getElementById(divID);
+
+    console.log(sol);
+    sol.classList.toggle('collapse');
+
+    console.log("texto: " + div.innerHTML);
+
+//    if(div.innerHTML === "Solución"){
+    if(!sol.classList.contains('collapse')){
+        div.innerHTML = "Oculta solución";
+    }else{
+        div.innerHTML = "Solución";
+    }
+
+}
+
+function execute (whichTerminal, cmd) {
+    var sandbox = $('sandbox');
+    var jsResult = $('jsResult');
+    try {
+    var textToBeExecuted = cmd+"("+$('#terminal' + whichTerminal).val()+")";
+    var result;
+    if (/Algebrite\.[a-z]/.test(textToBeExecuted) || /;[ \t]*$/.test(textToBeExecuted)) {
+        result = eval(textToBeExecuted);
+    }
+    else {
+        result = Algebrite.run(textToBeExecuted);
+    }
+    //alert(result);
+    $('#output' + whichTerminal).val(result)
+    }
+    catch (err) {
+    var errDesc = err;
+    errorBox.update('<h4>Error!<\/h4><code>' + errDesc + '<\/code>' );
+    errorBox.show();
+    }
+}
+</script>
