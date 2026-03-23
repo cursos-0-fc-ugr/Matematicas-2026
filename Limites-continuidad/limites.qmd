@@ -1,0 +1,514 @@
+---
+title: Límites y continuidad
+title-block-banner: true
+lang: es
+execute:
+  echo: false
+format: 
+  html: 
+    theme: [night, custom.scss]
+    include-in-header: includes-header.html
+    toc: true
+    fontsize: 1.2em
+    page-layout: full
+    format-links: true
+    html-math-method:
+            method: mathjax
+            url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
+---
+
+## Continuidad
+
+Una función [$f$]{.math} es *continua* en un punto [$a$]{.math} de su dominio si se cumple que [$$\lim_{x \to a} f(x) = f(a).$$]{.math}
+
+En la siguiente gráfica se representa la función
+$$
+f(x)=\begin{cases} x^2+\frac{13}2x+\frac{17}2, & \text{si $x < -1$}, \\
+\frac{2}{3}x + \frac{5}3, & \text{si $x \ge -1$}.
+\end{cases}
+$$
+
+En el eje de abscisas se representa el intervalo $I=[x-\delta,x+\delta]$ (azul). En el eje de ordenadas se dibuja la imagen de $I$ por $f$ (rojo). El valor de $x$ se elige desplazando el punto azul claro en el eje de ordenadas. El valor de $\delta$ se modifica con el deslizador.
+Para un entorno $J$ de $f(-1)$ suficientemente pequeño, y cualquier entorno $I$ de $-1$, habrá siempre elementos que se aplican por $f$ fuera de $J$. Por tanto, la función no es contínua en $-1$.
+
+::: {#box_p2 .jxgbox style="width:600px; height:600px; display:inline-block;"}
+:::
+
+```{ojs}
+board_p2 = JXG.JSXGraph.initBoard('box_p2', {boundingbox: [-6, 5, 4, -5], axis:true,grid:true,showCopyright:false,showNavigation:false});
+
+f_p2 = function(x) {
+if (x>=-5 && x< -1){
+    return (x*x+6.5*x+8.5);
+} else if (x>=-1 && x<=2){
+    return 2/3*x + 5/3;
+}
+};
+
+graph_p2=board_p2.create('functiongraph',[f_p2,-6,4],{strokeColor:'black'});
+ep1_p2=board_p2.create('point',[-5,1],{strokeColor:'black',fillColor:'black',name:'',fixed:true});
+ep2_p2=board_p2.create('point',[-1,3],{strokeColor:'black',fillColor:'white',name:'',fixed:true});
+ep3_p2=board_p2.create('point',[-1,1],{strokeColor:'black',fillColor:'black',name:'',fixed:true});
+ep4_p2=board_p2.create('point',[2,3],{strokeColor:'black',fillColor:'black',name:'',fixed:true});
+
+ox1 = board_p2.create('point',[-5,0],{visible:false})
+ox2 = board_p2.create('point',[2,0],{visible:false})
+sx = board_p2.create('segment',[ox1,ox2], {visible:false})
+v_x = board_p2.create('glider', [-1,0,sx], {strokeColor:'black',fillColor:'lightblue',name:'x'})
+
+//s_p2 = board_p2.create('slider',[[-5,-4],[2,-4],[-5,-1,2]],{name:"x"});
+d_p2 = board_p2.create('slider',[[-4.5,-3.5],[-2.5,-3.5],[0,.25,2]],{name:"\u03B4"});
+//sf=board_p2.create('functiongraph',[f_p2,function(){return v_x.X()-d_p2.Value();;},function(){return v_x.X()+d_p2.Value();}],{strokeWidth:3, strokeColor:'green'})
+
+sf=board_p2.createElement('functiongraph',[function(){return 0;},function(){return v_x.X()-d_p2.Value();;},function(){return v_x.X()+d_p2.Value();}],{strokeWidth:3})
+
+pp1 = board_p2.create('point', [0,function(){return f_p2(v_x.X()-d_p2.Value());}],{name:"",visible:false})
+
+p2 = board_p2.create('point', [0,function(){return f_p2(v_x.X()+d_p2.Value());}],{name:"", visible:false})
+
+pe1 = board_p2.create('point', [0,1],{name:"", visible:false})
+pe2 = board_p2.create('point', [0,3],{name:"", visible:false})
+
+s1 = board_p2.create('segment',[function(){if(v_x.X()-d_p2.Value()<-1){return pp1;}{return pe2;}}, function(){if(v_x.X()+d_p2.Value()<-1){return p2;}{return pe2;}}], {strokeColor:"red",strokeWidth:3});
+
+s2 = board_p2.create('segment',[
+    function(){
+    if(v_x.X()-d_p2.Value()>=-1 && v_x.X()-d_p2.Value()<=2){return pp1;}
+    else{return pe1;}},
+    function(){
+    if(v_x.X()+d_p2.Value()>=-1 && v_x.X()+d_p2.Value()<=2){return p2;}
+    else if(v_x.X()+d_p2.Value()>2){return pe2;}
+    else{return pe1;}}],
+    {strokeColor:"red",strokeWidth:3});
+
+```
+
+
+Las funciones elementales que hemos visto en la sesión anterior son continuas. Por tanto, se tiene que [$$\lim_{x \to -1} \left( x^2-x+1 \right) =3, \quad \lim_{x \to 0} \cos(x) = 1, \quad \lim_{x \to e^2} \log(x)= 2 .$$]{.math} Además, la suma, producto y composición de funciones continuas da como resultado una función continua. Por ejemplo, la función [$f(x)=x^2+\log(x)$]{.math} es continua, con lo que, [$$\lim_{x \to e^2} \left(x^2+\log(x)\right) = e^4+2.$$]{.math}
+
+## Cálculo de límites
+
+### Límites laterales
+
+Hay veces en las que el cálculo del límite en un punto [$a$]{.math} depende de la posición, a la izquierda o a la derecha, de los puntos que tomemos acercándose a [$a$]{.math}. Esta situación, por ejemplo, se presenta en los puntos que dividen las partes de una función definida a trozos.
+
+Consideremos la siguiente función definida a trozos:
+
+[$$f(x)=\begin{cases} x^2+1, & \text{si $x \le 0$}, \\
+e^x, & \text{si $0< x \le 1$}, \\
+\operatorname{sen}(\pi x), & \text{si $x >1$}.
+\end{cases}$$]{.math}
+
+Vamos a calcular el límite de la función dada en los puntos \"conflictivos\"; esto es, en los puntos donde la expresión de [$f$]{.math} cambia. En este caso son [$x=0$]{.math}, y [$x=1$]{.math}. Como a ambos lados de cada uno de estos puntos la expresión de la función es distinta, nos vemos obligados a calcular los límites laterales para decidir si la función [$f$]{.math} tiene límite en ellos.
+
+[$$\begin{aligned}
+\lim_{x \to 0^-}f(x) & = \lim_{x \to 0} (x^2+1)= 1, \\
+\lim_{x \to 0^+}f(x) & = \lim_{x \to 0} e^x= e^0=1,\end{aligned}$$]{.math}
+
+Dada la coincidencia de ambos límites laterales, concluimos que la función dada sí tiene límite en el punto [$0$]{.math} y vale [$1$]{.math}; es decir existe el límite [$\displaystyle \lim\nolimits_{x \to 0} f(x) = 1$]{.math}. Como, además, este límite coincide con el valor de [$f(0)=1$]{.math}, podemos concluir que la función [$f$]{.math} es continua en el punto [$0$]{.math}.
+
+Por otra parte:
+
+[$$\begin{aligned}
+\lim_{x \to 1^-}f(x) & = \lim_{x \to 1} e^x= e^1=e, \\
+\lim_{x \to 1^+}f(x) & = \lim_{x \to 1} \operatorname{sen}(\pi x)= \operatorname{sen}(\pi)=0.\end{aligned}$$]{.math}
+
+Como ambos límites laterales son distintos, concluimos ahora que la función [$f$]{.math} no tiene límite en el punto [$1$]{.math}; es decir no existe el límite [$\displaystyle \lim\nolimits_{x \to 1}f(x)$]{.math}. Por tanto, esta función [$f$]{.math} no es continua en el punto [$1$]{.math}; de hecho, [$f$]{.math} presenta una "discontinuidad de salto". La gráfica de $f$ tiene el siguiente aspecto (puedes desplazar el punto azul a lo largo de la gráfica y ver los valores que toman sus coordenadas).
+
+::: {#box .jxgbox style="width:400px; height:200px;"}
+:::
+
+```{ojs}
+f=function(x){
+    if (x<=0){
+        return (x*x+1);
+    } else if (x>0 && x<=1){
+        return Math.exp(x);
+    } else {
+    return Math.sin(Math.PI*x)
+    }
+}
+
+board = JXG.JSXGraph.initBoard('box', {boundingbox: [-14, 10, 14, -4], axis:true, showCopyright:false, showNavigation:false});
+curve = board.create('functiongraph',
+                [f, -10,15]);
+px = board.create('glider',[0,1,curve],{strokeColor:'black',fillColor:'lightblue',name:''});
+```
+
+Nuestra intención con el siguiente ejemplo es destacar que hay funciones que "aparentemente" no son funciones a trozos, pero que en realidad sí lo son. Esto es importante tenerlo en cuenta a la hora de calcular algunos límites.
+
+Estudiemos la existencia de [$\displaystyle \lim_{x \to 0} \frac{|x|}{x}$]{.math}. Recordemos que la función valor absoluto no es más que un ejemplo de función a trozos: [$$|x|= \begin{cases} x, \ & \text{ si } x \ge 0, \\
+-x, \ & \text{ si } x <0.
+\end{cases}$$]{.math} El límite, entonces, que nos piden requiere el cálculo de los límites laterales:
+
+[$$\require{cancel}\begin{aligned}
+\lim_{x \to 0_-}\frac{|x|}{x}&= \lim_{x \to 0}\frac{-x}{x}= \lim_{x \to 0}\frac{- \cancel{x}}{\cancel{x}}= -1, \\
+\lim_{x \to 0_+}\frac{|x|}{x}&= \lim_{x \to 0}\frac{x}{x}= \lim_{x \to 0}\frac{ \cancel{x}}{\cancel{x}}= 1.\end{aligned}$$]{.math}
+
+Por tanto, no existe el límite [$\displaystyle \lim_{x \to 0} \frac{|x|}{x}.$]{.math}
+
+::: {#box2 .jxgbox style="width:400px; height:150px;"}
+:::
+
+```{ojs}
+f2=function(x){
+      if (x<=0){
+    		return (-1);
+    	} else {
+        return (1);
+      }
+    }
+board2 = JXG.JSXGraph.initBoard('box2', {boundingbox: [-10, 3, 10, -3], axis:true, showCopyright:false, showNavigation:false});
+curve2 = board2.create('functiongraph',[f2, -10,15]);
+```
+
+
+::: {#exr-1}
+
+Estudia la continuidad de las siguientes funciones.
+
+1.  [$f(x)= \begin{cases}
+    e^x, & \text{si $x <0$}, \\
+    \cos(x), & \text{si $x\geq 0$}.
+    \end{cases}$]{.math}
+    <button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    :::: {#solucion-e1-1 .collapse}
+    Tanto $e^x$ como $\cos(x)$ son funciones continuas. Por tanto, la función $f$ es continua en los intervalos $(-\infty,0)$, $(0,\infty)$.
+
+    Veamos que ocurre en el $0$. Para ello calculamos $\lim\nolimits_{x\to 0^-} e^x=1=f(0)$ (no hace falta calcular el límite por la derecha pues la función $\cos(x)$ es continua y por tanto ese límite vale $\cos(0)$). Concluimos que la función es contínua en todo $\mathbb{R}$.
+
+    Ésta es la gráfica de la función.
+
+    ::: {#ebox1-1 .jxgbox style="width:400px; height:150px;display:inline-block;text-align: center;"}
+    :::
+
+    ::::
+
+2.  [$f(x)= \begin{cases}
+    3x^2+x, & \text{si $x <0$}, \\
+    0, & \text{si $x=0$}, \\
+    \frac{1}{x}, & \text{si $x>0$}.
+    \end{cases}$]{.math}
+    <button id="e1-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    :::: {#solucion-e1-2 .collapse}
+    La función $3x^2+x$ es contínua en todo $\mathbb{R}$, y la función $1/x$ lo es en el intervalo $(0,\infty)$. Por tanto sólo falta estudiar qué ocurre en el $0$. Para ello calculamos $\lim\nolimits_{x\to 0^-} (3x^2+x)=0=f(0)$ y $\lim\nolimits_{x\to 0^+} \frac{1}x=+\infty$. Concluimos que la función es contínua en todo $\mathbb{R}\setminus\{0\}$.
+
+    Ésta es la gráfica de la función.
+
+    ::: {#ebox1-2 .jxgbox style="width:400px; height:150px;display:inline-block;text-align: center;"}
+    :::
+    ::::
+:::
+
+
+```{ojs}
+f11=function(x){
+    if (x<0){
+    return (Math.exp(x));
+    } else {
+    return (Math.cos(x));
+    }
+}
+board11 = JXG.JSXGraph.initBoard('ebox1-1', {boundingbox: [-10, 3, 10, -3], axis:true, showCopyright:false, showNavigation:false});
+curve11 = board11.create('functiongraph', [f11, -10,15]);
+
+f12=function(x){
+    if (x<=0){
+    return (3*x*x+x);
+    } else {
+    return (1/x);
+    }
+}
+
+board12 = JXG.JSXGraph.initBoard('ebox1-2', {boundingbox: [-5, 3, 10, -3], axis:true, showCopyright:false, showNavigation:false});
+curve12 = board12.create('functiongraph', [f12, -10,15]);
+
+```
+
+
+## Indeterminaciones
+
+
+### Infinito dividido por infinito
+
+El procedimiento para resolver esta indeterminación no es único; depende del tipo de función que la presente. Con los siguientes ejemplos, estableceremos cómo actuar ante límites similares.
+
+Vamos a resolver tres tipos de límites que presentan la característica común de ser cocientes de funciones polinómicas. Es decir, vamos a estudiar límites de funciones racionales cuando la variable tiende a infinito. Veremos que la forma de actuar, para evitar la indeterminación, en todos ellos es siempre la misma: dividir en el numerador y en el denominador por la máxima potencia que aparezca en la expresión.
+
+1.  Si el grado del numerador es mayor que el grado del denominador, el resultado del límite será, dependiendo de los coeficientes, [$+\infty$]{.math} o [$-\infty$]{.math}.
+
+    [$$\begin{aligned}
+    \lim_{x \to +\infty} \frac{x^3-2x^2+5}{3x^2-x} & = \lim_{x \to +\infty} \frac{\frac{x^3}{x^3}-\frac{2x^2}{x^3}+\frac{5}{x^3 }}{\frac{3x^2}{x^3}- \frac{x}{x^3}} \\
+    & = \lim_{x\to +\infty} \frac{1+\frac{2}{x} + \frac{5}{x^3}}{\frac{3}{x} -\frac{1}{x^2}}, \end{aligned}$$]{.math}
+
+    con lo que el numerador tiende a uno y el denominador a cero y el límite que buscamos es [$+\infty$]{.math}.
+
+2.  Si el numerador y el denominador tienen el mismo grado, el límite será el cociente de los coeficientes líderes. Por ejemplo,
+
+    [$$\begin{aligned}
+    \lim_{x \to +\infty} \frac{5x^2-2x}{7x^2+x+1} & = \lim_{x \to +\infty} \frac{\frac{5x^2}{x^2}-\frac{2x}{x^2}}{\frac{7x^2}{x^2}+\frac{x}{x^2}+\frac{1}{x^2}} \\
+    & = \lim_{x\to +\infty} \frac{ 5- \frac{2}{x}}{7+\frac{1}{x}+\frac{1}{x^2}} = \frac{5}{7}\, .\end{aligned}$$]{.math}
+
+3.  Si el grado del denominador es mayor que el grado del numerador, el límite nos saldrá cero.
+
+    [$$\begin{aligned}
+    \lim_{x\to -\infty} \frac{x^2+3}{x^5+2x+1} & = \lim_{x \to -\infty} \frac{\frac{x^2}{x^5}+\frac{3}{x^5}}{\frac{x^5}{x^5}+\frac{2x}{x^5}+\frac{1}{x^5}} \\
+    & = \lim_{x \to -\infty} \frac{\frac{1}{x^3}+\frac{3}{x^5}}{1+\frac{2}{x^4}+\frac{1}{x^5}} =0.\end{aligned}$$]{.math}
+
+### Cero dividido por cero
+
+Si el límite de un cociente de polinomios presenta una indeterminación de la forma cero partido por cero eso quiere decir que ambos polinomios son divisibles por [$(x-a)$]{.math}, donde [$a$]{.math} es el punto donde estamos calculando el límite. Simplificando dicho factor, tantas veces como sea necesario, eliminamos la indeterminación.
+
+[$$\begin{aligned}
+\lim_{x \to 3} \frac{x^{4}-5x^{3}+3x^{2}+9x}{x^{3}-7x^{2}+16x-12} &
+= \lim_{x \to 3} \frac{(x-3)(x^3-2x^2-3x)}{(x-3)(x^2-4x+4)} \\
+& = \lim_{x\to 3} \frac{x^3-2x^2-3x}{x^2-4x+4} = \frac{0}{1}=0.\end{aligned}$$]{.math}
+
+### Infinito menos infinito
+
+Un ejemplo usual de indeterminación de este tipo se presenta cuando tenemos una diferencia de funciones que no se pueden simplificar o cancelar directamente. En el ejemplo que tenemos a continuación vamos a usar las identidades notables que hemos visto, en concreto que suma por diferencia es diferencia de cuadrados, para eliminar raíces multiplicando y dividiendo por, lo que se suele llamar, el *conjugado*.
+
+[$$\begin{aligned}
+\lim_{x \to + \infty} \left( \sqrt{x+2}-\sqrt{x-2}\, \right) & =
+\lim_{x \to + \infty} \frac{\left(\sqrt{x+2}-\sqrt{x-2} \right) \cdot
+\left(\sqrt{x+2}+\sqrt{x-2} \right) }{ \left(\sqrt{x+2}+ \sqrt{x-2} \right) } \\
+& = \lim_{x \to +\infty} \frac{x+2-(x-2)}{ \left(\sqrt{x+2}+ \sqrt{x-2} \right) } \\
+& = \lim_{x \to +\infty} \frac{4}{ \left(\sqrt{x+2}+ \sqrt{x-2} \right) } = 0.\end{aligned}$$]{.math}
+
+### Cero por infinito
+
+El producto de funciones se puede escribir como un cociente usando que [$$f(x)g(x)= \frac{f(x)}{\frac{1}{g(x)}}.$$]{.math} Si tenemos una indeterminación de la forma "cero por infinito" y aplicamos el truco anterior, dependiendo de qué factor pasemos al denominador, obtenemos una indeterminación de la forma [$\frac{0}{0}$]{.math} o [$\frac{\infty}{\infty}$]{.math}.
+
+Por ejemplo, el cálculo del límite siguiente [$$\lim_{x \to 0} x \log (x)= \lim_{x \to 0} \frac{x}{1/\log(x)} = \lim_{x\to 0} \frac{\log(x)}{1/x},$$]{.math} lo podemos ver de cualquiera de las tres formas anteriores. En la primera tenemos una indeterminación [$0\cdot \infty$]{.math}, en la segunda tenemos una indeterminación [$\frac{0}{0}$]{.math} y la última es [$\frac{\infty}{\infty}$]{.math}.
+
+### Cero elevado a cero, infinito elevado a cero, uno elevado a infinito
+
+Las indeterminaciones en las que aparecen funciones elevadas a funciones siempre se pueden pasar a productos o cocientes utilizando logaritmos y exponenciales. Recordemos que la función exponencial y logaritmo son inversas una de la otra o, lo que es lo mismo, que [$$e^{\log(x)}=x \quad \text{y} \quad \log(e^x)=x.$$]{.math} Usando esto, si tenemos un par de funciones [$f(x)$]{.math} y [$g(x)$]{.math}, entonces, usando que el exponente de la función dentro del logaritmo sale multiplicando, [$$f(x)^{g(x)} = e^{\log\left( f(x)^{g(x)}\right) } = e^{g(x)\log(f(x))}.$$]{.math}
+
+Resumiendo, hemos cambiado el problema de estudiar [$f(x)^{g(x)}$]{.math} por el de [$g(x)\log(f(x))$]{.math}.
+
+El cálculo del límite de [$x^x$]{.math}, cuando [$x$]{.math} tiende a cero, pasa por resolver una indeterminación de la forma [$0^0$]{.math}. Utilizando exponenciales y logaritmos [$$\lim_{x \to 0 } x^x = \lim_{x \to 0} e^{\log(x^x)} =\lim_{x \to 0} e^{x \log(x)}$$]{.math} pasamos a estudiar [$\lim_{x \to 0} x\log(x)$]{.math}. El cálculo de este último lo veremos en la correspondiente asignatura del grado.
+
+::: {#exr-2}
+
+Calcula los siguientes límites.
+
+
+1.  [$\displaystyle \lim_{x \to 2} \frac{x^2-4}{x^3-4x}$]{.math}
+    [$= \dfrac{1}2$]{#solucion-e2-1 .collapse}.
+    <button id="e2-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+2.  [$\displaystyle \lim_{x \to 0} \frac{x^6+2x^4-x^3}{x^4-5x^2}$]{.math}
+    [$= 0$]{#solucion-e2-2 .collapse}.
+    <button id="e2-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+3.  [$\displaystyle \lim_{x \to 1} \frac{{x}^{3}-{x}^{2}-x+1}{x^2-1}$]{.math}
+    [$= 0$]{#solucion-e2-3 .collapse}.
+    <button id="e2-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+4.  [$\displaystyle \lim_{x \to 0} \left( \frac{1}{x^2}-\frac{1}{x^3}\right)$]{.math}
+    [. Este límite no existe, por la izquierda de $0$ vale $\infty$ y por la derecha $-\infty$]{#solucion-e2-4 .collapse}.
+    <button id="e2-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+5.  [$\displaystyle \lim_{x \to +\infty} \frac{1}{x^2} \left(\frac{x^2+1}{3x} - \frac{2x^3}{x^2+2} \right)$]{.math}
+    [$= 0$]{#solucion-e2-5 .collapse}.
+    <button id="e2-5" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+6.  [$\displaystyle \lim_{x \to +\infty} \frac{3x^3-2x+1}{x^3+10x^2}$]{.math}
+    [$= 3$]{#solucion-e2-6 .collapse}.
+    <button id="e2-6" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+7.  [$\displaystyle \lim_{x \to -\infty} \frac{7x-8}{4-5x^2}$]{.math}
+    [$= 0$]{#solucion-e2-7 .collapse}.
+    <button id="e2-7" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+8.  [$\displaystyle \lim_{x \to +\infty} \frac{\sqrt{x+1}-\sqrt{x}}{x^2}$]{.math}
+    [$= 0$]{#solucion-e2-8 .collapse}.
+    <button id="e2-8" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+9.  [$\displaystyle \lim_{x \to +\infty} \frac{x+3}{x\sqrt{x+1}-x\sqrt{x-1}}$]{.math}
+    [$= \infty$]{#solucion-e2-9 .collapse}.
+    <button id="e2-9" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+:::
+
+## Asíntotas
+
+### Asíntota vertical
+
+Una función [$f$]{.math} tiene a la recta [$x=a$]{.math} como asíntota vertical si [$$\lim_{x \to a^+}f(x)= \pm \infty \quad \text{ o } \quad
+\lim_{x \to a^-}f(x)= \pm \infty.$$]{.math}
+
+Por ejemplo, la función $f(x)=(x-2)^{-1}$ tiene una asíntota vertical en $2$.
+
+::: {#box3 .jxgbox style="width:400px; height:400px;"}
+:::
+
+```{ojs}
+f3=function(x){return(1/(x-2))}
+
+board3 = JXG.JSXGraph.initBoard('box3', {boundingbox: [-10, 10, 10, -10], axis:true, showCopyright:false, showNavigation:false});
+curve3 = board3.create('functiongraph',
+                [f3, -10,15]);
+p3=board3.create('point',[2,30]);
+q3=board3.create('point',[2,-30]);
+as3 = board3.create('line',[p3,q3],{dash:1,strokeColor:"gray"});
+```
+
+La función [$f(x)= \frac{x^2+1}{x^2-1}$]{.math} tiene dos asíntotas verticales: [$x=1$]{.math} y [$x=-1$]{.math} que son los dos valores que anulan al denominador, ya que [$$\lim_{x \to 1^+} \frac{x^2+1}{x^2-1} = \lim_{x \to -1^{-}} \frac{x^2+1}{x^2-1}= +\infty.$$]{.math} ¿Cuál es valor de los otros dos límites laterales?
+
+::: {#box4 .jxgbox style="width:400px; height:400px;"}
+:::
+
+```{ojs}
+f4=function(x){
+    return((x*x+1)/(x*x-1))}
+
+board4 = JXG.JSXGraph.initBoard('box4', {boundingbox: [-10, 10, 10, -10], axis:true, showCopyright:false, showNavigation:false});
+curve4 = board4.create('functiongraph',[f4, -10,15]);
+p4=board4.create('point',[1,30]);
+q4=board4.create('point',[1,-30]);
+as4 = board4.create('line',[p4,q4],{dash:1,strokeColor:"gray"});
+```
+
+### Asíntota horizontal
+
+Una función [$f$]{.math} tiene a la recta [$y=b$]{.math} como asíntota horizontal si [$$\lim_{x \to +\infty} f(x)= b \quad \text{ o } \quad
+\lim_{x \to -\infty} f(x)=b.$$]{.math}
+
+La función [$f(x)= \frac{3x^2+2x+1}{x^2-x+5}$]{.math} tiene a la recta [$y=3$]{.math} como asíntota horizontal ya que [$$\lim_{x \to +\infty}\frac{3x^2+2x+1}{x^2-x+5}=3.$$]{.math}
+
+::: {#box5 .jxgbox style="width:400px; height:150px;"}
+:::
+
+```{ojs}
+f5=function(x){return((3*x*x+2*x+1)/(x*x-x+5))}
+
+board5 = JXG.JSXGraph.initBoard('box5', {boundingbox: [-20, 10, 20, -5], axis:true, showCopyright:false, showNavigation:false});
+curve5 = board5.create('functiongraph',
+                [f5, -20,20]);
+p5=board5.create('point',[-30,3]);
+q5=board5.create('point',[30,3]);
+as5 = board5.create('line',[p5,q5],{dash:1,strokeColor:"gray"});
+```
+
+### Asíntota oblicua
+
+Una función [$f$]{.math} tiene a la recta [$y=mx+n$]{.math} como asíntota oblicua ([$m \neq 0$]{.math}) si [$$\lim_{x \to +\infty} \left( f(x)-(mx+n) \right) = 0 \quad \text{ o } \quad
+\lim_{x \to -\infty} \left( f(x)-(mx+n) \right) =0.$$]{.math}
+
+Para calcular los valores [$m$]{.math} y [$n$]{.math} hacemos lo siguiente: [$$m=\lim_{x \to \infty} \frac{f(x)}{x} \quad \text{y} \quad n= \lim_{x \to \infty} \left( f(x)-mx \right)$$]{.math}
+
+Veamos si la función [$f(x)=\frac{3x^3+1}{x^2+1}$]{.math} tiene asíntotas oblicuas. En primer lugar calculamos el posible valor de [$m$]{.math}: [$$m= \lim_{x \to +\infty} \frac{f(x)}{x} = \lim_{x \to +\infty} \frac{\frac{3x+1}{x^2+1}}{x} = \lim_{x \to +\infty} \frac{3x^3+1}{x^3+x}= 3.$$]{.math} En segundo lugar, calculamos el valor de [$n$]{.math}:
+
+[$$\begin{aligned}
+n & = \lim_{x \to +\infty} \left( f(x)-mx \right) = \lim_{x \to +\infty} \left( \frac{3x^3+1}{x^2+1}-3x \right) \\
+& = \lim_{x \to +\infty} \frac{3x^3+1-3x^3-3x}{x^2+1} = \lim_{x \to +\infty} \frac{1-3x}{x^2+1}=0.\end{aligned}$$]{.math}
+
+Por tanto, la recta [$y=3x$]{.math} es una asíntota oblicua de [$f$]{.math}.
+
+::: {#box6 .jxgbox style="width:400px; height:400px;"}
+:::
+
+```{ojs}
+f6=function(x){return((3*x*x*x+1)/(x*x+1))}
+
+board6 = JXG.JSXGraph.initBoard('box6', {boundingbox: [-10, 10, 10, -10], axis:true, showCopyright:false, showNavigation:false});
+curve6 = board6.create('functiongraph',
+                [f6, -20,20]);
+p6=board6.create('point',[-30,-90]);
+q6=board6.create('point',[30,90]);
+as6 = board6.create('line',[p6,q6],{dash:1,strokeColor:"gray"});
+```
+
+::: {#exr-3}
+
+Estudia las asíntotas de las siguientes funciones
+
+
+1.  [$\displaystyle f(x)=\frac{x^2+x+1}{x^2-2}.$]{.math}
+    <button id="e3-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+
+    :::: {#solucion-e3-1 .collapse}
+    Tiene una asíntota horizontal $y=1$ y dos verticales $x=\pm \sqrt{2}$.
+
+    Ésta es la gráfica de la función.
+
+    ::: {#ebox3-1 .jxgbox style="width:400px; height:400px;display:inline-block;text-align: center;"}
+    :::
+    ::::
+
+2.  [$\displaystyle f(x)=x+\frac{3}{x}.$]{.math}
+    <button id="e3-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    :::: {#solucion-e3-2 .collapse}
+    Tiene una asíntota oblícua $y=x$ y una vertical en $x=0$.
+
+    Ésta es la gráfica de la función.
+
+    ::: {#ebox3-2 .jxgbox style="width:400px; height:400px;display:inline-block;text-align: center;"}
+    :::
+    ::::
+
+3.  [$\displaystyle f(x)=x^2+\frac{2x}{x^2+1}.$]{.math}
+    <button id="e3-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    :::: {#solucion-e3-3 .collapse}
+    Esta función no tiene asíntotas.
+
+    Ésta es la gráfica de la función.
+
+    ::: {#ebox3-3 .jxgbox style="width:400px; height:400px;display:inline-block;text-align: center;"}
+    :::
+    ::::
+
+
+:::
+
+```{ojs}
+f_31=function(x){return (x*x+x+1)/(x*x-2);}
+
+board_31 = JXG.JSXGraph.initBoard('ebox3-1', {boundingbox: [-10, 10, 10, -10], axis:true, showCopyright:false, showNavigation:false});
+curve_31 = board_31.create('functiongraph',[f_31, -10,10]);
+h1_31=board_31.create('point',[-20,1]);
+h2_31=board_31.create('point',[20,1]);
+ah_31=board_31.create('line',[h1_31,h2_31],{dash:1,strokeColor:"gray"});
+
+u1_31=board_31.create('point',[-Math.sqrt(2),20]);
+u2_31=board_31.create('point',[-Math.sqrt(2),-20]);
+au_31=board_31.create('line',[u1_31,u2_31],{dash:1,strokeColor:"gray"});
+
+v1_31=board_31.create('point',[Math.sqrt(2),20]);
+v2_31=board_31.create('point',[Math.sqrt(2),-20]);
+av_31=board_31.create('line',[v1_31,v2_31],{dash:1,strokeColor:"gray"});
+
+f_32=function(x){return x+3/x;}
+
+board_32 = JXG.JSXGraph.initBoard('ebox3-2', {boundingbox: [-10, 10, 10, -10], axis:true, showCopyright:false, showNavigation:false});
+curve_32 = board_32.create('functiongraph',
+                [f_32, -10,10]);
+h1_32=board_32.create('point',[-20,-20]);
+h2_32=board_32.create('point',[20,20]);
+ah_32=board_32.create('line',[h1_32,h2_32],{dash:1,strokeColor:"gray"});
+
+u1_32=board_32.create('point',[0,20]);
+u2_32=board_32.create('point',[0,-20]);
+au_32=board_32.create('line',[u1_32,u2_32],{dash:1,strokeColor:"gray"});
+
+f_33=function(x){return x*x+(2*x)/(x*x+1);}
+
+board_33 = JXG.JSXGraph.initBoard('ebox3-3', {boundingbox: [-5, 5, 5, -5], axis:true, showCopyright:false, showNavigation:false});
+curve_33 = board_33.create('functiongraph',[f_33, -10,10]);
+
+
+```
+
+
+
+------------------------------------------------------------------------
+
+[Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada. Las representaciones gráficas se han realizado con [JSXGraph](http://jsxgraph.uni-bayreuth.de). Las animaciones en JSXGraph y el maquetado de la página han sido realizados por Pedro A. García Sánchez.]{.small}
+
