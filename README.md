@@ -65,4 +65,5 @@
     :::
     ```
     La etiqueta de este entorno siempre es de la forma `#solucion-identificador_del_boton`. En este ejemplo, como el identificador del botón es `e1-1`, la etiqueta es `#solucion-e1-1`.
+    Los ejercicios ya tienen etiqueta `#sol-eX-Y`, las cambiamos por `#solucion-eX-Y`.
 
