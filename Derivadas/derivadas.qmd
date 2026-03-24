@@ -1,0 +1,413 @@
+---
+title: Derivadas
+title-block-banner: true
+lang: es
+execute:
+  echo: false
+format: 
+  html: 
+    theme: [night, custom.scss]
+    include-in-header: includes-header.html
+    toc: true
+    fontsize: 1.2em
+    page-layout: full
+    format-links: true
+    html-math-method:
+            method: mathjax
+            url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
+---
+
+
+## Concepto de derivabilidad
+
+
+Sea [$I$]{.math} un intervalo de [$\mathbb{R}$]{.math}. Una función [$f \colon I \subset \mathbb{R} \rightarrow \mathbb{R}$]{.math} es *derivable* en [$a \in I$]{.math} si existe [$\lim_{x \to a}\, \frac{f(x)-f(a)}{x-a}$]{.math}.
+
+A dicho límite lo notaremos [$f'(a)$]{.math}. A la función [$a \mapsto f'(a)$]{.math} la llamaremos *función derivada* de [$f$]{.math} y la notaremos [$f'$]{.math}.
+
+La condición de ser derivable es más fuerte que la de ser continua, ya que si [$f \colon I \to \mathbb{R}$]{.math} es derivable en [$a\in I$]{.math}, entonces [$f$]{.math} es continua en [$a$]{.math}. El recíproco no es cierto. Hay funciones continuas que no son derivables.
+
+1.  Si [$f$]{.math} es una función constante ([$f(x)=c, \ \forall x \in I$]{.math}), entonces su derivada es siempre cero. En efecto: [$$f'(a)= \lim_{x \to a} \frac{f(x)-f(a)}{x-a} = \lim_{x \to a}
+    \frac{c-c}{x-a} = \lim_{x \to a} \frac{0}{x-a}= 0.$$]{.math} Concluimos entonces que, si [$f(x)=c , \ \forall x \in I$]{.math}, entonces [$f'(x)=0$]{.math}, [$\forall x \in I$]{.math}.
+
+2.  La derivada de la función identidad ([$f(x)=x$]{.math}) es igual a [$1$]{.math} en cualquier punto. Lo comprobamos aplicando la definición de derivada: [$$f'(a)= \lim_{x \to a} \frac{f(x)-f(a)}{x-a} = \lim_{x \to a}
+    \frac{x-a}{x-a} = 1.$$]{.math} Por tanto, si [$f(x)=x$]{.math}, entonces [$f'(x)=1$]{.math}.
+
+3.  La función [$f(x)=x^2$]{.math} es derivable. Su derivada en un punto [$a$]{.math} es, según la definición, [$$f'(a)= \lim_{x \to a} \frac{f(x)-f(a)}{x-a} = \lim_{x \to a}
+    \frac{x^{2}-a^{2}}{x-a} = \lim_{x \to a} \frac{(x+a)(x-a)}{x-a}= 2a.$$]{.math} Obtenemos así la fórmula usual de la derivada de [$f(x)=x^2$]{.math}, esto es, que [$f'(x)=2x$]{.math}.
+
+## Derivadas laterales
+
+Puesto que la derivada está definida como un límite y sabemos la relación entre límites laterales y límite, podemos hablar de *derivadas laterales.*
+
+Sea [$f \colon I \to \mathbb{R}$]{.math}, [$a \in I$]{.math}, de forma que [$\{ x \in I : x <a \} \ne \emptyset$]{.math}. Se dice que [$f$]{.math} es *derivable por la izquierda* en el punto [$a$]{.math} si existe [$\lim_{x \to a^{-}} \frac{f(x)-f(a)}{x-a} = f'(a^{-})$]{.math}. Este límite se llama *derivada lateral izquierda* de [$f$]{.math} en el punto [$a$]{.math}.
+
+Si ahora el punto [$a$]{.math} es tal que [$\{ x \in I : x > a \} \ne \emptyset$]{.math}, se dice que [$f$]{.math} es *derivable por la derecha* en el punto [$a$]{.math} si existe [$\lim_{x \to a^+} \frac{f(x)-f(a)}{x-a} = f'(a^+)$]{.math}. Este límite se llama *derivada lateral derecha* de [$f$]{.math} en el punto [$a$]{.math}.
+
+Para que una función sea derivable deben de existir todas las derivadas laterales que tengan sentido y coincidir.
+
+Consideremos la función [$f(x)=\lvert x\rvert$]{.math}, [$\forall \, x \in \mathbb{R}$]{.math}. Vamos a estudiar la derivabilidad de la función valor absoluto en el punto [$a=0$]{.math}. Para ello, calculamos las derivadas laterales en dicho punto:
+
+[$$\begin{aligned}
+f'(0^+) &= \lim_{x \to 0^+} \frac{f(x)-f(0)}{x-0}= \lim_{x \to 0^+} \frac{|x|}{x}= \lim_{x \to 0^+} \frac{x}{x}= 1, \\
+f'(0^-) &= \lim_{x \to 0^-} \frac{f(x)-f(0)}{x-0}=\lim_{x \to 0^-} \frac{|x|}{x}= \lim_{x \to 0^-} \frac{-x}{x}= -1.\end{aligned}$$]{.math}
+
+Por tanto, la función valor absoluto no es derivable en cero, ya que las derivadas laterales en dicho punto no coinciden; sin embargo, recordemos que esta función sí es continua en cero.
+
+::: {#box .jxgbox style="width:400px; height:400px;margin:auto"}
+:::
+
+```{ojs}
+board = JXG.JSXGraph.initBoard('box', {boundingbox: [-14, 14, 14, -14], axis:true, showCopyright:false, showNavigation:false});
+curve = board.create('functiongraph', [function(t){ return(Math.abs(t))}, -14,14]);
+```
+
+
+
+## Reglas de derivabilidad
+
+
+
+Sean [$f,g \colon I \rightarrow \mathbb{R}$]{.math} funciones derivables en [$I$]{.math}. Entonces
+
+-   Derivada de la suma: [$(f+g)'(x)= f'(x)+g'(x).$]{.math}
+
+-   Derivada del producto: [$(fg)'(x)= f'(x)g(x)+f(x)g'(x).$]{.math}
+
+-   Derivada del cociente: [$\left(\dfrac{f}{g}\right)'(x)= \displaystyle \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^{2}}.$]{.math}
+
+-   (Regla de la cadena) Derivada de la composición: [$(g\circ f)'(x)=g'(f(x)) \, f'(x)$]{.math}
+
+-   Si [$f(x)=x^n$]{.math}, entonces, [$f'(x)=nx^{n-1}$]{.math}.
+
+Vamos a calcular la derivada de cada una de las siguientes funciones:
+
+1.  [Sea $f(x)=7x^3-2x^2+4x-15$. Entonces $f'(x)= 21x^2-4x+4$]{.math}.
+
+2.  [Para $f(x)=\frac{x^2-1}{x}$, tenemos $f'(x) = \frac{2x\cdot x-(x^2-1)}{x^2}
+    = \frac{x^2+1}{x^2}$]{.math}.
+
+3.  Se considera la función a trozos: [$$f(x)= \begin{cases}
+    x-4, & \text{si } x <0, \\
+    2x^2-1, & \text{si } 0 \le x \le 1, \\
+    \dfrac{1}{x}\, , & \text{si } x>1.
+    \end{cases}$$]{.math} En los intervalos [$]-\infty,0[ \cup ]0,1[ \cup ]1,+\infty[$]{.math} el cálculo de la derivada se realiza aplicando las reglas anteriores.
+
+    [$$\begin{aligned}
+    & \text{Si } x <0, \text{entonces } \ f'(x)=1. \\
+    & \text{Si } 0 < x <1, \text{entonces } \ f'(x)=4x. \\
+    & \text{Si } x>1, \text{entonces } \ f'(x)=\frac{-1}{x^2}.
+    \end{aligned}$$]{.math}
+
+    Ahora hay que analizar la derivabilidad en los puntos [$x=0$]{.math} y [$x=1$]{.math}. En primer lugar descartamos el punto [$x=0$]{.math} como punto de derivabilidad ya que la función no es continua en dicho punto (basta con comprobar que los límites laterales en el punto [$0$]{.math} son distintos). En el punto [$1$]{.math} sí hay continuidad, así que estudiamos las derivadas laterales para comprobar que existen y coinciden.
+
+    [$$\begin{aligned}
+    f'(1^-) &=\lim_{x \to 1^-} \frac{f(x)-f(1)}{x-1}=\lim_{x \to 1^-}\frac{2x^2-2}{x-1}=
+    \lim_{x \to 1^-} \frac{2(x-1)(x+1)}{x-1}=\lim_{x \to 1^-} 2(x+1) = 4.\\
+    f'(1^+) &=\lim_{x \to 1^+} \frac{f(x)-f(1)}{x-1}=\lim_{x \to 1^+}\frac{1/x-1}{x-1}=
+    \lim_{x \to 1^+} \frac{1-x}{x(x-1)}=\lim_{x \to 1^+}\frac{-1}{x}=-1.
+    \end{aligned}$$]{.math}
+
+    Las dos derivadas laterales en [$1$]{.math} existen, pero no coinciden, así que la función [$f$]{.math} es derivable en [$\mathbb{R} \setminus \{0,1\}$]{.math}.
+
+4.  Sea [$f(x)=(x^3-2x+4)^{17}$]{.math}. Para calcular su derivada, a nadie se le ocurre desarrollar esta potencia, ¿verdad? Vamos a hacer uso de la regla de la cadena ya que la función no es más que la composición del polinomio [$x^3-2x+4$]{.math} con la potencial [$x^{17}$]{.math}. Así que aplicando dicha regla nos queda: [$f'(x)=17(x^3-2x+4)^{16}(3x^2-2)$]{.math}.
+
+
+::: {#exr-1}
+
+1.  [$f(x)=4x^3-5x^2-7x+1$]{.math},
+    <button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-1 .collapse}
+    $f'(x)=12x^2-10x-7$,
+    :::
+
+2.  [$f(x)=x^2+\dfrac{1}{x}$]{.math},
+    <button id="e1-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-2 .collapse}
+    $f'(x)=2x-\dfrac{1}{x^2}$,
+    :::
+
+3.  [$f(x)=5\sqrt{x}$]{.math},
+    <button id="e1-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-3 .collapse}
+    $f'(x)=\dfrac{5}{2\sqrt{x}}$,
+    :::
+
+4.  [$f(x)=(4x^2-3x+8)^{10}$]{.math},
+    <button id="e1-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-4 .collapse}
+    $f'(x)=10 (8 x - 3) (4 x^2 - 3 x + 8)^9$,
+    :::
+
+5.  [$f(x)=(x^3-4x+5)^{1/2}$]{.math},
+    <button id="e1-5" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-5 .collapse}
+    $f'(x)=\dfrac{3x^2-4}{2\sqrt{x^3-4x+5}}$,
+    :::
+
+6.  [$f(x)=\sqrt[4]{x^3}$]{.math},
+    <button id="e1-6" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-6 .collapse}
+    $f'(x)=\dfrac{3x^2}{4\sqrt[4]{x^9}}$,
+    :::
+
+7.  [$f(x)=\dfrac{1}{x^2-3x+4}$]{.math},
+    <button id="e1-7" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-7 .collapse}
+    $f'(x)=\dfrac{3 - 2 x}{(x^2 - 3 x + 4)^2}$,
+    :::
+
+8.  [$f(x)=\dfrac{x^2}{x+1}$]{.math},
+    <button id="e1-8" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-8 .collapse}
+    $f'(x)=\dfrac{x (x + 2)}{(x + 1)^2}$,
+    :::
+
+9.  [$f(x)=\dfrac{x^2+1}{x-1}$]{.math},
+    <button id="e1-9" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-9 .collapse}
+    $f'(x)=\dfrac{x^2 - 2 x - 1}{(x - 1)^2}$,
+    :::
+
+10. [$f(x)=\dfrac{x+5}{(x^2-1)^2}$]{.math},
+    <button id="e1-10" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-10 .collapse}
+    $f'(x)=-\dfrac{3x^2+20x+1}{(x^2-1)^3}$,
+    :::
+
+11. [$f(x)=x^2+\dfrac{1}{\sqrt{x}}$]{.math},
+    <button id="e1-11" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-11 .collapse}
+    $f'(x)=2x-\dfrac{1}{2\sqrt{x^3}}$,
+    :::
+
+12. [$f(x)=\dfrac{\sqrt{x+1}}{x}$.]{.math}
+    <button id="e1-12" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-12 .collapse}
+    $f'(x)=\dfrac{-x - 2}{2 x^2 \sqrt{x + 1}}$.
+    :::
+
+:::
+
+## Derivación de funciones elementales
+
+
+Usando las reglas que hemos visto y conociendo la derivada de las funciones elementales, podemos calcular la derivada de cualquier función. En la siguiente tabla tenemos la derivada (y primitiva) de algunas funciones usuales.
+
+| $f(x)$                      |  $f'(x)$                             |  $\int f(x)\,\mathrm{d}x$       |
+|-------------------------------|----------------------------------------|-----------------------------------|
+| $x^n$                       |  $nx^{n-1}$                          |  $(n+1)^{-1}x^{n+1}$            |
+| $1/x$                       |  $-1/x^{2}$                          |  $\log (\lvert x\rvert )$       |
+| $a^x$                       |  $a^x\log(a)$                        |  $a^x/\log(a)$                  |
+| $e^x$                       |  $e^x$                               |  $e^x$                          |
+| $\log(x)$                   |  $1/x$                               |  $x\log(x)-x$                   |
+| $\operatorname{sen}(x)$     |  $\cos(x)$                           |  $-\cos(x)$                     |
+| $\cos(x)$                   |  $-\operatorname{sen}(x)$            |  $\operatorname{sen}(x)$        |
+| $\tan(x)$                   |  $\cos^{-2}(x)$                      |  $-\log (\lvert\cos(x)\rvert )$ |
+| $\operatorname{senh}(x)$    |  $\cosh(x)$                          |  $\cosh(x)$                     |
+| $\cosh(x)$                  |  $\operatorname{senh}(x)$            |  $\operatorname{senh}(x)$       |
+| $\sec(x)$                   |  $\operatorname{sen}(x)/\cos^2(x)$   |                                   |
+| $\operatorname{cosec}(x)$   |  $-\cos(x)/\operatorname{sen}^2(x)$  |                                   |
+| $\operatorname{arcsen}(x)$  | $\frac{1}{\sqrt{1-x^2}}$             |                                   |
+| $\arccos(x)$                | $\frac{-1}{\sqrt{1-x^2}}$            |                                   |
+| $\arctan(x)$                | $\frac{1}{1+x^2}$                    |                                   |
+
+
+::: {#exr-2}
+
+Calcula la derivada de las siguientes funciones
+
+
+1.  [$f(x)=\log(5x)$]{.math},
+    <button id="e2-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-1 .collapse}
+    $f'(x)=\dfrac{1}{x}$,
+    :::
+
+2.  [$f(x)=e^{1/x}$]{.math},
+    <button id="e2-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-2 .collapse}
+    $f'(x)=-\dfrac{e^{1/x}}{x^2}$,
+    :::
+
+3.  [$f(x)=\log \left(\sqrt{\cos(x)} \right)$]{.math},
+    <button id="e2-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-3 .collapse}
+    $f'(x)=-\dfrac{\tan(x)}{2}$,
+    :::
+
+4.  [$f(x)=e^{\sqrt{x^2+1}}$]{.math},
+    <button id="e2-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-4 .collapse}
+    $f'(x)=\dfrac{e^{\sqrt{x^2+1}}x}{\sqrt{x^2+1}}$,
+    :::
+
+5.  [$f(x)=\log(\sqrt{x})$]{.math},
+    <button id="e2-5" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-5 .collapse}
+    $f'(x)=\dfrac{1}{2x}$,
+    :::
+
+6.  [$f(x)=2^{x^3-2x+1}$]{.math},
+    <button id="e2-6" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-6 .collapse}
+    $f'(x)=2^{x^3 - 2 x + 1} (3 x^2 - 2) \log(2)$,
+    :::
+
+7.  [$f(x)=\operatorname{sen}(4x^2-1)$]{.math},
+    <button id="e2-7" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-7 .collapse}
+    $f'(x)=8 x \cos(1 - 4 x^2)$,
+    :::
+
+8.  [$f(x)=\operatorname{sen} (\cos(x))$]{.math},
+    <button id="e2-8" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-8 .collapse}
+    $f'(x)=\operatorname{sen}(x) (-\cos(\cos(x)))$,
+    :::
+
+9.  [$f(x)=\cos(\operatorname{sen} (x))$]{.math},
+    <button id="e2-9" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-9 .collapse}
+    $f'(x)= \operatorname{sen}(\operatorname{sen}(x)) (-\cos(x))$,
+    :::
+
+10. [$f(x)=\tan \left(\frac{1}{x} \right)$]{.math},
+    <button id="e2-10" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-10 .collapse}
+    $f'(x)= -\dfrac{\sec^2(1/x)}{x^2}$,
+    :::
+
+11. [$f(x)=\cos(e^x)$]{.math},
+    <button id="e2-11" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-11 .collapse}
+    $f'(x)= -e^x \operatorname{sen}(e^x)$,
+    :::
+
+12. [$f(x)=\tan(\log(x))$]{.math},
+    <button id="e2-12" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-12 .collapse}
+    $f'(x)= \dfrac{\sec^2(\log(x))}x$,
+    :::
+
+13. [$f(x)=\operatorname{arcsen} (3x)$]{.math},
+    <button id="e2-13" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-13 .collapse}
+    $f'(x)= \dfrac{3}{\sqrt{1 - 9 x^2}}$,
+    :::
+
+14. [$f(x)=\arccos(\sqrt{x})$]{.math},
+    <button id="e2-14" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-14 .collapse}
+    $f'(x)= -\dfrac{1}{2 \sqrt{-(x - 1) x}}$,
+    :::
+
+15. [$f(x)=\arctan(x^2-1)$]{.math},
+    <button id="e2-15" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-15 .collapse}
+    $f'(x)= \dfrac{2 x}{x^4 - 2 x^2 + 2}$,
+    :::
+
+16. [$f(x)=\operatorname{arcsen} \left(\frac{1}{x} \right)$]{.math},
+    <button id="e2-16" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-16 .collapse}
+    $f'(x)= -\dfrac{1}{\sqrt{1 - 1/x^2} x^2}$,
+    :::
+
+17. [$f(x)=\arccos (e^x)$]{.math},
+    <button id="e2-17" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-17 .collapse}
+    $f'(x)= -\dfrac{e^x}{\sqrt{1 - e^{2 x}}}$,
+    :::
+
+18. [$f(x)=\sqrt{\log(3+\cos(x^2+1))}$]{.math},
+    <button id="e2-18" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-18 .collapse}
+    $f'(x)=-\dfrac{x \mathrm{sen}(x^2 + 1)}{(\cos(x^2 + 1) + 3) \sqrt{\log(\cos(x^2 + 1) + 3)}}$,
+    :::
+
+19. [$f(x)=\arctan \left(\log(x) \right)$.]{.math}
+    <button id="e2-19" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-19 .collapse}
+    $f'(x)= \dfrac{ 1}{x + x \log^2(x)}$.
+    :::
+
+:::
+
+Si repasamos lo hecho, nos damos cuenta de que nos ha quedado sin resolver el cálculo de la derivada cuando aparecen funciones tanto en la base como en el exponente. Aunque existe una regla para su cálculo, preferimos hacer el desarrollo completo, lo que se suele conocer como derivación logarítmica.
+
+## Derivación logarítmica
+
+La clave para calcular la derivada de [$f(x)^{g(x)}$]{.math} está en derivar no dicha función sino su logaritmo: por abreviar, si escribimos [$y(x)=f(x)^{g(x)}$]{.math}, entonces [$$\log(y(x)) = \log\left( f(x)^{g(x)} \right) = g(x) \log (f(x)),$$]{.math} derivamos usando la regla para derivar un producto, [$$\left( \log(y) \right)^{\prime} = \frac{y'(x)}{y(x)} = g'(x)\log(f(x)) + g(x)\, \frac{f'(x)}{f(x)} \, ,$$]{.math} y despejamos [$y'(x)$]{.math}
+
+[$$\begin{aligned}
+y'(x) & = y(x) \left( g'(x)\log(f(x)) + g(x)\, \frac{f'(x)}{f(x)}\right) \\
+& = f(x)^{g(x)} \left( g'(x)\log(f(x)) + g(x)\, \frac{f'(x)}{f(x)} \right) .\end{aligned}$$]{.math}
+
+Vamos a calcular la derivada de la función [$y(x)=(x^2+x)^{\operatorname{sen}(x)}$]{.math}.
+
+Tomamos logaritmos [$$\log (y(x)) = \log \left( (x^2+x)^{\operatorname{sen}(x)} \right) = \operatorname{sen}(x) \log (x^2+x),$$]{.math}
+
+derivamos [$$\log(y(x))' = \frac{y'(x)}{y(x)} = \cos(x) \log(x^2+x) + \operatorname{sen}(x)\frac{2x+1}{x^2+x}$$]{.math}
+
+y despejamos [$y'(x)$]{.math}
+
+[$$\begin{aligned}
+y'(x) & = y(x) \left( \cos(x) \log(x^2+x) + \operatorname{sen}(x)\frac{2x+1}{x^2+x} \right) \\
+& = (x^2+x)^{\operatorname{sen}(x)}\left( \cos(x) \log(x^2+x) + \operatorname{sen}(x)\frac{2x+1}{x^2+x} \right) .\end{aligned}$$]{.math}
+
+::: {#exr-3}
+
+Calcula la derivada de las siguientes funciones
+
+
+1.  [$f(x)=x^{x}$]{.math},
+    <button id="e3-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e3-1 .collapse}
+    $f'(x)= x^x (\log(x) + 1)$,
+    :::
+
+2.  [$f(x)=(x^2+1)^{x^2}$.]{.math}
+    <button id="e3-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e3-2 .collapse}
+    $f'(x)= 2 x (x^2 + 1)^{x^2 - 1} (x^2 + (x^2 + 1) \log(x^2 + 1))$.
+    :::
+
+:::
+
+------------------------------------------------------------------------
+
+[Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada. Las representaciones gráficas se han realizado con [JSXGraph](http://jsxgraph.uni-bayreuth.de). El maquetado de la página ha sido realizado por Pedro A. García Sánchez.]{.small}
