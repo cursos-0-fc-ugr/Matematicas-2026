@@ -1,0 +1,202 @@
+---
+title: Aplicaciones de la derivada
+title-block-banner: true
+lang: es
+execute:
+  echo: false
+format: 
+  html: 
+    theme: [night, custom.scss]
+    include-in-header: includes-header.html
+    toc: true
+    fontsize: 1.2em
+    page-layout: full
+    format-links: true
+    html-math-method:
+            method: mathjax
+            url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
+---
+
+## Estudio de una función
+
+
+### Crecimiento y decrecimiento
+
+Si [$f$]{.math} es una función derivable definida en un intervalo, entonces
+
+-   [$f$]{.math} es creciente si, y sólo si, la derivada es mayor o igual que cero;
+
+-   [$f$]{.math} es decreciente si, y sólo si, la derivada es menor o igual que cero; y
+
+-   [$f$]{.math} es constante si, y sólo si, la derivada es cero.
+
+Para estudiar el crecimiento de la función [$f(x)=2x^3-3x^2-12x+1$]{.math}, estudiamos el signo de la derivada. Primero vemos dónde se anula. [$$f'(x)=6x^2-6x-12=0 \text{ sí y sólo sí } x\in\{-1,2\}.$$]{.math} Como sabemos donde se anula la derivada, también sabemos donde *no* se anula. Esto es, la función es monótona en [$]-\infty,-1]$]{.math}, en [$[-1,2]$]{.math} y en [$[2,+\infty[$]{.math}. Evaluando la derivada en un punto de cada intervalo, terminamos:
+
+-   [$f'(-3)=60 > 0$]{.math}, y por tanto [$f$]{.math} es creciente [$]-\infty,-1]$]{.math};
+
+-   [$f'(0)=-12 < 0$]{.math}, en consecuencia [$f$]{.math} es decreciente [$[-1,2]$]{.math}; y,
+
+-   [$f'(8)=324 > 0$]{.math}, por lo que [$f$]{.math} es creciente [$[2,+\infty[$]{.math}.
+
+¿Sabrías decir algo sobre los máximos y mínimos relativos de esta función?
+
+### Extremos relativos
+
+El cálculo de los máximos y mínimos relativos de una función [$f$]{.math} se suele hacer en dos pasos.
+
+1.  En primer lugar se calculan los puntos críticos, es decir, resolvemos la ecuación [$f'(x)=0$]{.math}.
+
+2.  Los cambios en la monotonía son suficientes para descubrir los extremos relativos: si la función pasa de creciente a decreciente alcanza un máximo relativo y si pasa de decreciente a creciente tiene un mínimo relativo
+
+3.  También podemos sustituir el segundo paso por el estudio de la segunda derivada en los puntos críticos:
+
+    -   si [$f'(a)=0$]{.math}, y además [$f''(a) > 0$]{.math}, entonces [$f$]{.math} tiene un mínimo relativo en [$a$]{.math};
+
+    -   si [$f'(a)=0$]{.math}, y además [$f''(a) < 0$]{.math}, entonces [$f$]{.math} tiene un máximo relativo en [$a$]{.math}.
+
+Si analizamos el signo de la derivada segunda de la función del ejemplo anterior en los puntos críticos que habíamos obtenido, concluimos cuál es mínimo y cuál es máximo. Como [$f''(x)= 12x-6$]{.math}, tenemos:
+
+-   [$f''(-1)=-18 < 0$]{.math}, por tanto en [$x=-1$]{.math} tenemos un máximo relativo;
+
+-   [$f''(2)=18 > 0$]{.math}, por tanto en [$x=2$]{.math} tenemos un mínimo relativo.
+
+A esta misma conclusión se llega usando los cambios de monotonía que ya hemos calculado anteriormente.
+
+::: {#exr-1}
+Calcula los extremos relativos de $f(x)=x^4+7$.
+:::
+
+### Concavidad y convexidad
+
+Si [$f$]{.math} es una función dos veces derivable,
+
+-   Una función es convexa si, y sólo si, la segunda derivada es mayor o igual que cero; y
+
+-   una función es cóncava si, y sólo si, la segunda derivada es menor o igual que cero.
+
+### Puntos de inflexión
+
+Si [$f''(a)=0$]{.math} y [$f'''(a)\neq 0$]{.math}, decimos que [$f$]{.math} tiene un punto de inflexión en [$a$]{.math}. Esto quiere decir que en dicho punto la función pasa de ser cóncava a convexa o al revés.
+
+Seguimos con la función del ejemplo 2. Como [$f''(x)=12x-6$]{.math} tenemos que $12x-6=0$, o lo que es lo mismo, $x=1/2$. Ya tenemos nuestro candidato a punto de inflexión. Ahora calculamos la derivada tercera: [$f'''(x)=12$]{.math}, con lo que [$f'''(1/2)=12 > 0$]{.math}. Por tanto, tenemos un punto de inflexión en [$x=1/2$]{.math}. Vamos a calcular ahora si pasa de cóncava a convexa, o viceversa. Para ello, evaluamos [$f''$]{.math} en puntos a ambos lados de [$x=1/2$]{.math}:
+
+-   [$f''(0)=-6 < 0$]{.math}, por lo que la función antes de [$1/2$]{.math} es cóncava.
+
+-   [$f''(1)=6 > 0$]{.math}, por lo que la función después de [$1/2$]{.math} es convexa.
+
+::: {#box2 .jxgbox style="width:400px; height:400px;margin:auto"}
+:::
+
+```{ojs}
+board = JXG.JSXGraph.initBoard('box2', {boundingbox: [-5, 20, 5, -20], axis:true, showCopyright:false, showNavigation:false});
+curve = board.create('functiongraph', [function(t){ return(2*t*t*t-3*t*t-12*t+1)}, -10,10]);
+
+```
+
+::: {#exm-1}
+
+Vamos a aplicar todos los apartados anteriores para hacer el estudio completo de la función [$f \colon \mathbb{R}\rightarrow \mathbb{R}$]{.math} definida como [$f(x)=x^{3}+3x^{2}-9x$]{.math}.
+
+**Crecimiento y decrecimiento**
+
+Calculamos los puntos donde se anula la derivada para averiguar el signo del resto. [$$f'(x)=3x^2+6x-9 =0,\ x\in\{-3,1\}.$$]{.math} Miramos el signo de la derivada en algunos puntos intermedios: por ejemplo, [$f'(-10) > 0$]{.math}, [$f'(0) < 0$]{.math} y [$f'(5) > 0$]{.math}. Por tanto,
+
+-   [$f$]{.math} es creciente en [$]-\infty , -3]$]{.math},
+
+-   [$f$]{.math} es decreciente en [$[-3,1]$]{.math} y
+
+-   [$f$]{.math} es creciente en [$[1,+\infty[$]{.math}.
+
+**Extremos relativos**
+
+Directamente de los cambios de monotonía ya podemos deducir que
+
+-   [$f$]{.math} tiene un máximo relativo en [$-3$]{.math} y
+
+-   [$f$]{.math} tiene un mínimo relativo en [$1$]{.math}.
+
+A la misma conclusión llegamos si evaluamos la segunda derivada: [$$f''(x)=6x+6, \quad f''(-3)=-12, \quad \text{y} \quad f''(1)=12.$$]{.math}
+
+**Convexidad y concavidad**
+
+Para estudiar la concavidad y convexidad de una función, miramos el signo de la segunda derivada: [$$f''(x)=6x+6=0,\ x= -1.$$]{.math} Por tanto,
+
+-   [$f''(x)$]{.math} es negativa en [$]-\infty,-1]$]{.math} (función cóncava)
+
+-   [$f''(x)$]{.math} es positiva en [$[-1,+\infty[$]{.math} (función convexa)
+
+**Puntos de inflexión**
+
+En [$-1$]{.math} la función tiene un punto de inflexión ya que cambia de de convexa a cóncava.
+
+::: {#box3 .jxgbox style="width:400px; height:400px;margin:auto;"}
+:::
+
+```{ojs}
+board3 = JXG.JSXGraph.initBoard('box3', {boundingbox: [-10, 30, 10, -30], axis:true, showCopyright:false, showNavigation:false});
+curve3 = board3.create('functiongraph', [function(t){ return(t*t*t+3*t*t-9*t)}, -10,10]);
+pintae32=function(){
+    var f=t => -t*t+2*t;
+    var t1 = t => 2*t;
+    var t2 = t => -2*(t-2);
+    var board = JXG.JSXGraph.initBoard('ebox32', {boundingbox: [-1, 3, 3, -1], axis:true, showCopyright:false, showNavigation:false});
+    var curve = board.create('functiongraph',
+                    [f, -5,5],{frozen:true});
+    board.create('functiongraph',[t1,-5,5],{dash:1,strokeColor:"orange"})
+    board.create('functiongraph',[t2,-5,5],{dash:1,strokeColor:"red"})
+}
+pintae32();
+
+```
+
+:::
+
+::: {#exr-2}
+
+1.  Estudia la función [$f \colon \mathbb{R} \rightarrow \mathbb{R}$]{.math} definida como [$f(x)=3\,{x}^{4}-4\,{x}^{3}-6\,{x}^{2}+12\,x$]{.math}.
+
+2.  Esboza la gráfica de una función [$f$]{.math} definida en [$[0,2]$]{.math} que verifique que [$f(0)=f(2)=0$]{.math}, [$f'(0)=2$]{.math} y [$f'(2)=-2$]{.math}.
+    <button id="e3-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    :::: {#solucion-e3-2 .collapse}
+    Al darnos estos datos, nos están mostrando cómo son las tangentes a la gráfica en $0$ y en $2$: [$y=2x$]{style="color:orange"} e [$y=-2(x-2)$]{style="color:red"}, respectivamente.
+
+    ::: {#ebox32 .jxgbox style="width:400px; height:400px;margin:auto;"}
+    :::
+
+    Como nos dan cuatro condiciones, podemos probar con un polinomio de grado $3$ (que tiene cuatro coeficientes). Supongamos que dicho polinomio es $p(x)= ax^3+bx^2+cx+d$. La condición $p(0)=0$ implica que $d=0$, y la condición $p'(0)=2$ lleva a $c=2$. Por tanto, nuestro polinomio es $ p(x)=ax^3+bx^2+2x$, al que tenemos que imponer también que $p(2)=0=8a+4b+4$ y $p'(2)=-2=12a+4b+2$.\
+    Resolviendo ese sistema de dos ecuaciones con dos incógnitas, obtenemos $a=0$, $b=-1$. Así [$p(x)=-x^2+2x$]{style="color:blue"}.
+    ::::
+
+3.  Considera la función [$f \colon \mathbb{R} \to \mathbb{R}$]{.math} definida como [$f(x)=\displaystyle e^{\frac{2x}{x^2+1}}$]{.math}.
+
+    1.  Calcula las asíntotas de la gráfica de [$f$]{.math}.
+
+    2.  Determina los intervalos de monotonía (crecimiento y decrecimiento).
+
+    3.  Determina los extremos relativos de [$f$]{.math}.
+
+    4.  Esboza la gráfica de [$f$]{.math}.
+
+4.  Haz un estudio completo de la función [$f(x)=\frac{x^2+1}{x}$]{.math} y representa su gráfica.
+
+5.  Haz un estudio completo de la función [$f(x)=\frac{x}{x^2-1}$]{.math} y representa su gráfica.
+
+6.  A partir de la gráfica de [$f(x)=\cos(x)$]{.math}, dibuja la gráfica de las funciones siguientes:
+
+    1.  [$f(x)=\cos(x+1)$]{.math},
+
+    2.  [$f(x)=\cos(x-1)$]{.math},
+
+    3.  [$f(x)=\cos(2x)$]{.math},
+
+    4.  [$f(x)=\cos(x)-1$]{.math},
+
+    5.  [$f(x)=\cos(x)+1$]{.math},
+
+    6.  [$f(x)=\lvert\cos(x)\rvert$]{.math}.
+:::
+
+------------------------------------------------------------------------
+
+[Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada. Las representaciones gráficas se han realizado con [JSXGraph](http://jsxgraph.uni-bayreuth.de). Las animaciones en JSXGraph y el maquetado de la página han sido realizados por Pedro A. García Sánchez.]{.small}
