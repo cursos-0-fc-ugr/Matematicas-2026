@@ -1,0 +1,441 @@
+---
+title: Aplicaciones de la derivada
+title-block-banner: true
+lang: es
+execute:
+  echo: false
+format: 
+  html: 
+    theme: [night, custom.scss]
+    include-in-header: includes-header.html
+    toc: true
+    fontsize: 1.2em
+    page-layout: full
+    format-links: true
+    html-math-method:
+            method: mathjax
+            url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
+---
+
+## Estudio de una función
+
+
+### Crecimiento y decrecimiento
+
+Si [$f$]{.math} es una función derivable definida en un intervalo, entonces
+
+-   [$f$]{.math} es creciente si, y sólo si, la derivada es mayor o igual que cero;
+
+-   [$f$]{.math} es decreciente si, y sólo si, la derivada es menor o igual que cero; y
+
+-   [$f$]{.math} es constante si, y sólo si, la derivada es cero.
+
+Para estudiar el crecimiento de la función [$f(x)=2x^3-3x^2-12x+1$]{.math}, estudiamos el signo de la derivada. Primero vemos dónde se anula. [$$f'(x)=6x^2-6x-12=0 \text{ sí y sólo sí } x\in\{-1,2\}.$$]{.math} Como sabemos donde se anula la derivada, también sabemos donde *no* se anula. Esto es, la función es monótona en [$]-\infty,-1]$]{.math}, en [$[-1,2]$]{.math} y en [$[2,+\infty[$]{.math}. Evaluando la derivada en un punto de cada intervalo, terminamos:
+
+-   [$f'(-3)=60 > 0$]{.math}, y por tanto [$f$]{.math} es creciente [$]-\infty,-1]$]{.math};
+
+-   [$f'(0)=-12 < 0$]{.math}, en consecuencia [$f$]{.math} es decreciente [$[-1,2]$]{.math}; y,
+
+-   [$f'(8)=324 > 0$]{.math}, por lo que [$f$]{.math} es creciente [$[2,+\infty[$]{.math}.
+
+¿Sabrías decir algo sobre los máximos y mínimos relativos de esta función?
+
+### Extremos relativos
+
+El cálculo de los máximos y mínimos relativos de una función [$f$]{.math} se suele hacer en dos pasos.
+
+1.  En primer lugar se calculan los puntos críticos, es decir, resolvemos la ecuación [$f'(x)=0$]{.math}.
+
+2.  Los cambios en la monotonía son suficientes para descubrir los extremos relativos: si la función pasa de creciente a decreciente alcanza un máximo relativo y si pasa de decreciente a creciente tiene un mínimo relativo
+
+3.  También podemos sustituir el segundo paso por el estudio de la segunda derivada en los puntos críticos:
+
+    -   si [$f'(a)=0$]{.math}, y además [$f''(a) > 0$]{.math}, entonces [$f$]{.math} tiene un mínimo relativo en [$a$]{.math};
+
+    -   si [$f'(a)=0$]{.math}, y además [$f''(a) < 0$]{.math}, entonces [$f$]{.math} tiene un máximo relativo en [$a$]{.math}.
+
+Si analizamos el signo de la derivada segunda de la función del ejemplo anterior en los puntos críticos que habíamos obtenido, concluimos cuál es mínimo y cuál es máximo. Como [$f''(x)= 12x-6$]{.math}, tenemos:
+
+-   [$f''(-1)=-18 < 0$]{.math}, por tanto en [$x=-1$]{.math} tenemos un máximo relativo;
+
+-   [$f''(2)=18 > 0$]{.math}, por tanto en [$x=2$]{.math} tenemos un mínimo relativo.
+
+A esta misma conclusión se llega usando los cambios de monotonía que ya hemos calculado anteriormente.
+
+::: {#exr-1}
+Calcula los extremos relativos de $f(x)=x^4+7$.
+:::
+
+### Concavidad y convexidad
+
+Si [$f$]{.math} es una función dos veces derivable,
+
+-   Una función es convexa si, y sólo si, la segunda derivada es mayor o igual que cero; y
+
+-   una función es cóncava si, y sólo si, la segunda derivada es menor o igual que cero.
+
+### Puntos de inflexión
+
+Si [$f''(a)=0$]{.math} y [$f'''(a)\neq 0$]{.math}, decimos que [$f$]{.math} tiene un punto de inflexión en [$a$]{.math}. Esto quiere decir que en dicho punto la función pasa de ser cóncava a convexa o al revés.
+
+Seguimos con la función del ejemplo 2. Como [$f''(x)=12x-6$]{.math} tenemos que $12x-6=0$, o lo que es lo mismo, $x=1/2$. Ya tenemos nuestro candidato a punto de inflexión. Ahora calculamos la derivada tercera: [$f'''(x)=12$]{.math}, con lo que [$f'''(1/2)=12 > 0$]{.math}. Por tanto, tenemos un punto de inflexión en [$x=1/2$]{.math}. Vamos a calcular ahora si pasa de cóncava a convexa, o viceversa. Para ello, evaluamos [$f''$]{.math} en puntos a ambos lados de [$x=1/2$]{.math}:
+
+-   [$f''(0)=-6 < 0$]{.math}, por lo que la función antes de [$1/2$]{.math} es cóncava.
+
+-   [$f''(1)=6 > 0$]{.math}, por lo que la función después de [$1/2$]{.math} es convexa.
+
+::: {#box2 .jxgbox style="width:400px; height:400px;margin:auto"}
+:::
+
+```{ojs}
+board = JXG.JSXGraph.initBoard('box2', {boundingbox: [-5, 20, 5, -20], axis:true, showCopyright:false, showNavigation:false});
+curve = board.create('functiongraph', [function(t){ return(2*t*t*t-3*t*t-12*t+1)}, -10,10]);
+
+```
+
+::: {#exm-1}
+
+Vamos a aplicar todos los apartados anteriores para hacer el estudio completo de la función [$f \colon \mathbb{R}\rightarrow \mathbb{R}$]{.math} definida como [$f(x)=x^{3}+3x^{2}-9x$]{.math}.
+
+**Crecimiento y decrecimiento**
+
+Calculamos los puntos donde se anula la derivada para averiguar el signo del resto. [$$f'(x)=3x^2+6x-9 =0,\ x\in\{-3,1\}.$$]{.math} Miramos el signo de la derivada en algunos puntos intermedios: por ejemplo, [$f'(-10) > 0$]{.math}, [$f'(0) < 0$]{.math} y [$f'(5) > 0$]{.math}. Por tanto,
+
+-   [$f$]{.math} es creciente en [$]-\infty , -3]$]{.math},
+
+-   [$f$]{.math} es decreciente en [$[-3,1]$]{.math} y
+
+-   [$f$]{.math} es creciente en [$[1,+\infty[$]{.math}.
+
+**Extremos relativos**
+
+Directamente de los cambios de monotonía ya podemos deducir que
+
+-   [$f$]{.math} tiene un máximo relativo en [$-3$]{.math} y
+
+-   [$f$]{.math} tiene un mínimo relativo en [$1$]{.math}.
+
+A la misma conclusión llegamos si evaluamos la segunda derivada: [$$f''(x)=6x+6, \quad f''(-3)=-12, \quad \text{y} \quad f''(1)=12.$$]{.math}
+
+**Convexidad y concavidad**
+
+Para estudiar la concavidad y convexidad de una función, miramos el signo de la segunda derivada: [$$f''(x)=6x+6=0,\ x= -1.$$]{.math} Por tanto,
+
+-   [$f''(x)$]{.math} es negativa en [$]-\infty,-1]$]{.math} (función cóncava)
+
+-   [$f''(x)$]{.math} es positiva en [$[-1,+\infty[$]{.math} (función convexa)
+
+**Puntos de inflexión**
+
+En [$-1$]{.math} la función tiene un punto de inflexión ya que cambia de de convexa a cóncava.
+
+::: {#box3 .jxgbox style="width:400px; height:400px;margin:auto;"}
+:::
+
+```{ojs}
+board3 = JXG.JSXGraph.initBoard('box3', {boundingbox: [-10, 30, 10, -30], axis:true, showCopyright:false, showNavigation:false});
+curve3 = board3.create('functiongraph', [function(t){ return(t*t*t+3*t*t-9*t)}, -10,10]);
+pintae32=function(){
+    var f=t => -t*t+2*t;
+    var t1 = t => 2*t;
+    var t2 = t => -2*(t-2);
+    var board = JXG.JSXGraph.initBoard('ebox32', {boundingbox: [-1, 3, 3, -1], axis:true, showCopyright:false, showNavigation:false});
+    var curve = board.create('functiongraph',
+                    [f, -5,5],{frozen:true});
+    board.create('functiongraph',[t1,-5,5],{dash:1,strokeColor:"orange"})
+    board.create('functiongraph',[t2,-5,5],{dash:1,strokeColor:"red"})
+}
+p32=pintae32();
+
+```
+
+:::
+
+::: {#exr-2}
+
+1.  Estudia la función [$f \colon \mathbb{R} \rightarrow \mathbb{R}$]{.math} definida como [$f(x)=3\,{x}^{4}-4\,{x}^{3}-6\,{x}^{2}+12\,x$]{.math}.
+
+2.  Esboza la gráfica de una función [$f$]{.math} definida en [$[0,2]$]{.math} que verifique que [$f(0)=f(2)=0$]{.math}, [$f'(0)=2$]{.math} y [$f'(2)=-2$]{.math}.
+    <button id="e2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    :::: {#solucion-e2 .collapse}
+    Al darnos estos datos, nos están mostrando cómo son las tangentes a la gráfica en $0$ y en $2$: [$y=2x$]{style="color:orange"} e [$y=-2(x-2)$]{style="color:red"}, respectivamente.
+
+    ::: {#ebox32 .jxgbox style="width:400px; height:400px;margin:auto;"}
+    :::
+
+    Como nos dan cuatro condiciones, podemos probar con un polinomio de grado $3$ (que tiene cuatro coeficientes). Supongamos que dicho polinomio es $p(x)= ax^3+bx^2+cx+d$. La condición $p(0)=0$ implica que $d=0$, y la condición $p'(0)=2$ lleva a $c=2$. Por tanto, nuestro polinomio es $p(x)=ax^3+bx^2+2x$, al que tenemos que imponer también que $p(2)=0=8a+4b+4$ y $p'(2)=-2=12a+4b+2$.\
+    Resolviendo ese sistema de dos ecuaciones con dos incógnitas, obtenemos $a=0$, $b=-1$. Así [$p(x)=-x^2+2x$]{style="color:blue"}.
+    ::::
+
+3.  Considera la función [$f \colon \mathbb{R} \to \mathbb{R}$]{.math} definida como [$f(x)=\displaystyle e^{\frac{2x}{x^2+1}}$]{.math}.
+
+    1.  Calcula las asíntotas de la gráfica de [$f$]{.math}.
+
+    2.  Determina los intervalos de monotonía (crecimiento y decrecimiento).
+
+    3.  Determina los extremos relativos de [$f$]{.math}.
+
+    4.  Esboza la gráfica de [$f$]{.math}.
+
+4.  Haz un estudio completo de la función [$f(x)=\frac{x^2+1}{x}$]{.math} y representa su gráfica.
+
+5.  Haz un estudio completo de la función [$f(x)=\frac{x}{x^2-1}$]{.math} y representa su gráfica.
+
+6.  A partir de la gráfica de [$f(x)=\cos(x)$]{.math}, dibuja la gráfica de las funciones siguientes:
+
+    1.  [$f(x)=\cos(x+1)$]{.math},
+
+    2.  [$f(x)=\cos(x-1)$]{.math},
+
+    3.  [$f(x)=\cos(2x)$]{.math},
+
+    4.  [$f(x)=\cos(x)-1$]{.math},
+
+    5.  [$f(x)=\cos(x)+1$]{.math},
+
+    6.  [$f(x)=\lvert\cos(x)\rvert$]{.math}.
+:::
+
+
+## Geometría
+
+La *recta tangente* a una función [$f$]{.math} en un punto de la gráfica [$(a,f(a))$]{.math} es [$$y=f(a)+f'(a)(x-a).$$]{.math} Por ejemplo, la recta tangente a la función [$f(x)=\log (x)$]{.math} en [$x=2$]{.math} es, teniendo en cuenta que [$f'(x)=1/x$]{.math}, [$$y=f(2)+f'(2)(x-2)=\log(2)+\frac{1}{2} (x-2).$$]{.math}
+
+En el siguiente gráfico se representa la función [$\log(x)$]{style="color:blue"} y la [tangente]{style="color:red"} en el punto $A=(a,\log(a))$. Puedes desplazar este punto y ver cómo varía la tangente.
+
+::: {#boxg1 .jxgbox style="width:400px; height:400px;margin:auto"}
+:::
+
+```{ojs}
+pinta_log= function(){
+    var board = JXG.JSXGraph.initBoard('boxg1', {boundingbox: [-4, 4, 4, -4], axis:true, showCopyright:false, showNavigation:false});
+    var curve = board.create('functiongraph',
+                    [function(t){ return(Math.log(t))}, -10,10]);
+    var a = board.create('glider',[2,Math.log(2),curve], {name:'A',label:{offset:[-10,10]}, strokeColor:"black",fillColor:"white"})
+    board.create('functiongraph', [function(t){return (Math.log(a.X())+1/a.X()*(t-a.X()))}, -10,10],{strokeColor:"red"})
+}
+pg1=pinta_log()
+
+```
+
+
+La *recta normal* en [$x=a$]{.math} es la recta perpendicular a la recta tangente que pasa por el punto [$(a,f(a))$]{.math}. Su pendiente será, por tanto, [$-1/f'(a)$]{.math}. La ecuación de la recta normal a la función [$f$]{.math} en el mismo punto es [$$y=f(a)-\frac{1}{f'(a)}(x-a).$$]{.math}
+
+::: {#exr-3}
+
+Responde a las siguientes preguntas sobre la parábola $y=x^2$.
+
+1.  Calcula la recta tangente a la parábola [$y=x^2$]{.math} en el punto [$(3,9)$]{.math}.
+    <button id="e3-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e3-1 .collapse}
+    La derivada de la función $f(x)=x^2$ es $f'(x)=2x$. Por tanto, la recta tangente en el punto $(3,f(3))=(3,9)$ es $$y=f(3)+f'(3)(x-3)=9+6(x-3)=6x-9.$$
+    :::
+
+2.  ¿Pasa dicha recta por el punto [$(1,3)$]{.math}?
+    <button id="e3-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e3-2 .collapse}
+    La recta tangente pasa por el punto $(1,3)$ si dicho punto cumple la ecuación de la recta. Veamos, $3 \neq 6\cdot 1 -9 = -3$. El punto no pertenece a la recta tangente.
+    :::
+
+3.  Calcula aquellos puntos que cumplen que la recta tangente a la parábola pasa por el punto [$(1,-3)$]{.math}.
+    <button id="e3-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e3-3 .collapse}
+    La recta tangente en un punto arbitrario $(a,f(a))$ es $$y=f(a)+f'(a)(x-a)=a^2+2a(x-a)=2ax-a^2$$ y lo que queremos encontrar son aquellos valores de $a$ que hacen que el punto $(1,-3)$ verifique está ecuación (pertenezca a la recta). Sustituimos $x$ por $1$ e $y$ por $-3$ y resolvemos:
+
+    $$\begin{aligned}
+    -3=2a\cdot 1 -a^2 & \text{ si y solo si } a^2-2a -3=0, \\
+    & \text{ que equivale a } a= \frac{2\pm \sqrt{4-4\cdot(-3)}}{2}, \\
+    & \text{ o sea } a = \frac{2\pm 4}{2} = -1 \text{ ó } 3.
+    \end{aligned}$$
+
+    Resumiendo, la recta tangente en los puntos $(-1,1)$ y $(3,9)$ pasa por el punto $(1,-3)$.
+    :::
+
+4.  Calcula la recta normal a la parábola en el punto [$(3,9)$]{.math}.
+    <button id="e3-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e3-4 .collapse}
+    Aplicando la ecuación de la recta normal y teniendo en cuenta que $f'(3)=6$ nos queda: $$y=f(a)-\frac{1}{f'(a)}(x-a)=9-\frac{1}{6}(x-3)= \frac{57-x}{6}.$$
+    :::
+
+En el siguiente gráfico se representa la función [$x^2$]{style="color:blue"}, y la [tangente]{style="color:red"} y la [normal]{style="color:green"} en el punto $A=(a,a^2)$. Puedes desplazar este punto y ver cómo varían las rectas tangente y normal.
+
+::: {#boxg2 .jxgbox style="width:400px; height:400px;margin:auto;"}
+:::
+
+```{ojs}
+pinta_parabola = function(){
+    var board = JXG.JSXGraph.initBoard('boxg2', {boundingbox: [-5, 9, 5, -1], axis:true, showCopyright:false, showNavigation:false});
+    var curve = board.create('functiongraph',
+                    [function(t){ return(t*t)}, -10,10]);
+    var A = board.create('glider',[1,1,curve], {name:'A', strokeColor:"black",fillColor:'white'});
+    //punto = board.create('point',[function(){return pend.Value()},function(){return pend.Value()*pend.Value()}], {strokeColor:"black",fillColor:'white', name:''})
+    board.create('functiongraph', [function(t){return (A.Y()+2*A.X()*(t-A.X()))}, -10,10],{strokeColor:"red"})
+    board.create('functiongraph', [function(t){return (A.Y()-1/(2*A.X())*(t-A.X()))}, -10,10],{strokeColor:"green"})
+    }
+pg2=pinta_parabola()
+
+pintae21=function(){
+    var f=function(t){
+        return (4*t*t*t-2*t*t+t-1);
+    }
+    var t1=function(t){
+        return -1+t;
+    }
+    var t2=function(t){
+        return -20/27+t-1/3;
+    }
+    var board = JXG.JSXGraph.initBoard('ebox2-1', {boundingbox: [-2, 2, 2, -2], axis:true, showCopyright:false, showNavigation:false});
+    var curve = board.create('functiongraph',
+                    [f, -10,10]);
+    var tan1= board.create('functiongraph',[t1,-10,10],{strokeColor:"red"});
+    var tan2= board.create('functiongraph',[t2,-10,10], {strokeColor:"orange"});
+    var bis = board.create('line',[[-10,-10],[10,10]],{strokeColor:"gray",dash:1});
+}
+pg21=pintae21();
+```
+
+:::
+
+::: {#exr-4}
+
+1.  Calcula la ecuación de la recta (o rectas) tangentes a la gráfica de [$f(x)=4x^3-2x^2+x-1$]{.math} pararelas a la bisectriz del primer cuadrante.
+    <button id="e4-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    :::: {#solucion-e4-1 .collapse}
+    La bisectriz del primer cuadrante es $y=x$. Por tanto estamos buscando una tangente a $f(x)$ con pendiente $1$, es decir, buscamos $a$ con $f'(a)=1$.
+
+    Tenemos pues que resolver la ecuación $f'(x)=12x^2-4x+1=1$, que equivale a $12x^2-4x=x(12x-4)=0$. Así las soluciones son $x=0$ y $x=\frac{1}3$.
+
+    Sabemos que la recta tangente a [$y=f(x)$]{.math style="color:blue"} en un punto $a$ es $y=f(a)+f'(a)(x-a)$, por tanto, las rectas tangentes que buscamos son [$y=-1+x$]{.math style="color:red"} e [$y=-\frac{29}{27}+x$]{.math style="color:orange"}.
+
+    ::: {#ebox2-1 .jxgbox style="width:400px; height:400px;margin:auto;"}
+    :::
+    ::::
+
+2.  Halla los valores de la constante [$\lambda$]{.math} para los que las rectas tangentes a las funciones [$f(x)=x^3$]{.math} y [$g(x)=(x+\lambda)x$]{.math} en el punto [$x=1$]{.math} sean:
+
+    1.  paralelas,
+
+    2.  perpendiculares.
+:::
+
+
+## Optimización
+
+
+En los problemas en los que hay que optimizar una cantidad, ya sea buscar un máximo o un mínimo, los pasos suelen ser los siguientes.
+
+1.  Planteamos analíticamente la función a optimizar utilizando tantas variables como sean necesarias.
+
+2.  Buscamos las relaciones entre las diferentes variables usando los datos del enunciado y dejamos todas en función de una de ellas.
+
+3.  Derivamos, igualamos a cero y calculamos los puntos críticos.
+
+4.  Comprobamos con la segunda derivada o con el estudio de la monotonía que tenemos un máximo o un mínimo relativo.
+
+
+::: {#exm-2}
+
+Vamos a calcular las dimensiones del rectángulo de mayor área que puede inscribirse en un semicírculo de radio [$10$]{.math}.
+
+En la siguiente representación gráfica, puedes desplazar el punto rojo. El área del rectángulo correspondiente se calculará automáticamente.
+
+::: {#box4 .jxgbox style="width:400px; height:300px;margin:auto"}
+:::
+
+```{ojs}
+pinta_rect=function(){
+    //JXG.Options.text.useMathJax = true;
+    var board = JXG.JSXGraph.initBoard('box4', {boundingbox: [-15, 15, 15, -5], axis:true, showCopyright:false, showNavigation:false});
+    var q1 = board.create('point',[-10,0],{visible:false});
+    var q2 = board.create('point',[10,0],{visible:false});
+    var sc = board.create('semicircle',[q1,q2],{withLabel:false, fixed:true} );
+    var ox = board.create('segment',[[0,0],[10,0]],{fixed:true, visible:false});
+    var p1 = board.create('glider',[5,0,ox],{name:'x'});
+    board.create('polygon', [[function(){return -p1.X()},0],[function(){return p1.X()},0],[function(){return p1.X()},function(){return Math.sqrt(100-p1.X()*p1.X())}],[function(){return -p1.X()},function(){return Math.sqrt(100-p1.X()*p1.X())}]], {vertices:{fixed:true, visible:false}} );
+    //board.create('text',[function(){return p1.X()+.5},function(){return Math.sqrt(100-p1.X()*p1.X())+.5},function(){return "\\( \\left(x,\\sqrt{100-x^2}\\right)\\)"}],{fixed:true})
+    board.create('text',[-10,-2,function(){
+    var a = 2*p1.X()*Math.sqrt(100-p1.X()*p1.X());
+    return "Área "+ a.toFixed(3) }],{fontSize:14})
+    board.update()
+}
+pr5= pinta_rect()
+
+```
+
+1.  Según hemos comentado, el primer paso es encontrar la función a optimizar. Si llamamos [$x$]{.math} al extremo inferior derecho del rectángulo e [$y$]{.math} a la altura, el área es [$2xy$]{.math}.
+
+2.  ¿Cómo podemos relacionar [$x$]{.math} e [$y$]{.math}? Hay varias formas de hacerlo: la circunferencia centrada en el origen y de radio $10$ está formada por los puntos [$(x,y)$]{.math} que cumplen la ecuación [$$x^2+y^2=100$$]{.math} con lo que despejando, [$y = \sqrt{100-x^2}$]{.math}. Ya podemos escribir la función a optimizar: [$$f\colon [0,10]\rightarrow \mathbb{R}, \quad f(x)=2xy=2x\sqrt{100-x^2}.$$]{.math}
+
+3.  Derivamos
+
+    $$
+    \begin{aligned}
+    f'(x) & = 2\left( \sqrt{100-x^{2}}- \frac{\cancel{2}x^{2}}{\cancel{2}\sqrt{100-x^{2}}} \right)
+    = 2\left( \frac{100 -x^2}{\sqrt{100-x^2}} - \frac{x^{2}}{\sqrt{100-x^{2}}} \right)
+    \\
+    & = \frac{2\, (100 -2x^2)}{\sqrt{100-x^2}},\end{aligned}
+    $$
+
+    e igualamos a cero [$$f'(x)=0 \text{ que equivale a } 100-2x^{2}=0.$$]{.math}
+    Por tanto las raíces son $-5\sqrt{2}$ y $5\sqrt{2}$. Como la $x$ tiene que ser positiva, llegamos a que la función tiene un punto crítico en $5\sqrt{2}$.
+
+4.  Para comprobar que es un máximo, vemos que la segunda derivada es negativa: [$$f''(x)=-\frac{6x}{\sqrt{100-{x}^{2}}}-\frac{2x^{3}}{{\left( 100-{x}^{2}\right) }^{\frac{3}{2}}}$$]{.math} y [$f''(5\sqrt{2})=-8$]{.math}.
+
+    También podemos comprobar si es un máximo, estudiando el signo de la primera derivada a ambos lados del punto crítico. En este caso, el signo de $f'(x)$ queda determinado por el signo de $g(x)=100-2x^2$. Evaluando $g$ en, por ejemplo, $5\sqrt{2}-\frac{1}{2}$ y $5\sqrt{2}+\frac{1}{2}$, obtenemos aproximadamente $3.62$ y $-4.48$, respectivamente. De aquí deducimos que la función $f$ crece a la izquierda de $5\sqrt{2}$ y decrece a su derecha. Por tanto, en $5\sqrt{2}$ se alcanza un máximo relativo.
+
+5.  El área máxima es $100$.
+:::
+
+::: {#exr-5}
+
+Dibuja la región del primer cuadrante limitada por las gráficas de [$y=\sqrt{x}$]{.math}, [$x=6$]{.math}, [$y=0$]{.math} y calcula las dimensiones del rectángulo inscrito de lados paralelos a los ejes y que tenga máxima área. 
+<button id="e5" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+
+:::: {#solucion-e5 .collapse}
+Al ser un rectángulo inscrito en dichas gráficas y de lados paralelos a los ejes, dos de sus lados se tienen que apoyar en $y=0$ y en $x=6$, respectivamente. Por tanto, tiene que tener el siguiente aspecto.
+
+Puedes desplazar el punto rojo y ver cómo varía el área.
+
+::: {#ebox5 .jxgbox style="width:400px; height:400px;margin:auto;"}
+:::
+
+```{ojs}
+
+pintae5= function (){
+    var f=function(t){
+        if((t<=0) || (t>6)){
+            return 0;
+        }
+        return Math.sqrt(t);
+    }
+    var board = JXG.JSXGraph.initBoard('ebox5', {boundingbox: [-1, 3, 7, -1], axis:true, showCopyright:false, showNavigation:false});
+    var curve = board.create('functiongraph',
+                    [f, -.1,6.1],{frozen:true});
+    board.create('integral', [[0,6], curve], {withLabel:false, fixed:true, curveRight:{visible:false}, curveLeft:{visible:false},color:"gray",frozen:true});
+    board.create('line',[[6,-10],[6,10]],{strokeColor:"gray",dash:1,fixed:true});
+    var ds = board.create('glider',[2,4,curve],{name:''});
+    var pol = board.create('polygon',[[function(){return ds.X()},0],[6,0],[6,function(){return ds.Y()}],[function(){return ds.X()}, function(){return ds.Y()}]], {vertices:{fixed:true, visible:false}});
+    board.create('text',[2,-.5,function(){
+        var a = (6-ds.X())*ds.Y();
+        return "Área "+ a.toFixed(3) }],{fontSize:14})
+}
+p5=  pintae5();
+
+```
+
+El área que hay que maximizar es por tanto $f(x)=(6-x)\sqrt{x}$, que alcanza el valor máximo $4\sqrt{2}$ en $x=2$.
+::::
+
+:::
+
+
+------------------------------------------------------------------------
+
+[Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada. Las representaciones gráficas se han realizado con [JSXGraph](http://jsxgraph.uni-bayreuth.de). Las animaciones en JSXGraph y el maquetado de la página han sido realizados por Pedro A. García Sánchez.]{.small}

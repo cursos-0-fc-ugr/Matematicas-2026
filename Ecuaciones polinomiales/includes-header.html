@@ -1,8 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css">
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/viz.js/1.8.2/viz.js"></script>
-
 <style>
 div {
   &.callout {
@@ -18,8 +16,11 @@ div {
 <script>
 MathJax = {
     output: {
-        font: 'mathjax-fira'
-    }
+        font: 'mathjax-fira',
+        displayOverflow: 'scroll'
+    },
+    loader: {load: ['[tex]/color','[tex]/cancel']},
+    tex: {packages: {'[+]': ['color','cancel']}}
 };
 
 JXG.Options.text.useMathJax = true;

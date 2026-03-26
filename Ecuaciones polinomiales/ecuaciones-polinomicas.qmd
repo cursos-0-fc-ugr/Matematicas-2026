@@ -214,6 +214,7 @@ Resuelve:
     Descartamos la solución $x=0$, porque al estar dividiendo por $x^{2}$ en la ecuación original dicha solución no es válidad, y multiplicamos en ambos lados de la igualdad por $3x^2$. Obtenemos así $3-6x^2=3-x$, que equivale a $6x^2-x=0$.\
     Las soluciones de esta última ecuación $x=0$ y $x=-\frac{1}6$, pero $x=0$ lo habíamos descartado inicialmente, así que nos queda como única solución $x=-\frac{1}6$.
     :::
+:::
 
 ------------------------------------------------------------------------
 
