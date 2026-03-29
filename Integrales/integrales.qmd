@@ -1,0 +1,372 @@
+---
+title: Integrales
+title-block-banner: true
+lang: es
+execute:
+  echo: false
+format: 
+  html: 
+    theme: [night, custom.scss]
+    include-in-header: includes-header.html
+    toc: true
+    fontsize: 1.2em
+    page-layout: full
+    format-links: true
+    html-math-method:
+            method: mathjax
+            url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
+---
+
+## Concepto de primitiva
+
+
+Sean [$I$]{.math} un intervalo de [$\mathbb{R}$]{.math} y [$f \colon I \subset \mathbb{R} \rightarrow \mathbb{R}$]{.math} una función. Se dice que es [$F\colon I \subset \mathbb{R} \rightarrow \mathbb{R}$]{.math} es una *primitiva* de [$f$]{.math} si [$F$]{.math} es derivable y [$F\,'(x) = f(x)$]{.math} para todo [$x \in I$]{.math}.
+
+-   Todas las primitivas de una función se conocen en cuanto se conoce una. De hecho, si [$F$]{.math} es una primitiva de [$f$]{.math}, las funciones de la forma [$F+C$]{.math}, con [$C \in \mathbb{R}$]{.math}, son también primitivas de [$f$]{.math}.
+
+-   Para representar una primitiva de una función usaremos la notación [F(x)=$\int f(x) \, dx$]{.math}.
+
+## Primitivas inmediatas
+
+
+Si conocemos bien las derivadas de las funciones elementales, conoceremos bien la tabla de primitivas inmediatas. En el siguiente cuadro tenemos las primitivas de las funciones usuales.
+
+::: {style="width: 50%; margin: auto;"}
+ | [$f(x)$]{.math}             |            [$\int f(x)\,dx$]{.math} |
+| --- | --- |
+| [$x^n$]{.math}                    |     [$\dfrac{x^{n+1}}{n+1}$]{.math} |
+|  [$1/x$]{.math}                    |      [$\log (\lvert x\rvert )$]{.math}
+|  [$a^x$]{.math}                     |    [$a^x/\log(a)$]{.math}
+|  [$e^x$]{.math}                         | [$e^x$]{.math}
+|  [$\operatorname{sen}(x)$]{.math}       | [$-\cos(x)$]{.math}
+|  [$\cos(x)$]{.math}                     | [$\operatorname{sen}(x)$]{.math}
+|  [$\tan(x)$]{.math}                     | [$-\log (\lvert\cos(x)\rvert )$]{.math}
+|  [$\sec^2(x)$]{.math}                  | [$\tan(x)$]{.math}
+|  [$\text{cosec}^2(x)$]{.math}          | [$-\text{cotan}(x)$]{.math}
+|  [$\dfrac{1}{\sqrt{1-x^2}}$]{.math}    | [$\operatorname{arcsen}(x)$]{.math}
+|  [$\dfrac{-1}{\sqrt{1-x^2}}$]{.math}   | [$\arccos(x)$]{.math}
+|  [$\dfrac{1}{1+x^2}$]{.math}            | [$\arctan(x)$]{.math}
+
+:::
+
+## Cálculo de integrales
+
+La siguiente regla se aplica para calcular la integral de una función en un intervalo de la forma [$[a,b]$]{.math}.
+
+**Regla de Barrow:** Sea [$f \colon [a,b] \rightarrow \mathbb{R}$]{.math} y [$F$]{.math} una primitiva de [$f$]{.math}. Entonces, [$$\int_a^b f(x) \, dx = F(b)-F(a) \ .$$]{.math}
+
+Vamos a calcular la integral de la función [$f(x)=x^2$]{.math} en el intervalo [$[1,2]$]{.math}.
+
+-   Calculamos una primitiva de [$f$]{.math}: [$$F(x)=\int x^2 \, dx = \frac{x^3}{3}.$$]{.math}
+
+-   Aplicamos la Regla de Barrow: [$$\int_1^2f(x) \, dx = F(2)-F(1)= \frac{8}{3}-\frac{1}{3}=\frac{7}{3}.$$]{.math}
+
+En la siguiente gráfica se representa la función $x^2$ y su integral entre $1$ y $2$. Puedes mover los límites de integración desplazando los puntos en la curva.
+
+::: {#box .jxgbox style="width:400px; height:400px;margin:auto;"}
+:::
+
+```{ojs}
+function pinta_int_parabola(){
+    var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-5, 9, 5, -1], axis:true, showCopyright:false, showNavigation:false});
+    var curve = board.create('functiongraph',[function(t){ return(t*t)}, -10,10]);
+    var i1 = board.create('integral', [[1.0, 2.0], curve], {withLabel:false});
+    var t_int = board.create('text',[-4,-.8,function(){return 'Área='+i1.Value().toFixed(3)}],{fontSize:16, fixed:true})
+}
+ppar = pinta_int_parabola()
+```
+
+
+### Propiedades de las integrales
+
+-   La integral de una suma es la suma de las integrales; es decir, [$$\int_a^b (f+g)(x)\, dx = \int_a^b f(x) \, dx +\int_a^b g(x) \, dx \ .$$]{.math}
+
+-   Cuando el integrando presenta un factor común constante, el resultado es el siguiente: [$$\int_a^b \alpha \, f(x)\, dx = \alpha \, \int_a^b f(x) \, dx \ .$$]{.math}
+
+
+::: {#exr-1}
+
+Calcula una primitiva de las siguientes funciones:
+
+
+1.  [$f(x)=4x^3-5x^2-7x+1$]{.math},
+    <button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-1 .collapse}
+    $\int f(x)\, dx= x^4 - (5 x^3)/3 - (7 x^2)/2 + x$,
+    :::
+
+2.  [$f(x)=x^2+\frac{1}{x}$]{.math},
+    <button id="e1-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-2 .collapse}
+    $\int f(x)\, dx= \dfrac{x^3}{3} + \log(\lvert x\rvert )$,
+    :::
+
+3.  [$f(x)=5\sqrt{x}$]{.math},
+    <button id="e1-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-3 .collapse}
+    $\int f(x)\, dx= \dfrac{10 x^{3/2}}{3}$,
+    :::
+
+4.  [$f(x)=\sqrt[4]{x^3}$.]{.math}
+    <button id="e1-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-4 .collapse}
+    $\int f(x)\, dx= \dfrac{4}{7} x\sqrt[4]{x^3}$.
+    :::
+:::
+
+
+## Métodos de integración
+
+
+### Cambio de variable
+
+En determinadas integrales nos interesa hacer un cambio de variable, esto es, [$x=g(t)$]{.math}, con el objetivo de que la nueva integral sea más sencilla de calcular. Utilizaremos entonces el siguiente resultado.
+
+
+:::{.callout-note title="Cambio de variable" icon="false"}
+
+Sean $I$ y $J$ intervalos de $\mathbb{R}$. Sea [$g \colon J \rightarrow \mathbb{R}$]{.math} una función derivable y con derivada [$g^{\prime}$]{.math} continua, de forma que $g(J)\subseteq I$. Consideremos [$f \colon I \rightarrow \mathbb{R}$]{.math} una función continua con primitiva [$F$]{.math}. Entonces [$$\int (f(g(x)) \, g^{\prime}(x) \, dx = F(g(x))+ C.$$]{.math}
+
+:::
+
+Si aplicamos este método a algunas de las primitivas inmediatas, obtenemos las siguientes reglas.
+
+-   $\int g^{\prime}(x) g(x)^{n}\, dx = \frac{1}{n+1} g(x)^{n+1}+ C$.
+-   $\int g^{\prime}(x) e^{g(x)}\, dx = e^{g(x)}+C$.
+-   $\int \frac{g^{\prime}(x)}{g(x)}\, d(x)= \log(\vert g(x)\vert) +C$.
+
+Como ejemplo, calculemos $\int\frac{x}{x^2+1}\, dx$. Observamos que el numerador es \"casi\" la derivada del denominador; intentemos sacar provecho de esto. Multiplicamos y dividimos por $2$ y queda
+$$\int \frac{x}{x^2+1}\, dx=\frac{1}2\int\frac{2x}{x^2+1}\, dx.$$
+
+Tomando $g(x)=x^2+1$, esta integral es de la forma $\int\frac{g'(x)}{g(x)}\, dx$, que por el cambio de variable, tomando $f(x)=\frac{1}x$, obtenemos
+$$
+\int \frac{x}{x^2+1}\, dx=\frac{1}2\int\frac{2x}{x^2+1}\, dx= \frac{1}2 \log (x^2 +1)+ C.
+$$
+
+Vamos ahora a calcular [$$\int \frac{e^{x}+3e^{2x}}{2+e^{x}}\, dx .$$]{.math}
+En este caso no se ve claramente la composición en el integrando. Hacemos en este caso el cambio de variable: [$y=e^x$]{.math}.
+
+[$$\begin{aligned}
+\int \frac{e^{x} + 3 e^{2x}}{2 + e^{x}}\, dx & =
+\left[ \begin{matrix}
+y=e^{x} \\ dy=e^{x}\, dx \ ; \ dx= \frac{dy}{y}
+\end{matrix} \right]
+= \int
+\frac{y + 3y^{2}}{2 + y}\cdot \frac{1}{y}\, dy \\ & = \int \frac{1 + 3
+y}{2+y}\, dy =\int \left( 3 - \frac{5}{2+y}\right)\, dy \\
+& = 3 y - 5 \log \lvert {y + 2} \lvert +C = 3e^{x} - 5 \log \left(e^{x} +2\right) +C .\end{aligned}$$]{.math}
+
+
+
+::: {#exr-2}
+
+Calcula una primitiva de las siguientes funciones:
+
+1.  [$f(x)=\dfrac{2x-3}{x^2-3x+4}$]{.math},
+
+2.  [$f(x)=\dfrac{\log(x)}{x}$]{.math},
+
+3.  [$f(x)=(x^2-1) \, e^{x^3-3x+5}$]{.math},
+    <button id="e2-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-3 .collapse}
+    Obsérvese que la derivada del exponente de $e$ es casi el factor que multiplica. Para ajustarlo, basta multiplicar y dividir por $3$. Así haciendo el cambio $g(x)=x^3-3x+5$ y $f(x)=e^x$,
+    $$
+    \int (x^2-1) \, e^{x^3-3x+5}\, dx= \frac{1}{3} \int (3x^2-3) \, e^{x^3-3x+5}\, dx =\frac{1}3 e^{x^3-3x+5} +C.
+    $$
+    :::
+
+4.  [$f(x)=\dfrac{2^{1/x}}{x^2}$]{.math},
+    <button id="e2-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-4 .collapse}
+    Teniendo en cuenta el cambio de variable y la primitiva de la función exponencial, $\int g'(x)a^{g(x)}\, dx = \dfrac{a^{g(x)}}{\log(a)}$. Tomando $g(x)=\dfrac{1}x$,obtenemos $\int \frac{1}{x^2}2^{\frac{1}{x}}\, dx= -\int-\frac{1}{x^2} 2^{\frac{1}{x}}\, dx= -\frac{2^\frac{1}x}{\log(2)}+C$.
+    :::
+
+5.  [$f(x)=(8x-3)(4x^2-3x+8)^{10}$]{.math},
+
+6.  [$f(x)=(x^2-1)(x^3-3x+5)^{1/2}$]{.math},
+
+7.  [$f(x)=x^3 \, \sqrt{x^4+1}$]{.math}.
+    <button id="e2-7" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-7 .collapse}
+    Teniendo en cuenta el cambio de variable y la primitiva de la función potencial, $\int g'(x)g(x)^{\frac{1}2}\, dx = \dfrac{g(x)^{\frac{1}2+1}}{\frac{1}2+1}= \dfrac{2g(x)^{\frac{3}2}}{3}$. Tomando $g(x)=x^4+1$, obtenemos $\int x^3\sqrt{x^4+1}\, dx= \frac{1}{4}\int 4x^3(x^4+1)^{\frac{1}{2}}\, dx= \dfrac{(x^4+1)^{\frac{3}2}}{6} +C$.
+    :::
+:::
+
+### Integración por partes
+
+Si [$u$]{.math} y [$v$]{.math} son dos funciones derivables, teniendo en cuenta que [$(u\cdot v)'=u\cdot v'+v\cdot u'$]{.math}, obtenemos que [$$\int u(x)v'(x)\, dx=u(x)v(x)-\int v(x)u'(x)\, dx.$$]{.math} Esta fórmula aparece escrita en muchas ocasiones de la forma [$$\int u \, dv = uv - \int v \, du.$$]{.math} El siguiente teorema especifica con un poco más de rigor las condiciones necesarias.
+
+
+::: {#exm-1}
+
+Calculemos [$\int x\, e^{x}\, dx$]{.math}. [$$\int x\, e^{x}\, dx =
+\left[ \begin{matrix}
+u=x, & du=dx \\ dv=e^{x}\,dx, & v=e^{x}
+\end{matrix} \right]
+= x\,e^{x} - \int e^{x} \, dx =
+x\,e^{x} - e^{x} = e^{x}(x-1) .$$]{.math}
+
+:::
+
+::: {#exr-3}
+
+Calcula una primitiva de las siguientes funciones:
+
+
+1.  [$f(x)=\log(5x)$]{.math},
+    <button id="e3-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e3-1 .collapse}
+    Hacemos integración por partes con $u(x)=\log(5x)$ y $dv=1\, dx$ (y por tanto $v(x)=x$). Tenemos así que $\int \log(5x)\, dx= \log(5x)x-\int x\frac{5}{5x}\, dx= \log(5x)x-x+C$.
+    :::
+
+2.  [$f(x)=x^2 \, e^{-x}$]{.math},
+
+3.  [$f(x)=\arctan(x)$]{.math},
+
+4.  [$f(x)=\operatorname{sen}(x) \, e^{x}$]{.math},
+
+5.  [$f(x)=x \log(x)$]{.math}.
+    <button id="e3-5" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e3-5 .collapse}
+    Hacemos integración por partes con $u(x)=\log(x)$ y $d v=x\, dx$ (y por tanto $v(x)=x^2/2$). Tenemos así que $\int x\log(x)\, dx= \frac{1}2x^2\log(x)-\int \frac{1}2x\, dx= \frac{1}2x^2\log(x)-\frac{1}4x^2+C$.
+    :::
+:::
+
+### Integración de funciones racionales
+
+En este apartado vamos a estudiar el cálculo de [$\displaystyle \int \frac{P(x)}{Q(x)}\, dx$]{.math}, donde [$P$]{.math} y [$Q$]{.math} son funciones polinómicas. Obviamente, si el grado de [$P$]{.math} es mayor o igual que el de [$Q$]{.math}, podemos dividir los dos polinomios obteniendo [$$\frac{P(x)}{Q(x)}=H(x)+\frac{G(x)}{Q(x)},$$]{.math} donde [$H(x)$]{.math} y [$G(x)$]{.math} son polinomios y el grado de [$G$]{.math} es menor que el grado de [$Q$]{.math}. Por tanto, de aquí en adelante supondremos siempre que el grado de [$P$]{.math} es menor que el grado de [$Q$]{.math}.
+
+Estudiaremos el caso en que [$Q(x)$]{.math} admite raíces reales. En este caso el denominador tiene la forma [$Q(x)= (x-a_{1})^{r_{1}}(x-a_{2})^{r_{2}} \ldots (x-a_{n})^{r_{n}}$]{.math}, y podemos descomponer la fracción [$\frac{P(x)}{Q(x)}$]{.math} en fracciones simples
+
+[$$\begin{aligned}
+\frac{P(x)}{Q(x)} & = \frac{A_{1}}{x-a_{1}}+
+\frac{A_{2}}{(x-a_{1})^{2}} + \cdots +
+\frac{A_{r_{1}}}{(x-a_{1})^{r_{1}}} \\
+& \quad + \frac{B_{1}}{x-a_{2}}+
+\frac{B_{2}}{(x-a_{2})^{2}} +
+\cdots + \frac{C_{r_{n}}}{(x-a_{n})^{r_n}} \, .\end{aligned}$$]{.math}
+
+Cada una de estas fracciones son de integración inmediata.
+
+::: {#exm-2}
+
+Calculemos [$\displaystyle\int \frac{1}{(x-1)(x+1)^{3}} \, dx$]{.math}.
+
+[$$\begin{aligned}
+\frac{1}{(x-1)(x+1)^{3}} & =
+\frac{A}{x-1}+\frac{B}{x+1}+\frac{C}{(x+1)^{2}}+
+\frac{D}{(x+1)^{3}} \\
+& = \frac{A(x+1)^{3}+B(x-1)(x+1)^{2}+C(x-1)(x+1) +
+D(x-1)}{(x-1)(x+1)^{3}} \\
+& = \frac{(A+B)x^3 +(3A+B+C)x^2 + (3A-B+D)x+ A-B-C-D}{(x-1)(x+1)^{3}}.\end{aligned}$$]{.math}
+
+Igualando coeficientes nos queda el sistema 
+
+[$$\left\{\begin{alignedat}{5}
+A&& {}+B&& && && {}=0, \\
+3A&& {}+ B&& {}+C&& && {}=0, \\
+3A&& {}-B&& &&{}+D && = 0, \\
+A&& {}-B&& {}-C&& {}-D && {}=1.
+\end{alignedat}\right.$$]{.math} que tiene como soluciones [$A =1/8$]{.math}, [$B = -1/8$]{.math}, [$C=-1/4$]{.math} y [$D=-1/2$]{.math}. La integral queda
+
+[$$\begin{aligned}
+\int \frac{dx}{(x-1)(x+1)^{3}} & = \frac{1}{8}\int
+\frac{dx}{x-1} - \frac{1}{8} \int \frac{dx}{x+1} - \frac{1}{4}
+\int \frac{dx}{(x+1)^{2}} - \frac{1}{2} \int
+\frac{dx}{(x+1)^{3}} \\
+& = \frac{1}{8} \log \vert x-1 \vert -\frac{1}{8} \log \vert x+1 \vert
++ \frac{1}{4(x+1)} + \frac{1}{4(x+1)^{2}} . \end{aligned}$$]{.math}
+
+:::
+
+
+::: {#exr-4}
+Calcula una primitiva de las siguientes funciones:
+
+
+1.  [$f(x)=\dfrac{x+1}{x^2+2x-3}$]{.math},
+    <button id="e4-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e4-1 .collapse}
+    Nótese que el numerador tiene grado menor que el denominador, por lo que no es necesario hacer ninguna simplificación previa. Además, $x^2+2x-3=(x-1)(x+3)$. Debemos expresar 
+    
+    $$\dfrac{x+1}{x^2+2x-3} = \dfrac{A}{x-1}+\dfrac{B}{x+3}=\dfrac{A(x+3)+B(x-1)}{x^2+2x-3}.$$ 
+    
+    Por tanto $x+1=A(x+3)+B(x-1)=(A+B)x+(3A-B)$. De aquí se deduce que $A+B=1$ y $3A-B=1$. Entonces, $A=\dfrac{1}2$ y $B=\dfrac{1}2$.
+
+    La integral a calcular es 
+    
+    $$\begin{align*}
+    \int f(x)\, dx &= \dfrac{1}2\int\dfrac{1}{x+3}\, dx+\dfrac{1}2\int\dfrac{1}{x-1}\, dx\\
+    & = \dfrac{1}2(\log(|x+3|)+\log(|x-1|))+C.
+    \end{align*}
+    $$
+
+    Esta integral también se puede hacer mediante un cambio de variable, pues el numerador es \"casi\" la derivada del denominador:
+    
+    $$\begin{align*}
+    \int \dfrac{x+1}{x^2+2x-3}\, dx & = \dfrac{1}2 \int \dfrac{2x+2}{x^2+2x-3}\, dx = \dfrac{1}2\log(|x^2+2x-3|)+C \\
+    & = \dfrac{1}2(\log(|x+3|)+\log(|x-1|))+C
+    \end{align*}
+    $$
+
+    (el logaritmo del producto es la suma de los logaritmos).
+    :::
+
+2.  [$f(x)=\dfrac{x^2+1}{x^2-1}$]{.math},
+    <button id="e4-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e4-2 .collapse}
+    Podemos escribir $x^2+1=x^2-1+2$, con lo que obtenemos directamente el cociente y resto de la división del numerador entre el denominador. Así, $\int f(x)\, dx=\int 1\, dx + \int \dfrac{2}{x^2-1}\, dx$. Por otro lado, $x^2-1=(x-1)(x+1)$. Tenemos que expresar 
+    
+    $$\dfrac{1}{x^2-1}=\dfrac{A}{x-1}+\dfrac{B}{x+1}=\dfrac{A(x+1)+B(x-1)}{x^2-1}.$$
+
+    Luego $2=(A+B)x+(A-B)$, de lo que se deduce que $A+B=0$ y $A-B=2$. Los valores de $A$ y $B$ son $1$ y $-1$, respectivamente. Nuestra integral queda como sigue: 
+    
+    $$\int f(x)\, dx= x+ \int \dfrac{1}{x-1}\, dx-\int \dfrac{1}{x+1}\, dx=x+\log(|x-1|)-\log(|x+1|)+C.
+    $$
+
+    :::
+
+3.  [$f(x)=\dfrac{x-1}{x^3-4x^2+5x-2}$]{.math},
+
+4.  [$f(x)=\dfrac{x^2+2}{x^3-3x-2}$]{.math},
+
+5.  [$f(x)=\dfrac{x-1}{x^4-4x^3}$]{.math},
+
+6.  [$f(x)=\dfrac{x}{x^3-3x^2+3x-1}$]{.math}.
+
+:::
+
+
+::: {#exr-5}
+
+Calcula las integrales siguientes:
+
+1.  [$\displaystyle\int_1^2 \dfrac{\log(x)}{x} dx$]{.math},
+
+2.  [$\displaystyle\int_0^1 \operatorname{arcsen}(x) \, dx$]{.math},
+
+3.  [$\displaystyle\int_1^{\pi} \operatorname{sen}(x) \, e^{x} \, dx$]{.math},
+
+4.  [$\displaystyle\int_2^3 \dfrac{x}{x^3-3x^2+3x-1} \, dx$]{.math},
+
+5.  [$\displaystyle\int_1^{2/5} \log (5x) \, dx$]{.math},
+
+6.  [$\displaystyle\int_0^1 x^3 \, \sqrt{x^4+1} \, dx$]{.math}.
+
+:::
+
+------------------------------------------------------------------------
+
+[Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada. Las animaciones en [JSXGraph](https://jsxgraph.uni-bayreuth.de) y el maquetado de la página han sido realizados por Pedro A. García Sánchez. Cambios en la redacción original y ejemplos aportados por María Burgos.]{.small}
+
