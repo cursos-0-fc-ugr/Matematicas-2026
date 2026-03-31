@@ -29,7 +29,7 @@ f(x)=\begin{cases} x^2+\frac{13}2x+\frac{17}2, & \text{si $x < -1$}, \\
 $$
 
 En el eje de abscisas se representa el intervalo $I=[x-\delta,x+\delta]$ (azul). En el eje de ordenadas se dibuja la imagen de $I$ por $f$ (rojo). El valor de $x$ se elige desplazando el punto azul claro en el eje de ordenadas. El valor de $\delta$ se modifica con el deslizador.
-Para un entorno $J$ de $f(-1)$ suficientemente pequeño, y cualquier entorno $I$ de $-1$, habrá siempre elementos que se aplican por $f$ fuera de $J$. Por tanto, la función no es contínua en $-1$.
+Para un entorno $J$ de $f(-1)$ suficientemente pequeño, y cualquier entorno $I$ de $-1$, habrá siempre elementos que se aplican por $f$ fuera de $J$. Por tanto, la función no es continua en $-1$.
 
 ::: {#box_p2 .jxgbox style="width:600px; height:600px; display:inline-block;"}
 :::
@@ -176,7 +176,7 @@ Estudia la continuidad de las siguientes funciones.
     :::: {#solucion-e1-1 .collapse}
     Tanto $e^x$ como $\cos(x)$ son funciones continuas. Por tanto, la función $f$ es continua en los intervalos $(-\infty,0)$, $(0,\infty)$.
 
-    Veamos que ocurre en el $0$. Para ello calculamos $\lim\nolimits_{x\to 0^-} e^x=1=f(0)$ (no hace falta calcular el límite por la derecha pues la función $\cos(x)$ es continua y por tanto ese límite vale $\cos(0)$). Concluimos que la función es contínua en todo $\mathbb{R}$.
+    Veamos que ocurre en el $0$. Para ello calculamos $\lim\nolimits_{x\to 0^-} e^x=1=f(0)$ (no hace falta calcular el límite por la derecha pues la función $\cos(x)$ es continua y por tanto ese límite vale $\cos(0)$). Concluimos que la función es continua en todo $\mathbb{R}$.
 
     Ésta es la gráfica de la función.
 
@@ -193,7 +193,7 @@ Estudia la continuidad de las siguientes funciones.
     <button id="e1-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
     :::: {#solucion-e1-2 .collapse}
-    La función $3x^2+x$ es contínua en todo $\mathbb{R}$, y la función $1/x$ lo es en el intervalo $(0,\infty)$. Por tanto sólo falta estudiar qué ocurre en el $0$. Para ello calculamos $\lim\nolimits_{x\to 0^-} (3x^2+x)=0=f(0)$ y $\lim\nolimits_{x\to 0^+} \frac{1}x=+\infty$. Concluimos que la función es contínua en todo $\mathbb{R}\setminus\{0\}$.
+    La función $3x^2+x$ es continua en todo $\mathbb{R}$, y la función $1/x$ lo es en el intervalo $(0,\infty)$. Por tanto sólo falta estudiar qué ocurre en el $0$. Para ello calculamos $\lim\nolimits_{x\to 0^-} (3x^2+x)=0=f(0)$ y $\lim\nolimits_{x\to 0^+} \frac{1}x=+\infty$. Concluimos que la función es continua en todo $\mathbb{R}\setminus\{0\}$.
 
     Ésta es la gráfica de la función.
 
@@ -240,8 +240,8 @@ Vamos a resolver tres tipos de límites que presentan la característica común 
 1.  Si el grado del numerador es mayor que el grado del denominador, el resultado del límite será, dependiendo de los coeficientes, [$+\infty$]{.math} o [$-\infty$]{.math}.
 
     [$$\begin{aligned}
-    \lim_{x \to +\infty} \frac{x^3-2x^2+5}{3x^2-x} & = \lim_{x \to +\infty} \frac{\frac{x^3}{x^3}-\frac{2x^2}{x^3}+\frac{5}{x^3 }}{\frac{3x^2}{x^3}- \frac{x}{x^3}} \\
-    & = \lim_{x\to +\infty} \frac{1+\frac{2}{x} + \frac{5}{x^3}}{\frac{3}{x} -\frac{1}{x^2}}, \end{aligned}$$]{.math}
+    \lim_{x \to +\infty} \frac{x^3-2x^2+5}{3x^2-x} & = \lim_{x \to +\infty} \frac{\frac{x^3}{x^3}-\frac{2x^2}{x^3}+\frac{5}{x^3}}{\frac{3x^2}{x^3}- \frac{x}{x^3}} \\
+    & = \lim_{x\to +\infty} \frac{1-\frac{2}{x} + \frac{5}{x^3}}{\frac{3}{x} -\frac{1}{x^2}}, \end{aligned}$$]{.math}
 
     con lo que el numerador tiende a uno y el denominador a cero y el límite que buscamos es [$+\infty$]{.math}.
 
@@ -401,7 +401,7 @@ Una función [$f$]{.math} tiene a la recta [$y=mx+n$]{.math} como asíntota obli
 
 Para calcular los valores [$m$]{.math} y [$n$]{.math} hacemos lo siguiente: [$$m=\lim_{x \to \infty} \frac{f(x)}{x} \quad \text{y} \quad n= \lim_{x \to \infty} \left( f(x)-mx \right)$$]{.math}
 
-Veamos si la función [$f(x)=\frac{3x^3+1}{x^2+1}$]{.math} tiene asíntotas oblicuas. En primer lugar calculamos el posible valor de [$m$]{.math}: [$$m= \lim_{x \to +\infty} \frac{f(x)}{x} = \lim_{x \to +\infty} \frac{\frac{3x+1}{x^2+1}}{x} = \lim_{x \to +\infty} \frac{3x^3+1}{x^3+x}= 3.$$]{.math} En segundo lugar, calculamos el valor de [$n$]{.math}:
+Veamos si la función [$f(x)=\frac{3x^3+1}{x^2+1}$]{.math} tiene asíntotas oblicuas. En primer lugar calculamos el posible valor de [$m$]{.math}: [$$m= \lim_{x \to +\infty} \frac{f(x)}{x} = \lim_{x \to +\infty} \frac{\frac{3x+1}{x^2+1}}{x} = \lim_{x \to +\infty} \frac{3x^2+x}{x^2+1}= 3.$$]{.math} En segundo lugar, calculamos el valor de [$n$]{.math}:
 
 [$$\begin{aligned}
 n & = \lim_{x \to +\infty} \left( f(x)-mx \right) = \lim_{x \to +\infty} \left( \frac{3x^3+1}{x^2+1}-3x \right) \\
@@ -445,7 +445,7 @@ Estudia las asíntotas de las siguientes funciones
     <button id="e3-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
     :::: {#solucion-e3-2 .collapse}
-    Tiene una asíntota oblícua $y=x$ y una vertical en $x=0$.
+    Tiene una asíntota oblicua $y=x$ y una vertical en $x=0$.
 
     Ésta es la gráfica de la función.
 

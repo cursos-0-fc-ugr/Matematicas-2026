@@ -19,7 +19,7 @@ format:
 
 ## Generalidades de funciones
 
-En esta lección vamos a dar un repaso a las funciones más comunes que usaremos en el curso de cálculo. Aunque el concepto de función puede definirse en ambientes muy abstractos nosotros nos restringiremos al ámbito en el que vamos a trabajar, que es el de las funciones reales de variable real. Llamaremos [$\mathbb{R}$]{.math} al conjunto de los números reales. De forma rigurosa una función es un subconjunto [$F$]{.math} del conjunto de todos los pares [$\{ (x,y) : x\in \mathbb{R}, \ y \in \mathbb{R} \}$]{.math} (esto es lo que se llama el producto cartesiano [$\mathbb{R}\times \mathbb{R}$]{.math}) que verifica una la condición de que si [$(a,b)$]{.math} y [$(a,c)$]{.math} están en [$F$]{.math} entonces tiene que ocurrir que [$b=c$]{.math}.
+En esta lección vamos a dar un repaso a las funciones más comunes que usaremos en el curso de cálculo. Aunque el concepto de función puede definirse en ambientes muy abstractos nosotros nos restringiremos al ámbito en el que vamos a trabajar, que es el de las funciones reales de variable real. Llamaremos [$\mathbb{R}$]{.math} al conjunto de los números reales. De forma rigurosa una función es un subconjunto [$F$]{.math} del conjunto de todos los pares [$\{ (x,y) : x\in \mathbb{R}, \ y \in \mathbb{R} \}$]{.math} (esto es lo que se llama el producto cartesiano [$\mathbb{R}\times \mathbb{R}$]{.math}) que verifica la condición de que si [$(a,b)$]{.math} y [$(a,c)$]{.math} están en [$F$]{.math} entonces tiene que ocurrir que [$b=c$]{.math}.
 
 Esta definición puede parecer muy abstracta, y de hecho lo es, pero veremos enseguida que responde a la idea que todos tenemos de una función. La forma más común de representar las funciones reales de variable real es la siguiente. Entendemos por una función una fórmula [$f \colon A \to \mathbb{R}$]{.math} que nos hace corresponder a cada número [$x\in A$]{.math} otro número al que llamaremos [$f(x)\in \mathbb{R}$]{.math}
 
@@ -27,7 +27,7 @@ Consideremos la función [$f \colon \mathbb{R}^{+}_{0}\to \mathbb{R}$]{.math} de
 
 La condición que hemos impuesto en la definición (que si dos pares de números de la función tienen la misma primera coordenada entonces tienen que ser el mismo par) no permite que nosotros le llamemos función a cosas como [$f \colon \mathbb{R}^{+}_{0}\to \mathbb{R}$]{.math} dada por [$f(x)=\pm \sqrt{x}+1$]{.math} ya que los pares [$(4,3)$]{.math} y [$(4,-1)$]{.math} formarían parte de la (supuesta) función.
 
-Es más usual, como he dicho antes, representar la funciones de la forma [$f \colon A\to B$]{.math} donde [$A$]{.math} y [$B$]{.math} son subconjuntos de [$\mathbb{R}$]{.math} y [$f$]{.math} es una "ley" o "fórmula" que nos permite calcular la función. En el caso de representarse de esta forma al conjunto [$A$]{.math} se le denomina **dominio** de la función y al conjunto [$B$]{.math} **codominio**. Un elemento que utilizaremos más adelante es el concepto de imagen de una función, ya sea de su dominio o de parte de él. Si tenemos una función y consideramos [$E\subset A$]{.math} la imagen mediante [$f$]{.math} del conjunto [$E$]{.math} es el conjunto [$$f(E)=\left\{ y\in B: \text{ existe } x\in E \text{ tal que } f(x)=y\right\} .$$]{.math}
+Es más usual, como he dicho antes, representar las funciones de la forma [$f \colon A\to B$]{.math} donde [$A$]{.math} y [$B$]{.math} son subconjuntos de [$\mathbb{R}$]{.math} y [$f$]{.math} es una "ley" o "fórmula" que nos permite calcular la función. En el caso de representarse de esta forma al conjunto [$A$]{.math} se le denomina **dominio** de la función y al conjunto [$B$]{.math} **codominio**. Un elemento que utilizaremos más adelante es el concepto de imagen de una función, ya sea de su dominio o de parte de él. Si tenemos una función y consideramos [$E\subset A$]{.math} la imagen mediante [$f$]{.math} del conjunto [$E$]{.math} es el conjunto [$$f(E)=\left\{ y\in B: \text{ existe } x\in E \text{ tal que } f(x)=y\right\} .$$]{.math}
 
 Cuando como subconjunto [$E$]{.math} de [$A$]{.math} nos tomamos el propio conjunto [$A$]{.math} a veces se dice simplemente "la imagen de [$f$]{.math}" y se puede notar como [$\operatorname{Im}(f)$]{.math}.
 
@@ -74,7 +74,7 @@ curve4 = board2b.create('functiongraph',
 
 **Periodicidad**
 
-Una función [$f \colon \mathbb{R} \to \mathbb{R}$]{.math} es periódica si verifica que existe un número positivo [$T$]{.math} para el que se verifica que [$f(x+T)=f(x)$]{.math} para todo [$x\in \mathbb{R}$]{.math}. Al más pequeño [$T$]{.math} que verifica lo anterior se le llama periodo fundamental de la función [$f$]{.math}. Los ejemplos más típico de funciones periódicas hay que buscarlos en las funciones trigonométricas.
+Una función [$f \colon \mathbb{R} \to \mathbb{R}$]{.math} es periódica si verifica que existe un número positivo [$T$]{.math} para el que se verifica que [$f(x+T)=f(x)$]{.math} para todo [$x\in \mathbb{R}$]{.math}. Al más pequeño [$T$]{.math} que verifica lo anterior se le llama periodo fundamental de la función [$f$]{.math}. Los ejemplos más típicos de funciones periódicas hay que buscarlos en las funciones trigonométricas.
 Por ejemplo, las funciones [seno]{style="color:red;"} y [coseno]{style="color:blue"} son periódicas de periodo [$2\pi$]{.math} o la función [tangente]{style="color:orange"} que es de periodo [$\pi$]{.math} (aunque esta función no esté definida en [$\mathbb{R}$]{.math}).
 
 ::: {#box3 .jxgbox style="width:400px; height:400px;margin:auto"}
@@ -106,11 +106,11 @@ curve42 = board4.create('functiongraph',[function(t){ return(Math.pow(t,2))}, -1
 
 **Sobreyectividad**
 
-Cuando tenemos una función [$f \colon A\to B$]{.math} una función diremos que es inyectiva si la imagen de [$f$]{.math} coincide con todo el codominio [$B$]{.math}. Esta propiedad de las funciones depende profundamente tanto del dominio como del codominio de forma que, si se modifican, cambie el hecho de que una función sea sobreyectiva o no lo sea. En este sentido ocurre algo parecido con la inyectividad. Por ejemplo la función [$f\colon \mathbb{R}\to \mathbb{R}$]{.math} definida por [$f(x)=x^2$]{.math} para [$x\in \mathbb{R}$]{.math} no es sobreyectiva (la imagen [$f(\mathbb{R})=
+Cuando tenemos una función [$f \colon A\to B$]{.math} diremos que es sobreyectiva si la imagen de [$f$]{.math} coincide con todo el codominio [$B$]{.math}. Esta propiedad de las funciones depende profundamente tanto del dominio como del codominio de forma que, si se modifican, cambie el hecho de que una función sea sobreyectiva o no lo sea. En este sentido ocurre algo parecido con la inyectividad. Por ejemplo la función [$f\colon \mathbb{R}\to \mathbb{R}$]{.math} definida por [$f(x)=x^2$]{.math} para [$x\in \mathbb{R}$]{.math} no es sobreyectiva (la imagen [$f(\mathbb{R})=
 \mathbb{R}^+_0$]{.math}) pero si cambiamos el codominio y definimos [$f \colon \mathbb{R}
 \to \mathbb{R}^+_0$]{.math} mediante la misma fórmula ahora sí que es sobreyectiva.
 
-Cuando una función es a la vez inyectiva y sobreyectiva se dice que es biyectiva, o que es una biyección.
+Cuando una función es a la vez inyectiva y sobreyectiva se dice que es biyectiva o que es una biyección.
 
 ## Operaciones con funciones
 
@@ -125,7 +125,7 @@ Podemos definir nuevas funciones a partir de unas dadas de varias formas.
     Si tenemos dos funciones otra vez con el mismo dominio [$f,g
     \colon A\to \mathbb{R}$]{.math} entonces la función producto [$fg \colon A\to \mathbb{R}$]{.math} es la función definida por [$(fg)(x)=f(x)g(x)$]{.math} para cada [$x\in A$]{.math}.
 
-    En este caso la división no es inmediata. Para poder definir el cociente de [$f$]{.math} entre [$g$]{.math} es necesario que [$g(x)\ne 0$]{.math} para todo [$x\in A$]{.math} (así no estamos dividiendo por [$0$]{.math}. Si [$g$]{.math} verifica esta condición entonces se tiene que el cociente [$\frac{f}{g} \colon A\to \mathbb{R}$]{.math} es la función definida por [$\frac{f}{g}(x)=\frac{f(x)}{g(x)}$]{.math} para cada [$x\in A$]{.math}.
+    En este caso la división no es inmediata. Para poder definir el cociente de [$f$]{.math} entre [$g$]{.math} es necesario que [$g(x)\ne 0$]{.math} para todo [$x\in A$]{.math} (así no estamos dividiendo por [$0$]{.math}). Si [$g$]{.math} verifica esta condición entonces se tiene que el cociente [$\frac{f}{g} \colon A\to \mathbb{R}$]{.math} es la función definida por [$\frac{f}{g}(x)=\frac{f(x)}{g(x)}$]{.math} para cada [$x\in A$]{.math}.
 
 -   **Composición**
 
@@ -144,13 +144,13 @@ Podemos definir nuevas funciones a partir de unas dadas de varias formas.
     :::
     </center>
 
-    Para poder hacer [$f\circ g$]{.math} es necesario que la imagen de [$g$]{.math} esté contenida en el dominio de [$f$]{.math}. La fórmula [$\displaystyle g(x)=\frac{1}{x^2+1}$]{.math} nos da que, cuando movemos [$x$]{.math} en los números reales, entonces [$x^2$]{.math} se mueve en los números mayores o iguales a [$0$]{.math} (solamente será [$0$]{.math} si [$x=0$]{.math}). Al sumarle [$1$]{.math} obtenemos un número [$\ge 1$]{.math} y al invertir obtenemos números positivos menores o iguales a [$1$]{.math} pero mayores que [$0$]{.math}. En este caso [$\operatorname{Im}(g)=[ 0, 1 [$]{.math} que está contenido en el dominio de [$f$]{.math}, que es todo [$\mathbb{R}$]{.math}. La composición [$f\circ g$]{.math} tiene por fórmula entonces
+    Para poder hacer [$f\circ g$]{.math} es necesario que la imagen de [$g$]{.math} esté contenida en el dominio de [$f$]{.math}. La fórmula [$\displaystyle g(x)=\frac{1}{x^2+1}$]{.math} nos da que, cuando movemos [$x$]{.math} en los números reales, entonces [$x^2$]{.math} se mueve en los números mayores o iguales a [$0$]{.math} (solamente será [$0$]{.math} si [$x=0$]{.math}). Al sumarle [$1$]{.math} obtenemos un número [$\ge 1$]{.math} y al invertir obtenemos números positivos menores o iguales a [$1$]{.math} pero mayores que [$0$]{.math}. En este caso [$\operatorname{Im}(g)=]0, 1]$]{.math} que está contenido en el dominio de [$f$]{.math}, que es todo [$\mathbb{R}$]{.math}. La composición [$f\circ g$]{.math} tiene por fórmula entonces
 
     [$$\begin{align*}
     f\circ g(x) =f(g(x)) &=f\left(\frac{1}{x^2+1}\right)=\left( \frac{1}{x^2+1}\right) ^2-4 \\
     &= \left( \frac{1}{x^4+2x^2+1}\right) -4= \frac{1-4x^4-8x^2-4}{x^4+2x^2+1}\\ &=\frac{-4x^4-8x^2-3}{x^4+2x^2+1}.\end{align*}$$]{.math}
 
-    Por otro lado, si [$x$]{.math} lo movemos dentro de los números reales ya hemos comentado que [$x^2$]{.math} se mueve en los números mayores o iguales a [$0$]{.math} y si restamos [$4$]{.math} nos quedarán los números mayores o iguales que [$-4$]{.math}. Por tanto la imagen de [$f$]{.math} es el intervalo [$[-4,+\infty [$]{.math}, así que, como el dominio de [$g$]{.math} es [$\mathbb{R}$]{.math}, tendremos que podemos hacer [$g\circ f$]{.math} y nos quedará, para [$x\in \mathbb{R}$]{.math}, [\begin{align*} g\circ f(x) &=g(f(x))=g(x^4-4)\\ &= \frac{1}{(x^2-4)^2+1}= \frac{1}{(x^4-8x^2+16)+1} \\ & = \frac{1}{x^4-8x^2+17},\end{align*}]{.math} y queda claro que [$f\circ g \ne g\circ f$]{.math}. En este ejemplo hemos hecho un trabajo extra ya que, como los dominios de las dos funciones eran todos los números reales, entonces el cálculo de la imagen de las dos funciones era superfluo (son funciones reales así que su imagen tiene que ser un subconjunto de los números reales). Lo hemos hecho solo por complitud.
+    Por otro lado, si [$x$]{.math} lo movemos dentro de los números reales ya hemos comentado que [$x^2$]{.math} se mueve en los números mayores o iguales a [$0$]{.math} y si restamos [$4$]{.math} nos quedarán los números mayores o iguales que [$-4$]{.math}. Por tanto la imagen de [$f$]{.math} es el intervalo [$[-4,+\infty [$]{.math}, así que, como el dominio de [$g$]{.math} es [$\mathbb{R}$]{.math}, tendremos que podemos hacer [$g\circ f$]{.math} y nos quedará, para [$x\in \mathbb{R}$]{.math}, [\begin{align*} g\circ f(x) &=g(f(x))=g(x^2-4)\\ &= \frac{1}{(x^2-4)^2+1}= \frac{1}{(x^4-8x^2+16)+1} \\ & = \frac{1}{x^4-8x^2+17},\end{align*}]{.math} y queda claro que [$f\circ g \ne g\circ f$]{.math}. En este ejemplo hemos hecho un trabajo extra ya que, como los dominios de las dos funciones eran todos los números reales, entonces el cálculo de la imagen de las dos funciones era superfluo (son funciones reales así que su imagen tiene que ser un subconjunto de los números reales). Lo hemos hecho solo por complitud.
 
     Veamos otro ejemplo donde no se pueden hacer las dos composiciones. Si consideramos la misma función [$f$]{.math} del ejemplo anterior y como función [$g$]{.math} consideramos [$g \colon \mathbb{R}^+ \to \mathbb{R}$]{.math} definida por [$g(x)=\log (x)$]{.math} para [$x$]{.math} positivo entonces se tiene que la imagen de [$g$]{.math} es todo [$\mathbb{R}$]{.math} y se puede hacer la composición [$f\circ g
     \colon \mathbb{R}^+\to \mathbb{R}$]{.math} que resulta ser, para cualquier [$x\in \mathbb{R}^+$]{.math}, [$$f\circ g(x)=f(\log (x))=\left( \log(x)\right) ^2-4.$$]{.math}
@@ -168,7 +168,7 @@ Podemos definir nuevas funciones a partir de unas dadas de varias formas.
     :::
 
 
-Vamos ahora a repasar las principales funciones que aparecen en el cálculo.
+Vamos ahora a repasar las principales funciones que aparecen en cálculo.
 
 
 ## Funciones polinómicas y racionales
@@ -189,7 +189,7 @@ Veamos algunas características de estas funciones.
 
 -   El caso más trivial de este tipo de funciones corresponde al caso [$a=1$]{.math}. En este caso [$f(x)=1,\ \ \forall x\in \mathbb{R}$]{.math}.
 
--   Si [$a\ne 1$]{.math} entonces la funcion exponencial de base [$a$]{.math} es inyectiva. De hecho es estrictamente creciente si [$a>1$]{.math} y, teniendo en cuenta la relación entre las funciones exponenciales de base mayor que [$1$]{.math} y las funciones exponenciales de base menor que [$1$]{.math}, se tiene que [$f$]{.math} es estrictamente decreciente si [$a<1$]{.math}.
+-   Si [$a\ne 1$]{.math} entonces la función exponencial de base [$a$]{.math} es inyectiva. De hecho es estrictamente creciente si [$a>1$]{.math} y, teniendo en cuenta la relación entre las funciones exponenciales de base mayor que [$1$]{.math} y las funciones exponenciales de base menor que [$1$]{.math}, se tiene que [$f$]{.math} es estrictamente decreciente si [$a<1$]{.math}.
 
 -   En el caso de que [$a>1$]{.math} se verifica que [$$\lim _{x\to - \infty } a^x=0,\ \ \ \lim_{x\to +\infty }a^x=+\infty.$$]{.math}
 
@@ -228,7 +228,7 @@ Puedes comprobar gráficamente las propiedades anteriores variando el valor de $
 ::: {#box9 .jxgbox style="width:400px; height:400px;margin:auto"}
 :::
 
-Al igual que antes hay una función logarítmica destacada, y es cuando la base es el número [$e$]{.math}. En este caso se llama logaritmo neperiano o simplemente logaritmo, y 
+Al igual que antes hay una función logarítmica destacada, y es cuando la base es el número [$e$]{.math}. En este caso se llama logaritmo neperiano o simplemente logaritmo, y su derivada es [$\displaystyle f'(x)=\frac{1}{x}$]{.math}.
 
 ## Función potencial
 
@@ -242,19 +242,19 @@ Si [$b>0$]{.math} entonces [$x^b$]{.math} es estrictamente creciente y cumple qu
 ::: {#box10 .jxgbox style="width:400px; height:400px;margin:auto"}
 :::
 
-Tanto si [$b>0$]{.math} como si [$b<0$]{.math} la función potencial de potencia [$b$]{.math} es una biyección de [$\mathbb{R}^+$]{.math} sobre si mismo cuya función inversa es la función potencial de potencia [$\frac{1}{b}$]{.math}, [$x^{1/b}$]{.math}.
+Tanto si [$b>0$]{.math} como si [$b<0$]{.math} la función potencial de potencia [$b$]{.math} es una biyección de [$\mathbb{R}^+$]{.math} sobre sí mismo cuya función inversa es la función potencial de potencia [$\frac{1}{b}$]{.math}, [$x^{1/b}$]{.math}.
 
 ## Funciones trigonométricas
 
-Las principales funciones trigonométricas son la función seno, la función coseno y la función tangente. A partir de estas se construyen sus inversas, arcoseno, arcocoseno y arcotangente.
+Las principales funciones trigonométricas son la función seno, la función coseno y la función tangente. A partir de estas se construyen sus inversas, arcoseno, arcocoseno y arcotangente. Es importante destacar que estamos hablando de las funciones en *radianes* y no en grados.
 
--   La función [seno]{style="color:red"} [$\mathrm{sen} \colon \mathbb{R}\to \mathbb{R}$]{.math} es una función periódica de periodo [$2\pi$]{.math} cuya imagen es el intervalo [$[-1,1[$]{.math}. Es una función impar ([$\mathrm{sen} (-x)=-\mathrm{sen} (x)$]{.math}, [$\forall x\in \mathbb{R}$]{.math}) y es estrictamente creciente en el intervalo [$[0,\pi/2[$]{.math} y estrictamente decreciente en [$[\pi /2,\pi[$]{.math} con [$\mathrm{sen} (0)=0$]{.math}, [$\mathrm{sen} (\pi/2)=1$]{.math} y [$\mathrm{sen}(\pi)=0$]{.math}. Es continua y derivable en todo [$\mathbb{R}$]{.math} y su derivada vale [$\cos(x)$]{.math}.
+-   La función [seno]{style="color:red"} [$\mathrm{sen} \colon \mathbb{R}\to \mathbb{R}$]{.math} es una función periódica de periodo [$2\pi$]{.math} cuya imagen es el intervalo [$[-1,1]$]{.math}. Es una función impar ([$\mathrm{sen} (-x)=-\mathrm{sen} (x)$]{.math}, [$\forall x\in \mathbb{R}$]{.math}) y es estrictamente creciente en el intervalo [$[-\pi/2,\pi/2]$]{.math} y estrictamente decreciente en [$[\pi /2,3\pi/2]$]{.math} con [$\mathrm{sen} (0)=0$]{.math}, [$\mathrm{sen} (\pi/2)=1$]{.math} y [$\mathrm{sen}(\pi)=0$]{.math}. Es continua y derivable en todo [$\mathbb{R}$]{.math} y su derivada vale [$\cos(x)$]{.math}.
 
--   La función [coseno]{style="color:blue"} [$\cos \colon \mathbb{R}\to \mathbb{R}$]{.math} es una función periódica de periodo [$2\pi$]{.math} cuya imagen es también el intervalo [$[-1,1[$]{.math}. Es una función par ([$\cos (-x)=\cos (x)$]{.math}, [$\forall x\in \mathbb{R}$]{.math}) y es estrictamente decreciente en el intervalo [$[0,\pi[$]{.math} con [$\cos (0)=1$]{.math}, [$\cos (\pi/2)=0$]{.math} y [$\cos(\pi)=-1$]{.math}. También es derivable en todo [$\mathbb{R}$]{.math} y su derivada vale [$-\mathrm{sen}(x)$]{.math}.
+-   La función [coseno]{style="color:blue"} [$\cos \colon \mathbb{R}\to \mathbb{R}$]{.math} es una función periódica de periodo [$2\pi$]{.math} cuya imagen es también el intervalo [$[-1,1]$]{.math}. Es una función par ([$\cos (-x)=\cos (x)$]{.math}, [$\forall x\in \mathbb{R}$]{.math}) y es estrictamente decreciente en el intervalo [$[0,\pi]$]{.math} con [$\cos (0)=1$]{.math}, [$\cos (\pi/2)=0$]{.math} y [$\cos(\pi)=-1$]{.math}. También es derivable en todo [$\mathbb{R}$]{.math} y su derivada vale [$-\mathrm{sen}(x)$]{.math}.
 
     Tanto la función seno como coseno, al ser periódicas (y no constantes), no tienen límite ni en [$+\infty$]{.math} ni en [$-\infty$]{.math}.
 
--   La función [tangente]{style="color:orange"} es el cociente entre seno y coseno. está definida en los números reales en los que coseno no vale [$0$]{.math}, es decir en todo [$\mathbb{R}$]{.math} salvo en los múltiplos impares de [$\pi /2$]{.math}. Es decir, [$$\tan \colon \mathbb{R}\setminus \{ (2k+1)\pi /2 : k\in \mathbb{Z} \} \to \mathbb{R},\ \ \tan(x)=\frac{\mathrm{sen}(x)}{\cos(x)} ,$$]{.math} para [$x\in \mathbb{R}\setminus \{ (2k+1)\pi /2 : k\in \mathbb{Z} \}$]{.math}.
+-   La función [tangente]{style="color:orange"} es el cociente entre seno y coseno. Está definida en los números reales en los que coseno no vale [$0$]{.math}, es decir en todo [$\mathbb{R}$]{.math} salvo en los múltiplos impares de [$\pi /2$]{.math}. Es decir, [$$\tan \colon \mathbb{R}\setminus \{ (2k+1)\pi /2 : k\in \mathbb{Z} \} \to \mathbb{R},\ \ \tan(x)=\frac{\mathrm{sen}(x)}{\cos(x)} ,$$]{.math} para [$x\in \mathbb{R}\setminus \{ (2k+1)\pi /2 : k\in \mathbb{Z} \}$]{.math}.
 
     Es una función periódica de periodo [$\pi$]{.math} y si restringimos su dominio a [$(-\pi/2,\pi/2)$]{.math} entonces es estrictamente creciente y se verifica que [$$\lim_{x\to -\pi/2 ^+}\tan (x)=-\infty,\ \ \ \lim_{x\to \pi/2 ^-}\tan (x)=+\infty .$$]{.math}
 
@@ -291,11 +291,11 @@ Además podemos saber razones trigonométricas de otros muchos números utilizan
 
 ## Funciones trigonométricas inversas
 
-Cuando restringimos la función seno al intervalo [$[-\pi /2,\pi/2[$]{.math} entonces seno es una biyección de dicho intervalo sobre el intervalo [$[-1,1[$]{.math} y su inversa es la función [ arcoseno]{style="color:orange"}, [$\mathrm{arcsen}$]{.math}, que verifica que
+Cuando restringimos la función seno al intervalo [$[-\pi /2,\pi/2]$]{.math} entonces seno es una biyección de dicho intervalo sobre el intervalo [$[-1,1]$]{.math} y su inversa es la función [ arcoseno]{style="color:orange"}, [$\mathrm{arcsen}$]{.math}, que verifica que
 
 [$$\begin{aligned}
-\mathrm{arcsen} (\mathrm{sen} (x)) & =x , \ \forall x\in [-\pi /2,\pi /2[,\\
-\mathrm{sen} (\mathrm{arcsen} (x)) & =x,\ \forall x\in [-1,1[.\end{aligned}$$]{.math}
+\mathrm{arcsen} (\mathrm{sen} (x)) & =x , \ \forall x\in [-\pi /2,\pi /2],\\
+\mathrm{sen} (\mathrm{arcsen} (x)) & =x,\ \forall x\in [-1,1].\end{aligned}$$]{.math}
 
 <center>
 ::: {#box12b .jxgbox style="width:160px; height:314px; display:inline-block;"}
@@ -305,15 +305,15 @@ Cuando restringimos la función seno al intervalo [$[-\pi /2,\pi/2[$]{.math} ent
 :::
 </center>
 
-La función arcoseno es continua en [$[-1,1[$]{.math} y derivable en [$(-1,1)$]{.math} y su derivada vale [$\displaystyle \frac{1}{\sqrt{1-x^2}}$]{.math}.
+La función arcoseno es continua en [$[-1,1]$]{.math} y derivable en [$(-1,1)$]{.math} y su derivada vale [$\displaystyle \frac{1}{\sqrt{1-x^2}}$]{.math}.
 
-Análogamente la función coseno es una biyección decreciente del intervalo [$[0,\pi[$]{.math} sobre [$[-1,1[$]{.math} y su inversa es la función [arcocoseno]{style="color:blue"} que verifica
+Análogamente la función coseno es una biyección decreciente del intervalo [$[0,\pi]$]{.math} sobre [$[-1,1]$]{.math} y su inversa es la función [arcocoseno]{style="color:blue"} que verifica
 
 [$$\begin{aligned}
-\arccos (\cos (x))& =x, \ \forall x\in [0,\pi [,\\
-\cos (\arccos (x)) & =x,\ \forall x\in [-1,1[.\end{aligned}$$]{.math}
+\arccos (\cos (x))& =x, \ \forall x\in [0,\pi ],\\
+\cos (\arccos (x)) & =x,\ \forall x\in [-1,1].\end{aligned}$$]{.math}
 
-Al igual que arcoseno la función arcocoseno es continua en [$[-1,1[$]{.math} y derivable en [$(-1,1)$]{.math} y su derivada vale [$\displaystyle \frac{-1}{\sqrt{1-x^2}}$]{.math}.
+Al igual que arcoseno la función arcocoseno es continua en [$[-1,1]$]{.math} y derivable en [$(-1,1)$]{.math} y su derivada vale [$\displaystyle \frac{-1}{\sqrt{1-x^2}}$]{.math}.
 
 Finalmente arcotangente es la inversa de la función tangente, cuando ésta la restringimos al intervalo [$(-\pi /2, \pi /2)$]{.math} y verifica que [$$\arctan (\tan (x))=x\ \ \forall x\in ( -\pi /2, \pi /2),\ \ \tan (\arctan (x))=x,\ \ \forall
 x\in \mathbb{R}.$$]{.math}
