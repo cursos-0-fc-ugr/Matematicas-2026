@@ -127,7 +127,7 @@ Resuelve los siguientes sistemas de inecuaciones.
 
 ## Inecuaciones de segundo grado
 
-También podemos plantear y resolver inecuaciones que involucren de un polinomio de grado 2; esto es, una inecuación del tipo $P(x) \le Q(x)$, o, $P(x) <Q(x)$, donde ambas expresiones, $P$ y $Q$, son polinomios de grado 2. Para resolverlas, simplificamos coeficientes hasta conseguir una inecuación de 2º grado comparada con el cero. Después factorizamos el polinomio resultante (utilizando la resolución de una ecuación de 2º grado) y discutimos casos. Vemos todo este proceso con un ejemplo:
+También podemos plantear y resolver inecuaciones que involucren un polinomio de grado 2; esto es, una inecuación del tipo $P(x) \le Q(x)$, o, $P(x) <Q(x)$, donde ambas expresiones, $P$ y $Q$, son polinomios de grado 2. Para resolverlas, simplificamos coeficientes hasta conseguir una inecuación de 2º grado comparada con el cero. Después factorizamos el polinomio resultante (utilizando la resolución de una ecuación de 2º grado) y discutimos casos. Vemos todo este proceso con un ejemplo:
 
 Consideramos la inecuación: $x^2-3x-3<-4x-1$. Pasamos todos los coeficientes a un miembro, por ejemplo al izquierdo y nos queda:
 

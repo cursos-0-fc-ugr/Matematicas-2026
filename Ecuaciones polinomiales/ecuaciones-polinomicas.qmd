@@ -132,7 +132,7 @@ Resuelve las siguientes ecuaciones.
 
 Para ecuaciones polinómicas de mayor grado, aunque en algunos casos hay una fórmula general, no suele requerirse la memorización del método y en la práctica se usan programas que calculan las soluciones. En algunos casos particulares sí puede intentarse el cálculo, por ejemplo cuando puede factorizarse, usando el método de Ruffini para calcular alguna raíz, o cuando puede reducirse a una ecuación de segundo grado.
 
-1.  La ecuación $x^4-9=0$ puede escribirse usando una de las identidades notables, como $(x^2-3)(x^2+3)=0$. Ahora puede descomponerse en resolver $x^2-3=0$ o bien $x^2+3=0$; La primera de ellas tiene como soluciones $\pm \sqrt{3}$ mientras que la segunda no tiene raices reales (sus raices complejas son $\pm\sqrt{3}i$).
+1.  La ecuación $x^4-9=0$ puede escribirse usando una de las identidades notables, como $(x^2-3)(x^2+3)=0$. Ahora puede descomponerse en resolver $x^2-3=0$ o bien $x^2+3=0$. La primera de ellas tiene como soluciones $\pm \sqrt{3}$ mientras que la segunda no tiene raíces reales (sus raíces complejas son $\pm\sqrt{3}i$).
 
     ::: {#box .jxgbox style="width:400px; height:400px;"}
     :::
@@ -182,7 +182,7 @@ Resuelve:
     <button id="e2-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
     ::: {#solucion-e2-3 .collapse}
-    Restando ambos términos de la igualdad llegamos a $x+2=0$, por lo que la solución es $x=-2$.
+    Restando ambos miembros de la igualdad llegamos a $x+2=0$, por lo que la solución es $x=-2$.
     :::
 
 4.  $(3x+1)(x^2+x-2)=0$.
@@ -211,8 +211,8 @@ Resuelve:
     <button id="e2-6" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
     ::: {#solucion-e2-6 .collapse}
-    Descartamos la solución $x=0$, porque al estar dividiendo por $x^{2}$ en la ecuación original dicha solución no es válidad, y multiplicamos en ambos lados de la igualdad por $3x^2$. Obtenemos así $3-6x^2=3-x$, que equivale a $6x^2-x=0$.\
-    Las soluciones de esta última ecuación $x=0$ y $x=-\frac{1}6$, pero $x=0$ lo habíamos descartado inicialmente, así que nos queda como única solución $x=-\frac{1}6$.
+    Descartamos la solución $x=0$, porque al estar dividiendo por $x^{2}$ en la ecuación original dicha solución no es válida, y multiplicamos en ambos lados de la igualdad por $3x^2$. Obtenemos así $3-6x^2=3-x$, que equivale a $6x^2-x=0$.\
+    Las soluciones de esta última ecuación $x=0$ y $x=\frac{1}6$, pero $x=0$ lo habíamos descartado inicialmente, así que nos queda como única solución $x=\frac{1}6$.
     :::
 :::
 

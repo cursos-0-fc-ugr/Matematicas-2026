@@ -198,7 +198,7 @@ x - y + z &= 2, \\
 $$
 
 
-Ahora hacemos dos transformaciones: a la segunda ecuación le restamos la primera (es decir, le sumamos la primera multiplicada por $(-1)$) y a la tercera le restamos el doble de la primera (es decir, le sumamos la primera multiplicada por $2$). El objetivo de eliminar la $x$ de dos ecuaciones se cumple: 
+Ahora hacemos dos transformaciones: a la segunda ecuación le restamos la primera (es decir, le sumamos la primera multiplicada por $(-1)$) y a la tercera le restamos el doble de la primera (es decir, le sumamos la primera multiplicada por $-2$). El objetivo de eliminar la $x$ de dos ecuaciones se cumple: 
 
 $$
 \left\{\begin{array}{rrrl}
@@ -293,11 +293,11 @@ Recordemos que el determinante de una matriz cuadrada $3 \times 3$ puede calcula
 $$
 \begin{align*}
 \begin{vmatrix}
-a\_{11} & a\_{12} & a\_{13} \\
-a\_{21} & a\_{22} & a\_{23} \\
-a\_{31} & a\_{32} & a\_{33}
-\end{vmatrix} = & a\_{11} a\_{22} a\_{33} + a\_{12} a\_{23} a\_{31} + a\_{13} a\_{21} a\_{32} \\
-&  - a\_{13} a\_{22} a\_{31} - a\_{11} a\_{23} a\_{32} - a\_{12} a\_{21} a\_{33},
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{vmatrix} = & a_{11} a_{22} a_{33} + a_{12} a_{23} a_{31} + a_{13} a_{21} a_{32} \\
+&  - a_{13} a_{22} a_{31} - a_{11} a_{23} a_{32} - a_{12} a_{21} a_{33},
 \end{align*}
 $$
 

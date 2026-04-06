@@ -150,7 +150,7 @@ Podemos definir nuevas funciones a partir de unas dadas de varias formas.
     f\circ g(x) =f(g(x)) &=f\left(\frac{1}{x^2+1}\right)=\left( \frac{1}{x^2+1}\right) ^2-4 \\
     &= \left( \frac{1}{x^4+2x^2+1}\right) -4= \frac{1-4x^4-8x^2-4}{x^4+2x^2+1}\\ &=\frac{-4x^4-8x^2-3}{x^4+2x^2+1}.\end{align*}$$]{.math}
 
-    Por otro lado, si [$x$]{.math} lo movemos dentro de los números reales ya hemos comentado que [$x^2$]{.math} se mueve en los números mayores o iguales a [$0$]{.math} y si restamos [$4$]{.math} nos quedarán los números mayores o iguales que [$-4$]{.math}. Por tanto la imagen de [$f$]{.math} es el intervalo [$[-4,+\infty [$]{.math}, así que, como el dominio de [$g$]{.math} es [$\mathbb{R}$]{.math}, tendremos que podemos hacer [$g\circ f$]{.math} y nos quedará, para [$x\in \mathbb{R}$]{.math}, [\begin{align*} g\circ f(x) &=g(f(x))=g(x^2-4)\\ &= \frac{1}{(x^2-4)^2+1}= \frac{1}{(x^4-8x^2+16)+1} \\ & = \frac{1}{x^4-8x^2+17},\end{align*}]{.math} y queda claro que [$f\circ g \ne g\circ f$]{.math}. En este ejemplo hemos hecho un trabajo extra ya que, como los dominios de las dos funciones eran todos los números reales, entonces el cálculo de la imagen de las dos funciones era superfluo (son funciones reales así que su imagen tiene que ser un subconjunto de los números reales). Lo hemos hecho solo por complitud.
+    Por otro lado, si [$x$]{.math} lo movemos dentro de los números reales ya hemos comentado que [$x^2$]{.math} se mueve en los números mayores o iguales a [$0$]{.math} y si restamos [$4$]{.math} nos quedarán los números mayores o iguales que [$-4$]{.math}. Por tanto la imagen de [$f$]{.math} es el intervalo [$[-4,+\infty [$]{.math}, así que, como el dominio de [$g$]{.math} es [$\mathbb{R}$]{.math}, tendremos que podemos hacer [$g\circ f$]{.math} y nos quedará, para [$x\in \mathbb{R}$]{.math}, [\begin{align*} g\circ f(x) &=g(f(x))=g(x^2-4)\\ &= \frac{1}{(x^2-4)^2+1}= \frac{1}{(x^4-8x^2+16)+1} \\ & = \frac{1}{x^4-8x^2+17},\end{align*}]{.math} y queda claro que [$f\circ g \ne g\circ f$]{.math}. En este ejemplo hemos hecho un trabajo extra ya que, como los dominios de las dos funciones eran todos los números reales, entonces el cálculo de la imagen de las dos funciones era superfluo (son funciones reales así que su imagen tiene que ser un subconjunto de los números reales). Lo hemos hecho solo por completitud.
 
     Veamos otro ejemplo donde no se pueden hacer las dos composiciones. Si consideramos la misma función [$f$]{.math} del ejemplo anterior y como función [$g$]{.math} consideramos [$g \colon \mathbb{R}^+ \to \mathbb{R}$]{.math} definida por [$g(x)=\log (x)$]{.math} para [$x$]{.math} positivo entonces se tiene que la imagen de [$g$]{.math} es todo [$\mathbb{R}$]{.math} y se puede hacer la composición [$f\circ g
     \colon \mathbb{R}^+\to \mathbb{R}$]{.math} que resulta ser, para cualquier [$x\in \mathbb{R}^+$]{.math}, [$$f\circ g(x)=f(\log (x))=\left( \log(x)\right) ^2-4.$$]{.math}
@@ -213,7 +213,7 @@ De entre todas las funciones exponenciales hay una destacada por su importancia 
 
 Cuando hemos comentado las propiedades de las funciones exponenciales de base [$a\ne 1$]{.math} hemos visto que, tanto si [$a>1$]{.math} o [$a<1$]{.math}, dichas funciones son una biyección de [$\mathbb{R}$]{.math} sobre [$\mathbb{R}^+$]{.math}. Por tanto tienen inversa. A la inversa de la función exponencial de base [$a$]{.math} se le llama función logarítmica de base [$a$]{.math}. Atendiendo a esta definición está claro que, para [$a\ne 1$]{.math}, [$a>0$]{.math} la función logaritmo de base [$a$]{.math}, [$\log _a \colon \mathbb{R}^{+}\to \mathbb{R}$]{.math}. Es continua y derivable en [$\mathbb{R}^+$]{.math} y su derivada vale [$\displaystyle f^{\prime} (x)=\frac{1}{x\log(a)}$]{.math}.
 
-Las propiedades de [$\log _a$]{.math} de obtienen de su definición como inversa de la función exponencial de base [$a$]{.math}.
+Las propiedades de [$\log _a$]{.math} se obtienen de su definición como inversa de la función exponencial de base [$a$]{.math}.
 
 -   Si [$a>1$]{.math} se verifica que [$\log _a$]{.math} es estrictamente creciente y [$$\lim _{x\to 0}\log _a(x)=-\infty ,\ \ \lim _{x\to +\infty}\log _a(x)=+\infty.$$]{.math}
 
@@ -221,7 +221,7 @@ Las propiedades de [$\log _a$]{.math} de obtienen de su definición como inversa
 
 -   Por ser la inversa de la función exponencial se verifica que [$$\log_a(a^x)=x,\ \ \forall x\in \mathbb{R},\ \ \ a^{\log _ a(x)}=x,\ \ \forall x\in \mathbb{R}^+.$$]{.math}
 
--   [$\log _a(x^y)=y\log_a(x)$]{.math} para [$x$]{.math} real e [$y$]{.math} positivo, y [$\log_a (xy)=\log_a(x)+\log_a (y)$]{.math}, para [$x$]{.math} e [$y$]{.math} positivos.
+-   [$\log _a(x^y)=y\log_a(x)$]{.math} para [$x$]{.math} positivo e [$y$]{.math} real, y [$\log_a (xy)=\log_a (x)+\log_a (y)$]{.math}, para [$x$]{.math} e [$y$]{.math} positivos.
 
 Puedes comprobar gráficamente las propiedades anteriores variando el valor de $a$ en la siguiente representación de la función logarítmica.
 

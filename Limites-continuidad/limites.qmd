@@ -28,7 +28,7 @@ f(x)=\begin{cases} x^2+\frac{13}2x+\frac{17}2, & \text{si $x < -1$}, \\
 \end{cases}
 $$
 
-En el eje de abscisas se representa el intervalo $I=[x-\delta,x+\delta]$ (azul). En el eje de ordenadas se dibuja la imagen de $I$ por $f$ (rojo). El valor de $x$ se elige desplazando el punto azul claro en el eje de ordenadas. El valor de $\delta$ se modifica con el deslizador.
+En el eje de abscisas se representa el intervalo $I=[x-\delta,x+\delta]$ (azul). En el eje de ordenadas se dibuja la imagen de $I$ por $f$ (rojo). El valor de $x$ se elige desplazando el punto azul claro en el eje de abscisas. El valor de $\delta$ se modifica con el deslizador.
 Para un entorno $J$ de $f(-1)$ suficientemente pequeño, y cualquier entorno $I$ de $-1$, habrá siempre elementos que se aplican por $f$ fuera de $J$. Por tanto, la función no es continua en $-1$.
 
 ::: {#box_p2 .jxgbox style="width:600px; height:600px; display:inline-block;"}
@@ -102,8 +102,8 @@ e^x, & \text{si $0< x \le 1$}, \\
 Vamos a calcular el límite de la función dada en los puntos \"conflictivos\"; esto es, en los puntos donde la expresión de [$f$]{.math} cambia. En este caso son [$x=0$]{.math}, y [$x=1$]{.math}. Como a ambos lados de cada uno de estos puntos la expresión de la función es distinta, nos vemos obligados a calcular los límites laterales para decidir si la función [$f$]{.math} tiene límite en ellos.
 
 [$$\begin{aligned}
-\lim_{x \to 0^-}f(x) & = \lim_{x \to 0} (x^2+1)= 1, \\
-\lim_{x \to 0^+}f(x) & = \lim_{x \to 0} e^x= e^0=1,\end{aligned}$$]{.math}
+\lim_{x \to 0^{-}}f(x) & = \lim_{x \to 0} (x^2+1)= 1, \\
+\lim_{x \to 0^{+}}f(x) & = \lim_{x \to 0} e^x= e^0=1,\end{aligned}$$]{.math}
 
 Dada la coincidencia de ambos límites laterales, concluimos que la función dada sí tiene límite en el punto [$0$]{.math} y vale [$1$]{.math}; es decir existe el límite [$\displaystyle \lim\nolimits_{x \to 0} f(x) = 1$]{.math}. Como, además, este límite coincide con el valor de [$f(0)=1$]{.math}, podemos concluir que la función [$f$]{.math} es continua en el punto [$0$]{.math}.
 
@@ -142,8 +142,8 @@ Estudiemos la existencia de [$\displaystyle \lim_{x \to 0} \frac{|x|}{x}$]{.math
 \end{cases}$$]{.math} El límite, entonces, que nos piden requiere el cálculo de los límites laterales:
 
 [$$\require{cancel}\begin{aligned}
-\lim_{x \to 0_-}\frac{|x|}{x}&= \lim_{x \to 0}\frac{-x}{x}= \lim_{x \to 0}\frac{- \cancel{x}}{\cancel{x}}= -1, \\
-\lim_{x \to 0_+}\frac{|x|}{x}&= \lim_{x \to 0}\frac{x}{x}= \lim_{x \to 0}\frac{ \cancel{x}}{\cancel{x}}= 1.\end{aligned}$$]{.math}
+\lim_{x \to 0^{-}}\frac{|x|}{x}&= \lim_{x \to 0}\frac{-x}{x}= \lim_{x \to 0}\frac{- \cancel{x}}{\cancel{x}}= -1, \\
+\lim_{x \to 0^{+}}\frac{|x|}{x}&= \lim_{x \to 0}\frac{x}{x}= \lim_{x \to 0}\frac{ \cancel{x}}{\cancel{x}}= 1.\end{aligned}$$]{.math}
 
 Por tanto, no existe el límite [$\displaystyle \lim_{x \to 0} \frac{|x|}{x}.$]{.math}
 
@@ -401,7 +401,7 @@ Una función [$f$]{.math} tiene a la recta [$y=mx+n$]{.math} como asíntota obli
 
 Para calcular los valores [$m$]{.math} y [$n$]{.math} hacemos lo siguiente: [$$m=\lim_{x \to \infty} \frac{f(x)}{x} \quad \text{y} \quad n= \lim_{x \to \infty} \left( f(x)-mx \right)$$]{.math}
 
-Veamos si la función [$f(x)=\frac{3x^3+1}{x^2+1}$]{.math} tiene asíntotas oblicuas. En primer lugar calculamos el posible valor de [$m$]{.math}: [$$m= \lim_{x \to +\infty} \frac{f(x)}{x} = \lim_{x \to +\infty} \frac{\frac{3x+1}{x^2+1}}{x} = \lim_{x \to +\infty} \frac{3x^2+x}{x^2+1}= 3.$$]{.math} En segundo lugar, calculamos el valor de [$n$]{.math}:
+Veamos si la función [$f(x)=\frac{3x^3+1}{x^2+1}$]{.math} tiene asíntotas oblicuas. En primer lugar calculamos la pendiente de la asíntota: [$$m= \lim_{x \to +\infty} \frac{f(x)}{x} = \lim_{x \to +\infty} \frac{\frac{3x^{3}+1}{x^2+1}}{x} = \lim_{x \to +\infty} \frac{3x^2+1}{x^{3}+x}= 3.$$]{.math} En segundo lugar, calculamos el valor de [$n$]{.math}:
 
 [$$\begin{aligned}
 n & = \lim_{x \to +\infty} \left( f(x)-mx \right) = \lim_{x \to +\infty} \left( \frac{3x^3+1}{x^2+1}-3x \right) \\

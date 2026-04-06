@@ -328,7 +328,7 @@ Calcula una primitiva de las siguientes funciones:
     ::: {#solucion-e4-2 .collapse}
     Podemos escribir $x^2+1=x^2-1+2$, con lo que obtenemos directamente el cociente y resto de la división del numerador entre el denominador. Así, $\int f(x)\, dx=\int 1\, dx + \int \dfrac{2}{x^2-1}\, dx$. Por otro lado, $x^2-1=(x-1)(x+1)$. Tenemos que expresar 
     
-    $$\dfrac{1}{x^2-1}=\dfrac{A}{x-1}+\dfrac{B}{x+1}=\dfrac{A(x+1)+B(x-1)}{x^2-1}.$$
+    $$\dfrac{2}{x^2-1}=\dfrac{A}{x-1}+\dfrac{B}{x+1}=\dfrac{A(x+1)+B(x-1)}{x^2-1}.$$
 
     Luego $2=(A+B)x+(A-B)$, de lo que se deduce que $A+B=0$ y $A-B=2$. Los valores de $A$ y $B$ son $1$ y $-1$, respectivamente. Nuestra integral queda como sigue: 
     

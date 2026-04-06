@@ -30,7 +30,7 @@ Si [$f$]{.math} es una función derivable definida en un intervalo, entonces
 
 -   [$f$]{.math} es constante si, y sólo si, la derivada es cero.
 
-Para estudiar el crecimiento de la función [$f(x)=2x^3-3x^2-12x+1$]{.math}, estudiamos el signo de la derivada. Primero vemos dónde se anula. [$$f'(x)=6x^2-6x-12=0 \text{ sí y sólo sí } x\in\{-1,2\}.$$]{.math} Como sabemos donde se anula la derivada, también sabemos donde *no* se anula. Esto es, la función es monótona en [$]-\infty,-1]$]{.math}, en [$[-1,2]$]{.math} y en [$[2,+\infty[$]{.math}. Evaluando la derivada en un punto de cada intervalo, terminamos:
+Para estudiar el crecimiento de la función [$f(x)=2x^3-3x^2-12x+1$]{.math}, estudiamos el signo de la derivada. Primero vemos dónde se anula. [$$f'(x)=6x^2-6x-12=0 \text{ si y sólo si } x\in\{-1,2\}.$$]{.math} Como sabemos donde se anula la derivada, también sabemos donde *no* se anula. Esto es, la función es monótona en [$]-\infty,-1]$]{.math}, en [$[-1,2]$]{.math} y en [$[2,+\infty[$]{.math}. Evaluando la derivada en un punto de cada intervalo, terminamos:
 
 -   [$f'(-3)=60 > 0$]{.math}, y por tanto [$f$]{.math} es creciente [$]-\infty,-1]$]{.math};
 
@@ -127,7 +127,7 @@ Para estudiar la concavidad y convexidad de una función, miramos el signo de la
 
 **Puntos de inflexión**
 
-En [$-1$]{.math} la función tiene un punto de inflexión ya que cambia de de convexa a cóncava.
+En [$-1$]{.math} la función tiene un punto de inflexión ya que cambia de convexa a cóncava.
 
 ::: {#box3 .jxgbox style="width:400px; height:400px;margin:auto;"}
 :::
@@ -244,7 +244,7 @@ Responde a las siguientes preguntas sobre la parábola $y=x^2$.
     <button id="e3-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
     ::: {#solucion-e3-3 .collapse}
-    La recta tangente en un punto arbitrario $(a,f(a))$ es $$y=f(a)+f'(a)(x-a)=a^2+2a(x-a)=2ax-a^2$$ y lo que queremos encontrar son aquellos valores de $a$ que hacen que el punto $(1,-3)$ verifique está ecuación (pertenezca a la recta). Sustituimos $x$ por $1$ e $y$ por $-3$ y resolvemos:
+    La recta tangente en un punto arbitrario $(a,f(a))$ es $$y=f(a)+f'(a)(x-a)=a^2+2a(x-a)=2ax-a^2$$ y lo que queremos encontrar son aquellos valores de $a$ que hacen que el punto $(1,-3)$ verifique esta ecuación (pertenezca a la recta). Sustituimos $x$ por $1$ e $y$ por $-3$ y resolvemos:
 
     $$\begin{aligned}
     -3=2a\cdot 1 -a^2 & \text{ si y solo si } a^2-2a -3=0, \\
@@ -303,7 +303,7 @@ pg21=pintae21();
 
 ::: {#exr-4}
 
-1.  Calcula la ecuación de la recta (o rectas) tangentes a la gráfica de [$f(x)=4x^3-2x^2+x-1$]{.math} pararelas a la bisectriz del primer cuadrante.
+1.  Calcula la ecuación de la recta (o rectas) tangentes a la gráfica de [$f(x)=4x^3-2x^2+x-1$]{.math} pararela a la bisectriz del primer cuadrante.
     <button id="e4-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
     :::: {#solucion-e4-1 .collapse}
