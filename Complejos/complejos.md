@@ -72,15 +72,15 @@ También de esta forma es fácil considerar $\mathbb R$, el conjunto de los núm
 
 :::: {#exr-1}
 
-Calcula la suma, producto, diferencia y cociente de los pares de números complejos $z_1=(2,1)$ y $z_1=(-2,3).$ Calcula además las mismas operaciones utilizando la forma binómica.  <button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>  
+Calcula la suma, producto, diferencia y cociente de los pares de números complejos $z_1=(2,1)$ y $z_2=(-2,3).$ Calcula además las mismas operaciones utilizando la forma binómica.  <button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>  
 
 ::::
 
 
 ::: {#solucion-e1-1 .callout .collapse}
-La suma y diferencia se hacen coordenada a coordenada a coordenada, por lo que $z_1+z_2=(0,4)$ y $z_1-z_2=(4,-2)$. 
+La suma y diferencia se hacen coordenada a coordenada, por lo que $z_1+z_2=(0,4)$ y $z_1-z_2=(4,-2)$.
 
-En forma binómica, $z_1+z_2=4i$ y $z_1-z_2=4-2i$. 
+En forma binómica, $z_1+z_2=4i$ y $z_1-z_2=4-2i$.
 
 El producto es $z_1z_2=(-7,4)$, y en forma binómica, $-7+4i$. Por último, $\dfrac{z_1}{z_2}= \left(-\frac{1}{13},-\frac{8}{13} \right)$, que en forma binómica es $-\dfrac{1}13-\dfrac{8}{13} i.$
 :::
@@ -90,7 +90,7 @@ La suma y diferencia se hacen coordenada a coordenada a coordenada, por lo que $
 :::--->
 
 
-**Parte real, parte imaginaria, conjugado y módulo de un número complejo.** Sea $z=a+bi$ $\in\mathbb{C}$. Los números reales $a$ y $b$ reciben el nombre de *parte real* y *parte imaginaria*, respectivamente, de $z$. Escribimos $a=\operatorname{Re}(z)$ y $b=\operatorname{Im}(z)$. El complejo $a-bi$ se denomina *conjugado* de $z$ y el número real no negativo $\|z\|=\sqrt{a^2+b^2}$ recibe el nombre de *módulo de* $z$.
+**Parte real, parte imaginaria, conjugado y módulo de un número complejo.** Sea $z=a+bi$ $\in\mathbb{C}$. Los números reales $a$ y $b$ reciben el nombre de *parte real* y *parte imaginaria*, respectivamente, de $z$. Escribimos $a=\operatorname{Re}(z)$ y $b=\operatorname{Im}(z)$. El complejo $a-bi$ se denomina *conjugado* de $z$ y el número real no negativo $|z|=\sqrt{a^2+b^2}$ recibe el nombre de *módulo de* $z$.
 
 Dados $z,w\in\mathbb{C}$. Se tienen las siguientes propiedades:
 
@@ -108,19 +108,19 @@ Dados $z,w\in\mathbb{C}$. Se tienen las siguientes propiedades:
 
 -   $z=\overline{z}\Leftrightarrow z\in \mathbb{R}$,
 
--   $\|z\|=\|\overline{z}\|=\|-z\|$,
+-   $|z|=|\overline{z}|=|-z|$,
 
--   $z\overline{z}=\|z\|^2$,
+-   $z\overline{z}=|z|^2$,
 
--   $\|zw\|=\|z\|\,\|w\|$,
+-   $|zw|=|z|\,|w|$,
 
--   $\|z\|=0\Leftrightarrow z=0$,
+-   $|z|=0\Leftrightarrow z=0$,
 
--   $\|z+w\|\leq \|z\|+\|w\|$ *(Desigualdad triangular)*,
+-   $|z+w|\leq |z|+|w|$ *(Desigualdad triangular)*,
 
--   $\big\vert \|z\|-\|w\|\big\vert\leq \|z-w\|$,
+-   $\big\vert |z|-|w|\big\vert\leq |z-w|$,
 
--   $\|z+w\|^2+\|z-w\|^2=2(\|z\|^2+\|w\|^2)$
+-   $|z+w|^2+|z-w|^2=2(|z|^2+|w|^2)$
     *(Identidad del paralelogramo)*.
 
 Vamos a ver un método para calcular las potencias enteras de la unidad imaginaria. Observe, en primer lugar, que las potencias de exponente natural de $i$ se vuelven a repetir a partir de la cuarta potencia: 
@@ -149,7 +149,7 @@ Como $0 < 4-r\leq 4$, entonces $i^{4-r}$ es una de las primeras potencias de exp
     ::: {#solucion-e2-1 .callout .collapse}
     El resto de dividir $155$ entre $4$ es $3$, por lo que $i^{155}=i^3=-i$. Lo mismo ocurre con $7$ y $23$. Para exponente $9$, $i^9=i^{2\times 4+1}=i$. 
     
-    Por último, $-23=-24+1=-6\times 4+1$, y por tanto $i^{-23}=(i^{4})^{-6}i=1 i=i$.
+    Por último, $-19=-18+1=-5\times 4+1$, y por tanto $i^{-19}=(i^{4})^{-5}i=1 i=i$.
     :::
 
 2.  Expresa los números complejos $z_1=(-1,1)$, $z_2=(1,2)$ y $z_3=(4,-1)$ en forma binómica y realiza las operaciones siguientes:
@@ -179,7 +179,7 @@ Como $0 < 4-r\leq 4$, entonces $i^{4-r}$ es una de las primeras potencias de exp
     2.  $z^6-z^3-2=0$. <button id="e2-5" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
         ::: {#solucion-e2-5 .callout .collapse}
-        Hacemos $x=z^3$, con lo que obtenemos una nueva ecuación $x^x-x-2=0$, cuyas raíces son $x=-1$ y $x=2$. Por tanto, las soluciones de la ecuación original son las raíces cúbicas de $-1$ y $2$. 
+        Hacemos $x=z^3$, con lo que obtenemos una nueva ecuación $x^2-x-2=0$, cuyas raíces son $x=-1$ y $x=2$. Por tanto, las soluciones de la ecuación original son las raíces cúbicas de $-1$ y $2$. 
         :::
 
 ::::
@@ -236,17 +236,15 @@ Gráficamente, el argumento principal representa el ángulo que forma el segment
 
 Sea $z\in \mathbb{C}$, $z\neq 0$. El argumento principal de $z$, $\arg(z)$, es el único número real en el intervalo $]-\pi,\pi]$ que verifica la igualdad
 
-$$z=\|z\|\left(\cos(\arg(z))+i\,\operatorname{sen}(\arg(z))\right).
+$$z=|z|\left(\cos(\arg(z))+i\,\operatorname{sen}(\arg(z))\right).
 $$
 
 
 **Conjunto de argumentos de un número complejo.** Sea $z\in \mathbb{C}$, $z\neq 0$. Se dice que un número real $\omega$ es *un argumento de* $z$ si verifica que
 
-$$z=\|z\|(\cos\omega+i\,\operatorname{sen}\omega).
+$$z=|z|(\cos\omega+i\,\operatorname{sen}\omega).
 $$
- A
-esta expresión la llamaremos *forma trigonométrica* del número complejo
-$z$.
+A esta expresión la llamaremos *forma trigonométrica* del número complejo $z$.
 
 
 :::: {#exr-3}
@@ -324,31 +322,31 @@ Describe geométricamente los conjuntos de números complejos definidos de la si
 ## Forma polar de un número complejo
 
 
-Se llama* forma polar* del número complejo $z$ a la expresión dada por $z=\left\| z\right\| _{\omega}$ donde $\left\| z\right\| $ es el módulo de $z$ y $\omega$ es un argumento de $z$.
+Se llama *forma polar* del número complejo $z$ a la expresión dada por $z=|z| _{\omega}$ donde $\left\| z\right\| $ es el módulo de $z$ y $\omega$ es un argumento de $z$.
 
 Por ejemplo, $1+i=\left( \sqrt{2}\right)_{\frac\pi 4}$.
 
-**Operaciones con números complejos en forma polar.** Sean $z_1,z_2$ dos números complejos con $z_1=\left\| z_1\right\| _{w_1}$, $z_2=\left\| z_2\right\|_{w_2}.$ Se verifican las siguientes propiedades:
+**Operaciones con números complejos en forma polar.** Sean $z_1,z_2$ dos números complejos con $z_1=\lvert z_1\rvert _{w_1}$, $z_2=\lvert z_2\rvert_{w_2}.$ Se verifican las siguientes propiedades:
 
-1.  $z_1\cdot z_2=\left( \left\| z_1\right\| \cdot \left\| z_2\right\| \right) _{w_1+w_2}$,
+1.  $z_1\cdot z_2=\left( \lvert z_1\rvert \cdot \lvert z_2\rvert \right) _{w_1+w_2}$,
 
-2.  $\frac1{z_1}=\left( \frac1{\left\| z_1\right\| }\right) _{-w_1}$,
+2.  $\frac1{z_1}=\left( \frac1{\lvert z_1\rvert }\right) _{-w_1}$,
 
-3.  $\frac{z_1}{z_2}=\left( \frac{\left\| z_1\right\| }{\left\| z_2\right\| }\right) _{w_1-w_2}$,
+3.  $\frac{z_1}{z_2}=\left( \frac{\lvert z_1\rvert }{\lvert z_2\rvert }\right) _{w_1-w_2}$,
 
-4.  $\overline{z_1}=\left( \left\| z_1\right\| \right) _{-w_1}$.
+4.  $\overline{z_1}=\left( \lvert z_1\rvert \right) _{-w_1}$.
 
 Por reiteración de la fórmula del producto de números complejos en forma polar se tiene la siguiente fórmula.
 
 **Fórmula de de Moivre.** Sea $z\in\mathbb{C}$, $z\neq 0$, y sea $w\in\mathbb{R}$ un argumento de $z$. Entonces 
 
-$$z^n=\left( \left\|
-z\right\| _w\right) ^n=\left( \left\| z\right\| ^n\right)
+$$z^n=\left( |
+z| _w\right) ^n=\left( | z| ^n\right)
 _{nw},\textrm{ para todo } n\in\mathbb{N}.
 $$
 
 
-Si $z\in \mathbb{C}$ verifica que $\|z\|=1$ y $w$ es un argumento de $z$, es decir, $z=1_w=\cos w+i\cdot \operatorname{sen} w$, entonces se tiene la siguiente expresión para las potencias de $z$:
+Si $z\in \mathbb{C}$ verifica que $|z|=1$ y $w$ es un argumento de $z$, es decir, $z=1_w=\cos w+i\cdot \operatorname{sen} w$, entonces se tiene la siguiente expresión para las potencias de $z$:
 
 $$(\cos w+i\cdot \operatorname{sen} w)^n=\cos(nw)+i\cdot
 \operatorname{sen}(nw),\textrm{ para todo } n\in
@@ -373,7 +371,7 @@ $z_4=1.$
         Vamos a dar la solución para $z_1$. El argumento de $z_1$ es
         $-\dfrac{\pi}{6}$ y su módulo es $2$.
 
-        Por tanto $z_1=(2)_{-\frac{\pi}6}=2\left(\cos\left(-\frac{pi}6\right)+i \operatorname{sen}\left(-\frac{\pi}6\right)\right)$.
+        Por tanto $z_1=(2)_{-\frac{\pi}6}=2\left(\cos\left(-\frac{\pi}6\right)+i \operatorname{sen}\left(-\frac{\pi}6\right)\right)$.
 
         ::: {#ebox4-1 .jxgbox style="width:400px; height:400px;display:inline-block;text-align: center;"}
         :::
@@ -419,10 +417,10 @@ $z_4=1.$
 
 Dados $z\in\mathbb{C}$ y $n\in\mathbb{N}$, se dice que un número complejo $v$ es una raíz $n$-ésima de $z$ si $v^n=z$. En particular, si $n=2$ se dice que $v$ es una *raíz cuadrada* de $z$ y si $n=3$ se dice que $v$ es una *raíz cúbica* de $z$.
 
-Si $z$ es el complejo no nulo que tiene por forma polar $\|z\|_{\omega}$, entonces existen $n$ raíces $n$-ésimas de $v$, las cuales están dadas por la siguiente expresión:
+Si $z$ es el complejo no nulo que tiene por forma polar $\vert z \rvert_{\omega}$, entonces existen $n$ raíces $n$-ésimas de $z$, las cuales están dadas por la siguiente expresión:
 
 $$
-\left(\sqrt[n]{\|z\|}\right)_{\frac{\omega +2k\pi}{n}}, k\in\{0,1,\ldots,n-1\}.
+\left(\sqrt[n]{|z|}\right)_{\frac{\omega +2k\pi}{n}}, k\in\{0,1,\ldots,n-1\}.
 $$
 
 
@@ -437,7 +435,7 @@ $$
 $$
 
 
-**Representación gráfica de las raíces de un número complejo.** Sea $z\in\mathbb{C}$, $z\neq 0$, $\omega\in\mathbb{R}$ un argumento de $z$ y $n\in\mathbb{N}$, $n\geq 3$. Gráficamente las raíces $n$-ésimas de $z$ están representadas como los vértices de un polígono regular de $n$ lados. Por lo tanto, para representar las $n$ raíces se toma la circunferencia de centro $0$ y de radio $\sqrt[n]{\|z\|}$, se considera primero el ángulo $\frac\omega n$ (para $k=0$) y luego sumándole el ángulo $\frac{2\pi}n$ se van obteniendo las restantes $n-1$ raíces.
+**Representación gráfica de las raíces de un número complejo.** Sea $z\in\mathbb{C}$, $z\neq 0$, $\omega\in\mathbb{R}$ un argumento de $z$ y $n\in\mathbb{N}$, $n\geq 3$. Gráficamente las raíces $n$-ésimas de $z$ están representadas como los vértices de un polígono regular de $n$ lados. Por lo tanto, para representar las $n$ raíces se toma la circunferencia de centro $0$ y de radio $\sqrt[n]{|z|}$, se considera primero el ángulo $\frac\omega n$ (para $k=0$) y luego sumándole el ángulo $\frac{2\pi}n$ se van obteniendo las restantes $n-1$ raíces.
 
 
 :::: {#exr-5}
@@ -469,8 +467,8 @@ Calcula:
     \right)+i \operatorname{sen}\left(\frac{\pi}4\right) \right),
     \sqrt[6]{2}\left(\cos\left(\frac{11 \pi}{12} \right)+i
     \operatorname{sen}\left(\frac{11 \pi}{12}\right)\right),
-    \sqrt[6]{2}\left(\cos\left(\frac{5\pi}{12} \right)+
-    i\operatorname{sen}\left(\frac{5\pi}{12}\right) \right)
+    \sqrt[6]{2}\left(\cos\left(\frac{19\pi}{12} \right)+
+    i\operatorname{sen}\left(\frac{19\pi}{12}\right) \right)
     \right\}$. 
     :::
 ::::
