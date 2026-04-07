@@ -21,13 +21,13 @@ La idea de conjunto es una de las más significativas en Matemáticas. La mayor 
 
 Podríamos decir de forma informal que un *conjunto* es simplemente una colección de objetos a los que llamaremos elementos del conjunto. Esta definición nos bastará para los contenidos de este curso, pero desde el punto de vista matemático es imprecisa y da lugar rápidamente a paradojas. Desde comienzos del siglo XX esta definición dejó de utilizarse por los problemas que acarrea. Por desgracia, dar una definición precisa está bastante lejos de los objetivos de este guión.
 
--   Cuando $x$ sea un elemento de un conjunto $A$, escribiremos $x\in A$, que se lee "$x$ *pertenece* a $A$".
+- Cuando $x$ sea un elemento de un conjunto $A$, escribiremos $x\in A$, que se lee "$x$ *pertenece* a $A$".
 
--   Diremos que un conjunto $A$ es *subconjunto* del conjunto $B$, y lo denotaremos por $A\subseteq B$, si todo elemento de $A$ pertenece a $B$.
+- Diremos que un conjunto $A$ es *subconjunto* del conjunto $B$, y lo denotaremos por $A\subseteq B$, si todo elemento de $A$ pertenece a $B$.
 
--   Un conjunto $A$ es igual que otro conjunto $B$ si tienen los mismos elementos, a saber, si $A\subseteq B$ y $B\subseteq A$. Cuando esto ocurre, escribiremos $A=B$.
+- Un conjunto $A$ es igual que otro conjunto $B$ si tienen los mismos elementos, a saber, si $A\subseteq B$ y $B\subseteq A$. Cuando esto ocurre, escribiremos $A=B$.
 
--   Admitiremos la existencia de un conjunto sin elementos, al que denotemos por $\emptyset$ y llamaremos *conjunto vacío*. El conjunto vacío es subconjunto de cualquier conjunto.
+- Admitiremos la existencia de un conjunto sin elementos, al que denotamos por $\emptyset$ y llamaremos *conjunto vacío*. El conjunto vacío es subconjunto de cualquier conjunto.
 
 ## Operaciones con conjuntos
 
@@ -248,25 +248,25 @@ En el conjunto ${\mathcal P}(\{1,2,3\})$, definimos la siguiente relación binar
 
 Dado un conjunto $X$, una *partición* de $X$ es una familia de subconjuntos de $X$, $\{A_i\}_{i\in I}$ ($=\{A_i : i\in I\}$), de forma que
 
-1.  $A_i\not=\emptyset$ para todo $i\in I$,
+1. $A_i\not=\emptyset$ para todo $i\in I$,
 
-2.  $A_i\cap A_j=\emptyset$ para cualesquiera $i,j\in I$ con $i\neq j$,
+2. $A_i\cap A_j=\emptyset$ para cualesquiera $i,j\in I$ con $i\neq j$,
 
-3.  $X=\bigcup_{i\in I} A_i$ (la unión de todos los elementos de la familia $\{A_i\}_{i\in I}$).
+3. $X=\bigcup_{i\in I} A_i$ (la unión de todos los elementos de la familia $\{A_i\}_{i\in I}$).
 
--   Se puede comprobar fácilmente que el hecho de ser $R$ una relación de equivalencia sobre $A$ hace que $A/R$ sea una partición de $A$.
+- Se puede comprobar fácilmente que el hecho de ser $R$ una relación de equivalencia sobre $A$ hace que $A/R$ sea una partición de $A$.
 
--   Es más, si $\{A_1,\ldots,A_n\}$ es una partición de $A$, entonces $$R=(A_1\times A_1)\cup \cdots \cup(A_n\times A_n)$$ es una relación de equivalencia sobre $A$ (nótese que para $a,b\in A$, $a\ R\ b$ si y sólo si existe $i\in\{1,\ldots,n\}$ tal que $a,b\in A_i$) y $$\frac{A}R=\{A_1,\ldots, A_n\}.$$
+- Es más, si $\{A_1,\ldots,A_n\}$ es una partición de $A$, entonces $$R=(A_1\times A_1)\cup \cdots \cup(A_n\times A_n)$$ es una relación de equivalencia sobre $A$ (nótese que para $a,b\in A$, $a\ R\ b$ si y sólo si existe $i\in\{1,\ldots,n\}$ tal que $a,b\in A_i$) y $$\frac{A}R=\{A_1,\ldots, A_n\}.$$
 
 ## Relaciones de orden
 
 Una relación binaria $\le$ sobre un conjunto $A$ es una *relación de orden* si verifica las siguientes propiedades.
 
-1.  Para todo $a\in A$, $a\le a$ (reflexiva).
+1. Para todo $a\in A$, $a\le a$ (reflexiva).
 
-2.  Dados $a, b\in A$, si $a\le b$ y $b\le a$, entonces $a=b$ (*antisimétrica*).
+2. Dados $a, b\in A$, si $a\le b$ y $b\le a$, entonces $a=b$ (*antisimétrica*).
 
-3.  Para cualesquiera $a,b,c\in A$, si $a\le b$ y $b\le c$, entonces $a\le c$ (transitiva).
+3. Para cualesquiera $a,b,c\in A$, si $a\le b$ y $b\le c$, entonces $a\le c$ (transitiva).
 
 Ejemplos de orden son $\le$ en $\mathbb N$, $\mathbb Z$, $\mathbb Q$ y $\mathbb R$.
 
@@ -275,7 +275,7 @@ Si un conjunto $A$ tiene una relación de orden $\le$, al par $(A,\le)$ lo llama
 :::: {#exr-3}
 
 En el conjunto de los números naturales $\mathbb N=\{0,1,2,\ldots\}$ definimos la relación $a\mid b$ si $b$ es múltiplo de $a$. Demuestra que $\mid$ es una relación de orden.Solución
-:::: 
+::::
 
 ::: {.callout collapse=true title="Solución"}
 Como para cualquier natural $n$, se tiene que $n$ divide a $n$, tenemos que es reflexiva.
@@ -292,12 +292,11 @@ El conjunto de partes de $\{1,2,3\}$ ordenado por inclusión se puede representa
  document.getElementById("partes").innerHTML =Viz('graph NSGraph{     node [shape=none]; 0 [label="Ø"]; 1 [label="{1}"]; 2 [label="{2}"]; 3 [label="{3}"]; 12 [label="{1,2}"]; 13 [label="{1,3}"]; 23 [label="{2,3}"]; 123 [label="{1,2,3}"]; 1 -- 0; 2 -- 0; 3--0; 12 -- 1; 12 -- 2; 13 -- 1; 13 -- 3; 23 -- 2; 23 -- 3; 123 -- 12; 123 -- 13; 123 -- 23;  }', {engine: "dot"});
 </script>
 
-:::: {#exr-4}
+::: {#exr-4}
 
 Sea $X$ un conjunto. Demuestra que $\subseteq$ es una relación de orden en $\mathcal P(X)$.
 
-::::
-
+:::
 
 Un conjunto ordenado $(A,\le)$ es *totalmente ordenado* si para cada $a,b\in A$, se tiene que $a\le b$ o $b\le a$.
 
@@ -306,7 +305,6 @@ En $\mathbb N^n$ definimos la siguiente relación binaria $$(a_1,\ldots,a_n)\le_
 ::: {#exr-5}
 En $\mathbb N^n$ definimos la siguiente relación binaria $(a_1,\ldots,a_n)\preceq_\mathrm{lex} (b_1,\ldots,b_n)$ si la primera coordenada no nula de $(a_1-b_1,\ldots, a_n-b_n)\in \mathbb Z^n$ es positiva (caso de que exista, es decir, puede ser que todas sean nulas). Demuestra que $\preceq_\mathrm{lex}$ es un orden total.
 :::
-
 
 ## Aplicaciones entre conjuntos
 
@@ -404,21 +402,21 @@ Si $f:A\to B$ es una aplicación, diremos que $f$ es
 
 ::: {#exr-6}
 
-1.  Demuestra que la aplicación $f:\mathbb Q\to \mathbb R$ definida por $f(x)=\frac{1}2(2x+1)$ es inyectiva pero no sobreyectiva. <button id="e6-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+1.  Demuestra que la aplicación $f:\mathbb Q\to \mathbb R$ definida por $f(x)=\frac{1}{2} (2x+1)$ es inyectiva pero no sobreyectiva. <button id="e6-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
     ::: {#solucion-e6-1 .callout .collapse}
 
-    La función $f$ no es sobreyectiva porque $f(q)=q+\frac{1}{2}$ es racional siempre que $q$ sea racional. Veamos que es inyectiva: si $f(x)=f(y),$ entonces $$ 2(x+1)= 2(y+1) \text{ si y sólo si } x+1= y+1 \text{, lo que equivale a } x=y. $$
+    La función $f$ no es sobreyectiva porque $f(q)=q+\frac{1}{2}$ es racional siempre que $q$ sea racional. Veamos que es inyectiva: si $f(x)=f(y),$ entonces $$2x+1= 2y+1 \text{ si y sólo si } x+1= y+1 \text{, lo que equivale a } x=y. $$
     :::
 
-2.  Demuestra que la aplicación $f:\mathbb Z\to \mathbb N,\ f(x)=\|x\|$ (valor absoluto) es sobreyectiva pero no inyectiva. <button id="e6-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+2.  Demuestra que la aplicación $f:\mathbb{Z} \to \mathbb{N}$, $f(x)=\lvert x\rvert$ (valor absoluto) es sobreyectiva pero no inyectiva. <button id="e6-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
     ::: {#solucion-e6-2 .callout .collapse}
 
     Como $f(1)=f(-1)$, la función no es inyectiva. Es sobreyectiva ya que $f(n)=n$, para cualquier natural $n$.
     :::
 
-3.  Demuestra que la aplicación $f:\mathbb Q\to \mathbb Q$, $f(x)=\frac{3x+1}2$ es biyectiva.
+3.  Demuestra que la aplicación $f:\mathbb Q\to \mathbb Q$, $f(x)=\frac{3x+1}{2}$ es biyectiva.
 :::
 
 
@@ -449,4 +447,4 @@ De cómo hemos demostrado la sobreyectividad, se sigue que $f^{-1}(y)=\frac{1}2(
 
 ------------------------------------------------------------------------
 
-[Esta página está basada en los apuntes de J.C. Rosales y P. A. García-Sánchez, [Notas de de Álgebra Lineal y Estructuras Matemáticas](https://hdl.handle.net/10481/43099) Las representaciones gráficas se han realizado con [JSXGraph](https://jsxgraph.uni-bayreuth.de) y con [viz.js](https://viz-js.com). Las animaciones en JSXGraph y el maquetado de la página han sido realizados por Pedro A. García Sánchez.]{.small}
+[Esta página está basada en los apuntes de J.C. Rosales y P. A. García-Sánchez, [Notas de Álgebra Lineal y Estructuras Matemáticas](https://hdl.handle.net/10481/43099) Las representaciones gráficas se han realizado con [JSXGraph](https://jsxgraph.uni-bayreuth.de) y con [viz.js](https://viz-js.com). Las animaciones en JSXGraph y el maquetado de la página han sido realizados por Pedro A. García Sánchez.]{.small}

@@ -20,7 +20,7 @@ format:
 ## Concepto de primitiva
 
 
-Sean [$I$]{.math} un intervalo de [$\mathbb{R}$]{.math} y [$f \colon I \subset \mathbb{R} \rightarrow \mathbb{R}$]{.math} una función. Se dice que es [$F\colon I \subset \mathbb{R} \rightarrow \mathbb{R}$]{.math} es una *primitiva* de [$f$]{.math} si [$F$]{.math} es derivable y [$F\,'(x) = f(x)$]{.math} para todo [$x \in I$]{.math}.
+Sean [$I$]{.math} un intervalo de [$\mathbb{R}$]{.math} y [$f \colon I \subset \mathbb{R} \rightarrow \mathbb{R}$]{.math} una función. Se dice que [$F\colon I \subset \mathbb{R} \rightarrow \mathbb{R}$]{.math} es una *primitiva* de [$f$]{.math} si [$F$]{.math} es derivable y [$F\,'(x) = f(x)$]{.math} para todo [$x \in I$]{.math}.
 
 -   Todas las primitivas de una función se conocen en cuanto se conoce una. De hecho, si [$F$]{.math} es una primitiva de [$f$]{.math}, las funciones de la forma [$F+C$]{.math}, con [$C \in \mathbb{R}$]{.math}, son también primitivas de [$f$]{.math}.
 
@@ -35,17 +35,17 @@ Si conocemos bien las derivadas de las funciones elementales, conoceremos bien l
  | [$f(x)$]{.math}             |            [$\int f(x)\,dx$]{.math} |
 | --- | --- |
 | [$x^n$]{.math}                    |     [$\dfrac{x^{n+1}}{n+1}$]{.math} |
-|  [$1/x$]{.math}                    |      [$\log (\lvert x\rvert )$]{.math}
-|  [$a^x$]{.math}                     |    [$a^x/\log(a)$]{.math}
-|  [$e^x$]{.math}                         | [$e^x$]{.math}
-|  [$\operatorname{sen}(x)$]{.math}       | [$-\cos(x)$]{.math}
-|  [$\cos(x)$]{.math}                     | [$\operatorname{sen}(x)$]{.math}
-|  [$\tan(x)$]{.math}                     | [$-\log (\lvert\cos(x)\rvert )$]{.math}
-|  [$\sec^2(x)$]{.math}                  | [$\tan(x)$]{.math}
-|  [$\text{cosec}^2(x)$]{.math}          | [$-\text{cotan}(x)$]{.math}
-|  [$\dfrac{1}{\sqrt{1-x^2}}$]{.math}    | [$\operatorname{arcsen}(x)$]{.math}
-|  [$\dfrac{-1}{\sqrt{1-x^2}}$]{.math}   | [$\arccos(x)$]{.math}
-|  [$\dfrac{1}{1+x^2}$]{.math}            | [$\arctan(x)$]{.math}
+|  [$1/x$]{.math}                    |      [$\log (\lvert x\rvert )$]{.math} |
+|  [$a^x$]{.math}                     |    [$a^x/\log(a)$]{.math} |
+|  [$e^x$]{.math}                         | [$e^x$]{.math} |
+|  [$\operatorname{sen}(x)$]{.math}       | [$-\cos(x)$]{.math} |
+|  [$\cos(x)$]{.math}                     | [$\operatorname{sen}(x)$]{.math} |
+|  [$\tan(x)$]{.math}                     | [$-\log (\lvert\cos(x)\rvert )$]{.math} |
+|  [$\sec^2(x)$]{.math}                  | [$\tan(x)$]{.math} |
+|  [$\text{cosec}^2(x)$]{.math}          | [$-\text{cotan}(x)$]{.math} |
+|  [$\dfrac{1}{\sqrt{1-x^2}}$]{.math}    | [$\operatorname{arcsen}(x)$]{.math} |
+|  [$\dfrac{-1}{\sqrt{1-x^2}}$]{.math}   | [$\arccos(x)$]{.math} |
+|  [$\dfrac{1}{1+x^2}$]{.math}            | [$\arctan(x)$]{.math} |
 
 :::
 
@@ -53,7 +53,7 @@ Si conocemos bien las derivadas de las funciones elementales, conoceremos bien l
 
 La siguiente regla se aplica para calcular la integral de una función en un intervalo de la forma [$[a,b]$]{.math}.
 
-**Regla de Barrow:** Sea [$f \colon [a,b] \rightarrow \mathbb{R}$]{.math} y [$F$]{.math} una primitiva de [$f$]{.math}. Entonces, [$$\int_a^b f(x) \, dx = F(b)-F(a) \ .$$]{.math}
+**Regla de Barrow:** Sea [$f \colon [a,b] \rightarrow \mathbb{R}$]{.math} una función integrable y [$F$]{.math} una primitiva de [$f$]{.math}. Entonces, [$$\int_a^b f(x) \, dx = F(b)-F(a) \ .$$]{.math}
 
 Vamos a calcular la integral de la función [$f(x)=x^2$]{.math} en el intervalo [$[1,2]$]{.math}.
 
@@ -137,7 +137,7 @@ Si aplicamos este método a algunas de las primitivas inmediatas, obtenemos las 
 
 -   $\int g^{\prime}(x) g(x)^{n}\, dx = \frac{1}{n+1} g(x)^{n+1}+ C$.
 -   $\int g^{\prime}(x) e^{g(x)}\, dx = e^{g(x)}+C$.
--   $\int \frac{g^{\prime}(x)}{g(x)}\, d(x)= \log(\vert g(x)\vert) +C$.
+-   $\int \frac{g^{\prime}(x)}{g(x)}\, dx= \log(\vert g(x)\vert) +C$.
 
 Como ejemplo, calculemos $\int\frac{x}{x^2+1}\, dx$. Observamos que el numerador es \"casi\" la derivada del denominador; intentemos sacar provecho de esto. Multiplicamos y dividimos por $2$ y queda
 $$\int \frac{x}{x^2+1}\, dx=\frac{1}2\int\frac{2x}{x^2+1}\, dx.$$
@@ -158,7 +158,7 @@ y=e^{x} \\ dy=e^{x}\, dx \ ; \ dx= \frac{dy}{y}
 = \int
 \frac{y + 3y^{2}}{2 + y}\cdot \frac{1}{y}\, dy \\ & = \int \frac{1 + 3
 y}{2+y}\, dy =\int \left( 3 - \frac{5}{2+y}\right)\, dy \\
-& = 3 y - 5 \log \lvert {y + 2} \lvert +C = 3e^{x} - 5 \log \left(e^{x} +2\right) +C .\end{aligned}$$]{.math}
+& = 3 y - 5 \log \lvert {y + 2} \rvert +C = 3e^{x} - 5 \log \left(e^{x} +2\right) +C .\end{aligned}$$]{.math}
 
 
 
@@ -328,7 +328,7 @@ Calcula una primitiva de las siguientes funciones:
     ::: {#solucion-e4-2 .collapse}
     Podemos escribir $x^2+1=x^2-1+2$, con lo que obtenemos directamente el cociente y resto de la división del numerador entre el denominador. Así, $\int f(x)\, dx=\int 1\, dx + \int \dfrac{2}{x^2-1}\, dx$. Por otro lado, $x^2-1=(x-1)(x+1)$. Tenemos que expresar 
     
-    $$\dfrac{1}{x^2-1}=\dfrac{A}{x-1}+\dfrac{B}{x+1}=\dfrac{A(x+1)+B(x-1)}{x^2-1}.$$
+    $$\dfrac{2}{x^2-1}=\dfrac{A}{x-1}+\dfrac{B}{x+1}=\dfrac{A(x+1)+B(x-1)}{x^2-1}.$$
 
     Luego $2=(A+B)x+(A-B)$, de lo que se deduce que $A+B=0$ y $A-B=2$. Los valores de $A$ y $B$ son $1$ y $-1$, respectivamente. Nuestra integral queda como sigue: 
     

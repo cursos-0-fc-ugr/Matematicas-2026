@@ -23,7 +23,7 @@ $$x+x+x=3x; \,\, x\cdot 2x = 2x^2; \,\, 3x^4-5x^4=-2x^4.$$
 
 así, podemos escribir potencias (enteras positivas) de la indeterminada y aparecen lo que se llaman *monomios*, que son términos de la forma $ax^m$ donde $a$ representa un coeficiente y el exponente $m$ se llama el *grado* del monomio. Un polinomio, que es una suma finita de monomios, se escribe agrupando todos los monomios del mismo grado hasta tener una expresión de la forma
 
-$$a_0+a_1x+a_2x^2+ \dots +a_nx^n=\Sigma_{i=0}^n a_i x^i,$$ 
+$$a_0+a_1x+a_2x^2+ \dots +a_nx^n=\sum_{i=0}^n a_i x^i,$$
 
 con $a_0, \dots ,a_n$ números; el mayor índice $n$ para el que $a_n\not = 0$ se llama el *grado del polinomio* y el correspondiente coeficiente, $a_n$ es el *coeficiente líder*. Los números distintos de cero pueden considerarse polinomios de grado $0$, y se suele decir que el grado del polinomio $0$ es $- \infty$.
 
@@ -37,7 +37,7 @@ Se suelen escribir los polinomios ordenando los monomios por el grado, bien en s
 
 ## Suma y resta de polinomios
 
-Para sumar polinomios debemos sumar los coeficientes de asociados a una misma potencia de $x$, es decir, tal como se muestra en el ejemplo siguiente:
+Para sumar polinomios debemos sumar los coeficientes asociados a una misma potencia de $x$ tal como se muestra en el ejemplo siguiente:
 
 $$
 \begin{align*}
@@ -103,17 +103,14 @@ $$
 \end{array}
 $$
 
-
 ::: {#exr-2}
 Realiza las siguientes multiplicaciones.
-
 
 1.  $\left(x^5 - \dfrac{1}{5}x^4 - 2 x^3 + 4 x - \dfrac{2}{3}\right) \times \left(\dfrac{3}{5} x^2 - 2 x + \dfrac{1}{2}\right)$
     [
     $= \dfrac{3 x^7}5 - \dfrac{53 x^6}{25} - \dfrac{3 x^5}{10} + \dfrac{39 x^4}{10} + \dfrac{7 x^3}5 - \dfrac{42 x^2}5 + \dfrac{10 x}3 - \frac{1}3$
     ]{#solucion-e2-1 .collapse}. 
     <button id="e2-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
-
 
 2.  $(-3 x^4 - 2 x^3 - 4 x^2 - 2 x - 7) \times (-2 x^4 - 3 x^2 - 4 x - 5)$
     [
@@ -171,9 +168,7 @@ Con este nuevo dividendo necesitamos multiplicar el divisor por [$-\frac{3}{4}x$
     </tbody>
 </table>
 
-
 Finalmente necesitamos multiplicar el divisor $g$ por [$\frac{15}{8}$]{.math style="color:slateblue;"} para igualar los términos líderes, lo que nos lleva a completar el cociente y a llegar al resto:
-
 
 <table>
 <tbody>
@@ -197,7 +192,7 @@ Finalmente necesitamos multiplicar el divisor $g$ por [$\frac{15}{8}$]{.math sty
 Es decir, el cociente es $\frac{3}{2}x^2 - \frac{3}{4}x + \frac{15}{8}$ y el resto es $-\frac{61}{24}x + 1$:
 
 $$
-3x^4+3x^2 -\frac{2}3x+1=(2x^2+x)\left(\frac{3}2x^2-\frac{3}4 x-\frac{15}8\right)-\frac{61}{24}x+1
+3x^4+3x^2 -\frac{2}3x+1=(2x^2+x)\left(\frac{3}2x^2-\frac{3}4 x+\frac{15}8\right)-\frac{61}{24}x+1
 $$
 
 A continuación mostramos otro ejemplo:
@@ -231,14 +226,14 @@ Puedes hacer más ejemplos en [esta página](http://weitz.de/poly/).
 
 Este método es especial para dividir un polinomio $a_0 + a_1 x + \dots a_n x^n$ entre un binomio de la forma $x-r$. En este caso el cociente tendrá grado $n-1$ y el resto grado $0$ o $-\infty$, es decir,
 
-$$a_0 + a_1 x + \dots a_n x^n = (b_0 + b_1 x + \dots + b_{n-1} x^{n-1}) (x-r) + s.$$
+$$a_0 + a_1 x + \dots + a_n x^n = (b_0 + b_1 x + \dots + b_{n-1} x^{n-1}) (x-r) + s.$$
 
 Para realizar la división debemos calcular $s, b_0, b_1, \dots, b_{n-1}$. Para calcularlos vamos a desarrollar la multiplicación:
 
 $$\begin{split}
-a_0 + a_1 x + \dots a_n x^n &= (b_0 + b_1 x + \dots + b_{n-1} x^{n-1}) (x-r) + s \\
-&= b_0 x + b_1 x^2 + \dots b_{n-1} x^n - r b_0 - r b_1 x - \dots - r b_{n-1} x^{n-1} + s \\
-&= (s - r b_0) + (b_0 - r b_1) x + \dots (b_{n-2} - r b_{n-1}) x^{n-1} + b_{n-1} x^n.
+a_0 + a_1 x + \dots + a_n x^n &= (b_0 + b_1 x + \dots + b_{n-1} x^{n-1}) (x-r) + s \\
+&= b_0 x + b_1 x^2 + \dots + b_{n-1} x^n - r b_0 - r b_1 x - \dots - r b_{n-1} x^{n-1} + s \\
+&= (s - r b_0) + (b_0 - r b_1) x + \dots + (b_{n-2} - r b_{n-1}) x^{n-1} + b_{n-1} x^n.
 \end{split}$$
 
 Esto nos da una regla recursiva:
@@ -282,7 +277,7 @@ Por tanto el cociente es $2x^3 + x^2 + \frac{13}{6}x + \frac{13}{9}$ y el resto 
 
 Algunos ejemplos más.
 
-1.  $-\frac{1}{2}x^3 + \frac{5}{3} x^2 + \frac{3}{7}x^2 + \frac{3}{4}$ entre $x+2$
+1.  $-\frac{1}{2}x^3 + \frac{5}{3} x^2 + \frac{3}{7}x + \frac{3}{4}$ entre $x+2$
 
     ![](img-pols/img-7.svg){width="600px" fig-alt="Ruffini"}
 
@@ -313,9 +308,7 @@ Calcula cociente y resto obtenidos al dividir
     <button id="e3-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 :::
 
-
-## raíces de un polinomio y factorización
-
+## Raíces de un polinomio y factorización
 
 Dado un polinomio $p(x)=a_0+a_1x+a_2x^2+ \dots +a_nx^n$, una *raíz* es un número $\alpha$ tal que al evaluar el polinomio en $\alpha$ (sustituir la indeterminada por dicho valor) el resultado es $0$, es decir, $p(\alpha)=0$.
 

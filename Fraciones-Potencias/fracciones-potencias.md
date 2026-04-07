@@ -157,16 +157,14 @@ Simplifica las siguientes expresiones
 \"Elevar a\" no es asociativo. No tiene sentido escribir ${2^3}^4$, pues no es lo mismo $2^{(3^4)}$ que $(2^3)^4$ (el primero vale $2417851639229258349412352$ y el segundo $4096$).
 :::
 
-
 ## Radicales
 
-
-Definimos la raiz n-ésima de un número no negativo $a$ como aquella cantidad no negativa $x$ tal que $x^n=a$, y la denotaremos por $\sqrt[n]{a}$: 
+Definimos la raíz n-ésima de un número no negativo $a$ como aquella cantidad no negativa $x$ tal que $x^n=a$, y la denotaremos por $\sqrt[n]{a}$:
 $$\sqrt[n]{a}=x \text{ implica que } x^n=a.$$
 
 Estamos escogiendo raíces no negativas, si quitamos esa restricción, puede que exista más de una. Por ejemplo, existen dos raíces cuadradas de $1$, pues tanto $(-1)^2$ como $1^2$ valen $1$. También estamos considerando raíces de números no negativos. Como el cuadrado de un número real es siempre no negativo, no podemos encontrar una raíz real cuadrada de un número negativo. Sin embargo, sí podemos encontrar una cúbica. Por ejemplo, $(-1)^3=-1$, por lo que $-1$ es una raíz cúbica de $-1$.
 
-La expresión de los radicales también puede realizarse mediante potencias, si $x=\sqrt[n]{a}$, entonces $x=a^{\frac{1}{n}}$ puesto que 
+La expresión de los radicales también puede realizarse mediante potencias, si $x=\sqrt[n]{a}$, entonces $x=a^{\frac{1}{n}}$ puesto que
 $$x^n= (a^{\frac{1}{n}})^n= a^{\frac{n}{n}}=a^1 = a.$$
 
 La expresión de radicales como potencias con exponentes fraccionarios tiene las mismas propiedades, usando las operaciones correspondientes con dichos números.
@@ -193,7 +191,7 @@ Simplifica las siguientes expresiones:
 
 3.  $\dfrac{(\sqrt{x})^3}{\left(\sqrt[3]{\sqrt[4]{x}}\right)^6}$
     [
-    $= x^{3}$
+    $= x$
     ]{#solucion-e3-3 .collapse}.
     <button id="e3-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 :::

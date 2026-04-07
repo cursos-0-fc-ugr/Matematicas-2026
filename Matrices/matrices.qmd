@@ -92,19 +92,19 @@ entonces esa operación tiene las siguientes propiedades:
 -   es conmutativa ($A+B=B+A$).
 
 
-:::{exr-1}
+::: {#exr-1}
 Calcula la suma de $\begin{pmatrix} 1 & -2 & 3\\ 3 & 4 & -2\end{pmatrix}$ y $\begin{pmatrix} 2 & 3 & -3\\ 3 & 0 & 2\end{pmatrix}$ en $\mathcal M_{2\times 3}(\mathbb{R})$.
+:::
 
 El producto por escalares de matrices tiene las siguientes propiedades. Sean $\lambda, \beta\in K$ y $A,B\in \mathcal M_{m\times n}$. Entonces
 
--   $\lambda (\beta A)=(\lambda\beta)A$,
+- $\lambda (\beta A)=(\lambda\beta)A$,
 
--   $\lambda(A+B)=\lambda A+ \lambda B$,
+- $\lambda(A+B)=\lambda A+ \lambda B$,
 
--   $(\lambda + \beta)A=\lambda A+\beta A$,
+- $(\lambda + \beta)A=\lambda A+\beta A$,
 
--   $1A=A$.
-:::
+- $1A=A$.
 
 Sea $A=(a_{ij})\in \mathcal M_{m\times n}(K)$ y $B=(b_{jk})\in \mathcal M_{n\times p}(K)$. Podemos definir el *producto* de $A$ y $B$ como $AB=C=(c_{ik})\in \mathcal M_{m\times p}(K)$ con 
 $$
@@ -241,7 +241,7 @@ $$
 La notación $f_2\leftarrow f_2-2f_1$ significa que estamos cambiando la segunda fila por el resultado de restarle a la segunda fila dos veces la primera.
 
 
-:::{exr-6}
+::: {#exr-6}
 
 Calcula el determinante de la matriz 
 
@@ -266,7 +266,7 @@ $$
 \alpha_{11} & \alpha_{12} & \ldots & \alpha_{1n}\\
 \alpha_{21} & \alpha_{22} & \ldots & \alpha_{2n}\\
 \vdots & \vdots & \ddots & \vdots \\
-\alpha_{1} & a_{m2} & \ldots & \alpha_{nn}
+\alpha_{n1} & \alpha_{n2} & \ldots & \alpha_{nn}
 \end{pmatrix}.
 $$
 
@@ -357,7 +357,7 @@ $$
 0 & -4 & -8 & -12 \\
 9 & 10 & 11 & 12
 \end{pmatrix}
-\stackrel{f_2\leftarrow f_2-5f_1}{\sim}
+\stackrel{f_2\leftarrow -\frac{1}{4}f_2}{\sim}
 \begin{pmatrix}
 1 & 2 & 3 & 4 \\
 0 & 1 & 2 & 3 \\
@@ -443,4 +443,4 @@ $$
 
 ------------------------------------------------------------------------
 
-[Esta página está basada en los apuntes de J.C. Rosales y P. A. García-Sánchez, [Notas de de Álgebra Lineal y Estructuras Matemáticas](http://hdl.handle.net/10481/43099).]{.small}
+[Esta página está basada en los apuntes de J.C. Rosales y P. A. García-Sánchez, [Notas de Álgebra Lineal y Estructuras Matemáticas](http://hdl.handle.net/10481/43099).]{.small}
