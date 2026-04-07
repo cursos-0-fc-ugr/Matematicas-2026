@@ -1,0 +1,513 @@
+---
+title: Vectores
+title-block-banner: true
+lang: es
+execute:
+  echo: false
+format: 
+  html: 
+    theme: [night, custom.scss]
+    include-in-header: includes-header.html
+    toc: true
+    fontsize: 1.2em
+    page-layout: full
+    format-links: true
+    html-math-method:
+            method: mathjax
+            url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
+---
+
+
+## Definición de espacio vectorial
+
+Sea $K$ un cuerpo (puede ser $\mathbb{Q}$, $\mathbb{R}$ o $\mathbb{C}$). Un
+*espacio vectorial* sobre $K$ es una estructura formada por:
+
+1.  Un conjunto no vacío $V$, a cuyos elementos llamaremos vectores.
+
+2.  Una operación sobre $V$ a la que llamaremos *suma de vectores*, $+\colon V \times V \rightarrow V$ que cumple las propiedades siguientes
+    para cualesquiera $\mathbf{u}$, $\mathbf{v}$, $\mathbf{w}$ en $V$:
+
+    1.  *Asociativa:* $( \mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$.
+
+    2.  *Elemento neutro:* existe un elemento $\mathbf{0}$ en $V$ tal que $\mathbf{u}= \mathbf{u} + \mathbf{0} = \mathbf{0} + \mathbf{u}$.
+
+    3.  *Elemento inverso:* para todo $\mathbf{u}$ existe $-\mathbf{u}$ tal que $\mathbf{0} = (-\mathbf{u}) + \mathbf{u} = \mathbf{u} + (-\mathbf{u})$. Al elemento $-\mathbf{u}$ se le llama *opuesto* de $\mathbf{u}$. Normalmente escribiremos $\mathbf{u} - \mathbf{v}$ en lugar de $\mathbf{u} + (-\mathbf{v})$.
+
+    4.  *Conmutativa:* $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$
+
+3.  Una aplicación $K \times V \rightarrow V,$ que a cada par $( a,\mathbf{v})$ con $a$ en $K$ y $\mathbf{v}$ en $V$ le asigna el vector $a\mathbf{v}$. Esta aplicación, llamada producto por escalares cumple las propiedades siguientes para cualesquiera $\mathbf{u}$, $\mathbf{v}$ en $V$, $a,b$ en $K:$
+
+    1.  $a( \mathbf{u} + \mathbf{v}) = a\mathbf{u} + a\mathbf{v},$
+    2.  $(a + b)\mathbf{u} = a\mathbf{u} + b\mathbf{u},$
+    3.  $a\left( b\mathbf{u} \right) = (ab)\mathbf{u},$
+    4.  $1\mathbf{u} = \mathbf{u}.$
+
+
+:::: {#exm-1}
+Si tomamos $V=\mathbb{R}^2$ y $K=\mathbb{R}$, entonces $V$ es un espacio vectorial sobre $\mathbb{R}$ con la suma de vectores y el producto por escalares definidos de la forma habitual, esto es, para cualesquiera $\mathbf{u}=(u_1,u_2)$, $\mathbf{v}=(v_1,v_2)$ en $V$ y $a$ en $K$:   
+$$\mathbf{u} + \mathbf{v} = (u_1 + v_1, u_2 + v_2)$$
+$$a\mathbf{u} = (au_1, au_2)$$
+
+En la siguiente figura se ilustra cómo es la suma de vectores en $\mathbb{R}^2$. Puedes desplazar los puntos naranjas paca cambiar los vectores y ver cómo se obtiene el vector suma (en verde). Nótese que se forma un paralelogramo para obtener el vector suma, lo que se conoce como la *regla del paralelogramo*. Los segmentos azules son paralelos a los vectores originales y tienen la misma longitud que ellos.
+
+::: {#box2 .jxgbox style="width:70%;height:400px;margin:auto;border:0px;"}
+:::
+
+El producto por escalares se ilustra en la siguiente figura. Puedes desplazar el punto naranja para cambiar el vector y el deslizador para cambiar el escalar y ver cómo se obtiene el vector resultante (en verde).
+
+::: {#box .jxgbox style="width:70%;height:400px;margin:auto;border:0px;"}
+:::
+::::
+
+
+### Propiedades que se deducen de la definición
+
+Teniendo en cuenta las propiedades que definen a un espacio vectorial $V$ sobre $K$, es fácil ver que se cumeplen las siguientes propiedades.
+
+a)  $0\mathbf{u} = \mathbf{0}$, para todo $\mathbf{u}$ en $V$.
+
+b)  $a\mathbf{0} = \mathbf{0}$ para todo $a$ en $K$.
+
+c)  $a (-\mathbf{u}) = (-a)\mathbf{u} = - (a\mathbf{u})$ para todo $\mathbf{u}$en$V$, $a$ en $K$.
+
+d)  $a\mathbf{u} = \mathbf{0}$ sí y sólo si $a = \mathbf{0}$ o $\mathbf{u} = \mathbf{0}.$
+
+e)  $a ( \mathbf{u} - \mathbf{v}) = a\mathbf{u} - a\mathbf{v},$ para todo $\mathbf{u}$, $\mathbf{v}$ en $V$, $a$ en $K$.
+
+f)  $(a - b)\mathbf{u} = a\mathbf{u} - b\mathbf{u},$ para todo $\mathbf{u}$ en $V$, $a,b$ en $K$.
+
+g)  Si $a\mathbf{u} = a\mathbf{v}$ y $a \neq 0,$ entonces $\mathbf{u} = \mathbf{v}.$
+
+h)  Si $a\mathbf{u} = b\mathbf{u}$ y $\mathbf{u} \neq \mathbf{0},$ entonces $a = b.$
+
+
+## Subespacios vectoriales
+
+Un subconjunto $U$ no vacío de un espacio vectorial $V$ (sobre un cuerpo $K$) es un *subespacio vectorial* de $V$ si $U$ con las mismas operaciones (suma de vectores y producto por escalares en $V$) es también un espacio vectorial sobre $K$.
+
+Equivalentemente, un subconjunto $U$ no vacío de un espacio vectorial $V$ es un subespacio vectorial de $V$ si y solo si se cumple que:
+
+1.  Si $\mathbf{u},\mathbf{v} \in U,$ entonces $\mathbf{u} - \mathbf{v} \in U$ ($U$ es un subgrupo del grupo $V$),
+
+2.  Si $a \in K$ y $\mathbf{u} \in U,$ entonces $a\mathbf{u} \in U.$
+
+Estas dos propiedades se cumplen si y sólo si, se verifica que
+
+<center>
+Si $\mathbf{u},\mathbf{v} \in U$ y $a,b \in K,$ entonces $a\mathbf{u} + b\mathbf{v} \in U,$
+</center>
+
+es decir, $U$ es cerrado para combinaciones lineales de sus elementos.
+
+
+::: {#exm-2}
+
+Si $K$ es un cuerpo, entonces para cualquier entero positivo $n$, $K^{n}$ es un espacio vectorial sobre $K$. En particular, para cada entero positivo $n$, el conjunto $\mathbb{R}^{n}$ de las $n$-uplas $\mathbf{x} = (x_{1},x_{2},\dots,x_{n})$ de componentes reales es un espacio vectorial con las operaciones:
+
+-   suma de vectores:
+  $$
+  \mathbf{x}\mathbf{+ y} = (x_{1},x_{2},\dots,x_{n}) + \left( y_{1},y_{2},\dots,y_{n} \right) = (x_{1} + y_{1},x_{2} + y_{2},\dots,x_{n} + y_{n}).
+  $$
+
+-   producto por escalar
+     $$
+     a\mathbf{x} = a ( x_{1},x_{2},\dots,x_{n} ) = (a x_{1},a x_{2},\dots,a x_{n}).
+     $$
+
+El subconjunto $U = \{(x,0,\dots,0) : x \in \mathbb{R}\}$ de $n$-uplas con todas las coordenadas igual a 0 excepto la primera, es un subespacio vectorial de $\mathbb{R}^{n}.$ En efecto,
+
+$$
+(x,0,\dots,0) - (y,0,\dots,0)= (x - y,0,\dots,0),
+$$
+
+lo que muestra que para cualesquiera $\mathbf{x}, \mathbf{y} \in U,$ $\mathbf{x} - \mathbf{y} \in U$. Además, para todo $a \in \mathbb{R}$ y
+$\mathbf{x} = (x,0,\dots,0) \in U$
+
+$$a\mathbf{x} = a(x,0,\dots,0) = (ax,0,\dots,0).$$
+
+Luego $a\mathbf{x} \in U.$
+
+:::
+
+
+::: {#exm-3}
+
+Si $K$ es un cuerpo, entonces para cualesquiera enteros positivos $n$ y $m$, $\mathcal{M}_{m \times n}(K)$ (el conjunto de todas las matrices $m \times n$ con entradas en $K$) es un espacio vectorial sobre $K.$ En particular, $\mathcal{M}_{n}( \mathbb{R} )$ (matrices cuadradas de orden $n$ con coeficientes en $\mathbb{R}$) es un espacio vectorial con las operaciones habituales de suma de matrices (suma de vectores) y el producto por números reales (producto por escalares). Son subespacios vectoriales de $\mathcal{M}_{n}\left( \mathbb{R} \right)$: 
+
+- el subconjunto de todas las matrices que tienen la primera entrada nula, 
+
+- el subconjunto de todas las matrices triangulares superiores, 
+
+- el subconjunto formado por las matrices simétricas, etc.
+
+:::
+
+::: {#exm-4}
+
+El conjunto de las funciones reales definidas en un dominio $D\subseteq \mathbb{R}$, $V = \mathcal{F}(D,\mathbb{R})$, es un espacio vectorial sobre $\mathbb{R}$, con las operaciones suma de vectores y producto por escalares siguientes:
+
+- $(\mathbf{f} + \mathbf{g})(x) = \mathbf{f}(x) + \mathbf{g}(x)$, para todo $x \in \mathbb{R}$.
+
+-  $(a\mathbf{f})(x) = a\mathbf{f}(x)$, para todo $x \in \mathbb{R}$.
+
+El subconjunto $U = \mathcal{C}(D,\mathbb{R})$ de las funciones reales continuas en $D$, es un subespacio vectorial de $V = \mathcal{F}(D,\mathbb{R})$.
+
+:::
+
+
+### Subespacio vectorial generado por un conjunto de vectores
+
+Sea $V$ un espacio vectorial sobre el cuerpo $K.$ Dado un subconjunto $S = \left\{ \mathbf{u}_{1},\dots,\mathbf{u}_{n} \right\}$ de vectores en V, se llama *combinación lineal de vectores* de $S$ a todo vector $\mathbf{x}$ que se pueda expresar de la forma
+
+$$
+\mathbf{x} = a_{1}\mathbf{u}_{1} + \cdots + a_{n}\mathbf{u}_{n},
+$$
+
+para convenientes $a_{1},\dots,a_{n} \in K.$ En este caso, se dice también que $\mathbf{x}$ *es combinación lineal de los vectores* $\mathbf{u}_{1},\dots,\mathbf{u}_{n}.$
+
+El conjunto de todas las combinaciones lineales de los vectores de $S = \left\{ \mathbf{u}_{1},\dots,\mathbf{u}_{n} \right\}$, es el
+menor subespacio vectorial de entre todos los subespacios de V que contienen a S (menor respecto a la inclusión). Denotamos dicho subespacio como $\langle S\rangle,$ y diremos que $S$ es un sistema de generadores de $\langle S\rangle.$
+
+$$
+\langle S\rangle = \{ a_{1}\mathbf{u}_{1} + \cdots + a_{n}\mathbf{u}_{n}:a_{1},\dots,a_{n} \in K\}.
+$$
+
+Si $U=\langle S\rangle,$ entonces decimos que $U$ es el subspacio vectorial de $V$ *generado* por el conjunto de vectores $S.$
+
+En la siguiente figura se ilustra el subespacio vectorial generado por dos vectores en $\mathbb{R}^3$. Puedes desplazar los puntos naranjas para cambiar los vectores y ver cómo se obtiene el plano (en azul) que es el subespacio vectorial generado por esos dos vectores.
+
+::: {#box3 .jxgbox style="width:70%;height:400px;margin:auto;border:0px;"}
+:::
+
+
+::: {#exm-5}
+
+En el espacio vectorial $\mathcal{M}_{2}( \mathbb{R})$ consideremos los vectores:
+
+$$\mathbf{u} = \begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix},\quad
+ \mathbf{v} =\begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}.
+$$
+
+El subespacio generado por estos dos vectores, $\{a\mathbf{u} + b\mathbf{v} : a,b \in \mathbb{R}\}$, es el subespacio de las matrices con ceros en la diagonal principal. En efecto, para cualesquiera $a,b \in \mathbb{R},$
+
+$$
+a\mathbf{u} + b\mathbf{v}\mathbf{=}a\begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix} + b\begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}=
+\begin{pmatrix}
+0 & a \\
+0 & 0
+\end{pmatrix} + \begin{pmatrix}
+0 & 0 \\
+b & 0
+\end{pmatrix} = \begin{pmatrix}
+0 & a \\
+b & 0
+\end{pmatrix}.
+$$
+
+:::
+
+
+::: {#exm-6}
+
+En el espacio vectorial de las funciones reales de variable real, $\mathcal{F}(\mathbb{R,R)}$, consideremos los vectores $\mathbf{p}(x) = x$ y $\mathbf{q}(x) = x^{2}$. El subespacio generado por estos dos vectores, $\{ a\mathbf{p} + b\mathbf{q} : a,b \in K\}$, es el subespacio de las funciones polinómicas de grado a lo sumo 2 que pasan
+por el origen de coordenadas. En efecto, para cualesquiera $a,b \in \mathbb{R}$,
+
+$$
+a\mathbf{p}(x) + b\mathbf{q}(x)\mathbf{=}ax + bx^{2}.
+$$
+
+:::
+
+```{ojs}
+JSX=require("jsxgraph");
+pinta = function(){
+    const board = JXG.JSXGraph.initBoard('box', {
+    boundingbox: [-35, 15, 35, -15],
+    axis: true,
+    keepaspectratio: true,
+    defaultAxes: {
+        x:{ticks:{visible:false, majorHeight:5}},
+        y:{ticks:{visible:false, majorHeight:5}}
+    },
+    showCopyright: false,
+    showNavigation: false,
+    showLogo: false
+    });
+    let A = board.create('point', [0, 0], {name: '', visible: false}, {fixed: true});
+    let B = board.create('point', [2, 3], {name: '', size: 3, color: 'orange'});
+    let s = board.create('slider', [[1, -10], [12, -10], [-5, 2, 5]], {name:'k'});
+    let l = () => s.Value();
+    //C=  board.create('point', [()=>B.X()*l, ()=>B.Y()*l], {name: 'C', size: 3, color: 'orange'});
+    let vector2 = board.create('arrow', [A, [()=>B.X()*l(), ()=>B.Y()*l()]], {color: 'green', fixed: true});
+    let vector = board.create('arrow', [A, B], {color: 'black', fixed: true, size:2});
+}
+//viewof l=Inputs.range([-10, 10], {step: 0.1, label: "k"})
+pv = pinta()
+
+
+pinta2 = function(){
+    const board = JXG.JSXGraph.initBoard('box2', {
+    boundingbox: [-35, 15, 35, -15],
+    axis: true,
+    keepaspectratio: true,
+    defaultAxes: {
+        x:{ticks:{visible:false, majorHeight:5}},
+        y:{ticks:{visible:false, majorHeight:5}}
+    },
+    showCopyright: false,
+    showNavigation: false,
+    showLogo: false
+    });
+    let A = board.create('point', [7, -2], {name: '', size: 3, color: 'orange'});
+    let B = board.create('point', [5, 7], {name: '', size: 3, color: 'orange'});
+    let AmB = board.create('point', [()=>A.X() + B.X(), ()=>A.Y() + B.Y()], {visible: false});
+    let vectorA = board.create('arrow', [[0, 0], A], {color: 'black', fixed: true, size:2});
+    let vectorB = board.create('arrow', [[0, 0], B], {color: 'black', fixed: true, size:2});
+    let vectorSuma = board.create('arrow', [[0, 0], AmB], {color: 'green', fixed: true, size:4});    
+    let segmentoA = board.create('segment', [A, AmB], {color: 'blue', fixed: true, size:2, dash: 1});
+    let segmentoB = board.create('segment', [B, AmB], {color: 'blue', fixed: true, size:2, dash: 1});
+
+}
+
+pv2 = pinta2()
+
+pinta3 = function(){
+
+    const board = JXG.JSXGraph.initBoard('box3', {
+        boundingbox: [-10, 10, 10, -10],
+        axis: false,
+        showNavigation: false,
+        showCopyright: false,
+        keepaspectratio: true,
+        pan: { enabled: true },      // Disable pan for 3D view
+        zoom: { enabled: true }      // Disable zoom for 3D view
+    });
+
+    const view = board.create(
+        'view3d',
+        [[-10, -10], [15, 15],
+        [[-15, 15], [-15, 15], [-15, 15]]],
+        {
+            depthOrder: {
+                enabled: true
+            },
+            projection: 'central',
+            xPlaneRear: {visible: false,fillOpacity: 0.2},
+            yPlaneRear: {visible: false, fillOpacity: 0.2},
+            zPlaneRear: {visible: false, fillOpacity: 0.2}
+        }
+    );
+
+    var O = view.create('point3d', [0, 0, 0], {size: 2, color: 'black',visible: false, fixed: true});
+    var A = view.create('point3d', [-7, 0, 5], {size: 2,name: '', color: 'orange'});
+    var B = view.create('point3d', [8, 8, -4], {size: 2,name: '', color: 'orange'});
+    var vectorA = view.create('line3d', [O, A], {color: 'black', size: 2, fixed: true, lastArrow: {type: 1}});
+    var vectorB = view.create('line3d', [O, B], {color: 'black', size: 2, fixed: true, lastArrow: {type: 1}});
+
+
+    // Infinite Plane by point and two directions
+    var plane = view.create('plane3d', [O, A, B, [-Infinity, Infinity], [-Infinity, Infinity]], {color: 'blue', fillOpacity: 0.2, visible: true, fixed: true});
+}
+
+pv3 = pinta3()
+
+```
+
+
+
+## Bases de un espacio vectorial
+
+### Dependencia e independencia lineal
+
+Dado un espacio vectorial $V$ sobre el cuerpo $K,$ los vectores $\mathbf{v}_{1},\dots,\mathbf{v}_{n}$ se dice que son *linealmente
+dependientes* si existe algún $\mathbf{v}_{i}$que es combinación lineal del resto. En otro caso, se dice que son *linealmente independientes*. Equivalentemente, $\mathbf{v}_{1},\dots,\mathbf{v}_{n}$ son linealmente dependientes si existen $a_{1},\dots,a_{n} \in K$, no todos nulos,
+tales que
+
+$$
+a_{1}\mathbf{v}_{1} + \dots + a_{n}\mathbf{v}_{n} = \mathbf{0}\mathbf{.}
+$$
+
+O lo que es lo mismo, $\mathbf{v}_{1},\dots,\mathbf{v}_{n}$ son linealmente independientes si $a_{1}\mathbf{v}_{1} + \dots + a_{n}\mathbf{v}_{n} = \mathbf{0}$ sólo
+se cumple cuando $a_{1} = a_{2} = \dots = a_{n} = 0$.
+
+
+::: {#exm-7}
+El conjunto $\{(1,1,0),(0,1,1),(1,0,1)\} \subset \mathbb{R}^{3}$ es un conjunto de vectores linealmente independientes. Si no lo fuese, el sistema lineal de ecuaciones
+
+$$
+\begin{pmatrix}
+1 & 0 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 1
+\end{pmatrix}\begin{pmatrix}
+x \\
+y \\
+z
+\end{pmatrix} = \begin{pmatrix}
+0 \\
+0 \\
+0
+\end{pmatrix}
+$$
+
+tendría solución distinta de $x = y = z = 0,$ pero esto es imposible, pues el sistema es compatible determinado, y la única solución es por tanto $x = y = z = 0,$ por ser el rango de la matriz de coeficientes tres.
+
+:::
+
+::: {.callout-important}
+Nótese que el rango de la matriz de coeficientes y el de la ampliada en el sistema de ecuaciones anterior siempre es el mismo, y el número de incógnitas es el número de vectores del que partimos. 
+
+Un razonamiento análogo al visto en el ejemplo muestra que $S = \{\mathbf{v}_{1},\dots,\mathbf{v}_{m}\} \subseteq K^{n}$ es un conjunto de vectores linealmente independiente si y sólo si la matriz cuyas columnas (o filas) son los vectores de $S$ tiene rango exactamente $m.$ En particular, si son linealmente independientes, entonces
+$m \leq n.$
+
+:::
+
+#### Propiedades elementales
+
+1.  $S$ es un conjunto de vectores linealmente dependientes si y sólo si existe $\mathbf{v} \in S$ tal que $\mathbf{v} \in \langle S\backslash\{\mathbf{v}\}\rangle.$
+
+2.  Si $\mathbf{0} \in S,$ entonces $S$ es un conjunto de vectores linealmente dependientes.
+
+3.  Si en un conjunto de vectores linealmente dependientes, cambiamos un vector por una combinación lineal (no nula) de los demás, el conjunto sigue siendo linealmente dependiente.
+
+4.  Si $S$ es un conjunto de vectores linealmente dependientes, entonces para todo $\mathbf{v} \in V,$ $S \cup \{\mathbf{v}\}$ también es un conjunto de vectores linealmente dependientes.
+
+5.  Si $S,$ con más de dos elementos, es un conjunto de vectores linealmente independientes, entonces para todo $v \in S,$ el conjunto $S\backslash\{\mathbf{v}\}$ también es un conjunto de vectores linealmente independientes.
+
+### Base y dimensión de un espacio vectorial
+
+Sea $V$ un espacio vectorial sobre un cuerpo $K$. Una *base* de $V$ es un subconjunto $B$ de vectores linealmente independientes de $V$ tal que $V = \langle B\rangle.$
+
+De la definición ($B$ es sistema generador y sus vectores son linealmente independientes), se tiene que si $B = \{\mathbf{v}_{1},\dots,\mathbf{v}_{n}\}$ es una base de $V,$ entonces para todo vector $\mathbf{v} \in V,$ existen $a_{1},\dots,a_{n} \in K$ únicos tales que $\mathbf{v} = a_{1}\mathbf{v}_{1} + \cdots + a_{n}\mathbf{v}_{n}.$ A la $n$-upla $\left( a_{1},\dots,a_{n} \right)$ se le llama *coordenadas* del vector $\mathbf{v}$ respecto de la base $B.$ Escribiremos $\mathbf{v} \equiv ( a_{1},\dots,a_{n} )_{B}$ para indicar que $\left( a_{1},\dots,a_{n} \right)$ son las coordenadas de $\mathbf{v}$ respecto de la base $B.$
+
+Todo espacio vectorial tiene al menos una base. Además, todas sus bases tienen el mismo cardinal. Al cardinal de una base de $V$ lo denotamos por $\dim(V),$ y nos referiremos a él como la *dimensión* de $V.$
+
+::: {#exm-8}
+
+Tres vectores libres que no tengan representantes en un mismo plano, forman siempre una base del espacio vectorial de los vectores libres en el espacio tridimensional.
+
+:::
+
+::: {#exm-9}
+
+Si $K$ es un cuerpo, $\dim\left( K^{n} \right) = n$ y  $\dim( \mathcal{M}_{m \times n}(K) ) = nm$.
+
+:::
+
+
+::: {#exm-10}
+
+En particular, una base de $\mathbb{R}^{n}$ es la llamada base
+canónica formada por las $n$-uplas $\mathbf{e}_{1} = (1,0,\ldots,\ 0)$, $\mathbf{e}_{2} = (0,1,\ldots,\ 0),$ ... ,
+$\mathbf{e}_{n} = (0,\ldots,\ 0,1)$.
+
+Una base de $\mathcal{M}_{2}\left( \mathbb{R} \right)$ está formada
+por los vectores:
+
+$\mathbf{e}_{11} = \begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}$, $\mathbf{e}_{12} =$ $\begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}$, $\mathbf{e}_{21} = \begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}$, $\mathbf{e}_{22} =$ $\begin{pmatrix}
+0 & 0 \\
+0 & 1
+\end{pmatrix}.$
+
+Nótese que son vectores linealmente independientes,
+
+$$\begin{pmatrix}
+0 & 0 \\
+0 & 0
+\end{pmatrix} = {a_{11}\mathbf{e}}_{11} + a_{12} \mathbf{e}_{12} + a_{21} \mathbf{e}_{21} + a_{22}\mathbf{e}_{22} =
+\begin{pmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{pmatrix}
+$$
+
+equivale a 
+
+$$
+a_{11} = a_{12} = a_{21} = a_{22} = 0
+$$
+
+Y que toda matriz $\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}$ puede expresarse como combinación lineal de dichos
+vectores:
+
+$$
+\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix} = {a\mathbf{e}}_{11} + b \mathbf{e}_{12} + c
+\mathbf{e}_{21} + d\mathbf{e}_{22}. 
+$$
+
+:::
+
+
+#### Propiedades
+
+1. Ampliación de la base. Si $\dim(V) = n$ y $\{\mathbf{v}_{1},\dots,\mathbf{v}_{m}\}$ es un conjunto de vectores linealmente independientes de $V,$ entonces $m \leq n.$ Además existen $\mathbf{v}_{m + 1},\dots,\mathbf{v}_{n} \in V,$ de forma que $\{\mathbf{v}_{1},\dots,\mathbf{v}_{m},\mathbf{v}_{m + 1},\dots,\mathbf{v}_{n}\}$ es una base de $V.$
+
+2. Reducción de la base. Si $\dim(V) = n$ y $S = \{\mathbf{v}_{1},\dots,\mathbf{v}_{m}\}$ es un sistema de generadores de $V,$ entonces $m \geq n.$ Además existen $\mathbf{v}_{i_{1}},\dots,\mathbf{v}_{i_{n}} \in S,$ de forma que $\{\mathbf{v}_{i_{1}},\dots,\mathbf{v}_{i_{n}}\}$ es una base de $V.$
+
+
+::: {#exm-11}
+
+
+Considera los siguientes conjuntos de vectores de $\mathbb{R}^{3}$.
+
+$$S = \{(1,0,0),\ (2,3,0)\}$$
+
+$$S^{'} = \{(1,0,0),\ (2,3,0),\ (4,5,6)\}$$
+
+$$S^{''} = \{(1,0,0),\ (2,3,0),\ (4,5,6),\ (7,8,9)\}$$
+
+El primer conjunto es linealmente independiente pero no genera $\mathbb{R}^{3}$ (observa que la dimensión de $\mathbb{R}^{3}$ es 3).
+
+El segundo es una base de $\mathbb{R}^{3}$ y el tercero, aunque genera $\mathbb{R}^{3}$ no es linealmente independiente.
+
+:::
+
+::: {#exm-12}
+
+Los vectores $(0,1),$ $(1, - 1)$ son linealmente independientes en $\mathbb{R}^{2},$ y por tanto $B = \{(0,1),(1, - 1)\}$ es una base de
+$\mathbb{R}^{2}$ (pues la dimensión de $\mathbb{R}^{2}$ es 2).
+
+Para calcular las coordenadas de un vector de $\mathbb{R}^{2}$ en dicha base, por ejemplo, $(5,1)$, debemos obtener los escalares $x,y$ en $\mathbb{R}$ tales que $x(0,1) + y(1, - 1) = (5,1).$ Esto nos lleva a resolver el sistema de ecuaciones (cuya matriz de coeficientes tiene por columnas los vectores de la base).
+
+$$\begin{pmatrix}
+0 & 1 \\
+1 & - 1
+\end{pmatrix}\begin{pmatrix}
+x \\
+y
+\end{pmatrix} = \begin{pmatrix}
+5 \\
+1
+\end{pmatrix}.$$
+
+La solución a este sistema es $x = 6,$ $y = 5,$ que son las coordenadas de $(5,1)$ respecto de la base $B.$
+
+:::
