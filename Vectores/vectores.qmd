@@ -177,7 +177,8 @@ Si $U=\langle S\rangle,$ entonces decimos que $U$ es el subspacio vectorial de $
 
 En la siguiente figura se ilustra el subespacio vectorial generado por dos vectores en $\mathbb{R}^3$. Puedes desplazar los puntos naranjas para cambiar los vectores y ver cómo se obtiene el plano (en azul) que es el subespacio vectorial generado por esos dos vectores.
 
-::: {#box3 .jxgbox style="width:70%;height:400px;margin:auto;border:0px;"}
+::: {#box3 .jxgbox style="width:70%;height:300px;margin:auto;border:0px;"}
+
 :::
 
 
@@ -222,11 +223,11 @@ $$
 
 ::: {#exm-6}
 
-En el espacio vectorial de las funciones reales de variable real, $\mathcal{F}(\mathbb{R,R)}$, consideremos los vectores $\mathbf{p}(x) = x$ y $\mathbf{q}(x) = x^{2}$. El subespacio generado por estos dos vectores, $\{ a\mathbf{p} + b\mathbf{q} : a,b \in K\}$, es el subespacio de las funciones polinómicas de grado a lo sumo 2 que pasan
+En el espacio vectorial de las funciones reales de variable real, $\mathcal{F}(\mathbb{R,R)}$, consideremos los vectores $\mathbf{p}(x) = x$ y $\mathbf{q}(x) = x^{2}$. El subespacio generado por estos dos vectores, $\{ a\mathbf{p}(x) + b\mathbf{q}(x) : a,b \in K\}$, es el subespacio de las funciones polinómicas de grado a lo sumo dos que pasan
 por el origen de coordenadas. En efecto, para cualesquiera $a,b \in \mathbb{R}$,
 
 $$
-a\mathbf{p}(x) + b\mathbf{q}(x)\mathbf{=}ax + bx^{2}.
+a\mathbf{p}(x) + b\mathbf{q}(x) = ax + bx^{2}.
 $$
 
 :::
@@ -326,6 +327,26 @@ pv3 = pinta3()
 
 ```
 
+
+::: {#exr-1}
+
+Sea $U=\{ (x,y,z) \in \mathbb{Q}^3 : x+2y-z=0\}$. Demuestra que $U$ es un subespacio vectorial de $\mathbb{Q}^3$ y encuentra una base de $U.$ <button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e1-1 .collapse}
+Tomemos $\mathbf{u} = (x_{1},y_{1},z_{1})$ y $\mathbf{v} = (x_{2},y_{2},z_{2})$ en $U,$ y $a,b \in \mathbb{Q}.$ Tenemos que probar que $a\mathbf{u} + b\mathbf{v} \in U.$
+
+Nótese que, 
+$$a\mathbf{u} + b\mathbf{v} = (ax_{1} + bx_{2}, ay_{1} + by_{2}, az_{1} + bz_{2}),$$
+
+y como $x_{1} + 2y_{1} - z_{1} = 0$ y $x_{2} + 2y_{2} - z_{2} = 0,$ se tiene que
+
+$$(ax_{1} + bx_{2}) + 2(ay_{1} + by_{2}) - (az_{1} + bz_{2}) = a(x_{1} + 2y_{1} - z_{1}) + b(x_{2} + 2y_{2} - z_{2}) = 0.$$
+
+Esto demuestra $a\mathbf{u} + b\mathbf{v} \in U.$
+:::
+
+
+:::
 
 
 ## Bases de un espacio vectorial
@@ -497,7 +518,8 @@ $\mathbb{R}^{2}$ (pues la dimensión de $\mathbb{R}^{2}$ es 2).
 
 Para calcular las coordenadas de un vector de $\mathbb{R}^{2}$ en dicha base, por ejemplo, $(5,1)$, debemos obtener los escalares $x,y$ en $\mathbb{R}$ tales que $x(0,1) + y(1, - 1) = (5,1).$ Esto nos lleva a resolver el sistema de ecuaciones (cuya matriz de coeficientes tiene por columnas los vectores de la base).
 
-$$\begin{pmatrix}
+$$
+\begin{pmatrix}
 0 & 1 \\
 1 & - 1
 \end{pmatrix}\begin{pmatrix}
@@ -506,8 +528,37 @@ y
 \end{pmatrix} = \begin{pmatrix}
 5 \\
 1
-\end{pmatrix}.$$
+\end{pmatrix}.
+$$
 
 La solución a este sistema es $x = 6,$ $y = 5,$ que son las coordenadas de $(5,1)$ respecto de la base $B.$
 
 :::
+
+
+::: {#exr-2}
+
+Demuestra que $\{(1,1),(-1,1)\}$ es una base de $\mathbb{R}^{2}.$ Encuentra las coordenadas de $(2,3)$ respecto de dicha base. <button id="e2-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e2-1 .collapse}
+
+Por lo que hemos visto anteriormente, para demostrar que $\{(1,1),(-1,1)\}$ es una base de $\mathbb{R}^{2},$ basta con comprobar que los vectores son linealmente independientes, y para ello que el rango de la matriz cuyas columnas son esos vectores es dos. De ser así, para encontrar las coordenadas de $(2,3)$ respecto de dicha base, basta con resolver el sistema de ecuaciones (en forma matricial)
+
+$$
+\begin{pmatrix}1 & -1 \\
+1 & 1
+\end{pmatrix}\begin{pmatrix}x \\
+y
+\end{pmatrix} = \begin{pmatrix}2 \\ 3
+\end{pmatrix}.
+$$
+
+El rango de la matriz de coeficientes es dos, por lo que los vectores son linealmente independientes y forman una base de $\mathbb{R}^{2}.$ Eso hace además que el sistema sea compatible determinado, y la única solución es $x = \frac{5}{2},$ $y = \frac{1}{2}.$ Luego las coordenadas de $(2,3)$ respecto de la base $\{(1,1),(-1,1)\}$ son $\left( \frac{5}{2},\frac{1}{2} \right).$
+
+:::
+:::
+
+
+---------
+
+[Esta página ha sido confeccionada por María Burgos y Pedro A. García Sánchez. Las representaciones gráficas se han realizado con [JSXGraph](https://jsxgraph.org/).]{.small}
