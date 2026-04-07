@@ -478,11 +478,11 @@ $$
 
 Considera los siguientes conjuntos de vectores de $\mathbb{R}^{3}$.
 
-$$S = \{(1,0,0),\ (2,3,0)\}$$
+$$S = \{(1,0,0),\ (2,3,0)\},$$
 
-$$S^{'} = \{(1,0,0),\ (2,3,0),\ (4,5,6)\}$$
+$$S^{'} = \{(1,0,0),\ (2,3,0),\ (4,5,6)\},$$
 
-$$S^{''} = \{(1,0,0),\ (2,3,0),\ (4,5,6),\ (7,8,9)\}$$
+$$S^{''} = \{(1,0,0),\ (2,3,0),\ (4,5,6),\ (7,8,9)\}.$$
 
 El primer conjunto es linealmente independiente pero no genera $\mathbb{R}^{3}$ (observa que la dimensión de $\mathbb{R}^{3}$ es 3).
 
