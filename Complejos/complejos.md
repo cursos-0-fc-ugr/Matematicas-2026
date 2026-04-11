@@ -4,7 +4,7 @@ title-block-banner: true
 lang: es
 format: 
   html: 
-    theme: [night, custom.scss]
+    # theme: [night, custom.scss]
     include-in-header: includes-header.html
     fontsize: 1.2em
     toc: true

@@ -1,0 +1,39 @@
+project:
+  type: website
+
+website:
+  title: "VSGS-2026"
+  back-to-top-navigation: true
+  # navbar:
+  #   left:
+  #     - text: "Home"
+  #       href: index.qmd
+  #     - text: "Committees"
+  #       href: committees.qmd
+  #     - text: "Schedule"
+  #       href: schedule.qmd
+  #     - text: "Participants"
+  #       href: participants.qmd
+  #     - text: "Venue"
+  #       href: how-to-arrive.qmd
+
+  page-footer: 
+    right: Made with [Quarto](https://quarto.org/)
+    #right: "Maintenance: the organizers"
+
+format:
+  html:
+    theme: 
+         - sandstone
+         - custom.scss
+    fontsize: 1.1em
+    css: styles.css
+    toc: true
+    sidebar: false
+    html-math-method:
+      method: mathjax
+      url: https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js
+
+
+
+

@@ -4,7 +4,7 @@ title-block-banner: true
 lang: es
 format: 
   html: 
-    theme: [night, custom.scss]
+   #  theme: [night, custom.scss]
     include-in-header: includes-header.html
     toc: true
     fontsize: 1.2em
@@ -150,7 +150,7 @@ Sean $A$ y $B$ conjuntos.
 
     Por ejemplo, el complemento de $\{1,2\}$ en $\{1,2,3,4\}$ es $\{3,4\}$.
 
-    #### Leyes de DeMorgan.
+    #### Leyes de DeMorgan
 
     Dados $A$ y $B$ subconjuntos de $X$, se tiene que
     $$\overline{A\cap B}=\overline{A}\cup \overline{B},$$ $$\overline{A\cup B}=\overline{A}\cap \overline{B}.$$

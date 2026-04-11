@@ -1,0 +1,45 @@
+---
+title: Cursos 0 Matemáticas
+subtitle: Facultad de Ciencias, Universidad de Granada
+title-block-banner: true
+toc: false
+page-layout: full
+---
+
+Curso cero para matemáticas en la ETSIIT y Facultad de Ciencias de la Universidad de Granada. Puedes encontrar otros cursos cero de nuestro centro en este [enlace](https://cursos-0-fc-ugr.github.io/).
+
+Se han tomado como base las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana, Pilar Muñoz Rivas, Javier Lobillo Borrero y Evangelina Santos Aláez para el Curso Cero de la ETSIIT de la Universidad de Granada
+
+La maquetación e inclusión de gráficos la ha llevado a cabo Pedro A. García Sánchez; ejemplos desarrollados con la ayuda de María Burgos
+
+Este respositorio se pude visualizar en [GitHub pages](https://pedritomelenas.github.io/Curso-0-Matematicas).
+
+Si encuentra algún error, o quiere que se introduzca algún contenido adicional, por favor, comuníquenoslo usando el [gestor de incidencias](https://github.com/cursos-0-fc-ugr/Matematicas/issues) de este repositorio.
+
+
+## Contenidos
+
+1. [Conjuntos y aplicaciones](Conjuntos/conjuntos.md)
+1. [Complejos](Complejos/complejos.md)
+1. [Fracciones y potencias](Fracciones-Potencias/fracciones-potencias.md)
+1. [Polinomios](Polinomios/polinomios.md)
+1. [Fracciones algebraicas](Fracciones-algebraicas/fracciones-algebraicas.qmd)
+2. [Ecuaciones polinomiales](Ecuaciones%20polinomiales/ecuaciones-polinomicas.qmd)
+3. [Matrices](Matrices/matrices.qmd)
+3. [Sistemas de ecuaciones lineales](Sistemas-ecuaciones/sistemas-ecuaciones.qmd)
+3. [Inecuaciones](Inecuaciones/inecuaciones.qmd)
+3. [Vectores](Vectores/vectores.qmd)
+4. [Funciones elementales](Funciones%20elementales/funciones-elementales.qmd)
+5. [Límites y continuidad](Limites-continuidad/limites.qmd)
+6. [Derivadas](Derivadas/derivadas.qmd)
+7. [Derivadas y aplicaciones](Derivadas-aplicaciones/derivadas-aplicaciones.qmd)
+10. [Integrales](Integrales/integrales.qmd)
+
+
+## Referencias
+
+Para simplificación algebraica utilizamos [algebrite](http://algebrite.org)
+
+Para la visualización de funciones usamos [JSXGraph](http://jsxgraph.uni-bayreuth.de)
+
+Estos contenidos forman parte del FIDO "IMPLEMENTACIÓN DE CURSOS CERO EN LA PLATAFORMA PRADO2 PARA LAS TITULACIONES DE LA FACULTAD DE CIENCIAS" de la Convocatoria de Proyectos de Innovación Docente y Buenas Prácticas del Plan FIDO UGR 2016-2018 (Universidad de Granada), del PID  “MANTENIMIENTO Y MEJORA DE LOS CURSOS CERO DE LA FACULTAD DE CIENCIAS”, de la Convocatoria  de Proyectos de Innovación y Buenas Prácticas Docentes 2018/2020, en la modalidad de proyectos coordinados, y del PID 25-64 "Adaptación a la LOMLOE de los cursos 0 de la Facultad de Ciencias" de la convocatoria Proyectos de Innovación y Buenas Prácticas Docentes (curso 2026/25) de la Universidad de Granada.

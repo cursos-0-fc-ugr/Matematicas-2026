@@ -6,7 +6,7 @@ execute:
   echo: false
 format: 
   html: 
-    theme: [night, custom.scss]
+    # theme: [night, custom.scss]
     include-in-header: includes-header.html
     toc: true
     fontsize: 1.2em
@@ -183,14 +183,14 @@ Resolver cada una de las inecuaciones siguientes:
     <button id="e3-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
     ::: {#solucion-e3-2 .collapse}
-    Solución: $ 4(2-\sqrt{3})\le x\le 4(2+\sqrt{3})$.
+    Solución: $4(2-\sqrt{3})\le x\le 4(2+\sqrt{3})$.
     :::
 
 3.  $2x^2-2x+9\le x^2-5x+7$.
     <button id="e3-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
     ::: {#solucion-e3-3 .collapse}
-    Solución: $ -2 \le x\le -1$.
+    Solución: $-2 \le x\le -1$.
     :::
 :::
 
