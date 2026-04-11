@@ -6,12 +6,8 @@ format:
   html: 
     include-in-header: includes-header.html
     toc: true
-    fontsize: 1.2em
     page-layout: full
     format-links: true
-    html-math-method:
-            method: mathjax
-            url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
 ---
 
 ## Fracciones

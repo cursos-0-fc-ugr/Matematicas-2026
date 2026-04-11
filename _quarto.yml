@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "VSGS-2026"
+  title: "Cursos cero matemáticas"
   back-to-top-navigation: true
   # navbar:
   #   left:
@@ -26,7 +26,7 @@ format:
     theme: 
          - sandstone
          - custom.scss
-    fontsize: 1.1em
+    fontsize: 1.2em
     css: styles.css
     toc: true
     sidebar: false

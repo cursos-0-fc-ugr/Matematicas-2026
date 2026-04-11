@@ -41,7 +41,7 @@
       html: 
         include-in-header: includes-header.html
         theme: [night, custom.scss]
-        fontsize: 1.2em
+        # fontsize: 1.2em
         toc: true
         page-layout: full
         format-links: true
