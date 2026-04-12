@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{moodle}
+\begin{document}
+\begin{quiz}{Matemáticas/Vectores}
+ 
+
+\begin{multi}[shuffle=true,numbering=none, feedback={
+    Ni $U$ ni $V$ son subespacios vectoriales de $\mathbb{R}^3$ (por ejemplo, $(1,0,0), (0,1,0)\in U$ pero $(1,1,0)\notin U$, y lo mismo ocurre con $V$). La dimensión de $W$ es 1, ya que $W$ es el conjunto de los vectores de la forma $(0,-2z,z)$, es decir, $W$ está generado por el vector $(0,-2,1)$.
+}]{Subespacios vectoriales}
+
+Sean los subconjuntos $U$, $V$, $W$ de $\mathbb{R}^3$ definidos como:
+\begin{itemize}
+    \item $U=\{(x,y,z)\in \mathbb{R}^3: xyz=0\}$,
+    \item $V=\{(x,y,z)\in \mathbb{R}^3: x+y+z=1\}$,
+    \item $W=\{(x,y,z)\in \mathbb{R}^3: x=0, y+2z=0\}$.
+\end{itemize}
+
+Identifica la respuesta correcta: 
+
+\item $U$ es subespacio vectorial de $\mathbb{R}^3$ pero $V$ no lo es.
+\item $V$ es subespacio vectorial de $\mathbb{R}^3$ pero $U$ no lo es.
+\item* $\dim(W)=1$.
+
+\end{multi}
+
+\begin{multi}[shuffle=true,numbering=none, feedback={
+    El que $V$ sea espacio vectorial es debido a que si los límites de $f$ y $g$  en el infinito existen, entonces el límite de la suma es la suma de los límites y el límite saca escalares. En cambio, $U$ no es espacio vectorial porque $f(x)=x$ está en $U$ pero $2f(x)=2x$ no lo está. Finalmente, $W$ es subespacio vectorial, ya que si $f$ y $g$ cumplen la condición dada, entonces $af+bg$ también la cumple para cualquier $a,b\in \mathbb{R}$.
+}]{Subespacios vectoriales}
+Sean los subconjuntos $U$, $V$, $W$ del espacio vectorial de las funciones reales de variable real, $\mathcal{F}(\mathbb{R},\mathbb{R})$, dados por 
+\begin{itemize}
+    \item $U=\{f\in \mathcal{F}(\mathbb{R},\mathbb{R}): f(1)=1+f(0)\}$,
+    \item $V=\{f\in \mathcal{F}(\mathbb{R},\mathbb{R}): \lim_{x\to\infty} f(x)=0\}$,
+    \item $W=\{f\in \mathcal{F}(\mathbb{R},\mathbb{R}): f(x)=f(1-x)\}$.
+\end{itemize}
+
+Identifica la respuesta correcta: 
+\item Ninguno es subespacio vectorial de $\mathcal{F}(\mathbb{R},\mathbb{R})$.
+\item Sólo $V$ es subespacio vectorial de $\mathcal{F}(\mathbb{R},\mathbb{R})$.
+\item* Tanto $V$ como $W$ son subespacios vectoriales de $\mathcal{F}(\mathbb{R},\mathbb{R})$.
+\end{multi}
+
+\begin{multi}[shuffle=true,numbering=none, feedback={
+Dos subespacios vectoriales de un espacio vectorial $V$ pueden tener la misma dimensión sin ser iguales. Por ejemplo, en $\mathbb{R}^2$, los subespacios vectoriales generados por los vectores $(1,0)$ y $(0,1)$ tienen ambos dimensión 1 pero no son iguales. Por otro lado, si un subespacio vectorial $U$ tiene la misma dimensión que el espacio vectorial $V$, entonces necesariamente $U=V$. Finalmente, la dimensión de la intersección de dos subespacios vectoriales $U$ y $W$ no puede ser mayor que la dimensión de $U$, ya que $U\cap W$ es un subespacio vectorial de $U$, y una base de $U\cap W$ es un conjunto de vectores linealmente independientes en $U$.
+}]{Dimensiones}
+
+Sean $U$, $W$ subespacios vectoriales de un espacio vectorial $V$. Identifica la respuesta incorrecta: 
+\item* Si $\dim(U)=\dim(W)$, entonces $U=W$.
+\item Si $\dim (U)=\dim(V)$, entonces $U=V$.
+\item $\dim (U\cap W)\leq \dim (U)$.
+\end{multi}
+
+\begin{multi}[shuffle=true,numbering=none, feedback={
+    Los vectores $u_1$ y $u_2$ son linealmente independientes porque no existe ningún escalar $a$ tal que $u_1=au_2$. Sin embargo, el vector $u_3$ se puede expresar como una combinación lineal de $u_1$ y $u_2$, ya que $u_3=u_1-u_2$. De manera similar, el vector $u_4$ también se puede expresar como una combinación lineal de $u_1$ y $u_2$, ya que $u_4=2u_1-u_2$. Por lo tanto, el conjunto $\{u_1, u_2, u_3\}$ no es una base de $\mathbb{R}^3$ porque los vectores no son linealmente independientes.
+}]{Bases}
+
+Se consideran en  $\mathbb{R}^3$ los vectores: $\mathbf{u_1}=(2,1,0)$, $\mathbf{u_2}=(0,2,1)$, $\mathbf{u_3}=(2,-1,-1)$,  $\mathbf{u_4}=(4,0,-1)$.
+Identifica la respuesta incorrecta: 
+
+\item* $\{u_1, u_2, u_3\}$ es una base de $\mathbb{R}^3$.
+\item $u_1$ y $u_2$ son linealmente independientes.
+\item $u_3$ y $u_4$ dependen linealmente de $u_1$ y $u_2$.
+
+\end{multi}
+
+
+\begin{multi}[shuffle=true,numbering=none, feedback={
+    El último vector del conjunto dado, $(3, 4, 1, 2)$, es suma de los otros tres. Se puede comprobar que los tres restantes son linealmente independientes y por tanto forman una base de $U$.
+}
+]{Subespacio generado por un conjunto de vectores}
+
+Se define el subespacio vectorial $U$ de $\mathbb{R}^4$ como sigue el espacio generador por 
+$$
+\{(1, 2, -1, 3), (2,1, 0,-2), (0, 1, 2, 1), (3, 4, 1, 2)\}.
+$$ 
+
+Identifica la respuesta correcta:
+
+\item* $\{(1, 2,-1, 3), (2,1, 0,-2), (0, 1, 2, 1)\}$ es una base de $U$.
+\item $\{(1, 2,-1, 3), (2,1, 0,-2), (0, 1, 2, 1), (3, 4, 1, 2)\}$ es una base de $U$.
+\item $\{(1, 2,-1, 3), (2,1, 0,-2), (0, 1, 2, 1)\}$ es sistema generador pero no es base de $U$.
+
+\end{multi}
+
+\end{quiz}
+
+\end{document}
