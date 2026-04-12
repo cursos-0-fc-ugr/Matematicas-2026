@@ -1,0 +1,86 @@
+% !TeX spellcheck = es_ES
+\documentclass[12pt]{article}
+\usepackage{moodle}
+\begin{document}
+\begin{quiz}{Matemáticas/Derivadas}
+ 
+ 
+ 
+ 	\begin{multi}[shuffle=true,numbering=none, feedback={	
+	 	En los puntos $x=-1$ y $x=1$ no hay derivabilidad. Es fácil comprobar que las derivadas laterales en dichos puntos son distintas.
+	 	}]{Derivabilidad}
+	 	Sea la función $f:\mathbb{R} \to \mathbb{R}$, definida como
+	 	\[
+	 	f(x)=\left\{\begin{matrix} x^3+2 \ , \textrm{ \ si } x <-1, \\
+	 	                              x^2  \ , \textrm{ \ si  } -1 \le x \le 1, \\
+	 	                              e^{1-x}  \ , \textrm{ \ si  } x>1,
+						 	\end{matrix}\right.
+	 	\]
+	 	es derivable.
+			\item Verdadero 
+			\item* Falso   
+ 	\end{multi}
+ 
+	 \begin{multi}[shuffle=true,numbering=none, feedback={
+		 La función $f(x)=\frac{1}{(x^2+x+4)^5}=(x^2+x+4)^{-5}$. Para derivarla aplicamos la regla de la cadena y nos queda:
+		 \[
+		 f'(x)=-5(x^2+x+4)^{-6}(2x+1)=\frac{-5(2x+1)}{(x^2+x+4)^6}=\frac{-10x-5}{(x^2+x+4)^6}.
+		 \]	
+		 }]{Derivada fracción} La derivada de la función $f(x)=\frac{1}{(x^2+x+4)^5}$ es:
+		 \item $\frac{1}{(x^2+x+4)^6}$ 
+		 \item* $\frac{-10x-5}{(x^2+x+4)^6}$   
+		 \item $(-5)(x^2+x+4)^{-6}$ 
+	 \end{multi}	
+	 
+	 
+	 \begin{numerical}[shuffle=true,numbering=none, feedback={
+	  La función derivada es $f'(x)=\frac{1-x^2}{x(x^2+1)}$. Por tanto, $f'(1)=0$.
+	 }]{Evaluación derivada}
+	  Sea la función $f(x)=\ln\left(\frac{x}{x^2+1}\right)$. El valor de $f'(1)$ es es:
+	
+	   \item 0
+	 \end{numerical}
+
+
+	 \begin{numerical}[shuffle=true,numbering=none, feedback={
+		 La función derivada es $f'(x)=\frac{{x}^{2}+1}{{x}^{4}+2\,{x}^{3}-2\,x+1}$. Por tanto, $f'(1)=1$.
+		 }]{Evaluación derivada}
+		 Sea la función $f(x)=\arctan(\frac{x-1}{x+1})$. El valor de $f'(1)$ es:
+		 \item 1
+	 \end{numerical}
+
+	 \begin{numerical}[shuffle=true,numbering=none, feedback={
+		 La función derivada es $f'(x)=\frac{1}{x^2}x^{1/x}(1-\log(x))$. Por tanto, $f'(e)=0$.
+		 }]{Evaluación derivada}
+			Sea la función $f(x)=x^{1/x}$. El valor de $f'(e)$ es:
+		 \item 0
+	 \end{numerical}
+	 
+	 \begin{multi}[shuffle=true,numbering=none, feedback={
+		 La función derivada es $f'(x)=\frac{x}{(x^2+2) \, \sqrt{1+x^2}}$ , por lo que $f'(1)=\frac{1}{3\, \sqrt{2}}= \frac{\sqrt{2}}{6}$.
+	 }]{Evaluación derivada}
+		 Se considera la función $f(x)=\arctan(\sqrt{1+x^2})$. El valor de $f'(1)$ es:
+	 
+		\item $\frac{\sqrt{2}}{3}$  
+		\item $\frac{1}{\sqrt{2}}$   
+		\item* $\frac{\sqrt{2}}{6}$
+	 \end{multi}
+
+	 \begin{multi}[shuffle=true,numbering=none, feedback={
+			La función derivada es $f'(x)=\frac{1}{\sqrt{x^2+1}}$. Por tanto, $f'(1)=\frac{1}{\sqrt{2}}$.
+		}]{Cálculo derivada} Sea la función $f(x)=\ln\left(\sqrt{x^2+1}+x\right)$. El valor de $f'(x)$ es:
+		\item* $\frac{1}{\sqrt{x^2+1}}$
+		\item $\frac{x}{\sqrt{x^2+1}}$
+		\item $\frac{2x+1}{\sqrt{x^2+1}}$
+	\end{multi}
+\end{quiz}
+\end{document}
+
+
+
+
+
+
+
+
+\end{questions}

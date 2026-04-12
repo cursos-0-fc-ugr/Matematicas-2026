@@ -1,0 +1,154 @@
+% !TeX spellcheck = es_ES
+\documentclass[12pt]{article}
+
+%\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{moodle}
+\begin{document}
+\begin{quiz}{Matemáticas/Límites}
+% \begin{multi}[numbering=none, 
+% feedback={
+% \[x^2+1\]
+% y hacemos Taylor
+% }]{A first derivative}
+%   What is the first derivative of $x^3$?
+%   \item  $\frac{1}{4} x^4+C$
+%   \item* $3x^2$
+%   \item  $51$
+% \end{multi}
+ 
+ \begin{multi}[shuffle=true,numbering=none,
+ feedback={Los límites laterales de la función en cero no coinciden. Por tanto, la función no es continua en cero.}]{Pregunta continuidad}
+	La función 
+	\[
+	f(x)= \begin{cases}
+		x^2-x, & \text{si $x <0$}, \\
+		1+\log(x+1), &  \text{si $x\geq 0$},
+		\end{cases}
+	\]
+	es continua.
+	\item Verdadero 
+	\item* Falso
+ \end{multi}
+ 
+  \begin{multi}[shuffle=true,numbering=none,
+  feedback={Dividiendo en el numerador y en el denominador por la máxima potencia, que es $x^2$, nos queda el límite siguiente:
+  \[
+  \lim_{x \to +\infty}\frac{2-\frac{5}{x}+\frac{14}{x^2}}{4-\frac{5}{x}+\frac{19}{x^2}}=\frac{2}{4}= \frac{1}{2}
+  \]
+  }]{Pregunta límites}Calcula el siguiente límite: $\displaystyle \lim_{x \to +\infty} \frac{2x^2-5x+14}{4x^2-5x+19}$.
+  
+  \item $+\infty$ 
+  \item* $\frac{1}{2}$  
+  \item $2$
+  \end{multi}
+  
+  \begin{multi}[shuffle=true,numbering=none,
+    feedback={El límite propuesto presenta una indeterminación de ``$\frac{0}{0}$''; factorizando la expresión nos queda:
+    \[
+    \frac{x(x-1)^2}{x(x-1)(x+1)}=\frac{\cancel{x}\cancel{(x-1)}(x-1)}{\cancel{x}\cancel{(x-1)}(x+1)}=\frac{x-1}{x+1}
+    \]
+    así que cuando $x \to 1$, la función tiende a $0$.
+    }]{Pregunta límites}Calcula $\displaystyle \lim_{x\to 1}\frac{x^3-2x^2+x}{x^3-x}$.
+ 
+	 \item* $0$ 
+	 \item $1$ 
+	 \item $+\infty$
+	\end{multi}
+	
+	 \begin{multi}[shuffle=true,numbering=none,
+	    feedback={Dividiendo en el numerador y en el denominador por la máxima potencia, que es $x^3$, nos queda el límite siguiente:
+	    \[
+	    \lim_{x \to -\infty}\frac{\frac{4}{x}-\frac{3}{x^2}+\frac{7}{x^3}}{1-\frac{2}{x}+\frac{5}{x^2}}=\frac{0}{1}= 0.
+	    \]
+	    }]{Pregunta límites}Calcula $\displaystyle \lim_{x \to -\infty}\frac{4x^2-3x+7}{x^3-2x^2+5x}$.
+	    \item* $0$ 
+	    \item $+\infty$  
+	    \item $-\infty$
+	   \end{multi}
+	   
+	   \begin{multi}[shuffle=true,numbering=none,
+	   	    feedback={Multiplicamos el numerador y el denominador por el conjugado del numerador ($\sqrt{x}+\sqrt{x+1}$) y nos queda el límite siguiente:
+	   	    \[
+	   	    \lim_{x \to +\infty}\frac{x-(x+1)}{x^2(\sqrt{x}+\sqrt{x+1})}=\lim_{x \to +\infty}\frac{-1}{x^2(\sqrt{x}+\sqrt{x+1})}= 0.
+	   	    \]
+	   	    }]{Pregunta límites}Calcula el siguiente límite: $\displaystyle \lim_{x \to +\infty} \frac{\sqrt{x}-\sqrt{x+1}}{x^2}$.
+			\item* $0$ 
+			\item $\frac{1}{4}$   
+			\item $-\infty$
+	   \end{multi}
+	   
+	   \begin{multi}[shuffle=true,numbering=none,
+	   	   	    feedback={El límite presenta una indeterminación de ``$\frac{0}{0}$'' por lo que vamos a factorizar:
+	   	   	    \[
+	   	   	    \lim_{x \to 1}\frac{\sqrt{x-1}}{\sqrt{x^2-x}}=\lim_{x \to 1} \sqrt{\frac{x-1}{x(x-1)}}=
+	   	   	    \lim_{x \to 1} \sqrt{\frac{\cancel{(x-1)}}{x\cancel{(x-1)}}} =\lim_{x \to 1} \sqrt{\frac{1}{x}}= 1.
+	   	   	    \]
+	   	   	    }]{Pregunta límites}Calcula el siguiente límite: $\displaystyle \lim_{x \to 1} \frac{\sqrt{x-1}}{\sqrt{x^2-x}}$.
+	   	   
+		   \item $+\infty$ 
+		   \item $0$   
+		   \item* $1$
+	   \end{multi}
+	   
+ 	   \begin{multi}[shuffle=true,numbering=none,
+  	   	    feedback={El límite no presenta ninguna una indeterminación ya que el primer sumando tiende a $+\infty$ y el segundo sumando a 1. Por tanto, el resultado es:
+  	   	    \[
+  	   	    \lim_{x \to 0^+}\left(\frac{1}{x}-\frac{1}{x^2+1}\right)=+\infty.
+  	   	    \]
+  	   	    }]{Pregunta límites}Calcula el siguiente límite: $\displaystyle \lim_{x \to 0^+} \left(\frac{1}{x}-\frac{1}{x^2+1}\right)$.
+	   	   	   	
+	   	  \item $0$ 
+	   	  \item* $+\infty$   
+	   	  \item $-\infty$
+		 \end{multi}
+		 
+		 \begin{multi}[shuffle=true,numbering=none,
+		   	   	    feedback={El límite  presenta  una indeterminación del tipo ``$\infty-\infty$''ya que el primer sumando tiende a $+\infty$ y el segundo sumando a $+\infty$. Tomamos común denominador y multiplicando el numerador y denominador por $\sqrt{x}$ el resultado es:
+		   	   	    \[\begin{aligned}
+		   	   	    \lim_{x \to 0^+}\left(\frac{1}{x}-\frac{1}{\sqrt{x}}\right)&=\lim_{x \to 0^+} \frac{\sqrt{x}-x}{x\sqrt{x}}=\lim_{x \to 0^+} \frac{x-x\sqrt{x}}{x^2} \\
+		   	   	    &= \lim_{x \to 0^+} \frac{x(1-\sqrt{x})}{x^2}= \lim_{x \to 0^+} \frac{1-\sqrt{x}}{x}=+\infty.
+		   	   	    \end{aligned}\]
+		   	   	    }]{Pregunta límites}Calcula el siguiente límite: $\displaystyle \lim_{x \to 0^+} \left(\frac{1}{x}-\frac{1}{\sqrt{x}}\right)$.
+		   	   	    
+		   	\item* $+\infty$ 
+		   	\item $-\infty$   
+		   	\item $0$
+		  \end{multi}
+		  
+		  
+		  \begin{multi}[shuffle=true,numbering=none,
+		  		   	   	    feedback={\[
+		  		   	   	    lim_{x \to 0^+} \frac{\sqrt{x}}{x} = \lim_{x \to 0^+} \sqrt{\frac{x}{x^2}} = \lim_{x \to 0^+} \sqrt{\frac{1}{x}} = +\infty
+		  		   	   	    \]
+		  		   	   	    }]{Pregunta límites}Calcula el siguiente límite: $\displaystyle \lim_{x \to 0^+} \frac{\sqrt{x}}{x}$.
+			  \item  $-1$ 
+			  \item $1$ 
+			  \item* $+\infty$
+		  \end{multi}
+		  
+		  \begin{multi}[shuffle=true,numbering=none,
+		  		  		   	   	feedback={Como $\lim_{x \to 0} f(x)=+\infty$, la función tiene un asíntota vertical en $x=0$. La recta $y=1$ es una asíntota horizontal ya que $\lim_{x \to \infty} f(x)=1$. No tiene asíntotas oblicuas.
+		  		  		   	   	 }]{Asíntotas}La función $f(x)=x+\frac{1}{x^2}$,
+		  
+			  \item*  tiene una asíntota vertical en $x=0$ 
+			  \item tiene una asíntota horizontal en $y=0$ 
+			  \item no tiene asíntotas
+		  \end{multi}
+		  
+		  \begin{multi}[shuffle=true,numbering=none,
+		  		  		  		   	   	feedback={Como $\lim_{x \to \infty} f(x) =1/3$, la recta $y=1/3$ es una asíntota horizontal.
+		  		  		  		   	   	}]{Asíntota vertical}La función $f(x)=\frac{x^2+x-7}{3x^2+x+1}$,
+			  \item $x=1/3$ es una asíntota vertical 
+			  \item* $y=1/3$ es una asíntota horizontal
+		  \end{multi}
+		  
+		  \begin{multi}[shuffle=true,numbering=none,
+		  		  		  		  		   	   	feedback={}]{Asíntota oblícua}La función $f(x)=\frac{4x^4-2x^2+x}{x^3-2x+1}$ tiene una asíntota oblicua $y=mx+n$. 
+			  	\item $m=4$, $n=1$ 
+			  	\item* $m=4$, $n=0$ 
+			  	\item $m=\frac{1}{4}$, $n=0$	  		  		  		   	   			  
+		  \end{multi}
+ \end{quiz}
+\end{document}
+

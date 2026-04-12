@@ -1,0 +1,124 @@
+% !TeX spellcheck = es_ES
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{moodle}
+\begin{document}
+\begin{quiz}{Matemáticas/Derivadas-Aplicaciones}
+ 
+ 
+ 	\begin{multi}[shuffle=true,numbering=none, feedback={	
+		La función derivada es $f'(x)=3x^2-2$. Obligamos a que la pendiente de la recta tangente sea igual a 1 (la bisectriz del primer cuadrante es la recta $y=x$) y resolviendo la ecuación $3x^3-2=1$, obtenemos los puntos $x=-1$ y $x=1$.
+	 	}]{Tangentes}
+	 	Los puntos de la gráfica de $f(x)=x^3-2x+2$ en los que su recta tangente es paralela a la bisectriz del primer cuadrante son:
+		\item $x=0$ y $x=1$ 
+		\item* $x=-1$ y $x=1$   
+		\item $x=-1$ y $x=0$
+ 	\end{multi}
+ 
+	 
+	 \begin{numerical}[shuffle=true,numbering=none, feedback={
+		La función derivada es $f'(x)=2x-5$. Obligamos a que la pendiente de la recta tangente sea  igual a 5 (la recta  $y=5x-3$ tiene pendiente igual a 5) y resolviendo la ecuación $2x-5=5$, obtenemos el punto $x=5$.
+	 }]{Tangente}
+		El valor de $x$ para el que la recta tangente a la gráfica de $f(x)=x^2-5x+6$, en el punto $(x,f(x))$, es paralela a la recta $5x-y=3$ es:
+
+	   \item 5
+	 \end{numerical}
+
+
+ 	\begin{multi}[shuffle=true,numbering=none, feedback={	
+		La función $f(x)=\frac{x^3-3x+2}{3}$ admite al punto $(1,0)$ como mínimo relativo, y la función $f(x)=\frac{2x-1-x^2}{2}$  como máximo absoluto. La función  $f(x)=\left\vert x-1 \right\vert$ es la única de las tres propuestas que admite al punto dado como el mínimo absoluto.
+	 	}]{Extremos relativos}
+	 	¿Cuál de las siguientes funciones alcanza su mínimo absoluto en el punto $x=1$?
+	 	\item $f(x)=\frac{x^3-3x+2}{3}$  
+	 	\item $f(x)=\frac{2x-1-x^2}{2}$   
+	 	\item* $f(x)=|x-1|$
+ 	\end{multi}
+
+ 	\begin{multi}[shuffle=true,numbering=none, feedback={	
+	 	La función derivada es $f'(x)=\frac{x^2+1}{x^2}$ que es positiva, así que la función es estrictamente creciente. Si calculamos $\lim_{x \to 0^+} f(x)=-\infty$, y $\lim_{x \to 0^-} f(x)=+\infty$, se deduce que presenta una asíntota vertical en $x=0$. Y sicalculamos $\lim_{x \to +\infty} f(x)= \lim_{x \to -\infty} f(x)=+\infty$, se deduce  que no tiene una asíntota horizontal en $y=0$.
+		}]{Propiedades derivada}
+		La función $f(x)=\frac{x^2-1}{x}$ tiene las siguientes propiedades:
+		\item $f$ es decreciente 
+		\item* Presenta una asíntota vertical en $x=0$  
+		\item Presenta una asíntota horizontal en $y=0$
+	\end{multi}		
+
+	\begin{cloze}{Gráfica}
+		Dada la siguiente gráfica responde a las siguientes cuestiones
+		
+		\includegraphics{"../../Curso-cero (Copia Jero)/ejercicio-der1"}
+		
+		\begin{multi}[shuffle=true,numbering=none, feedback={
+			En los puntos $x=-1$ y $x=1$ no hay derivabilidad. Es fácil comprobar que las derivadas laterales en dichos puntos son distintas.
+		},horizontal]
+		$f$ es derivable en todo su dominio.
+		\item Verdadero 
+		\item* Falso
+		\end{multi}
+		
+		\begin{multi}[shuffle=true,numbering=none, feedback={
+			La función es decreciente sólo en los intervalos $[-1,0]$ y en $[1,+\infty[$.
+			},horizontal]
+		$f$ es decreciente.
+		\item Verdadero 
+		\item* Falso
+		\end{multi}
+		
+		\begin{multi}[shuffle=true,numbering=none, feedback={
+				Y también es creciente en el intervalo $]-\infty,-1]$.
+			},horizontal]
+			$f$ es creciente en el intervalo $[0,1]$.
+			\item* Verdadero
+			\item Falso
+		\end{multi}
+
+		\begin{multi}[shuffle=true,numbering=none, feedback={
+			La función es cóncava sólo en el intervalo $]-\infty,-1]$.	
+			},horizontal]
+			$f$ es cóncava.
+			\item Verdadero
+			\item* Falso
+		\end{multi}
+		
+		\begin{multi}[shuffle=true,numbering=none, feedback={
+			La recta $y=0$ es una asíntota horizontal de la gráfica de $f$ ya que $\lim_{x \to +\infty} f(x)= 0$.
+			},horizontal]
+			La gráfica de $f$ presenta una asíntota horizontal.
+			\item* Verdadero
+			\item Falso
+		\end{multi}						
+		
+		\begin{multi}[shuffle=true,numbering=none, feedback={
+				En dicho punto la función tiene un mínimo relativo, pero no absoluto.
+			},horizontal]
+			$f$ alcanza su mínimo absoluto en $x=0$.
+			\item Verdadero
+			\item* Falso
+		\end{multi}
+		
+		\begin{multi}[shuffle=true,numbering=none, feedback={
+				En los puntos $-1$ y $1$ alcanza el valor máximo que es $1$.},horizontal]
+			El valor de máximo absoluto de $f$ es $1$.
+			\item* Verdadero
+			\item Falso	
+		\end{multi}		
+		
+		\begin{multi}[shuffle=true,numbering=none, feedback={
+				En el punto $x=-1$ la función pasa de ser cóncava a convexa.},horizontal]
+			$f$ no tiene puntos de inflexión.
+			\item Verdadero
+			\item* Falso				
+		\end{multi}
+	\end{cloze}	
+	
+		\begin{multi}[shuffle=true,numbering=none, feedback={
+			La función a optimizar es $f(x):=x^2+(40-2x)^2=5x^2-160x+1600$. Su derivada es $f'(x)=10x-160$ que se anula sólo en $x=16$. Es fácil ver que este punto es de mínimo (y absoluto) por lo que los puntos solución son $16$ y $4$.}, horizontal]{Optimización}
+			Los dos números reales positivos cuya suma es $20$ y tales que la suma de los cuadrados del mayor y del doble del menor es mínima son:
+			\item* $16$ y $4$  
+			\item  $13$ y $7$   
+			\item $15$ y $5$
+		\end{multi}		
+	
+\end{quiz}
+\end{document}
+ 

@@ -1,0 +1,139 @@
+% !TeX spellcheck = es_ES
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{moodle}
+\begin{document}
+\begin{quiz}{Matemáticas/Integrales}
+
+%	\begin{cloze}[feedback={
+%		Sabemos que $\int f(x) \, dx = \frac{x^5}{5}-\frac{4}{3}x^3+5x+C$. Por tanto, para $C=7$ la función dada es una primitiva de $f$.
+%		Aplicando la regla de Barrow, $\int_0^1 f(x) \, dx=\frac{58}{15}$.
+%		}]{Cálculo integrales}
+%		Sea la función $f:\mathbb{R} \to \mathbb{R}$ definida como
+%			\[
+%			f(x)=x^4-4x^2+5
+%			\]
+%		
+%		\begin{multi}[shuffle=true,numbering=none,horizontal]
+%			Una primitiva de $f$ es $\frac{x^5}{5}-\frac{4}{3}x^3+5x+7$
+%			\item* Verdadero 
+%			\item Falso
+%		\end{multi}
+%		
+%		\begin{numerical}
+%			Calcula el valor de $\int_0^1 f(x)$ (puedes dar hasta dos cifras decimales)
+%			\item[tolerance=0.05] 3.867
+%		\end{numerical}
+%
+%	\end{cloze}	
+%	
+%	\begin{multi}[shuffle=true,numbering=none,feedback={
+%		Utilizando el método del integración por partes:
+%		\[\begin{aligned}
+%		\int_1^2 x \, \log(x)  \, dx & = 
+%		\left[ \begin{matrix}
+%		u=\log(x)  \Rightarrow du=\frac{1}{x} \, dx \\ dv=x \, dx \ \Rightarrow \ v= \frac{x^2}{2} 
+%		 \end{matrix} \right] \\
+%		& = \left[ \log(x) \, \frac{x^2}{2} \right]_1^2-\frac{1}{2}\int_1^2 x\, dx \\
+%		& =2\,\log\left( 2\right) -\frac{3}{4}
+%		\end{aligned}\]		
+%		}]{Integral definida} 
+%		La integral $\int_1^2 x \, \ln(x) \, dx $ vale :
+%		\item $\frac{1}{4}$ 
+%		\item $0$   
+%		\item* $2\,\ln( 2) -\frac{3}{4}$ 
+%	\end{multi}	
+%
+%	\begin{cloze}[feedback={	
+%		Se trata de una integral de tipo racional. 
+%		\[\begin{aligned}
+%		\int \frac{x^2}{x^2+1} \, dx &= \int \frac{x^2+1-1}{x^2+1} \, dx= 
+%		\int dx -\int \frac{1}{x^2+1} \, dx\\
+%		& = x -\arctan(x)
+%		\end{aligned}\]
+%		\[
+%		\int_0^1 \frac{x^2}{x^2+1} \, dx= \Big[ x-\arctan(x)  \Big]_0^1=1-\frac{\pi}{4}=
+%		-\frac{\pi-4}{4}
+%		\]}
+%		]{Integral indefinida y definida}
+%		Sea $f(x)= \frac{x^2}{x^2+1}$.
+%		\begin{multi}[shuffle=true,numbering=none,horizontal]
+%			Una primitiva de $f$ es
+%			\item* $x-\arctan(x)$  
+%			\item $\log(x^2+1)$  
+%			\item $\arctan(x)$
+%		\end{multi}		
+%		\begin{numerical}
+%			La integral  de $f$ en $[0,1]$ es (hasta dos cifras decimales)
+%			\item[tolerance=0.05] 0.214
+%		\end{numerical}
+%	\end{cloze}
+	
+	\begin{multi}[shuffle=true,numbering=none,feedback={
+		Factorizamos el polinomio denominador: $x^2-1=(x-1)(x+1)$. Y descomponemos el integrando en fracciones simples:
+		\[\begin{aligned}
+		 \frac{1}{x^2-1}  &= \frac{A}{x-1}+\frac{B}{x+1}= \frac{A(x+1)+B(x-1)}{x^2-1} 
+		\end{aligned}\]
+		Luego,  $1=A(x+1)+B(x-1)$.
+		Dando a $x$ el valor $1$, obtenemos que $A=1/2$ y dando el valor $x=-1$, deducimos que $B=-1/2$. Por tanto,
+		\[\begin{aligned}
+		\int \frac{4}{x^2-1} \, dx  &= 4 \int \frac{1/2}{x-1} \, dx+4 \int \frac{-1/2}{x+1} \, dx \\
+		 & = 2 \left(\log \left| x-1 \right| -\log \left| x+1 \right| \right)
+		\end{aligned}\]
+		Para la integral definida:
+		\[\begin{aligned}
+		\int_0^{1/2} \frac{4}{x^2-1} \, dx  &=  2  \Big[\log \left| x-1 \right| -\log \left| x+1 \right|  \Big]_0^{1/2} \\
+		 & = 2 \left(-\log (2)-\log(3) +\log(2) \right) \\
+		 &= -2 \log(3)=-\log(9).
+		\end{aligned}\]		
+		}]{Integral definida e indefinida} Sea $f(x)= \frac{4}{x^2-1}$. Una primitiva de $f$ es 
+			\item $\ln\left\vert \frac{x-1}{x+1} \right\vert$  
+			\item* $2 \left(\ln (\vert x-1\vert) -\ln(\vert x+1\vert) \right)$   
+	\end{multi}
+	
+
+	\begin{cloze}[feedback={
+		Utilizando el método del cambio de variable:
+		\[\begin{aligned}
+			\int_0^{\pi/2}\textrm{sen}(2x)\, dx & = 
+			\left[ \begin{matrix}
+	 y=2x\\ dy=2\, dx \ \Rightarrow \  dx= \frac{dy}{2} \\
+			x=0 \Rightarrow y=0 \\ x=\pi/2 \Rightarrow y=\pi
+	 \end{matrix} \right] \\
+			& = \frac{1}{2}\int_0^\pi \textrm{sen}(y) \, dy =\frac{1}{2} \, \Big[ -\cos(y)\Big]_0^{\pi}= \frac{1}{2}(1-1) =0 \ .
+			\end{aligned}\]
+		}]{Cálculo integrales}
+		Sea  $f(x)= \mathrm{sen}(2x)$ :
+		\begin{multi}[shuffle=true,numbering=none,horizontal]
+			\item* $\frac{-\cos(2x)}{2}$ 
+			\item $\cos(2x)$  
+			\item $\frac{\cos(2x)}{2}$			
+		\end{multi}	
+			
+		\begin{numerical}
+			La integral de $f$ en el intervalo $[0,\frac{\pi}{2}]$ es:
+			\item 1
+		\end{numerical}
+	\end{cloze}
+	
+\end{quiz}
+\end{document}
+ 
+
+		Factorizamos el polinomio denominador: $x^2-1=(x-1)(x+1)$. Y descomponemos el integrando en fracciones simples:
+		\[\begin{aligned}
+		 \frac{1}{x^2-1}  &= \frac{A}{x-1}+\frac{B}{x+1}= \frac{A(x+1)+B(x-1)}{x^2-1} 
+		\end{aligned}\]
+		Luego,  $1=A(x+1)+B(x-1)$.
+		Dando a $x$ el valor $1$, obtenemos que $A=1/2$ y dando el valor $x=-1$, deducimos que $B=-1/2$. Por tanto,
+		\[\begin{aligned}
+		\int \frac{4}{x^2-1} \, dx  &= 4 \int \frac{1/2}{x-1} \, dx+4 \int \frac{-1/2}{x+1} \, dx \\
+		 & = 2 \left(\log \left| x-1 \right| -\log \left| x+1 \right| \right)
+		\end{aligned}\]
+		Para la integral definida:
+		\[\begin{aligned}
+		\int_0^{1/2} \frac{4}{x^2-1} \, dx  &=  2  \Big[\log \left| x-1 \right| -\log \left| x+1 \right|  \Big]_0^{1/2} \\
+		 & = 2 \left(-\log (2)-\log(3) +\log(2) \right) \\
+		 &= -2 \log(3)=-\log(9).
+		\end{aligned}\]
+
