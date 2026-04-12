@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{moodle}
+
+\begin{document}
+\begin{quiz}{Matemáticas/Sistemas de ecuaciones}
+
+	\begin{multi}[feedback={El rango de la matriz de coeficientes es uno, mientras que el de la matriz ampliada es dos. Por tanto, no hay solución. Otra forma de ver que es incompatible es restando a la segunda ecuación menos tres veces la primera, lo que da $0=-14$.}]{Número de soluciones}
+			El sistema de ecuaciones 
+			\[
+			\left\lbrace
+			\begin{array}{rl}
+				x+2y  &=5,\\
+				3x+6y &=1.
+			\end{array}\right.
+			\]
+			\item* no tiene solución
+			\item tiene infinitas soluciones
+			\item tiene una única solución
+	\end{multi}
+
+	\begin{multi}[feedback={Para $a\neq 1$ la matriz de coeficientes tiene rango dos, y por tanto el sistema es compatible (indeterminado). El único valor para el que es incompatible es para $a=1$.}]{Parámetro}
+		El sistema de ecuaciones 
+			\[
+			\left\lbrace
+			\begin{array}{rl}
+				a x+ y + z  &=3,\\
+				x+ y + z &=2.
+			\end{array}\right.
+			\]		
+		es incompatible para infinitos valores de $a$
+		\item Verdadero
+		\item* Falso
+	\end{multi}
+
+	\begin{multi}[feedback={Si restamos a la segunda ecuación la primera, obtenemos $y=2$.}]{Sistema de ecuaciones}
+		El valor de $y$ en el sistema de ecuaciones 
+					\[
+		\left\lbrace
+		\begin{array}{rl}
+			x+ 2y - z  &=1,\\
+			x+ 3y - z &=3.
+		\end{array}\right.
+		\]
+		sobre los racionales
+		\item* es 2
+		\item es 1
+		\item es cualquier número racional 
+	\end{multi}
+
+	\begin{numerical}{Determinante}
+		El determinante de la matriz $\left(\begin{array}{rrr} 1 & -1 & -2\\0 & 2 & -3\\1 & 0 & -5\end{array}\right)$ es 
+		\item -3
+	\end{numerical}
+
+	\begin{multi}{Determinante con parámetros}
+		El determinante de la matriz $\left(\begin{array}{ccc} a & - b & - 2 b\\0 & 2 b & - 3 b\\a & 0 & - 5 b \end{array}\right)$ es
+		\item 0
+		\item* $- 3 a b^{2}$
+		\item $b^2 a$
+		\item $a b$
+	\end{multi}
+	
+\end{quiz}
+
+\end{document}
