@@ -151,6 +151,25 @@ El subconjunto $U = \mathcal{C}(D,\mathbb{R})$ de las funciones reales continuas
 :::
 
 
+::: {#exr-1}
+
+Sea $U=\{ (x,y,z) \in \mathbb{Q}^3 : x+2y-z=0\}$. Demuestra que $U$ es un subespacio vectorial de $\mathbb{Q}^3.$ <button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e1-1 .collapse}
+Tomemos $\mathbf{u} = (x_{1},y_{1},z_{1})$ y $\mathbf{v} = (x_{2},y_{2},z_{2})$ en $U,$ y $a,b \in \mathbb{Q}.$ Tenemos que probar que $a\mathbf{u} + b\mathbf{v} \in U.$
+
+Nótese que, 
+$$a\mathbf{u} + b\mathbf{v} = (ax_{1} + bx_{2}, ay_{1} + by_{2}, az_{1} + bz_{2}),$$
+
+y como $x_{1} + 2y_{1} - z_{1} = 0$ y $x_{2} + 2y_{2} - z_{2} = 0,$ se tiene que
+
+$$(ax_{1} + bx_{2}) + 2(ay_{1} + by_{2}) - (az_{1} + bz_{2}) = a(x_{1} + 2y_{1} - z_{1}) + b(x_{2} + 2y_{2} - z_{2}) = 0.$$
+
+Esto demuestra $a\mathbf{u} + b\mathbf{v} \in U.$
+:::
+
+
+
 ### Subespacio vectorial generado por un conjunto de vectores
 
 Sea $V$ un espacio vectorial sobre el cuerpo $K.$ Dado un subconjunto $S = \left\{ \mathbf{u}_{1},\dots,\mathbf{u}_{n} \right\}$ de vectores en V, se llama *combinación lineal de vectores* de $S$ a todo vector $\mathbf{x}$ que se pueda expresar de la forma
@@ -226,6 +245,8 @@ a\mathbf{p}(x) + b\mathbf{q}(x) = ax + bx^{2}.
 $$
 
 :::
+
+
 
 ```{ojs}
 JSX=require("jsxgraph");
@@ -323,23 +344,26 @@ pv3 = pinta3()
 ```
 
 
-::: {#exr-1}
 
-Sea $U=\{ (x,y,z) \in \mathbb{Q}^3 : x+2y-z=0\}$. Demuestra que $U$ es un subespacio vectorial de $\mathbb{Q}^3$ y encuentra una base de $U.$ <button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
-
-::: {#solucion-e1-1 .collapse}
-Tomemos $\mathbf{u} = (x_{1},y_{1},z_{1})$ y $\mathbf{v} = (x_{2},y_{2},z_{2})$ en $U,$ y $a,b \in \mathbb{Q}.$ Tenemos que probar que $a\mathbf{u} + b\mathbf{v} \in U.$
-
-Nótese que, 
-$$a\mathbf{u} + b\mathbf{v} = (ax_{1} + bx_{2}, ay_{1} + by_{2}, az_{1} + bz_{2}),$$
-
-y como $x_{1} + 2y_{1} - z_{1} = 0$ y $x_{2} + 2y_{2} - z_{2} = 0,$ se tiene que
-
-$$(ax_{1} + bx_{2}) + 2(ay_{1} + by_{2}) - (az_{1} + bz_{2}) = a(x_{1} + 2y_{1} - z_{1}) + b(x_{2} + 2y_{2} - z_{2}) = 0.$$
-
-Esto demuestra $a\mathbf{u} + b\mathbf{v} \in U.$
 :::
 
+::: {#exr-4}
+
+Determina el valor de $a$ para que el vector $(1,a,7)\in\mathbb{R}^3$ pertenezca al subespacio $U$ generado por $\{(1,2,3),(0,1,2)\}$. <button id="e4-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e4-1 .collapse}
+El vector $(1,a,7)$ pertenece a $U$ si existen números reales $\alpha$ y $\beta$ tales que 
+$(1,a,7)=\alpha(1,2,3)+\beta (0,1,2)$, lo que se traduce en el sistema:
+$$
+\begin{cases}
+1=\alpha, \\
+a=2\alpha+\beta, \\
+7=3\alpha+2\beta.
+\end{cases}
+$$
+
+De la primera ecuación se obtiene el valor de $\alpha=1$. Al sustituir en la tercera y resolver, se sigue que $\beta=2$. Por tanto, $a=2+2=4$.
+:::
 
 :::
 
@@ -553,6 +577,68 @@ El rango de la matriz de coeficientes es dos, por lo que los vectores son lineal
 :::
 :::
 
+::: {#exr-3}
+
+Prueba que $U=\{(x,y,z)\in \mathbb{R}^3 \colon x+2y+3z=0\}$ es un subespacio vectorial de $\mathbb{R}^3$ y determina una base de $U$.
+<button id="e3-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e3-1 .collapse}
+Observemos que $U$ viene descrito por la ecuación de un plano en el espacio tridimensional. Para demostrar que $U$ es un subespacio de  $\mathbb{R}^3$ basta tomar dos vectores $\mathbf{u}=(u_1,u_2,u_3)$, $\mathbf{v}=(v_1,v_2,v_3)$ en $U$ y escalares $\alpha, \beta \in \mathbb{R}$ y probar que $\alpha\mathbf{u}+\beta\mathbf{v} \in U$. 
+
+Puesto que  $\alpha\mathbf{u}+\beta\mathbf{v}=(\alpha u_1+\beta v_1,\alpha u_2+\beta v_2, \alpha u_3+\beta v_3)$, y $\mathbf{u}\mathbf{v}\in U$, es claro que $(\alpha u_1+\beta v_1)+2(\alpha u_2+\beta v_2)+3(\alpha u_3+\beta v_3)= \alpha ( u_1+2u_2+3u_3) +\beta (v_1+2v_2+3v_3)=0$, luego $\alpha\mathbf{u}+\beta\mathbf{v} \in U$.
+
+Ahora se trata de encontrar una base para $U$. Observamos que todo vector de $U$, viene determinado en función de dos parámetros $\lambda$, $\mu$ como $(-2\lambda-3\mu, \lambda, \mu)$. Entonces cada vector del subespacio es de la forma:
+$(-2\lambda-3\mu, \lambda, \mu)=\lambda (-2,1,0)+\mu(-3,0,1)$, con $\lambda, \mu \in \mathbb{R}$.
+
+Dado que los vectores $(-2,1,0)$ y $(-3,0,1)$ son linealmente independendientes y todo vector de $U$ se expresa como su combinación lineal, el conjunto $\{(-2,1,0), (-3,0,1)\}$ es una base para $U$.
+:::
+
+:::
+
+
+::: {#exr-5}
+Demuestra que $U=\{M\in\mathcal{M}_{2\times 2}(\mathbb{R})\colon M^t=-M\}$, donde $M^t$ denota la matriz transpuesta de $M$, es un subespacio vectorial de $\mathcal{M}_{2\times 2}(\mathbb{R})$. Determina su dimensión. <button id="e5-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e5-1 .collapse}
+Para demostrar que $U$ es un subespacio vectorial de  $\mathcal{M}_{2\times 2}(\mathbb{R})$ basta tomar dos vectores $M$ y $N$ en  $U$ y escalares $\alpha, \beta \in \mathbb{R}$ y probar que $\alpha M+\beta N \in U$. Teniendo en cuenta la definición de las operaciones de suma de matrices y producto por un escalar, así como de la transposición de matrices, se tiene que $(\alpha M+\beta N) ^t=\alpha M^t +\beta N^t$. Puesto que $M, N\in U$, $M^t =-M$, $N^t =-N$,  de modo que  $(\alpha M+\beta N) ^t=\alpha M^t +\beta N^t=-\alpha M-\beta N=-(\alpha M+\beta N)\in U.$
+
+Para determinar su dimensión, observemos que $M=\begin{pmatrix} a&b\\c&d\end{pmatrix}\in U$ si y sólo si $M^t=-M$, lo que equivale a 
+$$
+\begin{pmatrix} a&c\\b&d\end{pmatrix}=\begin{pmatrix} -a&-b\\-c&-d\end{pmatrix}.
+$$
+
+De aquí se deduce que: $a=d=0, c=-b$. Por tanto, toda matriz de $U$ es de la forma $\begin{pmatrix} 0&b\\-b&0\end{pmatrix}$, con $b\in\mathbb{R}$. Luego, $M$ está generado por $\left\lbrace \begin{pmatrix} 0&1\\-1&0\end{pmatrix}\right\rbrace$ y su dimensión es 1.
+
+:::
+:::
+
+
+::: {#exr-6}
+Sea $V$ un espacio vectorial sobre un cuerpo $K$, y sean $U$ y $W$ dos subespacios vectoriales de $V$. Demuestra que $U\cap W$ es un subespacio vectorial de $V$. <button id="e6-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e6-1 .collapse}
+Para demostrar que $U\cap W$ es un subespacio vectorial de $V$, basta tomar dos vectores $\mathbf{u}$ y $\mathbf{v}$ en $U\cap W$ y escalares $\alpha, \beta \in K$ y probar que $\alpha\mathbf{u}+\beta\mathbf{v} \in U\cap W$. 
+
+Puesto que $\mathbf{u}, \mathbf{v}\in U\cap W$, entonces $\mathbf{u}, \mathbf{v}\in U$ y $\mathbf{u}, \mathbf{v}\in W$. Dado que $U$ y $W$ son subespacios vectoriales de $V$, $\alpha\mathbf{u}+\beta\mathbf{v} \in U$ y $\alpha\mathbf{u}+\beta\mathbf{v} \in W$. Por tanto, $\alpha\mathbf{u}+\beta\mathbf{v} \in U\cap W.$
+:::
+
+:::
+
+::: {#exr-7}
+Sea $V$ un espacio vectorial sobre un cuerpo $K$, y sean $U$ y $W$ dos subespacios vectoriales de $V$. Demuestra que 
+$$
+U+W = \{ \mathbf{u}+\mathbf{w} \colon \mathbf{u}\in U, \mathbf{w}\in W \}
+$$
+
+es un subespacio vectorial de $V$. <button id="e7-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e7-1 .collapse}
+Para demostrar que $U+W$ es un subespacio vectorial de $V$, basta tomar dos vectores $\mathbf{u}$ y $\mathbf{v}$ en $U+W$ y escalares $\alpha, \beta \in K$ y probar que $\alpha\mathbf{u}+\beta\mathbf{v} \in U+W$.  
+
+Por ser $\mathbf{u}, \mathbf{v}\in U+W$, existen $\mathbf{u}_{1}, \mathbf{u}_{2}\in U$ y $\mathbf{w}_{1}, \mathbf{w}_{2}\in W$ tales que $\mathbf{u}=\mathbf{u}_{1}+\mathbf{w}_{1}$ y $\mathbf{v}=\mathbf{u}_{2}+\mathbf{w}_{2}$. Dado que $U$ y $W$ son subespacios vectoriales de $V$, $\alpha\mathbf{u}_{1}+\beta\mathbf{u}_{2} \in U$ y $\alpha\mathbf{w}_{1}+\beta\mathbf{w}_{2} \in W$. Por tanto, $\alpha\mathbf{u}+\beta\mathbf{v} = \alpha\mathbf{u}_{1}+\beta\mathbf{u}_{2} + \alpha\mathbf{w}_{1}+\beta\mathbf{w}_{2}\in U+W.$
+:::
+
+:::
 
 ---------
 
