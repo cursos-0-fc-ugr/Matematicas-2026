@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{moodle}
+\begin{document}
+\begin{quiz}{Matemáticas/Conjuntos}
+ 
+
+
+\begin{multi}[shuffle=true,numbering=none, feedback={	
+Si calculamos $A\cap B$, obtenemos el conjunto de los números naturales que son múltiplos de 12, y que por tanto está incluido en $C$. Por lo tanto, $A\cap B\subseteq C$ es la opción correcta.
+}]{Inclusión e intersección de conjuntos}
+
+Sean $A$, $B$, $C$, los conjuntos definidos por:
+\begin{itemize}
+    \item $A=\{x\in\mathbb{N}\colon x \text{ es múltiplo de } 3\}$,
+    \item $B=\{x\in\mathbb{N}\colon x \text{ es múltiplo de } 4\}$,
+    \item $C=\{x\in\mathbb{N}\colon x \text{ es múltiplo de } 6\}$.
+\end{itemize}
+
+Identifica la respuesta incorrecta: 
+\item  $C\subsetneq A\cap B$
+\item* $A\cap B\subseteq C$
+\item  $(A\cup C)\cap B=A\cap B$
+\end{multi}
+
+
+\begin{multi}[shuffle=true,numbering=none, feedback={La relación menor estricto en los números reales es transitiva, peno no es reflexiva ni simétrica, por lo que no es una relación de equivalencia.
+}]{Relaciones de equivalencia}
+En el conjunto de los números enteros se define lasiguiente relación: $a\,\mathcal{R}\, b$ si $a< b$. Identifica la respuesta correcta: 
+\item $\mathcal{R}$ es una relación de equivalencia.
+\item $\mathcal{R}$ no es una relación de equivalencia porque cumple la propiedad simétrica pero no la reflexiva.
+\item* $\mathcal{R}$ no es una relación de equivalencia porque sólo cumple la propiedad transitiva.
+
+\end{multi}
+
+
+\begin{multi}[shuffle=true,numbering=none, feedback={Puede darse que $A_1$ y $A_2$ sean disjuntos, pero $f(A_1)\cap f(A_2)$ puede no ser vacío.}]{Imágenes e inversas de conjuntos}
+Sea $f\colon A\to B$ una aplicación entre conjuntos. Sean $A_1, A_2\subseteq A$, $B_1, B_2\subseteq B$. Identifica la respuesta incorrecta: 
+\item  $f(A_1\cup A_2)=f(A_1) \cup f(A_2)$.
+\item* $f(A_1\cap A_2)=f(A_1) \cap f(A_2)$. 
+\item  $f(f^{-1}(B_1))\subseteq B_1$.
+\end{multi}
+
+\begin{multi}[shuffle=true,numbering=none, feedback={Supongamos que $g(x)=g(y)$. Por ser, $f$ sobreyectiva, existe $u,v\in A$ tales que $f(u)=x$ y $f(v)=y$. Se tiene entonces que $g(f(u))=g(f(v))$, y como $g\circ f$ es inyectiva, se deduce que $u=v$ y por tanto $x=y$.}]{Composición de aplicaciones}
+
+Sean $f\colon A\to B$ y $g\colon B\to C$ aplicaciones entre conjuntos.
+Identifica la respuesta correcta: 
+\item  Si $g$ es sobreyectiva,  entonces $g\circ f$ es sobreyectiva.
+\item  Si $g$ es inyectiva, entonces $g\circ f$ es inyectiva.
+\item* Si $g\circ f$ es inyectiva y $f$ es sobreyectiva entonces $g$ es inyectiva.
+\end{multi}
+
+\begin{multi}[shuffle=true,numbering=none, feedback={Por ejemplo, $f_2(1,0)=f_2(0,1)=(1,0)$, pero $(1,0)\neq (0,1)$.}]{Inyectividad, sobreyectividad y biyectividad}
+
+Sean las funciones definidas en $\mathbb{Z}\times \mathbb{Z}$ por  $f_1(x,y)=  2x+3y$,  $f_2(x,y)=  (x+y,xy)$,  $f_3(x,y)=(2x+y,x+y)$.
+Identifica la respuesta incorrecta: 
+\item $f_1$ es sobreyectiva pero no inyectiva.
+\item* $f_2$ es inyectiva pero no sobreyectiva.
+\item $f_3$ es biyectiva.
+\end{multi}
+
+\end{quiz}
+
+\end{document}
