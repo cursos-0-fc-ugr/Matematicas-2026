@@ -135,11 +135,7 @@ Considera el experimento aleatorio consistente en lanzar una moneda dos veces. D
 3.  Escribe un suceso seguro.
 4.  Escribe un suceso imposible.
 
-<button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">
-
-Solución
-
-</button>
+<button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 :::
 
 ::: {#solucion-e1-1 .callout .collapse}
@@ -494,11 +490,7 @@ Calcula:
 4.  $A-B$.
 5.  $B-A$.
 
-<button id="e2-1" class="btn btn-light btn-sm" onclick="show(this.id);">
-
-Solución
-
-</button>
+<button id="e2-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 :::
 
 ::: {#solucion-e2-1 .callout .collapse}
