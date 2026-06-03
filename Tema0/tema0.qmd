@@ -1,0 +1,594 @@
+---
+title: "Tema 0"
+bibliography: tema0.bib
+lang: "es"
+---
+
+En este capítulo veremos cómo entender las matemáticas, cómo estudiarlas y cómo pensar matemáticamente (para ello el principal recurso que emplearemos como referencia será [@houston2009think]).
+Lo primero que hemos de desterrar es la gran mentira que muchas personas se dicen a sí mismas, y quizás tú también:
+
+> «No se me dan bien las matemáticas» o «yo es que soy de letras».
+
+Con total seguridad, en tu día a día ---ya sea jugando a videojuegos, manejando las aplicaciones de tu móvil, o incluso comprando en una tienda--- resolverás problemas complejos que te requerirán de unas capacidades que no se alejan demasiado de las que se requieren para la matemática.
+Simplemente, esa excusa que acabas de leer, o esa creencia limitante que tienes en tu cabeza, te aleja y te desanima en tu estudio de las matemáticas, y desde la desmotivación es muy difícil poner el trabajo necesario para comprenderlas;
+porque se requiere trabajo, pero no es una tarea imposible.
+Y la verdad es que quizás la forma en la que tienen de presentarse las matemáticas no ayuda.
+Si entras a la biblioteca de tu facultad (cosa que te recomendamos que hagas), coges un libro de matemáticas al azar y lo abres, encontrarás cosas como el siguiente teorema:
+
+::: {#thm-valor-medio}
+Sea $f : [a, b] \to \mathbb{R}$ una función tal que $f \in C\left( [a, b]  \right) \cap D \left( (a,b) \right)$ con $a, b \in \mathbb{R}, a < b$.
+Entonces se tiene que
+
+$$
+\exists c \in (a, b) : f'(c) = \frac{f(b) - f(a)}{b - a}.
+$$
+:::
+
+Este teorema, conocido como el Teorema del Valor Medio, nos está diciendo que:
+
+1. Tenemos una cierta función (una máquina que al recibir una entrada devuelve una cierta salida según cómo esté configurada), que llamaremos $f$, que va de un intervalo cerrado ---cuyos extremos denominamos $a$ y $b$--- al conjunto de los números reales (todos los números que conoces).
+2. Además, sabemos que esta función es continua en el intervalo $[a,b]$ y derivable en el intervalo abierto con mismos extremos.
+Siendo $a$ y $b$ números reales cualesquiera, de modo que $a$ es menor que $b$ para que tenga sentido el intervalo.
+3. Nos dice que entonces existirá un cierto número $c$ en el intervalo abierto $(a,b)$, es decir, un número entre $a$ y $b$ sin ser ninguno de los dos.
+4. Y ese número cumple que la derivada de $f$ evaluada en ese punto nos da como resultado la fracción que encontramos a la derecha de la igualdad.
+5. Esa fracción divide la diferencia entre el valor de la función en los puntos $a$ y $b$ con la diferencia entre los propios valores $a$ y $b$.
+
+Como ves, la explicación del contenido del teorema se ha extendido bastante más que el propio teorema, y es que, no huyendo de escribir ciertas frases o incluso oraciones en lenguaje natural, las matemáticas tienen su propio lenguaje en distintos aspectos:
+
+1. Tiene sus propios símbolos como $\in$ o $\mathbb{R}$.
+2. Su propio vocabulario o jerga.
+3. Su propio estilo o tono.
+4. Su propio ritmo.
+
+Pero, por suerte, no es un lenguaje demasiado enrevesado o lleno de matices (te invitamos a leer un par de artículos del código penal), sino que es un lenguaje directo, preciso y sin ambigüedades.
+Solo necesitas un periodo de adaptación a él y ganas de aprender, te aseguramos que poco a poco todo encajará.
+
+## Cómo leer matemáticas
+
+Comenzamos esta sección con algunas de las recomendaciones que se hacen en [@houston2009think] sobre cómo leer matemáticas:
+
+1. Leer con un papel y un bolígrafo al lado (volveremos a esto en la @sec-estudiar).
+2. Haz una primera lectura general, para tomar algo de contexto del tema que vas a estudiar. Esto te ayudará a ver a dónde se va a llegar con un determinado desarrollo.
+3. Detecta lo importante.
+4. Lee de una forma activa: haz resúmenes, toma anotaciones, haz los ejercicios...
+5. Reflexiona y hazte preguntas:
+    - Intenta relacionar un tema con los anteriores.
+    - Pregúntate cómo se podría complicar un ejercicio determinado o de qué otras formas se podría preguntar lo mismo.
+    - Intenta explicar con tus propias palabras lo que has estudiado.
+
+### La importancia de la comprensión lectora
+
+La mayoría de dificultades que encontráis a la hora de enfrentaros a estudiar una asignatura de matemáticas o al enfrentaros a un problema de matemáticas es la falta de comprensión lectora.
+
+Esta es una capacidad que está fuera de las matemáticas en sí y que puedes entrenar leyendo de forma pausada artículos que te interesen o apuntes de tus asignaturas, incluso aficinionándote a la literatura y leyendo las novelas o relatos que más te gusten.
+
+Es fundamental que leas con detenimiento los enunciados de los ejercicios, parándote en cada punto y seguido, asegurándote de extraer toda la información de esa frase antes de pasar a la siguiente.
+Asegúrate de saber:
+
+- Qué datos te está dando el ejercicio.
+- Qué información es superflua o no es más que un «relleno» o un contexto para el ejercicio en sí (al final nos da igual si estamos calculando la edad de Fulanito o el número de manzanas que tiene Menganita).
+- Entiende muy bien qué te está pidiendo el ejercicio:
+    - ¿Me están pidiendo que encuentre la opción falsa o la verdadera?
+    - ¿Qué me están pidiendo que resuelva? No quiero perder el tiempo haciendo cálculos que no son necesarios.
+    - Me fijo en si me dicen que desarrolle o que solo indique algo.
+- Puedes ayudarte de subrayados e incluso de colores (evita usar el rojo en los exámenes) para marcar la información relevante de un ejercicio.
+
+Aunque lo siguiente sea una perogrullada, a la hora de afrontar una pregunta o un reto matemático puedes seguir la siguiente «receta».
+
+### ¿Cómo afrontar una pregunta matemática?
+
+En primer lugar, has de identificar la información que te proporciona el propio enunciado.
+
+Esta información puede estar ya escrita en forma matemática como $x \in \mathbb{R}$ o darse en lenguaje natural indicando, por ejemplo, que cierta magnitud «puede tomar cualquier valor negativo o positivo». O quizás sepas que la variable número de hermanos no puede ser negativa, con lo que sabrás que está dentro de los números naturales.
+
+Será entonces tu tarea **traducir cada pieza de información que te dé el enunciado al vocabulario matemático particular que hayas visto en la asignatura**; por ejemplo, si decides que vas a representar por $y$ a la variable que nota el número de hermanos, entonces indicarás que $y \in \mathbb{N}$.
+
+En segundo lugar, identificarás qué te están pidiendo que calcules:
+
+- ¿Te están pidiendo cuánto gana como máximo una persona de una población donde el sueldo se modela según una cierta función $f$?
+Pues entonces te están pidiendo que calcules el máximo de $f$.
+Si esa función va en función de la edad, y te piden que determines cuánto gana una persona con $22$ años, entonces te están pidiendo que calcules $f(22)$.
+- Si te piden que calcules la probabilidad de que una persona tenga los ojos azules o marrones, y tú has decidido llamar $A$ y $M$ a los sucesos tener los ojos azules o marrones, respectivamente, entonces determinarás que te están pidiendo calcular $\mathbb{P}\left( A \cup M \right)$.
+Será tu tarea la de identificar esto, y expresarlo también dependiendo del lenguaje o elementos de la asignatura que estés cursando.
+Y esto no es un mero capricho docente, querer que todo se exprese tal y como lo hemos expresado en clase, es algo que realmente te ayuda.
+
+En particular, te ayuda con el tercer y último paso: partiendo de los elementos que te da el enunciado y que has identificado en el primer paso, tendrás que emplear aquellos resultados que has visto en la asignatura hasta llegar a la respuesta que te piden y que has identificado en el segundo paso.
+
+Así, por ejemplo, volviendo al cálculo de la probabilidad, quizás el enunciado te haya dado la probabilidad de que una persona tenga los ojos azules, la probabilidad de que tenga los ojos marrones y te hayan indicado que es imposible que una persona tenga a la vez los ojos marrones y azules (aunque en realidad sabemos que esto sí se puede dar, *pero estamos en el contexto del ejercicio*), entonces emplearás que, como los sucesos son *incompatibles*, la probabilidad que te piden se calcula como
+
+$$
+\mathbb{P}\left( A \cup M \right) = \mathbb{P}(A) + \mathbb{P}(M).
+$$
+
+En resumen, los pasos a seguir serían:
+
+1. Identificar la información que da el enunciado, traduciéndola al lenguaje matemático más cercano a la asignatura.
+2. Identificar qué información me está pidiendo el ejercicio: ¿qué tengo que calcular o demostrar?
+3. Encontrar las herramientas que te hagan, partiendo de la información del ejercicio, encontrar aquella que te están pidiendo.
+
+### Algunos símbolos comunes
+
+Probablemente, cuando alguien quiere asustarte con las matemáticas que verás en tu grado, te haya enseñado una pizarra llena de símbolos extraños, poca letra y menos números.
+Y sí que esto puede asustar, ya hemos hablado de la mala forma que tienen las matemáticas de presentarse, pero estos símbolos son solo eso, símbolos que representan una idea, un concepto, una operación.
+Estos símbolos no son más que formas abreviadas de escribir algo; recuerda el @thm-valor-medio que hemos visto en la introducción.
+Y sí que se podría haber escrito todo en lenguaje natural, y quizás en algunos casos sería beneficioso, pero en general no.
+Ya no es que empleemos las matemáticas para enunciar teoremas o proposiciones, es que las usamos para demostrar esos teoremas y para resolver problemas: sería muy poco práctico expresar todas las ideas en lenguaje natural puro, demostraciones que ocupan un párrafo pasarían a ocupar varias páginas;
+sería impracticable. Y es por eso que surgen los símbolos, igual que en el lenguaje hablado acortamos las palabras o en WhatsApp usas emojis para expresar ideas de forma más abreviada.
+Y si sabes interpretar un mensaje tal que 💕💩🐿️, te será igual de sencillo leer matemáticas con todos sus símbolos.
+No obstante, aquí compilamos algunos de los más comunes.
+
+#### Letras griegas
+
+En las matemáticas teóricas o más profundas los números pasan a un segundo plano (de hecho, como veremos en la Sección @sec-examenes, el resultado final de un ejercicio es lo que menos importa a la hora de evaluar un examen; los profesores y profesoras solemos darle poco peso al resultado final, cargando la mayoría de la puntuación en el procedimiento y, en algunos casos, en la correcta formalización y escritura de las matemáticas empleadas).
+Es por ello que en matemáticas, más que números, verás letras como la $x$ o la $y$, y también verás letras griegas, muchas.
+Así que para que dejes de llamar a las letras con nombres raros, o simplemente las llames «ese gusanito» o «ese cero tachado», aquí te dejamos una tabla con el alfabeto griego tanto en mayúscula como en minúscula:
+
+| Letra | Nombre | Letra | Nombre |
+|-------|--------|-------|--------|
+| $\alpha$ $A$ | alfa | $\nu$ $N$ | nu |
+| $\beta$ $B$ | beta | $\xi$ $\Xi$ | xi |
+| $\gamma$ $\Gamma$ | gamma | $o$ $O$ | ómicron |
+| $\delta$ $\Delta$ | delta | $\pi$ $\Pi$ | pi |
+| $\epsilon$ $E$ | épsilon | $\rho$ $P$ | rho |
+| $\zeta$ $Z$ | zeta | $\sigma$ $\Sigma$ | sigma |
+| $\eta$ $H$ | eta | $\tau$ $T$ | tau |
+| $\theta$ $\Theta$ | theta | $\upsilon$ $\Upsilon$ | upsilon |
+| $\iota$ $I$ | iota | $\phi$ $\Phi$ | phi |
+| $\kappa$ $K$ | kappa | $\chi$ $X$ | chi |
+| $\lambda$ $\Lambda$ | lambda | $\psi$ $\Psi$ | psi |
+| $\mu$ $M$ | mu | $\omega$ $\Omega$ | omega |
+
+#### Símbolos aritmético-lógicos
+
+Además de distintas letras, hay símbolos que serán propios de cada materia, como puede ser la teoría de conjuntos, la lógica o la aritmética, muchos de ellos ya los conoces:
+
+| Símbolo | Significado | Símbolo | Significado |
+|---------|-------------|---------|-------------|
+| $+$ | Adición | $-$ | Sustracción |
+| $\cdot$ $\times$ | Multiplicación | $\div$ $/$ | División |
+| $=$ | Igualdad | $\neq$ | Desigualdad |
+| $<$ | Menor que | $>$ | Mayor que |
+| $\leq$ | Menor o igual que | $\geq$ | Mayor o igual que |
+| $\wedge$ | Conjunción lógica (y) | $\vee$ | Disyunción lógica (o) |
+| $\neg$ | Negación lógica (no) | $\implies$ | Implicación (si... entonces) |
+| $\iff$ | Doble implicación (si y solo si) | $\cap$ | Intersección de conjuntos |
+| $\cup$ | Unión de conjuntos | $\subset$ | Subconjunto |
+| $\subseteq$ | Subconjunto o igual | $\in$ | Pertenencia a un conjunto |
+| $\notin$ | No pertenencia a un conjunto | $\emptyset$ | Conjunto vacío |
+| $\forall$ | Para todo | $\exists$ | Existe |
+| $\nexists$ | No existe | $\exists_1$ | Existe un único elemento |
+| $\int$ | Integral indefinida | $\int_a^b$ | Integral definida |
+| $\frac{d}{dx}$ | Derivada | $\frac{\partial}{\partial x}$ | Derivada parcial |
+| $\sin$ | Seno | $\cos$ | Coseno |
+| $\tan$ | Tangente | $\cot$ | Cotangente |
+| $\sec$ | Secante | $\csc$ | Cosecante |
+| $\arcsin$ | Arcoseno | $\arccos$ | Arcocoseno |
+| $\arctan$ | Arcotangente | $\sinh$ | Seno hiperbólico |
+| $\cosh$ | Coseno hiperbólico | $\tanh$ | Tangente hiperbólica |
+
+### Axiomas, lemas, proposiciones y teoremas
+
+Cuando te enfrentes a unos apuntes de matemáticas, verás que la mayoría del conocimiento se estructura en axiomas, lemas, proposiciones y, por último, teoremas.
+Las matemáticas se construyen unas sobre otras; una vez que se ha demostrado un resultado, nos apoyamos en él para construir otros nuevos.
+Serían como bloques de LEGO que se van uniendo para crear estructuras cada vez más complejas.
+Por eso, es importante, cuando estudies matemáticas, que comprendas los primeros conceptos antes de pasar a los siguientes.
+Una vez que comprendas las ideas de un tema, podrás pasar a estudiar las ideas de otro, que se apoyarán en las anteriores y que darán por sabidas y triviales esas ideas previas.
+Aquí tienes una pequeña explicación de qué es cada uno de estos elementos principales en los que se organizan las matemáticas:
+
+Axiomas
+: Son la pieza fundamental, el punto de partida.
+Se dan por ciertos, sin necesidad de una demostración. Cada teoría matemática parte de un conjunto de axiomas; dependiendo del conjunto de axiomas, se podrán derivar unos resultados u otros, que sí que habrá que demostrar de forma rigurosa partiendo de estos axiomas o de otros resultados previos que hayan sido ya derivados.
+
+Lemas
+: Resultados de menor relevancia, que se han demostrado y que sirven como base para demostrar ideas de mayor calado; son resultados auxiliares que pueden quedar fuera de la teoría matemática que se está desarrollando.
+
+Proposiciones
+: Resultados más importantes que los lemas y que son parte de la teoría matemática que se esté estudiando.
+
+Teoremas
+: Los resultados de mayor importancia y a los que se da una relevancia superior.
+Estos teoremas no son el punto final de una teoría matemática; pueden emplearse para derivar otros resultados.
+
+Puedes ver esta idea de cómo las matemáticas se construyen unas sobre otras, partiendo de un conjunto de axiomas, en el siguiente vídeo de Mates Mike:
+
+{{< video https://youtu.be/6oXs7Yi4tGY?si=eS0924bBggUhU1dW start="260" >}}
+
+### La biblioteca UGR
+
+Y para finalizar esta sección sobre cómo leer matemáticas, recordarte que tienes la suerte de tener acceso a muchos recursos que la Universidad de Granada pone a tu disposición.
+En particular, la biblioteca: puedes pasearte por la biblioteca de tu facultad, ir a la sección de matemáticas y ojear algunos libros y familiarizarte con la forma de escribir matemáticas.
+También puedes buscar recursos más allá de los apuntes de clase que te ayuden a ver las cosas con otro enfoque, ver otros ejemplos, completar tus apuntes... En la guía docente de las asignaturas tendrás una sección en la que se recomienda alguna bibliografía relacionada con la materia.
+
+Visita tu biblioteca, exprime los recursos que la UGR pone a tu disposición.
+También tienes acceso a muchos recursos en línea, puedes consultar el catálogo completo en [granatensis.ugr.es](https://granatensis.ugr.es/).
+
+## Cómo escribir matemáticas
+
+Como hemos visto, las matemáticas tienen un lenguaje propio, o más que un lenguaje propio, una notación.
+Pero esto no hace a las matemáticas diferentes de otra materia (piensa en los diagramas que representan la estructura de un compuesto químico o los famosos diagramas de Feynman).
+En tu día a día también usas símbolos para expresarte; no lo sabemos, pero seguro que hay alguna interpretación para este mensaje de WhatsApp 💕💩🐿️.
+Si has sido capaz de comprender y aprender este lenguaje lleno de pictogramas, no vas a tener problemas escribiendo matemáticas.
+Desde las matemáticas más básicas vienes empleando notación, como cuando escribes $2 + 2 = 4$ en lugar de indicar que si a dos le agregas la cantidad de dos entonces el resultado de esa operación será $4$, pero aquí ya has empleado notación:
+
+- En primer lugar, unos símbolos que hemos llamado números y que nos sirven para designar cantidades; en nuestro caso, expresamos las cantidades con el sistema decimal.
+But podríamos expresarnos empleando notación hexadecimal (en ese caso el $14$ pasaría a notarse como $E$), pero antes existieron los números romanos (donde el $14$ se expresa como $XIV$) o los números mayas.
+- Luego, has empleado el símbolo $+$ para expresar la operación de adición, aunque, como te podrían contar aquellas personas estudiosas del Álgebra, este símbolo puede representar otro tipo de operaciones entre otros tipos de elementos que no tienen por qué ser números.
+Pero para ti el $+$ siempre ha representado la acción de agregar una cantidad a otra.
+- Y, por último, has empleado el símbolo $=$ para expresar que el resultado de la operación de adición es igual a $4$.
+
+Y es que escribir matemáticas es algo fundamental. No solo porque estás aprendiendo una nueva disciplina y en cada materia existe la forma correcta de escribir ---también has tenido que aprender a escribir correctamente en español.
+Además de esto, del propio estilo y corrección a la hora de escribir, el hecho de que aprendas a expresarte correctamente de un modo matemático tiene beneficios directos para ti:
+
+- Una vez hayas adquirido la habilidad, expresarás las ideas de una forma más clara, lo que ayudará a que no cometas errores en los ejercicios.
+Si escribes de una forma precisa, cuidando el orden y la notación, la posibilidad de cometer errores disminuirá.
+- Al respetar la forma de escribir y la notación que has visto en clase, es más probable que recuerdes cómo resolver un ejercicio, aunque sea por la propia memoria visual.
+- A menudo pierdes puntos en tus ejercicios por no expresarlo todo de la forma correcta o explícita: pasos que no pueden valorarse porque no se han hecho y quizás has llegado al resultado de chiripa, razonamientos que no son correctos porque hay parte de la explicación que no has expresado correctamente o cálculos que no parecen correctos porque la notación que has empleado parece indicar que has realizado otra operación.
+
+Cuando escribes matemáticas, no todo son símbolos; en esta sección comentaremos algunas reglas básicas extraídas de los capítulos 3 y 4 de @houston2009think.
+
+
+::: {.callout-warning}
+No abuses del uso de símbolos, expresa las matemáticas con frases completas y bien redactadas. Las matemáticas tienen su propia notación y simbología, sí, pero no son jeroglíficos.
+:::
+
+
+1. Escribe empleando frases u oraciones completas. No abuses de los símbolos.
+Claro que usarás símbolos para representar ciertos conceptos, son símbolos que se emplean porque resultaría muy tedioso y poco práctico escribir todo con lenguaje natural, pero no abuses de ellos.
+Escribe frases completas: «Sea $f$ una función derivable en el intervalo $[a, b]$» estará mucho mejor expresado que escribir directamente «$f \in D([a, b])$».
+2. Usa correctamente la puntuación. Y aquí solo tienes que usar exactamente las mismas reglas de puntuación que cuando escribes en lenguaje natural: usa adecuadamente las comas, los puntos y coma;
+estructura correctamente tu explicación en párrafos... El hecho de que algunas palabras o partes completas de la oración estén representadas por símbolos no debe hacerte olvidar que estás escribiendo un texto y, por tanto, has de acompañarlo de los signos de puntuación adecuados.
+3. Escríbelo de la forma más simple o directa que puedas. No emplees largos párrafos enrevesados para expresar una idea.
+Tres o cuatro frases cortas, separadas mediante puntos, bastarán para expresar tu idea, sin errores y de forma clara.
+4. Trata de indicar lo que vas haciendo: no hagas una sucesión de pasos sin más.
+Informa de qué pasos estás dando y por qué. Una buena idea es, si por ejemplo estás expresando una cadena de igualdades, indicar bajo cada uno de los símbolos de igual en qué resultados te estás basando para que, efectivamente, esa igualdad sea cierta.
+5. Conectando con la última idea del punto anterior, siempre trata de hacer explícito en qué resultados te apoyas para afirmar algo.
+No hagas que parezca que has llegado ahí de casualidad o simplemente porque parece que es lo que mejor encaja hasta llegar a tu solución.
+6. Ordena bien tus ideas, no abuses de flechas y/o asteriscos para guiar al lector.
+Escribe las matemáticas como cualquier texto: de izquierda a derecha, y de arriba a abajo.
+7. Si vas a introducir una notación propia, más allá de la propia de la materia que estás estudiando, defínela bien.
+Por ejemplo, si vas a definir una variable aleatoria como $X$, asegúrate de indicar qué representa esa variable: número de hijos, peso de un ornitorrinco...
+
+## Lógica
+
+Una parte fundamental para elaborar matemáticas es la lógica.
+En cada ejercicio que resuelves, además de las nociones de la materia concreta o las técnicas que hayas aprendido, estarás aplicando la lógica de forma implícita.
+
+No hay ejercicio resuelto de forma correcta o demostración matemática correcta si no se realiza desde el punto de vista de la corrección de la lógica.
+Pero, aunque esto pueda parecer una desventaja, la rigidez de las matemáticas hace que realmente acaben siendo fáciles: aquí no hay posibles subjetividades, o enfoques distintos que estén mejor que otros. Si partes desde las premisas del ejercicio, y a partir de ellas das pasos lógicos, cuando llegues a una conclusión, esta conclusión o solución será correcta. Evidentemente, hay pasos «que te puedes saltar» gracias a emplear resultados previos que ya conozcas de la asignatura o que hayas demostrado previamente; no tienes que hacer una demostración desde cero. Un claro ejemplo de esto son los corolarios, que son resultados que se derivan de un teorema ya probado de una forma sencilla. En la demostración que se hace de estos resultados no partimos de cero, partimos de lo que ya ha sido demostrado para el teorema anterior.
+
+Debido a la gran importancia que tiene la lógica a la hora de hacer matemáticas, dedicamos una sección a repasar las nociones básicas de la misma.
+Para ello, comenzamos introduciendo el concepto de proposición.
+
+### Proposiciones
+
+Las proposiciones son enunciados a los que podemos asignar un valor de verdad: son simplemente afirmaciones que, en cada caso, pueden ser verdaderas o falsas.
+Usamos "$V$" para verdadero y "$F$" para falso. El correspondiente valor $V$ o $F$ se llama el *valor de verdad* de la proposición.
+
+La lógica proposicional describe las formas en que podemos combinar proposiciones verdaderas para producir otros enunciados verdaderos. Usualmente se consideran cinco operaciones principales de ese tipo (llamados *conectivos lógicos*). Estas operaciones son la conjunción, la disyunción, la negación, la implicación y la biimplicación.
+
+Sean $A$ y $B$ dos enunciados o proposiciones. Definimos la expresión «$A$ y $B$», también escrito $A \wedge B$, y llamada la *conjunción* de $A$ y $B$ mediante una *tabla de verdad* (una tabla que nos da, dependiendo del valor que tome cada una de las dos proposiciones que se combinan, verdadero o falso, el valor que tendrá el enunciado producto de combinarlas):
+
+$$
+\begin{array}{c|cccc}
+A & V & V & F & F \\
+B & V & F & V & F \\
+ \hline
+ A\wedge B & V & F & F & F
+\end{array}
+$$
+
+Esta tabla muestra que $A \wedge B$ es verdad cuando $A$ y $B$ son ambas verdaderas y es falso en el resto de los casos. Si decimos que «la capital de España es Madrid y la de Francia es París», entonces tendremos un resultado verdadero. En cambio, si decimos que «la capital de España es Madrid y la de Francia es Lyon», entonces tendremos un enunciado falso, al serlo, al menos, una de las dos.
+
+Una segunda forma en la que podemos combinar proposiciones es utilizando la *disyunción* «$A$ o $B$», que también se escribe como «$A \vee B$». Su tabla de verdad es:
+
+$$
+\begin{array}{c|cccc}
+A & V & V & F & F \\
+B & V & F & V & F \\
+ \hline
+ A\vee B & V & V & V & F
+\end{array}
+$$
+
+Esto quiere decir que $A\vee B$ es verdad si lo es alguna de las dos, $A$ o $B$, o ambas. Si decimos «la capital de España es Madrid o Granada», esta proposición es cierta ya que al menos una de las dos lo es.
+
+A partir de cualquier proposición podemos formar su opuesta o *negación* insertando «no» en los lugares adecuados. En general, si $A$ es una proposición, su negación es «no $A$», denotada también "$ \neg A $", que es verdadera precisamente cuando $A$ es falsa. Su tabla de verdad es:
+
+$$
+\begin{array}{c|cc}
+A & V  & F \\
+ \hline
+ \neg A & F & V
+\end{array}
+$$
+
+Decir que «la capital de España es Granada» es una proposición claramente falsa.
+En cambio, como es lógico, decir que «la capital de España *no* es Granada» es verdadero.
+
+La noción de *implicación* es especialmente importante y su uso en matemáticas difiere en algo de su uso corriente, aunque naturalmente el significado subyacente es el mismo. Así, «$A$ implica $B$» o «si $A$ entonces $B$» se denota por «$A\implies B$» y significa que «$A$ es falsa o $B$ es verdadera», como se refleja en su tabla de verdad:
+
+$$
+\begin{array}{c|cccc}
+A & V & V & F & F \\
+B & V & F & V & F \\
+ \hline
+ A\implies B & V & F & V & V
+\end{array}
+$$
+
+Nótese que si $A$ es falsa, $A\implies B$ es verdadera para cualquier $B$; en otras palabras:
+
+Un enunciado falso implica cualquier cosa.
+
+Esto puede parecer extraño al principio, pero tiene su análogo en el uso ordinario cuando subrayamos lo absurdo de una afirmación extrayendo un resultado aún más absurdo. Si la capital de España es Lepe, entonces la capital de Francia es Burdeos.
+
+El último conectivo de uso frecuente es la *biimplicación* o *equivalencia lógica* «$A\iff B$», que se define como «$(A\implies B)\wedge (B\implies A)$», y que a menudo se suele leer como «si y solo si». Su tabla de verdad es:
+
+$$
+\begin{array}{c|cccc}
+A & V & V & F & F \\
+B & V & F & V & F \\
+ \hline
+ A\iff B & V & F & F & V
+\end{array}
+$$
+
+Con esto acabamos nuestro repaso a las distintas operaciones lógicas más importantes. Y aunque ahora mismo no lo veas, serán la base sobre la cual sustentarás las resoluciones de los ejercicios:
+
+- Sabrás que para demostrar que un determinado objeto pertenece a una cierta categoría matemática tienes que comprobar que cumpla todas y cada una de las propiedades que definen a los objetos de esa categoría.
+- Del mismo modo, si quieres demostrar que un objeto *no* pertenece a una categoría, sabrás que basta con comprobar que no cumple alguna de las características que caracterizan a esa propiedad.
+Y estas dos cosas las sabes porque hemos visto que la conjunción es falsa en cuanto alguna de las proposiciones lo es. Y es que si estar en una categoría consiste en que se cumplan 3 propiedades $p$, $q$ y $r$, el pertenecer a una categoría será equivalente a probar que $p \wedge q \wedge r$.
+- Y si has de demostrar un determinado resultado que nos dice que algo pasa si y solo si pasa otra cosa, sabrás que para probar que es verdadero has de demostrar que $A \implies B$ y que $B \implies A$.
+
+### Predicados
+
+Usualmente los enunciados simples discutidos hasta ahora no son suficientes para tratar las situaciones matemáticas. Además de las proposiciones, necesitamos *funciones proposicionales* o *predicados*. Por ejemplo, «$x$ es un número impar» ($x$ recorre los números naturales) o «$x$ es mayor que $y$» ($x,y$ son números naturales).
+
+En contraste con las proposiciones, un predicado ya no es verdadero o falso, sino que sólo llega a serlo cuando se sustituyen valores particulares para las variables: "2 es un número impar", "3 es mayor que 2".
+
+En la práctica, con frecuencia queremos decir que alguna afirmación $P(x)$ sobre $x$ es verdadera para *todo* $x$ (en el universo de discurso). Denotamos esto por:
+
+$$
+(\forall x)P(x)
+$$
+
+que se lee «para todo $x$ se verifica $P(x)$». Decimos que la variable $x$ está acotada por el *cuantificador universal* $\forall$.
+
+Por otro lado, para expresar que $P(x)$ se verifica para *algún* $x$, escribimos:
+
+$$
+(\exists x)P(x)
+$$
+
+que leemos «existe un $x$ tal que $P(x)$». Aquí $x$ está acotado por el *cuantificador existencial* $\exists$.
+
+Finalmente, para expresar que $P(x)$ se verifica exactamente para *un solo valor* de $x$, escribimos:
+
+$$
+(\exists_1 x)P(x)
+$$
+
+que leemos «existe un único $x$ tal que $P(x)$». Ahora $x$ está acotado por el *cuantificador existencial especial* $\exists_1$.
+
+Cuando todas las variables que aparecen en un predicado están acotadas por cuantificadores, tenemos una proposición. Por ejemplo, en el dominio de los números naturales, $(\forall x)(\forall y)(x+y=y+x)$ significa que para cualesquiera $x,y$ la suma $x+y$ es independiente del orden de los términos, es decir, esta es la forma formal de expresar la propiedad conmutativa de la suma.
+De la misma manera, $(\forall x)(\exists y)(x<y)$ dice que para todo $x$ existe un $y$ mayor que $x$, es decir, que no existe un número máximo.
+
+Nótese que si aplicamos los cuantificadores en orden inverso obtenemos la proposición $(\exists y)(\forall x)(x<y)$, que dice que existe un $y$ mayor que todo $x$. Evidentemente, esto es falso mientras que lo anterior es verdad, así que se debe prestar atención al orden en que se aplican los cuantificadores.
+
+Nótese también que una variable acotada puede siempre renombrarse sin cambiar el significado. Así, $(\forall x)P(x)$ significa exactamente lo mismo que $(\forall y)P(y)$; por esta razón, una variable acotada se llama también «variable muda». Con frecuencia usamos esta libertad para evitar conflictos de anotación. Por ejemplo, en lugar de $(a=x+y)\wedge(\forall x)(a\neq 2x)$ es preferible $(a=x+y)\wedge(\forall z)(a\neq 2z)$. Ambas formas significan lo mismo, pero la segunda es menos propicia a las malas interpretaciones.
+
+Los cuantificadores universal y existencial están relacionados por las equivalencias siguientes, que nos permiten definir uno de ellos en términos del otro:
+
+$$
+\begin{aligned}
+\neg(\exists x)\neg P(x) &\iff (\forall x)P(x) \\
+\neg(\forall x)\neg P(x) &\iff (\exists x)P(x)
+\end{aligned}
+$$
+
+Leamos estas dos expresiones:
+
+- Si no existe ningún valor de $x$ para el que no se dé $P$, eso equivale a que para todo valor de $x$ se dé $P$.
+- Si no para todos los valores de $x$ $P$ es falso, eso equivale a que existe algún valor de $x$ para el que $P$ es verdadero.
+Con ayuda de estas fórmulas (y notando que $\neg\neg A\iff A$) es fácil escribir la negación de cualquier fórmula con cuantificadores.
+Por ejemplo:
+
+$$
+\neg ((\forall x)(\exists y)(\forall z)F(x,y,z)) \iff (\exists x)(\forall y)(\exists z)(\neg F(x,y,z))
+$$
+
+Una vez hemos repasado los fundamentos de la lógica matemática, hablemos de uno de los principales elementos de las matemáticas, ya que a partir de ellos se construyen nuevos resultados a partir de otros anteriores, o al menos se comprueba que, efectivamente, dicha construcción es correcta. Así, vamos a ver los distintos mecanismos de demostración o estrategias que pueden emplearse en matemáticas para demostrar que un determinado resultado es verdadero.
+
+## Demostraciones
+
+Como hemos dicho antes, en cualquier teoría matemática hay axiomas de los que se derivan los teoremas mediante deducciones lógicas (*demostraciones*). Aunque la forma más efectiva para aprender a hacer demostraciones es leyendo muchas, puede ser útil exponer los principales métodos de demostración. Esto también te servirá para conocer distintas estrategias a través de las cuales resolver tus ejercicios.
+
+### Demostración directa
+
+Una demostración directa usualmente tiene la forma: «$A$ es verdad y $A\implies B$ es verdad, luego $B$ es verdad». En la lógica escolástica este proceso se llama *modus ponens*. Digamos que son las demostraciones que se realizan dando pasos correctos partiendo de unas premisas.
+
+Este sería el enfoque más típico que tú sigues al resolver un ejercicio; partes de la información del enunciado (que la das como verdadera, serían como tus axiomas de partida) y de ahí, aplicando resultados conocidos u operaciones correctas, vas derivando nuevos resultados, hasta llegar a probar el resultado final o encontrar la solución del ejercicio.
+
+Es importante distinguir entre «$A\implies B$» por un lado y «$A$, de donde $B$» por otro. La distinción puede parecer pedante cuando $A$ es verdad, pero ignorarla puede llevar a confusión. De hecho, hemos visto que si $A$ es falso entonces $A \implies B$ es verdadero, sea $B$ verdadero o no. Y lo que nos interesa es demostrar que $B$ es verdadero. Por lo tanto, los pasos siempre son de algo verdadero (empezando por esas premisas del enunciado) a otra cosa también verdadera.
+
+### El contrarrecíproco
+
+A partir del enunciado $A\implies B$ podemos formar otros tres:
+
+* El *recíproco* o *inverso* $B\implies A$.
+* El *contrario* $\neg A\implies\neg B$.
+* El *contrarrecíproco* $\neg B\implies\neg A$.
+
+El contrarrecíproco es lógicamente equivalente al enunciado original (compruébense las tablas de verdad correspondientes). Por ello, otra forma de demostración es el *modus tollens*: "$A$ es verdad y $\neg B\implies\neg A$ es verdad, luego $B$ es verdad".
+
+A veces se opta por demostrar el contrarrecíproco puesto que resulta más sencillo, bien sea porque hay resultados que nos ayudan a resolver el problema de, partiendo de que $\neg B$, probar que entonces llegamos a $\neg A$, o bien porque por nuestro modo de pensamiento vemos más claro ese camino.
+
+Hay que observar que el recíproco no es equivalente al enunciado dado (comprobar también las tablas de verdad), por lo que un razonamiento del tipo "$A$ es verdad y $B\implies A$ es verdad, luego $B$ es verdad" no es correcto. Por ejemplo, supongamos que queremos demostrar "$(\forall x)(x^2 \text{ par } \implies x \text{ es par})$". No es correcto argumentar "Si $x$ es par, $x^2$ es par, de donde el resultado", pero sí es correcto decir "Si $x$ es impar, $x^2$ es impar, de donde el resultado".
+
+Por esto antes hemos visto que la definición de biimplicación era $(A \implies B) \wedge (B \implies A)$, y hemos dicho que para demostrar una biimplicación tendríamos que demostrar las dos demostraciones por separado; no basta con demostrar una de las dos: si llueve me mojo, pero si me mojo no tiene que implicar que esté lloviendo, puede que me haya caído a la piscina.
+
+### Reducción al absurdo
+
+Otra forma de prueba indirecta es *por contradicción*, también llamado *reductio ad absurdum*: Para demostrar $A$, mostramos que "$(\neg A)\implies F$", es decir, demostramos que (no $A$) lleva a una contradicción.
+
+### Contraejemplo
+
+También existe la demostración *por contraejemplo*. Muchos enunciados tienen la forma $(\forall x)P(x)$. Si queremos demostrar que un tal enunciado es falso, debemos demostrar su negación, es decir, $(\exists x)\neg P(x)$, y esto se hace hallando un $c$ tal que $\neg P(c)$ sea cierto.
+
+Por ejemplo, para demostrar que todos los ornitorrincos son marrones, habría que recorrer todo el planeta, asegurarnos de observar a todos y cada uno de los ornitorrincos que existen y ver que, efectivamente, cada uno de ellos es marrón. En cambio, para demostrar que no todos los ornitorrincos son marrones, bastaría con encontrar uno que no lo fuese.
+
+### Demostración por inducción
+
+Un tipo particular de demostración es la estrategia de demostración por inducción, que se emplea en resultados que, por lo general, implican probar que una cierta propiedad se da para cualquier número natural, es decir, $\forall n \in \mathbb{N}$.
+
+Esta demostración se basa en los axiomas de Peano, en particular en el cuarto axioma, que nos dice[^1]:
+
+[^1]: Hay debate sobre si el $0$ pertenece o no a los números naturales. En este caso vamos a suponer que los números naturales no incluyen al cero.
+
+> Si el $1$ pertenece a cierto conjunto, y dado un número natural cualquiera *en dicho conjunto*, el sucesor también pertenece al conjunto, entonces todos los números naturales pertenecen al conjunto.
+
+Entonces, a la vista de este axioma, para demostrar que todos los números naturales cumplen algo, hemos de comprobar que si $O$ es el conjunto de todos los números que cumplen ese algo, entonces $\mathbb{N} \subseteq O$.
+Y para ello, a la luz del axioma, hemos de probar dos cosas:
+
+- Que el $1 \in O$.
+- Que si un cierto número, que llamamos $n$, pertenece a $O$, entonces su sucesor, que podemos llamar $n + 1$ (ya sabemos que dado un número el siguiente se obtiene sumándole 1), está también en $O$. Es decir que dado un $n \in \mathbb{N}$, si $n \in O \implies n + 1 \in O$.
+
+Veamos un ejemplo muy simple para demostrar que dado cualquier número natural, $2n$ es un número par.
+
+::: {#exm-induccion}
+
+## Demostración por inducción
+
+Para demostrar este resultado, vamos a demostrar en primer lugar que el $1$ pertenece al conjunto de los números tales que si los multiplicamos por $2$ es par:
+
+$2 \times 1 = 2$ y sabemos que $2 \% 2 = 0$, donde por $\%$ notamos el módulo, o el operador que nos da el resto de una división. Es decir, aquí estamos indicando que al dividir $2$ por $2$ el resto es cero, es decir, que el $2$ es divisible por $2$, es decir que es par.
+
+Entonces acabamos de ver que el $1$ cumple que es un número que al multiplicarlo por $2$ es un número par. Ahora tenemos que probar que si $n \in \mathbb{N}$ cumple que $2n$ es par, entonces su sucesor, $n + 1$, también lo cumple.
+
+Para ello, suponemos entonces que tenemos un número natural $n$ que cumple que $2n \% 2 = 0$. Y tenemos que probar que entonces $2(n + 1) \% 2 = 0$, es decir, que el sucesor de ese número, $n + 1$, cumple también que su doble es par. Es decir, estamos dando por cierto que $2n \% 2 = 0$, esa es nuestra premisa, suponemos que eso es cierto. No sabemos qué número es $n$, solo sabemos que $2n \% 2 = 0$, y a partir de ello vamos a demostrar que $2(n+1) \% 2 = 0$:
+
+$$
+2(n + 1) = 2n + 2.
+$$
+
+Y aquí nos quedaríamos porque no sabríamos cómo usar que $2n \% 2 = 0$, pero podemos expresar la propiedad de ser par de otro modo, y es que un número $a$ es par si existe un cierto número entero $k$ tal que $a = 2k$.
+
+Entonces vamos a enfocar la demostración por otro lado (es claro cómo se demostraría que el $1$ cumple lo que queremos con este enfoque). Sabemos entonces ahora que un cierto número natural $n$ cumple que $n = 2k$ con $k \in \mathbb{Z}$, y vamos a probar que existe otro número entero $l$ tal que $2(n+1) = 2l$.
+
+::: {.callout-note}
+Esto es algo común en matemáticas. A menudo tomamos un camino a través del que demostrar algo (not siempre el camino de pasos a seguir es único, hay varias opciones potenciales para demostrar algo) y vemos que no podemos o no sabemos llegar a una demostración.
+Entonces simplemente vemos nuestras limitaciones, aprendemos de nuestros errores y buscamos otra alternativa. ¡Esto también es algo bonito en matemáticas!
+:::
+
+$$
+2(n + 1) = 2n + 2 \text{ y sabemos que $2n = 2k$, con lo que } 2n + 2 = 2k + 2 = 2(k + 1).
+$$
+
+Y ahora usamos que dado un número entero, $k$, $k + 1$ es también un número entero. Por lo tanto, acabamos de probar que $2(n+1) = 2l$, siendo $l$ un número entero ($k + 1$). Y con esto concluiríamos la demostración, que se suele cerrar con un símbolo $\blacksquare$ o $\square$.
+:::
+
+::: {#exm-contrajemplo}
+
+Supongamos ahora que queremos probar ahora que no para todo número real $x$, $2x$ es un número par. Para ello, ya hemos visto cómo probar que el contrario de una proposición del tipo $(\forall x) P(x)$, basta encontrar un contraejemplo, un número real $y \in \mathbb{R}$ que no cumple $P$. En este caso, tomamos por ejemplo el número $3.5 \in \mathbb{R}$, y tenemos que $2 \times 3.5 = 7$, que sabemos que no es un número real entero.
+$\blacksquare$
+:::
+
+## Cómo estudiar matemáticas {#sec-estudiar}
+
+### Lápiz y papel
+
+A la hora de afrontar el estudio de las matemáticas, no tienes más remedio que emborronar el papel: practica los ejercicios, escribe de nuevo tus apuntes prestando atención a lo que estás copiando, rehaz desde cero una demostración entendiendo cada uno de los pasos.
+
+
+::: {.callout-note}
+En matemáticas la memoria no es lo principal, y cuanto menos dependas de ella, mejor.
+:::
+
+Las matemáticas hay que entenderlas, sentarse tranquilo a la mesa y entender cada una de las líneas.
+
+Al final son muchos resultados, muchas demostraciones, es imposible acordarse de todo: si lo intentas, será muy fácil que cometas algún error o que te quedes en blanco. En particular, memorizar demostraciones es uno de los mayores errores que cometemos al comenzar a estudiar matemáticas. Si quieres, memoriza el hilo conductor de la demostración, los pasos clave, pero comprende el camino, cómo se va de cada uno de esos pasos al siguiente, te será más sencillo.
+
+Por otro lado, de nada sirve descargar una relación de ejercicios resueltos por otra persona y asentir mientras lo lees; cuando vemos la solución por escrito todo parece lógico y encaja, y es fácil crearse la falsa sensación de que sabríamos hacerlo sin problemas. Así que no tienes más remedio que hacerlo tú por tu cuenta, desde cero, con y sin apuntes, con y sin compañeros.
+
+Elige la libreta o el tipo de papel que más te guste. Cómprate varios bolígrafos o lápices de tu modelo favorito. O adquiere una pluma estilográfica que te guste y que te acompañe durante toda la carrera. Y no dejes de gastar papel y de derrochar tinta. Esa es la mejor forma de estudiar matemáticas.
+
+::: {.callout-warning}
+Las matemáticas no se estudian de memoria ni leyendo soluciones de otra persona. Solo aprenderás matemáticas *haciendo matemáticas*.
+:::
+
+### Herramientas para el estudio de las matemáticas
+
+No obstante, no todo tiene por qué ser tan analógico; hay distintas herramientas informáticas, además de una buena calculadora (ya habrás notado, o notarás, que las cuentas no son lo importante en el estudio de las matemáticas), que pueden ayudarte a comprender mejor ciertos conceptos.
+
+- [Wolfram Alpha](https://www.wolframalpha.com/) es una alternativa, menos potente, al *software* de pago Mathematica.
+Es una calculadora con capacidades de cálculo simbólico. Será muy cómoda para calcular integrales, derivadas, límites... También podrás graficar funciones.
+- [Desmos](https://www.desmos.com/calculator?lang=es) es una calculadora gráfica, que te será muy útil para visualizar funciones, puntos de corte entre funciones...
+- [GeoGebra](https://www.geogebra.org/classic?lang=es) es otra calculadora o conjuntos de calculadoras muy útiles.
+Tiene utilidades de calculadora gráfica que te pueden ayudar en problemas de geometría, calculadora de probabilidad que te puede servir para visualizar distintas distribuciones de probabilidad...
+- Excel o cualquier otra hoja de cálculo puede ser muy útil para realizar cálculos tediosos; conviene saber usar bien este tipo de herramientas.
+- Por último, si te gusta el mundo de la programación, distintas librerías de Python con [SageMath](https://www.sagemath.org/) o [pandas](https://pandas.pydata.org/) pueden ayudarte a realizar distintos cálculos simbólicos, aritméticos y estadísticos.
+- También puedes aprender alguna herramienta para elaborar documentos que contengan matemáticas, con un mejor acabado y con mayor comodidad que Word (aunque al principio la curva de aprendizaje sea más pronunciada).
+Ejemplos de estas herramientas son [LaTeX](https://www.latex-project.org/), [Quarto](https://quarto.org/) o [Typst](https://typst.app/).
+
+#### La IA: aliada y enemiga
+
+En el anterior repaso a herramientas para el estudio de matemáticas no nos hemos olvidado de la Inteligencia Artificial.
+Y no vamos a decir que no sea útil; incluso nos puede ayudar a que nos explique cómo hacer un ejercicio o que nos explique de otro modo unos apuntes y que gracias a eso los entendamos, pero:
+
+1. No todo lo que dice la IA es verdad, suele equivocarse bastante.
+Es verdad que cada vez menos, pero disfraza cualquier cosa que dice de total autoridad y seguridad.
+E incluso te dará la razón de cada cosa que tú le digas.
+2. Aunque nos dé perfectamente la solución a un problema, así no aprenderás nada; sería como mirar la solución de otra persona.
+Sí que lo puedes emplear como una corrección, o como una forma de conseguir una pista para realizar el ejercicio, pero no debes limitarte a copiar las soluciones que te dé.
+3. Puedes usarla para que te proponga otros ejercicios similares a otros que tú le pases de una relación, y así intentar ampliar la cantidad de ejercicios con la que practicar.
+Aunque esto también lo puedes hacer con otra persona de clase, y será más enriquecedor.
+
+::: {.callout-caution}
+No todo lo que dice una inteligencia artificial es cierto.
+Podemos pedirle que demuestre que un determinado resultado matemático es cierto y también pedirle que demuestre que es falso, y que sea capaz de hacer ambas cosas con total confianza.
+:::
+
+### La importancia de asistir a clase
+
+Hoy en día vemos como docentes que el absentismo cada vez es más común.
+No es raro escucharos decir cosas como «no voy a entrar a X asignatura» o «mejor nos vamos a la biblioteca a estudiar de verdad».
+Desde nuestro punto de vista, no asistir a clase es un error, aunque te parezca que el docente o la docente no explica bien o no te cae bien.
+Asistir a clase tiene los siguientes beneficios:
+
+1. Es un primer estudio.
+2. Estás escuchando la lección con otra voz, viendo la explicación en pizarra, en otro escenario... De este modo expones tus sentidos de otro modo al estudio, lo que facilita el aprendizaje.
+3. Es común que se expliquen las cosas con otro enfoque distinto al que tú puedes encontrar en un libro o en un vídeo de YouTube.
+Será otro enfoque que quizás te ayude a ver las cosas desde otro ángulo.
+4. Las dudas en directo son una gran forma de aprender, así como las propias erratas del docente o la docente.
+5. También conoces la forma de hablar del docente o la docente, lo que te ayudará a comprender mejor sus explicaciones en tutorías o al hacer una consulta en el examen.
+
+### Cómo acudir a una tutoría
+
+También te invitamos a acudir a tutorías, pues son una forma complementaria de comprender los contenidos que en clase puedan quedarte no del todo claros.
+Pero para sacar el máximo partido a tus tutorías te sugerimos:
+
+1. Estudia el tema primero por tu cuenta.
+2. Intenta hacer los ejercicios por tu cuenta sin rendirte a la primera.
+3. Anota todas las dudas en un papel para que no se te olvide nada durante la tutoría.
+4. Toma notas durante la tutoría o pídele al docente o la docente el folio que empleéis durante la tutoría.
+5. Puedes acudir a tutoría con varios compañeros y compañeras para que así solventéis dudas comunes a la vez.
+6. No te quedes con dudas por vergüenza al pensar que tu pregunta será tonta o trivial.
+
+### Cómo afrontar un examen de matemáticas {#sec-examenes}
+
+Es común que acudáis con nervios a los exámenes, en particular a los de matemáticas.
+A continuación os damos algunos consejos generales para afrontar un examen de matemáticas:
+
+1. Lee detenidamente cada enunciado.
+Puedes ayudarte de un subrayador para marcar la información principal del enunciado.
+2. No esperes a los últimos 10 minutos para preguntar tus dudas;
+no tendrás margen de maniobra para corregir o hacer nada una vez solventada tu duda.
+3. Usa una página para cada ejercicio. De este modo será más fácil dejar un ejercicio a medias, para retomarlo más tarde, y que no quede el examen desorganizado.
+4. No te quedes en un ejercicio eternamente si no sabes cómo resolverlo.
+Pasa a otro, y quizás más adelante encuentres la solución.
+5. Escribe o resume las premisas del enunciado para arrancar.
+6. Expresa todo de la forma más explícita posible. De este modo tu cabeza se ordenará y, además, en caso de error, será más fácil que no pierdas muchos puntos si se puede detectar el error particular que has cometido.
+7. Expresa todo en la notación correcta; no solo ayuda a una mejor presentación, también te puede ayudar a recordar lo estudiado al ver los mismos símbolos que has visto durante tu estudio.
+8. Si un apartado depende de uno anterior, y no has sabido resolverlo, invéntate el resultado y trabaja el resto del ejercicio con ese resultado figurado.
+De este modo solo perderás los puntos del apartado anterior y no del resto.
+Aunque no escojas un resultado que haga que el siguiente apartado sea trivial; es probable que entonces no obtengas todos los puntos de ese apartado.
