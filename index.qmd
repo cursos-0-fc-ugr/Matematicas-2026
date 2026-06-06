@@ -8,17 +8,20 @@ page-layout: full
 
 Curso cero para matemáticas en la ETSIIT y Facultad de Ciencias de la Universidad de Granada. Puedes encontrar otros cursos cero de nuestro centro en este [enlace](https://cursos-0-fc-ugr.github.io/).
 
-Se han tomado como base las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana, Pilar Muñoz Rivas, Javier Lobillo Borrero y Evangelina Santos Aláez para el Curso Cero de la ETSIIT de la Universidad de Granada
+Se han tomado como base las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana, Pilar Muñoz Rivas, Javier Lobillo Borrero y Evangelina Santos Aláez para el Curso Cero de la ETSIIT de la Universidad de Granada.
 
-La maquetación e inclusión de gráficos la ha llevado a cabo Pedro A. García Sánchez; ejemplos desarrollados con la ayuda de María Burgos
+La maquetación e inclusión de gráficos la ha llevado a cabo Pedro A. García Sánchez; ejemplos desarrollados con la ayuda de María Burgos.
 
-Este respositorio se pude visualizar en [GitHub pages](https://pedritomelenas.github.io/Curso-0-Matematicas).
+Para esta edición se han actualizado los contenidos y adaptado a la LOMLOE, con la colaboración de Ana García Burgos, Gustavo Rivas Gervilla, María Burgos, Jerónimo Alaminos Prats y Óscar Sánchez Romero.
 
-Si encuentra algún error, o quiere que se introduzca algún contenido adicional, por favor, comuníquenoslo usando el [gestor de incidencias](https://github.com/cursos-0-fc-ugr/Matematicas/issues) de este repositorio.
+Este respositorio se pude visualizar en [GitHub pages](https://github.com/cursos-0-fc-ugr/Matematicas-2026).
+
+Si encuentra algún error, o quiere que se introduzca algún contenido adicional, por favor, comuníquenoslo usando el [gestor de incidencias](https://github.com/cursos-0-fc-ugr/Matematicas-2026/issues) de este repositorio.
 
 
 ## Contenidos
 
+1. [Tema 0](Tema0/tema0.qmd)
 1. [Conjuntos y aplicaciones](Conjuntos/conjuntos.md)
 1. [Complejos](Complejos/complejos.md)
 1. [Fracciones y potencias](Fracciones-Potencias/fracciones-potencias.md)

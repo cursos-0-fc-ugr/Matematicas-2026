@@ -592,3 +592,7 @@ Pasa a otro, y quizás más adelante encuentres la solución.
 8. Si un apartado depende de uno anterior, y no has sabido resolverlo, invéntate el resultado y trabaja el resto del ejercicio con ese resultado figurado.
 De este modo solo perderás los puntos del apartado anterior y no del resto.
 Aunque no escojas un resultado que haga que el siguiente apartado sea trivial; es probable que entonces no obtengas todos los puntos de ese apartado.
+
+
+---
+[Contenidos confeccionados por Gustavo Rivas Gervilla]{.small}
