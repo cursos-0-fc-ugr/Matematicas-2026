@@ -28,12 +28,11 @@ Cuando como subconjunto [$E$]{.math} de [$A$]{.math} nos tomamos el propio conju
 
 ## Propiedades de funciones
 
-
 Existen multitud de propiedades de funciones. Algunas más profundas como la continuidad o derivabilidad se estudiarán en capítulos aparte. Aquí estudiaremos algunas muy generales, sin pretender ser exhaustivos, son las siguientes.
 
 **Linealidad**
 
-Una función [$f \colon \mathbb{R} \to \mathbb{R}$]{.math} es lineal si verifica que [$f(ax+by)=af(x)+bf(y)$]{.math} para cualesquiera [$a,b,x$]{.math} e [$y$]{.math} números reales. En realidad las funciones lineales (con dominio en [$\mathbb{R}$]{.math}) no son ningún misterio y es que las únicas funciones lineales en este ambiente son las funciones para las que existe un [$m\in \mathbb{R}$]{.math} de forma que [$f(x)=mx$]{.math} para [$x\in \mathbb{R}$]{.math}.
+Una función [$f \colon \mathbb{R} \to \mathbb{R}$]{.math} es lineal si verifica que [$f(ax+by)=af(x)+bf(y)$]{.math} para cualesquiera [$a,b,x$]{.math} e [$y$]{.math} números reales. En realidad las funciones lineales (con dominio en [$\mathbb{R}$]{.math}) no tienen ningún misterio: son las funciones de la forma [$f(x)=mx$]{.math} para [$x\in \mathbb{R}$]{.math}, para algún [$m\in \mathbb{R}$]{.math}.
 
 ::: {#box .jxgbox style="width:400px; height:400px;margin:auto;"}
 :::
@@ -67,7 +66,38 @@ curve4 = board2b.create('functiongraph',
                   [function(t){ return(Math.sin(t*t*t+t))}, -10,10], {strokeColor:"magenta"});
 ```
 
-**Periodicidad**
+::: {#exr-1}
+
+Decide si las siguientes funciones son pares, impares o ninguna de las dos:
+
+1.  $f(x)=x^{4}+x^{2}+1$, 
+    <button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-1 .collapse}
+    La función es par. Todos los exponentes son pares así que $f(x)=f(-x)$.
+    :::
+
+2.  [$f(x)=x+\operatorname{sen}(x)$]{.math}, 
+    <button id="e1-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-2 .collapse}
+    La función es impar. Es la suma de dos funciones impares, $f(x)=x+\operatorname{sen}(x)$, así que $f(-x)=-x-\operatorname{sen}(-x)=-x+\operatorname{sen}(x)=-f(x)$ para cada $x\in \mathbb{R}$.
+    :::
+
+3.  [$f(x)=\cos(x^3)$]{.math}, <button id="e1-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-3 .collapse}
+    La función es par. La función coseno es par así que $f(x)=f(-x)$ para cada $x\in \mathbb{R}$.
+    :::
+
+4.  [$f(x)=x^{3}+1$]{.math}, <button id="e1-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e1-4 .collapse}
+    La función no es ni par ni impar. No es par ni impar porque $f(1)=2\ne 0=\pm f(-1)$.
+    :::
+:::
+
+**Periodicidad**    
 
 Una función [$f \colon \mathbb{R} \to \mathbb{R}$]{.math} es periódica si verifica que existe un número positivo [$T$]{.math} para el que se verifica que [$f(x+T)=f(x)$]{.math} para todo [$x\in \mathbb{R}$]{.math}. Al más pequeño [$T$]{.math} que verifica lo anterior se le llama periodo fundamental de la función [$f$]{.math}. Los ejemplos más típicos de funciones periódicas hay que buscarlos en las funciones trigonométricas.
 Por ejemplo, las funciones [seno]{style="color:red;"} y [coseno]{style="color:blue"} son periódicas de periodo [$2\pi$]{.math} o la función [tangente]{style="color:orange"} que es de periodo [$\pi$]{.math} (aunque esta función no esté definida en [$\mathbb{R}$]{.math}).
@@ -80,6 +110,24 @@ curve31 = board3.create('functiongraph', [function(t){ return(Math.cos(t))}, -10
 curve32 = board3.create('functiongraph', [function(t){ return(Math.sin(t))}, -10,10], {strokeColor:"red"});
 curve34 = board3.create('functiongraph', [function(t){ return(Math.tan(t))}, -10,10], {strokeColor:"orange"});
 ```
+
+::: {#exr-2}
+Decide si las siguientes funciones son periódicas y, en caso afirmativo, encuentra un periodo:
+
+1.  [$f(x)=\cos(2x)$]{.math}, 
+    <button id="e2-1" class="btn btn-light btn-sm"  onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-1 .collapse}
+    La función es periódica. El periodo fundamental es [$\pi$]{.math} ya que [$\cos(2(x+\pi))=\cos(2x+2\pi)=\cos(2x)$]{.math}.
+    :::
+
+2.  [$f(x)=\cos(x)+\cos(3x)$]{.math}, 
+    <button id="e2-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+    ::: {#solucion-e2-2 .collapse}
+    La función es periódica. El periodo fundamental es [$2\pi$]{.math} ya que [$\cos(x+2\pi)+\cos(3(x+2\pi))=\cos(x)+\cos(3x)$]{.math}.
+    :::
+:::
 
 **Inyectividad**
 
@@ -97,7 +145,6 @@ board4 = JXG.JSXGraph.initBoard('box4', {boundingbox: [-4, 4, 4, -4], axis:true,
 curve41 = board4.create('functiongraph',[function(t){ return(t*t*t+1)}, -10,10]);
 curve42 = board4.create('functiongraph',[function(t){ return(Math.pow(t,2))}, -10,10], {strokeColor:"red"});
 ```
-
 
 **Sobreyectividad**
 
@@ -152,7 +199,7 @@ Podemos definir nuevas funciones a partir de unas dadas de varias formas.
 
     Sin embargo [$f$]{.math} compuesta con [$g$]{.math} no se puede hacer ya que la imagen de [$f$]{.math} es [$[-4,+\infty ) \nsubseteq \mathbb{R}^+$]{.math}.
 
-    **Función inversa**
+ -  **Función inversa**
 
     En el caso de que tengamos una función [$f \colon A\to B$]{.math} biyectiva se verifica que, dado [$y\in B$]{.math}, existe un elemento [$x\in A$]{.math} de forma que [$f(x)=y$]{.math} por la sobreyectividad. Además ese elemento [$x$]{.math} es único para cada [$y$]{.math} (por la inyectividad). Esto nos proporciona una función [$g \colon B\to A$]{.math} que le hace corresponder a cada elemento [$y\in B$]{.math} el único [$x\in A$]{.math} para el que se verifica que [$f(x)=y$]{.math}. Esta función se denomina la inversa de [$f$]{.math} y se suele notar como [$f^{-1}$]{.math}. Verifica que [$f\circ f^{-1} \colon B\to B$]{.math} es la identidad en [$B$]{.math} (es decir que [$f\circ f^{-1}(y)=y$]{.math} para todo [$y\in B$]{.math}), y por otro lado [$f^{-1}\circ f \colon A\to A$]{.math} es la identidad en [$A$]{.math}. Hay que tener cuidado con no confundir [$f^{-1}$]{.math}, la inversa que acabamos de definir con la función [$1/f$]{.math}. Son cosas totalmente distintas. El contexto nos dirá a que nos referimos.
 
@@ -162,19 +209,25 @@ Podemos definir nuevas funciones a partir de unas dadas de varias formas.
     ::: {#box7 .jxgbox style="width:400px; height:400px;margin:auto"}
     :::
 
+::: {#exr-3}
+
+Calcula la inversa de la función [$f: \mathbb{R}^{+}_{0} \to \mathbb{R}$]{.math} dada por [$f(x)=x^2-5$]{.math}, 
+<button id="e3-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e3-1 .collapse}
+Para calcular la inversa, despejamos [$x$]{.math}  en la expresión [$y=x^2-5$]{.math}. Se obtiene que [$x=\sqrt{y+5}$]{.math}, con lo que la función inversa es  [$f^{-1}(x)=\sqrt{x+5}$]{.math}.
+:::
+:::
 
 Vamos ahora a repasar las principales funciones que aparecen en cálculo.
 
-
 ## Funciones polinómicas y racionales
-
 
 Son las más sencillas y las ponemos aquí solo para que el panorama sea más completo. Las funciones polinómicas o polinomios no creemos que sea necesario definirlas. Son funciones cuyo dominio es todo [$\mathbb{R}$]{.math} y son continuas y derivables en todo [$\mathbb{R}$]{.math}.
 
 Las funciones racionales son el cociente de dos polinomios. El dominio es todo [$\mathbb{R}$]{.math} salvo los números que hagan que el denominador sea [$0$]{.math} (para evitar dividir por [$0$]{.math}). También son continuas en su dominio y derivables y la derivada se obtiene con la regla de la derivada de un cociente.
 
 ## Función exponencial
-
 
 Las funciones exponenciales son las funciones [$f$]{.math} para las que existe un número [$a>0$]{.math} de forma que [$f\colon \mathbb{R}\to \mathbb{R}$]{.math} viene dada por [$f(x)=a^x$]{.math}, [$\forall x\in \mathbb{R}$]{.math}. En este caso se le llama función exponencial de base [$a$]{.math}. Es continua y derivable en todo [$\mathbb{R}$]{.math} y su derivada vale [$f'(x)=a^x \log(a)$]{.math}.
 
@@ -205,7 +258,6 @@ De entre todas las funciones exponenciales hay una destacada por su importancia 
 
 ## Función logarítmica
 
-
 Cuando hemos comentado las propiedades de las funciones exponenciales de base [$a\ne 1$]{.math} hemos visto que, tanto si [$a>1$]{.math} o [$a<1$]{.math}, dichas funciones son una biyección de [$\mathbb{R}$]{.math} sobre [$\mathbb{R}^+$]{.math}. Por tanto tienen inversa. A la inversa de la función exponencial de base [$a$]{.math} se le llama función logarítmica de base [$a$]{.math}. Atendiendo a esta definición está claro que, para [$a\ne 1$]{.math}, [$a>0$]{.math} la función logaritmo de base [$a$]{.math}, [$\log _a \colon \mathbb{R}^{+}\to \mathbb{R}$]{.math}. Es continua y derivable en [$\mathbb{R}^+$]{.math} y su derivada vale [$\displaystyle f^{\prime} (x)=\frac{1}{x\log(a)}$]{.math}.
 
 Las propiedades de [$\log _a$]{.math} se obtienen de su definición como inversa de la función exponencial de base [$a$]{.math}.
@@ -225,8 +277,15 @@ Puedes comprobar gráficamente las propiedades anteriores variando el valor de $
 
 Al igual que antes hay una función logarítmica destacada, y es cuando la base es el número [$e$]{.math}. En este caso se llama logaritmo neperiano o simplemente logaritmo, y su derivada es [$\displaystyle f'(x)=\frac{1}{x}$]{.math}.
 
-## Función potencial
+::: {#exr-4}
+Resuelve la ecuación [$2^{3\log_2(x)}=4\log_3(9)$]{.math}, <button id="e4-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
+::: {#solucion-e4-1 .collapse}
+Simplificamos el lado derecho de la ecuación: [$4\log_3(9)=4\cdot 2=8$]{.math}. Luego el lado izquierdo de la ecuación: [$2^{3\log_2(x)}=2^{\log_2(x^3)}=x^3$]{.math}. Por lo tanto, la ecuación se reduce a [$x^3=8$]{.math},  con lo que [$x=2$]{.math}.
+:::
+:::
+
+## Función potencial
 
 Dado un número [$b\in \mathbb{R}$]{.math} la función potencial de potencia [$b$]{.math} es la función [$f \colon \mathbb{R}^+\to \mathbb{R}^+$]{.math} definida para cada [$x\in \mathbb{R}^+$]{.math} por [$f(x)=x^b$]{.math}. Es continua y derivable en [$\mathbb {R}^+$]{.math} y su derivada vale [$f'(x)=bx^{b-1}$]{.math}.
 
@@ -283,6 +342,14 @@ Además podemos saber razones trigonométricas de otros muchos números utilizan
 
 [$$\mathrm{sen}(x+\tfrac{\pi}{2})=\mathrm{sen}(x)\cdot 0+\cos(x)\cdot 1=\cos (x),$$]{.math} y también [$$\cos(x+\tfrac{\pi}{2})=\cos(x)\cdot 0-\mathrm{sen}(x)\cdot 1=-\mathrm{sen} (x).$$]{.math}
 
+::: {#exr-5}
+Simplifica la expresión [$\displaystyle \frac{\operatorname{sen}^2(x)}{\cos(x)}+\cos(x)$]{.math}, 
+<button id="e5-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
+
+::: {#solucion-e5-1 .callout .collapse}
+Usando la identidad fundamental de la trigonometría: [$\operatorname{sen}^2(x)=1-\cos^2(x)$]{.math}. Luego,  [$\displaystyle \frac{1-\cos^2(x)}{\cos(x)}+\cos(x)$]{.math}. Simplificando obtenemos [$\displaystyle \frac{1}{\cos(x)}$]{.math}.
+:::
+:::
 
 ## Funciones trigonométricas inversas
 
