@@ -595,4 +595,4 @@ Aunque no escojas un resultado que haga que el siguiente apartado sea trivial; e
 
 
 ---
-[Contenidos confeccionados por Gustavo Rivas Gervilla]{.small}
+[Contenidos confeccionados por Gustavo Rivas Gervilla; la parte correspondiente a lógica y demostraciones está inspirada en el curso OCW: M. Bullejos Lorenzo, P. Carrasco Carrasco, P. A. García Sánchez, A. Martínez Cegarra, A. Rodríguez Garzón, Álgebra Básica]{.small}
