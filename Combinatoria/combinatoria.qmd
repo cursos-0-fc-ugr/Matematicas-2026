@@ -1,0 +1,192 @@
+---
+title: "Combinatoria"
+bibliography: combinatoria.bib
+lang: "es"
+---
+
+La combinatoria resulta muy importante en muchas áreas matemáticas. En particular, resultará de vital importancia tener unas nociones básicas de combinatoria en asignaturas de estadística y probabilidad. Y es que si te preguntaran cuál es la probabilidad de obtener cara al lanzar una moneda (balanceada) dirías sin titubear que es de un $50\%$ o $\frac{1}{2}$. Del mismo modo, si te preguntase cuál es la probabilidad de sacar la sota de bastos al escoger una carta al azar de la baraja españoña dirías, tal pensar en cuántas cartas tiene la baraja, que la probabilidad es de $\frac{1}{48}$ o aproximadamente de un $2.0833\%$.
+
+En general, lo que estás aplicando aquí, para calcular estas probabilidad es la siguiente regla:
+
+$$
+\frac{\text{casos favorables}}{\text{casos posibles}},
+$$ {#eq-laplace}
+
+es decir, divides el número de posibilidades que cumplen lo que tú quieres por el número de resultados posibles que tienen el experimento aleatorio que estás realizando. Así, si, por ejemplo, queremos calcular la probabilidad de obtener una carta de oros al extraer una carta al azar de la baraja, veríamos que los resultados posibles es obtener alguna de las cartas de la baraja; en total tendríamos $48$ resultados posibles, al haber $48$ cartas distintas en la baraja. Por otro lado, el número de casos favorables serán $12$, que serán de los $48$ resultados posibles, los que corresponden a alguna carta de oros. Por lo tanto, la probabilidad sería de $\frac{12}{48}$ es decir de un $25\%$.
+
+Merece la pena señalar que esta regla para calcular probabilidades, que corresponde con la interpretación laplaciana de probabilidad, solo se aplica en experimentos aleatorios[^1] con las siguientes características:
+
+[^1]: Un experimento aleatorio es un experimento que, repitiéndose bajo las mismas condiciones, puede dar distintos resultados en cada repetición. Esto es lo contrario de un experimento determinista en el que, bajo las mismas condiciones iniciales, el resultado siempre será el mismo.
+
+1. El número de resultados posibles del experimento es finito.
+2. Son mutuamente excluyentes entre ellos (no pueden darse dos resultados distintos a la vez).
+3. Son equiprobables, es decir, todos se dan con igual probabilidad.
+
+Estas 3 condiciones se cumplen en todos los experimentos que hemos mencionado como ejemplo. Del mismo modo se dan también en el experimento de lanzar un dado y ver qué resultado obtenemos:
+
+1. El número de resultados posibles al lanzar un dado es finito: $\lbrace 1, 2, 3, 4, 5, 6 \rbrace$.
+2. Son mutuamentes excluyentes. Por ejemplo, si obtenemos un $1$ no podemos haber obtenido un $4$.
+3. Son equiprobables (asumiendo que el dado no está desbalanceado o trucado), la probabilidad de obtener cualquiera de los seis números es la misma.
+
+Y hay muchos experimentos aleatorios que cumplen con estas tres condiciones, y para lo que podemos aplicar la @eq-laplace en el cálculo de probabilidades. Pero para poder aplicarla tenemos que ser capaces de contar el número de resultados favorables y el número de resultados posibles. Y aunque en los experimentos aleatorios que hemos mencionado resulte fácil hacer este conteo «a mano», hay otros casos donde no es tan evidente. Es por ello que a continuación presentamos algunas reglas básicas de combinatoria que nos ayudarán en este conteo. Para este contenido vamos a seguir fundamentalmente [@vilenkin1971combinatorics].
+
+## Principios básicos de combinatoria
+
+Seguramente has visto un vídeo en Instagram o Tik Tok en el que te explican cómo solo necesitas 3 camisas y 4 pantalones para hacer un total de 12 estilismos diferentes. Y no es difícil contar los *looks*, no hay más que ver cuántos conjuntos formamos eligiendo una camisa y un pantalón. O lo que es más fácil, 3 camisas por 4 pantalones, nos dan un total de 12 conjuntos distintos. Pues bien, este es un principio básico en combinatoria que se conoce como principio de multiplicación.
+
+::: {#prp-producto}
+
+## La regla del producto
+
+Si un objeto $A$ puede elegirse de $m$ formas distintas y si, después de elegir el objeto $A$, un objeto $B$ se puede elegir en $n$ formas distintas, entonces el par ordenado $(A, B)$ puede elegirse en $mn$ formas distintas
+:::
+
+En la @prp-producto se habla de un par ordenado, es decir, importa si aparece primero la opción del objeto $A$ o la del objeto $B$. En el caso de los conjuntos a formar según nuestro fondo de armario, el orden en el que elijimos la camiseta o el pantalón es indistinto pero, dado que la camiseta la situamos en la parte superior del cuerpo, mientras que el pantalón en la inferior, esta regla se puede aplicar sin problemas. Veremos cómo esta regla es la que nos permite, de forma natural, derivar la regla para calcular el número de permutaciones de $n$ objetos que podemos formar, como veremos en la @sec-permutaciones.
+
+El segundo principio básico que vamos a ver es la regla de la suma. Imagina que en una pastería tienen a tu disposición dos tipos de productos: porciones de tarta y pasteles clásico. Si hay tres tipos distintos de tarta (chocolate, de queso y de la abuela) y hay 5 pasteles a elegir (milhojas de chocolate, milhojas de crema, merengue, tiramisú y gloria) entonces, claramente tus opciones son un total de 8; lo único que has hecho es contar el total de opciones, sin importar si eran tipos de tarta o tipos de pasteles. Verás cómo esto puede escribirse de un modo formal mediante el siguiente principio.
+
+::: {#prp-suma}
+
+## Principio de la suma
+
+Si un objeto $A$ puede elegirse de $m$ formas distintas y otro objeto $B$ puede elegirse de $n$ formas distintas, entonces la elección de «A o B» puede realizarse de $m + n$ formas.
+:::
+
+Una vez que hemos visto estos principios, veamos algunas reglas algo más avanzadas. Cada una de estas reglas corresponde a distintos tipos de combinaciones de objetos que se pueden dar distinguiendo si:
+
+- Importa el orden en el que los objetos se eligen o no.
+- Si se admiten que se elija el mismo objeto varias veces o no.
+- Y por último, para distinguir algunos casos particulares, si se eligen todos y cada uno de los objetos disponibles o no.
+
+## Permutaciones {#sec-permutaciones}
+
+Supongamos que tenemos un conjunto, una bolsa, formado por $n$ objetos, y queremos elegir una muestra de ellos, un subconjunto. En este caso vamos a tener las siguientes consideraciones:
+
+- Se van a elegir todos y cada uno de los objetos.
+- Se hará sin repetición; un objeto solo puede elegirse una vez.
+- Nos va a importar el orden en los que los eligimos.
+
+Es evidente que si vamos a coger un subconjunto de los $n$ objetos, y tienen que estar todos, entonces ese conjunto ha de tener precisamen esos $n$ objetos. Además, fíjate en que nos importa el orden: importa qué objeto hemos elegido el primero, cuál el segundo... Esto hace que el cálculo no sea trivial. Imagina que quisieras formar un conjunto de $n$ objetos eligiendo de una bolsa con $n$ objetos, y que no importarse el orden en que los sacas de la bolsa, en ese caso solo habría una forma posible de elegir: elegirlos todos, sería el propio conjunto original.
+
+En cambio, cuando importa el orden la cosa cambia, ahora los objetos se disponen en fila, y como estamos eligiendo a todos los objetos, a esto lo llamamos una **permutación**, una reordenación de los elementos de un conjunto. Un ejemplo básico de esto es la forma en la que puedes apilar unos bloques de colores uno sobre otros: cada bloque tiene un color, y no es lo mismo poner el rojo abajo del todo, que ponerlo en la cima. También puedes pensar en cómo un equipo de carreras de relevos formado por 4 integrantes puede ordenarse en la carrera: se puede dejar a la persona más rápida al principio para coger ventaja psicológica sobre los equipos rivales, o dejar a la más rápida al final para remontar ---también podríamos darle un puesto intermedio.
+
+Pues bien la regla con la que se calculan las permutaciones de $n$ elementos es la siguiente, donde aparece un nuevo concepto, el factorial^1:
+
+[1^]: El factorial de un número natural $n$ no es más que el resultado de multiplicar todos los números naturales entre $n$ y el 1. Por ejemplo $4! = 4 \times 3 \times 2 \times 1 = 24$ o $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$. Observa que $5! = 5 \times 4!$; el factorial puede definirse de forma recursiva.
+
+$$ 
+P_n = n \times (n - 1) \times (n - 2) \times \cdots 1 = n!.
+$$ {#eq-permutaciones}
+
+Fíjate en la @eq-permutaciones, donde realmente estamos aplicando el principio del producto (@prp-producto):
+
+- ¿Cuántas opciones tenemos para elegir el primer elemento, al primer bloque de colores? $n$, por tanto el primer factor es $n$.
+- Ahora, para escoger al segundo, que se combinará con el primero elegido, ya no tenemos disponible ese elemento que hemos elegido como primero. Por tanto, si antes teníamos $n$ opciones a elegir, ahora nos quedarán $n - 1$. De ahí en que las formas en las que podemos combinar un primer elemento con un segundo sean $n \times (n-1)$.
+- ¿Y ahora cómo elegimos el tercer bloque a colocar? Pues, razonando como antes, nos quedarán para elegir $n - 2$ elementos, descontando los $2$ que ya han sido seleccionados para las dos primera posiciones. Y entonces las combinaciones, siguiendo el principio de multiplicación serán $n \times (n-1) \times (n-2)$.
+- Y así seguiremos hasta colocar el último bloque que quede, donde ya solo tendremos $1$ opción a alegir.
+
+::: {#exm-permutaciones}
+
+¿De cuántas formas distintas podemos reordenas las figuras geométricas ■ ▰ ▲ ●?
+
+Pues en este caso tenemos 4 elementos, y como queremos reordenarlos significa que:
+
+- Nos importa el orden.
+- Vamos a emplear todos los elementos.
+- No podemos repetir elementos.
+
+Así que estamos ante una permutación. Según la @eq-permutaciones, el número de formas en las que podemos reordenar estas figuras son:
+
+$$
+P_4 = 4! = 4 \times 3 \times 2 \times 1 = 24.
+$$
+
+Por tanto, sabemos, sin necesidad de escribir una a una, cuántas posibles reordaciones de estos 4 elementos podemos hacer. De todos modos, vamos a listarlas para que puedas comprobar que, efectivamente, no se nos ha escapado ninguna:
+
+| | | | |
+| :---: | :---: | :---: | :---: |
+| ■ ▰ ▲ ● | ▰ ■ ▲ ● | ▲ ■ ▰ ● | ● ■ ▰ ▲ |
+| ■ ▰ ● ▲ | ▰ ■ ● ▲ | ▲ ■ ● ▰ | ● ■ ▲ ▰ |
+| ■ ▲ ▰ ● | ▰ ▲ ■ ● | ▲ ▰ ■ ● | ● ▰ ■ ▲ |
+| ■ ▲ ● ▰ | ▰ ▲ ● ■ | ▲ ▰ ● ■ | ● ▰ ▲ ■ |
+| ■ ● ▰ ▲ | ▰ ● ■ ▲ | ▲ ● ■ ▰ | ● ▲ ■ ▰ |
+| ■ ● ▲ ▰ | ▰ ● ▲ ■ | ▲ ● ▰ ■ | ● ▲ ▰ ■ |
+:::
+
+## Variaciones sin repetición
+
+Una vez has comprendido el concepto de permutación, y has razonado la forma en la que se calcula, no tendrás ninguna dificultad en ver cómo se calculan lo que conocemos como variaciones con repetición de $k$ elementos de un conjunto de $n$ elementos, con $k \le n$. En este caso imagina que seguimos formando una alineación para una carrera de 4 relevos, pero el equipo tiene un total de 6 miembros; con lo que dos quedarán en el banquillo. Entonces, teniendo esto en cuenta, ¿cuántas alineaciones se podrán formar?
+
+- Para elegir quién corre primero elegiremos una de las 6 personas del equipo.
+- A continuación, para la segunda persona podemos elegir entre las 5 que quedan.
+- La tercera será elegida de entre las 4 restantes.
+- Finalmente, la persona que correrá el último tramo, será elegida de entre las 3 que no han sido ya posicionadas; quedando 2 sin elegir.
+
+Entonces, siguiendo el principio de multiplicación (@prp-producto) tenemos que podemos formar un total de
+
+$$
+6 \times 5 \times 4 \times 3 = 360
+$$
+
+alineaciones distintas.
+
+Veamos cuál es la fórmula general para las variaciones sin repetición de $k$ elementos elegidas de un conjunto de $n$ elementos (observa cómo en la notación que empleamos aparece tanto $n$ como $k$):
+
+$$
+V_n^k = n \times (n - 1) \times \cdots \times (n - k + 1).
+$$ {#eq-variaciones}
+
+Evidentemente este cálculo solo tiene sentido cuando $k \le n$. Y las características que te permiten discernir si lo que estás contabilizando son variaciones sin repetición es que:
+
+- Nos importa el orden.
+- No podemos repetir elementos.
+
+Observa cómo la única diferencia con las permutaciones es que no tenemos por qué elegir todos los elementos. Esto solo ocurrirá sin $k = n$, con lo que tenemos que $V_n^n = P_n$. Puedes comprobar cómo si empleas la @eq-variaciones con $k = n$, lo que obtienes es $n!$ como en la @eq-permutaciones para las permutaciones.
+
+::: {#exm-variaciones}
+¿De cuántas formas distintas podemos formar grupos ordenados de 3 figuras de entre las del conjunto ■ ▰ ▲ ● ▼?
+
+Pues en este caso tenemos un conjunto de 5 figuras entre las que elegir, y tenemos que elegir únicamente 3 de forma ordenada y sin repetir elementos. Por tanto hemos de calcular
+
+$$
+V_5^3 = 5 \times 4 \times 3 = 60.
+$$
+
+Y son las siguientes, puedes comprobarlo.
+
+| | | | | |
+| :---: | :---: | :---: | :---: | :---: |
+| ■ ▰ ▲ | ▰ ■ ▲ | ▲ ■ ▰ | ● ■ ▰ | ▼ ■ ▰ |
+| ■ ▰ ● | ▰ ■ ● | ▲ ■ ● | ● ■ ▲ | ▼ ■ ▲ |
+| ■ ▰ ▼ | ▰ ■ ▼ | ▲ ■ ▼ | ● ■ ▼ | ▼ ■ ● |
+| ■ ▲ ▰ | ▰ ▲ ■ | ▲ ▰ ■ | ● ▰ ■ | ▼ ▰ ■ |
+| ■ ▲ ● | ▰ ▲ ● | ▲ ▰ ● | ● ▰ ▲ | ▼ ▰ ▲ |
+| ■ ▲ ▼ | ▰ ▲ ▼ | ▲ ▰ ▼ | ● ▰ ▼ | ▼ ▰ ● |
+| ■ ● ▰ | ▰ ● ■ | ▲ ● ■ | ● ▲ ■ | ▼ ▲ ■ |
+| ■ ● ▲ | ▰ ● ▲ | ▲ ● ▰ | ● ▲ ▰ | ▼ ▲ ▰ |
+| ■ ● ▼ | ▰ ● ▼ | ▲ ● ▼ | ● ▲ ▼ | ▼ ▲ ● |
+| ■ ▼ ▰ | ▰ ▼ ■ | ▲ ▼ ■ | ● ▼ ■ | ▼ ● ■ |
+| ■ ▼ ▲ | ▰ ▼ ▲ | ▲ ▼ ▰ | ● ▼ ▰ | ▼ ● ▰ |
+| ■ ▼ ● | ▰ ▼ ● | ▲ ▼ ● | ● ▼ ▲ | ▼ ● ▲ |
+:::
+
+Veamos algo interesante que será de utilidad para más adelante. Imagina que la persona encargada de formar los grupos, no solo publica la lista con las 4 personas escogidas, sino que publica la lista con todos los nombres del equipo, y son las últimas personas de la lista las no escogidas. Además, el orden en el que escribe esta lista determina en qué posición corre cada persona. Si tenemos en cuenta esto, y el equipo tiene 6 miembros, entonces habrá un total de $P_6 = 6! = 720$ listas que pueden publicarse. ¿Pero cómo es esto posible? Hemos visto antes que solo se podían formar 360 equpos distintos, y ahora se pueden publicar 720 lista distintas. Bueno, es que realmente el orden en que las personas suplementes aparezcan no importa; no importa cómo se sientan en el banquillo. Por tanto, contando listas estaríamos contando la misma alineación titular 2 veces, una por cada orden de los dos suplementes en el banquillo ($P_2$). Entonces, si lo estamos contando el doble de veces, para obtener el número real de equipos posibles solo tendríamos que dividir por 2. ¿Y si tuviésemos un equipo con 8 miembros y por tanto 4 suplentes? Entonces cada posible alineación la estaríamos contando un total de $4! = 24$ veces distintas, con lo que dividiríamos el total de listas que pueden formarse por $24$ para obtener el número real.
+
+Así, en general, podemos derivar otro modo de calcular las variaciones sin repetición, que si bien no es tan intuitivo, puede ser útil para comprender otros cálculos que veremos a continuación:
+
+$$
+V_n^k = \frac{n!}{k!}.
+$$ {#eq-variaciones-alternativa}
+
+Puedes probar a ver cómo obtener esta expresión alternativa despejando desde la expresión para el cálculo de las permutaciones (@eq-permutaciones) la expresión de las variaciones sin repetición (@eq-variaciones).
+
+## Variaciones con repetición 
+
+
+
+## Combinaciones
+
+## Combinaciones con repetición
+
+
+
