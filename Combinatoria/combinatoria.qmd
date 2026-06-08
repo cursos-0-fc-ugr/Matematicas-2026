@@ -28,29 +28,96 @@ Estas 3 condiciones se cumplen en todos los experimentos que hemos mencionado co
 2. Son mutuamentes excluyentes. Por ejemplo, si obtenemos un $1$ no podemos haber obtenido un $4$.
 3. Son equiprobables (asumiendo que el dado no está desbalanceado o trucado), la probabilidad de obtener cualquiera de los seis números es la misma.
 
-Y hay muchos experimentos aleatorios que cumplen con estas tres condiciones, y para lo que podemos aplicar la @eq-laplace en el cálculo de probabilidades. Pero para poder aplicarla tenemos que ser capaces de contar el número de resultados favorables y el número de resultados posibles. Y aunque en los experimentos aleatorios que hemos mencionado resulte fácil hacer este conteo «a mano», hay otros casos donde no es tan evidente. Es por ello que a continuación presentamos algunas reglas básicas de combinatoria que nos ayudarán en este conteo. Para este contenido vamos a seguir fundamentalmente [@vilenkin1971combinatorics].
+Y hay muchos experimentos aleatorios que cumplen con estas tres condiciones, y para lo que podemos aplicar la @eq-laplace en el cálculo de probabilidades. Pero para poder aplicarla tenemos que ser capaces de contar el número de resultados favorables y el número de resultados posibles. Y aunque en los experimentos aleatorios que hemos mencionado resulte fácil hacer este conteo «a mano», hay otros casos donde no es tan evidente. Es por ello que a continuación presentamos algunas reglas básicas de combinatoria que nos ayudarán en este conteo.
 
 ## Principios básicos de combinatoria
 
-Seguramente has visto un vídeo en Instagram o Tik Tok en el que te explican cómo solo necesitas 3 camisas y 4 pantalones para hacer un total de 12 estilismos diferentes. Y no es difícil contar los *looks*, no hay más que ver cuántos conjuntos formamos eligiendo una camisa y un pantalón. O lo que es más fácil, 3 camisas por 4 pantalones, nos dan un total de 12 conjuntos distintos. Pues bien, este es un principio básico en combinatoria que se conoce como principio de multiplicación.
+### Principio del palomar
+
+Comenzamos este repaso por los principios básicos de la combinatoria por un principio básico de conteo, conocido como el principio del palomar. Imagina que tuviésemos $10$ palomas, y un total de $3$ nidos donde albergarlas. Entonces, es claro que en alguno de los palomares habrá más de una paloma, incluso aunque intentasen repartirse de la forma más equitativa posible, ya que hay menos palomares que palomas. De hecho en algún palomar habrá al menos $4$ palomas. Ya que si reparten de forma equitativa habría al menos $3$ palomas por palomar, y en alguno se tendría que situar la que sobre. Más formalmente este principio se enuncia como sigue:
+
+::: {#prp-palomar}
+## Principio del palomar
+
+Si queremos repartir $n$ objetos en $m$ cajas, con $n>m$, entonces una caja contendrá más de un objeto. Es más, una caja debe contener al menos $\frac{n}m$ objetos.
+:::
+
+En el siguiente vídeo ilustramos el ejemplo que hemos visto con las palomas:
+
+{{< video PrincipioPalomar.mp4 muted="true" >}}
+
+### Principio del producto
+
+Seguramente has visto un vídeo en Instagram o Tik Tok en el que te explican cómo solo necesitas 3 camisas y 4 pantalones para hacer un total de 12 estilismos diferentes. Y no es difícil contar los *looks*, no hay más que ver cuántos conjuntos formamos eligiendo una camisa y un pantalón. O lo que es más fácil, 3 camisas por 4 pantalones, nos dan un total de 12 conjuntos distintos. Pues bien, este es un principio básico en combinatoria que se conoce como principio de multiplicación o del producto.
 
 ::: {#prp-producto}
-
-## La regla del producto
+## Principio del producto
 
 Si un objeto $A$ puede elegirse de $m$ formas distintas y si, después de elegir el objeto $A$, un objeto $B$ se puede elegir en $n$ formas distintas, entonces el par ordenado $(A, B)$ puede elegirse en $mn$ formas distintas
 :::
 
 En la @prp-producto se habla de un par ordenado, es decir, importa si aparece primero la opción del objeto $A$ o la del objeto $B$. En el caso de los conjuntos a formar según nuestro fondo de armario, el orden en el que elijimos la camiseta o el pantalón es indistinto pero, dado que la camiseta la situamos en la parte superior del cuerpo, mientras que el pantalón en la inferior, esta regla se puede aplicar sin problemas. Veremos cómo esta regla es la que nos permite, de forma natural, derivar la regla para calcular el número de permutaciones de $n$ objetos que podemos formar, como veremos en la @sec-permutaciones.
 
-El segundo principio básico que vamos a ver es la regla de la suma. Imagina que en una pastería tienen a tu disposición dos tipos de productos: porciones de tarta y pasteles clásico. Si hay tres tipos distintos de tarta (chocolate, de queso y de la abuela) y hay 5 pasteles a elegir (milhojas de chocolate, milhojas de crema, merengue, tiramisú y gloria) entonces, claramente tus opciones son un total de 8; lo único que has hecho es contar el total de opciones, sin importar si eran tipos de tarta o tipos de pasteles. Verás cómo esto puede escribirse de un modo formal mediante el siguiente principio.
+### Principio de la suma
+
+El último principio básico que vamos a ver es el de la suma. Imagina que en una pastería tienen a tu disposición dos tipos de productos: porciones de tarta y pasteles clásico. Si hay tres tipos distintos de tarta (chocolate, de queso y de la abuela) y hay 5 pasteles a elegir (milhojas de chocolate, milhojas de crema, merengue, tiramisú y gloria) entonces, claramente tus opciones son un total de 8; lo único que has hecho es contar el total de opciones, sin importar si eran tipos de tarta o tipos de pasteles. Verás cómo esto puede escribirse de un modo formal mediante el siguiente principio.
 
 ::: {#prp-suma}
-
 ## Principio de la suma
-
 Si un objeto $A$ puede elegirse de $m$ formas distintas y otro objeto $B$ puede elegirse de $n$ formas distintas, entonces la elección de «A o B» puede realizarse de $m + n$ formas.
 :::
+
+#### Principio de inclusión-exclusión
+
+En la formulación anterior del principio de la suma (@prp-suma) el cálculo que se plantea es sencillo. Tenemos las opciones del objeto $A$ por un lado (las tartas) y las opciones del objeto $B$ por otro (los pasteles). Al final lo que hemos hecho es contar cuántos elementos hay en cada uno de los dos conjuntos de opciones, el conjunto de tartas disponibles y el conjunto de pasteles disponibles, y hemos sumado estas dos cantidades. Estas cantidades, que designan el número de objetos en un conjunto reciben el nombre de *cardinales*: hemos calculado el cardinal de cada conjunto y lo hemos sumado. ¿Pero qué ocurre si los dos conjuntos tienen elementos en común? En este caso sumar los dos cardinales simplemente no sería correcto, habría objetos que estaríamos contando dos veces; aquellos que pertenecen a ambos conjuntos. Es decir, estaríamos contando dos veces los elementos de la *intersección* entre los dos conjuntos.
+
+Es por ello que la fórmula correcta para contar el número de objetos en dos conjuntos, en la *unión* de los dos conjuntos, es la siguiente, donde denotamos mediante barras verticales al cardinal del conjunto entre ellas:
+
+$$
+\lvert A \cup B \rvert = \lvert A \rvert + \lvert B \rvert - \lvert A \cap B \rvert.
+$$ {#eq-inclusion-exclusion-simple}
+
+Leamos esta ecuación:
+
+1. El número de elementos en la unión de los dos conjuntos $\lvert A \cup B \rvert$ se calcula como
+2. el número de elementos en el conjunto $A$, $\lvert A \rvert$,
+3. más el número de objetos en el conjunto $B$, $\lvert B \rvert$,
+4. y finalmente restamos el número de elementos que tienen en común los dos conjuntos, los elementos de la intersección, $\lvert A \cap B \rvert$.
+
+Vamos a aplicar este principio en el siguiente ejemplo, donde aplicaremos la regla de Laplace (@eq-laplace) a un experimento aleatorio con cartas.
+
+::: {#exm-inclusion-exclusion-simple}
+Calcula la probabilidad de obtener una carta roja o par al extraer una carta al azar de la baraja francesa.
+
+- En este caso tenemos que el número de resultados posibles son $13 \times 4 = 52$, ya que en la baraja francesa hay $52$ cartas distintas, $13$ por cada palo.
+- Ahora los casos favorables serán todas y cada una de las cartas que o bien sean rojas o bien sean pares. Las podríamos contar a mano, pero es mucho mejor aplicar los principios que acabamos de ver.
+- Si simplemente sumáramos el número de cartas rojas $13 \times 2 = 26$ y el número de cartas pares $6 \times 4 = 24$ (estamos contando como que la $Q$ es una carta par), caeríamos en un error, puesto que estaríamos contando dos veces algunas cartas, como el 6 de corazones o el 4 de diamantes. Entonces, como ambos conjunto tiene elementos en común (o lo que es lo mismo, no son disjuntos) hemos de aplicar el principio de inclusión-exclusión:
+    - Tenemos $26$ cartas en el conjunto de cartas rojas.
+    - $24$ en el conjunto de cartas pares, contando la $Q$ entre ellas.
+    - Y los elementos que hay en común entre los conjuntos son las cartas rojas pares $6 \times 2 = 12$.
+    - Por tanto aplicando el principio de inclusión-exclusión el número total de casos favores son:
+
+    $$
+    26 + 24 - 12 = 38.
+    $$
+    - Son entonces $38$ cartas en total. Si lo pensamos sin fórmulas serían todas las rojas $13 \times 2$ más las pares negras $6 \times 2$.
+
+Finalmente, aplicando al regla de Laplace, tenemos que la probabilidad que se nos pide calcular es $\frac{38}{52} \approx 0.7308$, es decir, de aproximadamente un $73.08 \%$. 
+:::
+
+Ahora podemos generalizar el principio de inclusión-exclusión cuando se desea calcular el número de elementos en la unión de $n$ conjuntos de objetos y no solo $2$. En este caso el principio diría algo así como: suma los cardinales de cada conjunto, resta el cardinal de las intersecciones dos a dos, suma el cardinal de las intersecciones de los conjuntos agrupados de tres en tres, resta los cardinales de las intersecciones de los conjuntos cuatro a cuatro... Y así hasta acabar con la intersección de todos los conjuntos; intercalando sumas y restas.
+
+::: {#prp-inclusion-exclusion}
+## Principio de inclusión-exclusión
+
+Dados $n$ conjuntos de objetos $A_1, \dots, A_n$ el cardinal de su unión se calcula como sigue:
+
+$$
+|A_1\cup\cdots \cup A_n|=\sum_{i=1}^n |A_i|-\sum_{1\leq i_1,i_2\leq n}|A_{i_1}\cap A_{i_2}|+\cdots+(-1)^{n+1}|A_1\cap\cdots\cap A_n|
+$$ {#eq-inclusion-exclusion-general}
+:::
+
+
 
 Una vez que hemos visto estos principios, veamos algunas reglas algo más avanzadas. Cada una de estas reglas corresponde a distintos tipos de combinaciones de objetos que se pueden dar distinguiendo si:
 
@@ -180,13 +247,218 @@ $$ {#eq-variaciones-alternativa}
 
 Puedes probar a ver cómo obtener esta expresión alternativa despejando desde la expresión para el cálculo de las permutaciones (@eq-permutaciones) la expresión de las variaciones sin repetición (@eq-variaciones).
 
+## Combinaciones
+
+Hasta ahora hemos considerado conjuntos o subconjuntos de elementos donde importaba el orden en el que consideramos los elementos. Pero hay ocasiones en las que el orden de los objetos no importa, solo importa qué objetos han sido seleccionados y cuáles no.
+
+Piensa por ejemplo en  una heladería con 5 sabores de helado: chocolate, vainilla, fresa, turrón y nata. La heladerái solo vende tarrinas de 2 bolas, y cada una de las bolas ha de ser de un saber distinto.
+
+Si lo piensas un poco verás que hay 10 combinaciones distintas que puedes hacer:
+
+| | |
+| :--- | :--- |
+| Chocolate y Vainilla | Chocolate y Fresa |
+| Chocolate y Turrón | Chocolate y Nata |
+| Vainilla y Fresa | Vainilla y Turrón |
+| Vainilla y Nata | Fresa y Turrón |
+| Fresa y Nata | Turrón y Nata |
+
+Veamos cómo deducir la fórmula para el cálculo de la combinacionse (sin repetición) donde:
+
+- Tenemos $n$ elementos entres los que elegir, todos distintos entre sí.
+- Elegimos de entre ellos $k \le n$ objetos.
+- No importa el orden en el que los consideramos.
+
+En este caso lo que vamos a hacer es partir, como hasta ahora del número de permutaciones de los $n$ elementos que tenemos, y veremos cómo ajustar esa cantidad hasta llegar al número correcto de combinaciones sin repetición.
+
+Para ello vas a imaginar a los objetos ordenados. Y de entre estos objetos habrá unos seleccionados, los $k$ elegidos, y otros no seleccionados, los $n - k$ restantes. ¿Cómo vamos a traducir esto en término de la posición de los objetos? Pues los $k$ que estén primero serán los seleccionados, y el los de las posiciones restantes los no seleccionados. Como ya sabes, hay $n!$ ordenaciones distintas de estos objetos. Y una vez que has elegido uno de esos órdenes, los $k$ primeros, como hemos dicho, serán los elegidos, y el resto no.
+
+Ahora bien, hemos dicho que no importa el orden en el que considereremos los objetos (ni los elegidos ni, mucho menos, nos importará el orden en el que estén los no elegidos). Entonces, ¿de cuántas formas podrían estar ordenados los $k$ primeros objetos, que serían indistintas en nuestro contexto? Pues de $k!$ formas distintas. Del mismo modo, ¿de cuántas formas pueden ordenarse los no elegidos? Pues de $(n-k)!$ formas distintas, que también nos resultan indistinguibles.
+
+Finalmente, teniendo en cuenta el principio de multiplicación, de cuántas formas podemos combinar un orden de los $k$ elegidos con uno de los $n-k$ no elegidos, pues de $k! \times (n-k)!$ formas. Esto significa que si considerásemos directamente las $n!$ permutaciones como nuestro nuestras combinaciones, estaríamos contando cada una de ellas $k! \times (n-k)!$ veces. Dicho esto es claro cuál es la fórmula de las combinaciones con repetición:
+
+::: {#prp-combianciones}
+## Combinaciones sin repetición
+
+Dado un conjunto de $n$ elementos distintos, las formas en las que puede elegirse un subconjunto de $k$ elementos distintos con $k \le n$ viene dado por
+
+$$
+C_{n}^{k} = \frac{n!}{k! \times (n-k)!} = \binom{n}{k}.
+$$ {#eq-combinaciones-sin-repeticion}
+
+Aquí hemos introducido una notación del número combinatorio o coeficiente binomial, que es el modo usual el que se suele notar la fracción de factoriales que empleamos para calcular las combinaciones sin repetición.
+:::
+
+El siguiente vídeo ilustra esta deducción de la @eq-combinaciones-sin-repeticion:
+
+
+{{< video DeduccionCombinaciones.mp4 muted="true" >}}
+
+::: {#exm-helado}
+Calcula, ahora usando la @eq-combinaciones-sin-repeticion el número de combinaciones de helado que puedes pedir en la heladería. Recordemos que tenemos 5 opciones de sabor de helado y hemos de elegir 2:
+
+$$
+C_5^2 = \binom{5}{2} = \frac{5!}{2! \times 3!} = \frac{120}{2 \times 6} = 10.
+$$
+:::
+
+Ahora vamos a dar un paso más en la complejidad en los elementos que vamos a contar permitiendo la repetición de elementos.
+
+## Permutaciones con repetición
+
+Supongamos que ahora tenemos un conjunto de $n$ elementos pero donde hay objetos iguales entre sí, y que queremos ver de cuántas formas podemor ordenarlos:
+
+- Importa el orden en el que se consideran los elementos.
+- Se emplean los $n$ elementos del conjunto considerado.
+- Hay ciertos objetos iguales entre sí.
+
+Para ilustrar esto pensemos en que tenemos un conjunto formado por las siguientes letras {R, r, *r*, A, a}. Si considerarámos cada letra como un elemento distinto (por eso hemos escrito algunas en mayúscula, otras en minúscula y otras en cursiva) entonces tendríamos 5 elementos distintos, y ya sabemos cómo calcular el número de formas en las que podemos reordenar 5 elementos, $P_5 = 5! = 120$. En concreto serían las permutaciones que mostramos a continuación:
+
+| | | | | | | | | | |
+|---|---|---|---|---|---|---|---|---|---|
+| Rr*r*Aa | RrA*r*a | RrAa*r* | RAr*r*a | RAra*r* | RAar*r* | ARr*r*a | ARra*r* | ARar*r* | AaRr*r* |
+| Rr*r*aA | Rra*r*A | RraA*r* | Rar*r*A | RarA*r* | RaAr*r* | aRr*r*A | aRrA*r* | aRAr*r* | aARr*r* |
+| R*r*rAa | R*r*Ara | R*r*Aar | RA*r*ra | RA*r*ar | RAa*r*r | AR*r*ra | AR*r*ar | ARa*r*r | AaR*r*r |
+| R*r*raA | R*r*arA | R*r*aAr | Ra*r*rA | Ra*r*Ar | RaA*r*r | aR*r*rA | aR*r*Ar | aRA*r*r | aAR*r*r |
+| rR*r*Aa | rRA*r*a | rRAa*r* | rAR*r*a | rARa*r* | rAaR*r* | ArR*r*a | ArRa*r* | AraR*r* | AarR*r* |
+| rR*r*aA | rRa*r*A | rRaA*r* | raR*r*A | raRA*r* | raAR*r* | arR*r*A | arRA*r* | arAR*r* | aArR*r* |
+| r*r*RAa | r*r*ARa | r*r*AaR | rA*r*Ra | rA*r*aR | rAa*r*R | Ar*r*Ra | Ar*r*aR | Ara*r*R | Aar*r*R |
+| r*r*RaA | r*r*aRA | r*r*aAR | ra*r*RA | ra*r*AR | raA*r*R | ar*r*RA | ar*r*AR | arA*r*R | aAr*r*R |
+| *r*RrAa | *r*RAra | *r*RAar | *r*ARra | *r*ARar | *r*AaRr | A*r*Rra | A*r*Rar | A*r*aRr | Aa*r*Rr |
+| *r*RraA | *r*RarA | *r*RaAr | *r*aRrA | *r*aRAr | *r*aARr | a*r*RrA | a*r*RAr | a*r*ARr | aA*r*Rr |
+| *r*rRAa | *r*rARa | *r*rAaR | *r*ArRa | *r*AraR | *r*AarR | A*r*rRa | A*r*raR | A*r*arR | Aa*r*rR |
+| *r*rRaA | *r*raRA | *r*raAR | *r*arRA | *r*arAR | *r*aArR | a*r*rRA | a*r*rAR | a*r*ArR | aA*r*rR |
+
+Ahora, si consideras cada una de las columnas de la tabla anterior verás que, si no distinguieses entre las erres ni entre las aes, las permutaciones de cada columna serían la misma combinación de letras. ¿Esto por qué es?
+
+- Por una vez que se eligen en qué tres posiciones de las 5 irán las 3 erres.
+- Entonces ya tendremos también determinadas en qué dos posiciones irán las aes; las que queden.
+- Y ahí, en las posiciones relativas a las erres pondremos las erres en un orden determinado. Y las aes en sus posiciones en un orden determinado.
+- Pero si las erres son indistinguibles, entonces nos da igual qué erre pongamos en qué posición. Y lo mismo para las aes.
+- Por tanto ¿qué reordenaciones podemos hacer de las erres en sus posiciones? Pues serán $P_3 = 3!$. ¿Y de cuántas formas podemos reordenar las aes entre sí en sus dos posiciones fijadas? Pues de $P_2 = 2!$ formas distintas.
+
+Entonces, una vez fijadas las posiciones, ¿de cuántas formas colocamos las letras? Pues atendiendo al último punto, y al principio de multiplicación (@prp-producto), serán de $3! \times 2!$ formas distintas. Por lo tanto, estamos contando cada permutación 12 veces en lugar de solo una, ya que todas las permutaciones en la misma columna nos son indistinguibles en el contexto en el que estamos. Y ya hemos visto antes cómo ajustamos el número de permutaciones cuando las hemos contado de más (@eq-variaciones-alternativa). Por tanto aquí el número de combinaciones de letras *realmente* distintas que podemos hacer es
+
+$$
+\frac{5!}{3! \times 2!} = \frac{120}{12} = 10,
+$$
+
+que coincide con las 10 columnas de la tabla anterior donde tenemos las combinaciones distintas que podemos hacer con las letras de las que disponemos.
+
+Esto lo puedes generalizar a permutaciones de más elementos, con distintos elementos repetidos en distintas cantidades:
+
+::: {#prp-permutaciones-con-repeticion}
+
+## Permutaciones con repetición
+
+Sea $A$ un conjunto con $n$ elementos, de los que hay $r$ tipos distintos de elementos. Supongamos que hay $n_i$ elementos del tipo $i$, $i\in\{1,\ldots,r\}$ entonces el número de permutaciones con repetición de estos $n$ elementos es
+
+$$
+{PR}_{n}^{n_1, \dots, n_r} = \frac{n!}{n_1! \times \cdots \times n_r!}.
+$$ {#eq-permutaciones-repeticion}
+:::
+
 ## Variaciones con repetición 
 
+Las variaciones con repetición son más sencillas de calcular. En este caso, tenemos que:
 
+- Tenemos $n$ elementos distintos.
+- Importa el orden en el que los consideramos.
+- No tenemos por qué usar todos.
+- Podemos repetir cada elemento tantas vecs como queramos.
 
-## Combinaciones
+Teniendo en cuenta esto, si tenemos que hacer una combinación de tamaño $k$, entonces tendremos $k$ posiciones a rellenar. Y como tenemos $n$ elementos distintos entre sí entre los que elegir, y podemos elegirlos tantas veces como queramos, en cada posición tendremos $n$ elecciones disponibles. Por tanto, empleando nuevamente el principio de multiplicación las variaciones con repetición se calculan como:
+
+$$
+{VR}_n^k = n^k.
+$$ {#eq-variaciones-con-repeticion}
+
+::: {#exm-codigo-binario}
+
+## El código binario
+
+El código binario es uno de los ejemplos donde las variaciones con repetición entran en juego. Como ya sabrás el código binario es un sistema para representar número en base $2$. El sistema al que estamos acostumbrados es el sistema decimal, donde tenemos 10 dígitos, ${0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$ que dependiendo de en qué posición los pongamos representan un número u otro (unidades, decenas, centenas...). Así, por ejemplo, recordarás del colegio este tipo de descomposiciones:
+
+$$
+121 = 1 \times 10^2 + 2 \times 10^1 + 1 \times 10^0,
+$$
+
+donde como ves hemos usado digitos de forma repetida en distintas posiciones según hemos necesidado.
+
+En el caso del código binario tenemos sólamente 2 dígitos, el cero y el uno. Así por ejemplo el número en código binario $101$ representa al número $5$ en el sistema decimal. Mira cómo pasamos del sistema binario al decimal:
+
+$$
+101 = 1 \times 2^2 + 0 \times 2^1 + 1 \times 2^0 = 4 + 0 + 1 = 5.
+$$
+
+En los ordenadores, cada una de las cifras, que pueden tomar el valor 0 o 1, se denominan *bits*. ¿Y cuántos números podemos representar con, por ejemplo, 8 bits? Pues teniendo en cuenta que en cada uno de esos bits o posiciones podemos poner 2 opciones, podemos representar un total de
+
+$$
+{VR}_{2}^8 = 2^8 = 256
+$$
+:::
+
+números, desde el 0 hasta el 255. Y también nos podemos hacer la pregunta inversa, ¿cuántos bits necesitamos para poder representar 1024 números? En este caso necesitaremos $\log_2{1024} = 10$.
 
 ## Combinaciones con repetición
 
+Por último, veamos el caso de las combinaciones con repetición:
 
+- Tenemos $n$ elementos distintos.
+- Se quiere formar un conjunto de $k$ elementos.
+- En este caso $k$ no tiene que ser menor o igual que $n$ ya que podemos elegir el mismo elemento varias veces, igual que ocurría en las variaciones con repetición.
+- En este caso no importa el orden en el que lo considereremos.
 
+En este caso comenzamos dando directamente la fórmula para su cálculo y luego pasaremos a cómo deducir la igualdad que vamos a plantear a continuación:
+
+::: {#prp-combinaciones-con-repeticion}
+## Combinaciones con repetición
+
+Dada un conjunto de $n$ elementos distintos, el número de conjuntos de $k$ elementos, con $n, k \in \mathbb{N}$ que pueden formarse, pudiendo repetir elementos, viene dado por la expresión:
+
+$$
+{CR}_{n}^k = C_{n + k - 1}^k.
+$$ {#eq-combinaciones-con-repeticion}
+:::
+
+Para pensar de dónde sale la @eq-combinaciones-con-repeticion vamos a ver el problema del siguiente modo, que se corresponde con lo que se conoce como representación de barras y estrellas[^2]. Vamos a pensar en que queremos formar un conjunto de $k$ elementos, y para ello tenemos que elegir un total de $k$ objetos pudiendo repetirlos. Es decir, podemos decidir tener en nuestro conjunto 3 «copias» de un objeto y ninguna de otro, siempre que el número total de copias que elijamos sumen $k$. Esto sería lo mismo que tener $k$ pegatinas, y poner sobre cada elemento de los $n$ posibles tantas pegatinas como copias de ese elemento queramos tener, hasta agotar las $k$ pegatinas.
+
+[^2]: Puedes consultar al respecto [en este enlace de Wikipedia](https://en.wikipedia.org/wiki/Stars_and_bars_(combinatorics)).
+
+El modo en el que se puede ver esto, para seguir la representación de barras y estrellas, es ver cada elemento como una caja, y las pegatinas como $k$ pelotas que debemos meter en las cajas, no importando cuántas metamos en cada caja, siempre que todas queden metidas en alguna. Entonces, podemos hacer distintas asignaciones de cantidad de pelotas a distintas cajas.
+
+Y la idea de la representación de barras y estrellas es que si, por ejemplo, tenemos 6 pelotas (6 pegatians a alegir o, dicho de otro modo, queremos elegir un conjunto de tamaño 6), y por otro lado tenemos 3 cajas (es decir, elementos a los que asignar las 6 pegatinas, o elementos distintos a elegir copias para formas nuestro subconjunto) entonces la asignació de pelotas a cajas la podemos representar del siguiente modo empleando barras y asteriscos:
+
+- ★★★★|★★| indica que hemos asignado 4 pelotas a la primera caja (al primer elemento, dado un orden que establezcamos), 2 pelotas a la segunda y ninguna a la tercera.
+- ||★★★★★★ indica que hemos introducido todas las pelotas en la tercera caja o, dicho de otro modo, hemos elegido seis copias del mismo elemento (el que sería el elemento número 3 en nuestro conjunto de objetos para elegir).
+- Y por ejemplo ★★|★★|★★ indica que hemos asignado dos pelotas a cada caja. O dicho de otro modo, que introducimos dos copias de cada objeto en nuestro conjunto.
+
+Ya con esta representación es fácil pensar en cómo deducir la fórmula. Lo único que tenemos que observar es lo siguiente:
+
+- Necesitamos un total de barras igual al número de cajas menos 1, de este modo podremos separar cuántas pelotas van en cada caja.
+- Cada cadena de estrellas y barras que representa una configuración estará formada por un tamaño fijo de elementos: las barras, que ya hemos indicado cuántas necesitamos, y las estrellas, que habrá tantas como pelotas. En nuestro caso habrá 6 estrellas (estamos formando conjuntos de seis objetos, con lo que necesitamos 6 pelotas) y 2 barras (que nos sirven para separar las 3 cajas). En general tendremos un total de de $k$ (por el número de pelotas) más $n - 1$ por el número de cajas menos 1; hay tantas cajas como elementos distintos podemos elegir. Es decir, en total tenemos cadenas de $n + k - 1$ elementos.
+- Por último, una vez queda determinada la posición de las pelotas en la cadena, el resto de huecos de la cadena, las otras $n - 1$ posiciones restantes se rellenarán con barras.
+
+Así las cosas, lo único que tenemos que decidir es, de las $n + k -1$ posiciones que hay en la cadena, en cuáles colocaremos pelotas. Y es claro que da igual en qué orden elijamos esas posiciones, puesto que en todas pondremos pelotas indistinguibles entre sí. Así, nuestro problema de conteo se ha traducido en contar de cuántas formas distintas podemos elegir $k$ posiciones donde colocar pelotas de las $n + k - 1$ posiciones distintas disponibles. ¡Y esto es una problema de combinaciones sin repetición!
+
+Tenemos que elegir de un conjunto de $n + k - 1$ elementos distintos (ahora las posiciones de la cadena) un total de $k$ elementos sin repetir, y esto se calcula como $C_{n + k -1}^k$, de ahí la igualdad de la @eq-combinaciones-con-repeticion. El siguiente vídeo ilustra esta explicación:
+
+{{< video CombinacionesRepeticion.mp4 muted="true" >}}
+
+::: {#exm-combinaciones-con-repeticion}
+Supon ahora que la heladería del @exm-helado deja que repitas sabor en las dos bolas de tu tarrina. En ese caso vas a elegir un subconjunto de 2 elementos, de entre un conjunto de 5 elementos distintos, pudiendo repetir elementos. Por tanto, el número de combinaciones distintas que puedes hacer es
+
+$$
+{CR}_{5}^2 = C_{5 + 2 - 1}^2 = C_6^2 = \binom{6}{2} = \frac{6!}{2! \times 4!} = 15.
+$$
+
+Veamos cuáles son estas combinaciones:
+
+| | | |
+| :--- | :--- | :--- |
+| Chocolate y Chocolate | Vainilla y Vainilla | Fresa y Fresa |
+| Chocolate y Vainilla | Vainilla y Fresa | Fresa y Turrón |
+| Chocolate y Fresa | Vainilla y Turrón | Fresa y Nata |
+| Chocolate y Turrón | Vainilla y Nata | Turrón y Turrón |
+| Chocolate y Nata | Turrón y Nata | Nata y Nata |
+:::
