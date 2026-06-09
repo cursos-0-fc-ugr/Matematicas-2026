@@ -472,3 +472,7 @@ Veamos cuáles son estas combinaciones:
 | Chocolate y Turrón | Vainilla y Nata | Turrón y Turrón |
 | Chocolate y Nata | Turrón y Nata | Nata y Nata |
 :::
+
+
+---
+[Contenidos creados por Gustavo Rivas Gervilla]{.small}
