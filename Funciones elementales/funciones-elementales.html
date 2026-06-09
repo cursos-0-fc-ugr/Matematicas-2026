@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Funciones elementales – Cursos cero matemáticas</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-057e2dbeb2b66899786fd0203252f9c8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css">
+
+<style>
+div {
+  &.callout {
+    font-size: 2rem !important;
+  }
+}
+.callout-body-container {
+    font-size: 1rem !important;
+}
+  
+</style>
+
+<script>
+MathJax = {
+    output: {
+        font: 'mathjax-fira',
+        displayOverflow: 'scroll'
+    },
+    loader: {load: ['[tex]/color']},
+    tex: {packages: {'[+]': ['color']}}
+};
+
+JXG.Options.text.useMathJax = true;
+JXG.Options.point.showInfobox = false;
+
+function show(divID) {
+    var sol = document.getElementById("solucion-"+divID);
+    var div = document.getElementById(divID);
+
+    console.log(sol);
+    sol.classList.toggle('collapse');
+
+    console.log("texto: " + div.innerHTML);
+
+//    if(div.innerHTML === "Solución"){
+    if(!sol.classList.contains('collapse')){
+        div.innerHTML = "Oculta solución";
+    }else{
+        div.innerHTML = "Solución";
+    }
+
+}
+</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Funciones elementales</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#generalidades-de-funciones" id="toc-generalidades-de-funciones" class="nav-link active" data-scroll-target="#generalidades-de-funciones">Generalidades de funciones</a></li>
+  <li><a href="#propiedades-de-funciones" id="toc-propiedades-de-funciones" class="nav-link" data-scroll-target="#propiedades-de-funciones">Propiedades de funciones</a></li>
+  <li><a href="#operaciones-con-funciones" id="toc-operaciones-con-funciones" class="nav-link" data-scroll-target="#operaciones-con-funciones">Operaciones con funciones</a></li>
+  <li><a href="#funciones-polinómicas-y-racionales" id="toc-funciones-polinómicas-y-racionales" class="nav-link" data-scroll-target="#funciones-polinómicas-y-racionales">Funciones polinómicas y racionales</a></li>
+  <li><a href="#función-exponencial" id="toc-función-exponencial" class="nav-link" data-scroll-target="#función-exponencial">Función exponencial</a></li>
+  <li><a href="#función-logarítmica" id="toc-función-logarítmica" class="nav-link" data-scroll-target="#función-logarítmica">Función logarítmica</a></li>
+  <li><a href="#función-potencial" id="toc-función-potencial" class="nav-link" data-scroll-target="#función-potencial">Función potencial</a></li>
+  <li><a href="#funciones-trigonométricas" id="toc-funciones-trigonométricas" class="nav-link" data-scroll-target="#funciones-trigonométricas">Funciones trigonométricas</a></li>
+  <li><a href="#funciones-trigonométricas-inversas" id="toc-funciones-trigonométricas-inversas" class="nav-link" data-scroll-target="#funciones-trigonométricas-inversas">Funciones trigonométricas inversas</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<section id="generalidades-de-funciones" class="level2">
+<h2 class="anchored" data-anchor-id="generalidades-de-funciones">Generalidades de funciones</h2>
+<p>En esta lección vamos a dar un repaso a las funciones más comunes que usaremos en el curso de cálculo. Aunque el concepto de función puede definirse en ambientes muy abstractos nosotros nos restringiremos al ámbito en el que vamos a trabajar, que es el de las funciones reales de variable real. Llamaremos <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span> al conjunto de los números reales. De forma rigurosa una función es un subconjunto <span class="math"><span class="math inline">\(F\)</span></span> del conjunto de todos los pares <span class="math"><span class="math inline">\(\{ (x,y) : x\in \mathbb{R}, \ y \in \mathbb{R} \}\)</span></span> (esto es lo que se llama el producto cartesiano <span class="math"><span class="math inline">\(\mathbb{R}\times \mathbb{R}\)</span></span>) que verifica la condición de que si <span class="math"><span class="math inline">\((a,b)\)</span></span> y <span class="math"><span class="math inline">\((a,c)\)</span></span> están en <span class="math"><span class="math inline">\(F\)</span></span> entonces tiene que ocurrir que <span class="math"><span class="math inline">\(b=c\)</span></span>.</p>
+<p>Esta definición puede parecer muy abstracta, y de hecho lo es, pero veremos enseguida que responde a la idea que todos tenemos de una función. La forma más común de representar las funciones reales de variable real es la siguiente. Entendemos por una función una fórmula <span class="math"><span class="math inline">\(f \colon A \to \mathbb{R}\)</span></span> que nos hace corresponder a cada número <span class="math"><span class="math inline">\(x\in A\)</span></span> otro número al que llamaremos <span class="math"><span class="math inline">\(f(x)\in \mathbb{R}\)</span></span></p>
+<p>Consideremos la función <span class="math"><span class="math inline">\(f \colon \mathbb{R}^{+}_{0}\to \mathbb{R}\)</span></span> definida, para <span class="math"><span class="math inline">\(x\in \mathbb{R}^{+}_{0}\)</span></span>, por <span class="math"><span class="math inline">\(f(x)=\sqrt{x}+1\)</span></span>. En este caso la “fórmula” que representa la función es <span class="math"><span class="math inline">\(\sqrt{x}+1\)</span></span>. No es difícil ver que esta función es <em>una función</em> con la definición que hemos dado antes. De hecho en este caso la función con la que estamos tratando sería <span class="math"><span class="math display">\[\left\{ (x,\sqrt{x}+1) : x\in \mathbb{R}^{+}_{0} \right\} .\]</span></span></p>
+<p>La condición que hemos impuesto en la definición (que si dos pares de números de la función tienen la misma primera coordenada entonces tienen que ser el mismo par) no permite que nosotros le llamemos función a cosas como <span class="math"><span class="math inline">\(f \colon \mathbb{R}^{+}_{0}\to \mathbb{R}\)</span></span> dada por <span class="math"><span class="math inline">\(f(x)=\pm \sqrt{x}+1\)</span></span> ya que los pares <span class="math"><span class="math inline">\((4,3)\)</span></span> y <span class="math"><span class="math inline">\((4,-1)\)</span></span> formarían parte de la (supuesta) función.</p>
+<p>Es más usual, como he dicho antes, representar las funciones de la forma <span class="math"><span class="math inline">\(f \colon A\to B\)</span></span> donde <span class="math"><span class="math inline">\(A\)</span></span> y <span class="math"><span class="math inline">\(B\)</span></span> son subconjuntos de <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span> y <span class="math"><span class="math inline">\(f\)</span></span> es una “ley” o “fórmula” que nos permite calcular la función. En el caso de representarse de esta forma al conjunto <span class="math"><span class="math inline">\(A\)</span></span> se le denomina <strong>dominio</strong> de la función y al conjunto <span class="math"><span class="math inline">\(B\)</span></span> <strong>codominio</strong>. Un elemento que utilizaremos más adelante es el concepto de imagen de una función, ya sea de su dominio o de parte de él. Si tenemos una función y consideramos <span class="math"><span class="math inline">\(E\subset A\)</span></span> la imagen mediante <span class="math"><span class="math inline">\(f\)</span></span> del conjunto <span class="math"><span class="math inline">\(E\)</span></span> es el conjunto <span class="math"><span class="math display">\[f(E)=\left\{ y\in B: \text{ existe } x\in E \text{ tal que } f(x)=y\right\} .\]</span></span></p>
+<p>Cuando como subconjunto <span class="math"><span class="math inline">\(E\)</span></span> de <span class="math"><span class="math inline">\(A\)</span></span> nos tomamos el propio conjunto <span class="math"><span class="math inline">\(A\)</span></span> a veces se dice simplemente “la imagen de <span class="math"><span class="math inline">\(f\)</span></span>” y se puede notar como <span class="math"><span class="math inline">\(\operatorname{Im}(f)\)</span></span>.</p>
+</section>
+<section id="propiedades-de-funciones" class="level2">
+<h2 class="anchored" data-anchor-id="propiedades-de-funciones">Propiedades de funciones</h2>
+<p>Existen multitud de propiedades de funciones. Algunas más profundas como la continuidad o derivabilidad se estudiarán en capítulos aparte. Aquí estudiaremos algunas muy generales, sin pretender ser exhaustivos, son las siguientes.</p>
+<p><strong>Linealidad</strong></p>
+<p>Una función <span class="math"><span class="math inline">\(f \colon \mathbb{R} \to \mathbb{R}\)</span></span> es lineal si verifica que <span class="math"><span class="math inline">\(f(ax+by)=af(x)+bf(y)\)</span></span> para cualesquiera <span class="math"><span class="math inline">\(a,b,x\)</span></span> e <span class="math"><span class="math inline">\(y\)</span></span> números reales. En realidad las funciones lineales (con dominio en <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span>) no tienen ningún misterio: son las funciones de la forma <span class="math"><span class="math inline">\(f(x)=mx\)</span></span> para <span class="math"><span class="math inline">\(x\in \mathbb{R}\)</span></span>, para algún <span class="math"><span class="math inline">\(m\in \mathbb{R}\)</span></span>.</p>
+<div id="box" class="jxgbox" style="width:400px; height:400px;margin:auto;">
+
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="40" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 39;"><span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>board <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">4</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>pend <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'slider'</span><span class="op">,</span> [[<span class="op">-</span><span class="fl">3.5</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> [<span class="op">-</span><span class="fl">1.5</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> [<span class="op">-</span><span class="dv">5</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">5</span>]]<span class="op">,</span>{<span class="dt">name</span><span class="op">:</span><span class="st">'m'</span><span class="op">,</span><span class="dt">snapWidth</span><span class="op">:.</span><span class="dv">1</span>})<span class="op">;</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>curve <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[<span class="kw">function</span>(t){ <span class="cf">return</span>(t<span class="op">*</span>pend<span class="op">.</span><span class="fu">Value</span>())}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>])<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<p><strong>Paridad</strong></p>
+<p>Una función es par si se verifica que <span class="math"><span class="math inline">\(f(x)=f(-x)\)</span></span> para <span class="math"><span class="math inline">\(x\)</span></span> en su dominio. Evidentemente cuando hablamos de paridad el dominio de la función debe ser un conjunto de números reales simétrico respecto a <span class="math"><span class="math inline">\(0\)</span></span>. La función es impar si se verifica que <span class="math"><span class="math inline">\(f(x)=-f(-x)\)</span></span> para <span class="math"><span class="math inline">\(x\)</span></span> en su dominio, que también tiene que ser simétrico respecto al <span class="math"><span class="math inline">\(0\)</span></span>. Ejemplos claros de funciones pares son <span class="math" style="color:blue;"><span class="math inline">\(f(x)=x^2+1\)</span></span> o <span class="math" style="color:red;"><span class="math inline">\(f(x)=\frac{\cos (x)}{x^2+3}\)</span></span>. Ejemplos de funciones impares son <span class="math" style="color:orange"><span class="math inline">\(f(x)=x\)</span></span>, quizá la más fácil, o <span class="math" style="color:magenta"><span class="math inline">\(f(x)=\mathrm{sen}(x^3+x)\)</span></span>.</p>
+<center>
+<span id="box2" class="jxgbox" style="width:300px; height:300px; display:inline-block;"></span> <span id="box2b" class="jxgbox" style="width:300px; height:300px; display:inline-block;"></span>
+</center>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="55" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 54;"><span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>board2 <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box2'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">4</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>curve2 <span class="op">=</span> board2<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[<span class="kw">function</span>(t){ <span class="cf">return</span>(t<span class="op">*</span>t<span class="op">+</span><span class="dv">1</span>)}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>])<span class="op">;</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>curve2_2 <span class="op">=</span> board2<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(t)<span class="op">/</span>(t<span class="op">*</span>t<span class="op">+</span><span class="dv">3</span>))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"red"</span>})<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="62" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 61;"><span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>board2b <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box2b'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">4</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>curve3 <span class="op">=</span> board2b<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>                  [<span class="kw">function</span>(t){ <span class="cf">return</span>(t)}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"orange"</span>})<span class="op">;</span></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>curve4 <span class="op">=</span> board2b<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>                  [<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(t<span class="op">*</span>t<span class="op">*</span>t<span class="op">+</span>t))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"magenta"</span>})<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div id="exr-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1</strong></span> Decide si las siguientes funciones son pares, impares o ninguna de las dos:</p>
+<ol type="1">
+<li><p><span class="math inline">\(f(x)=x^{4}+x^{2}+1\)</span>, <button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e1-1" class="collapse">
+<p>La función es par. Todos los exponentes son pares así que <span class="math inline">\(f(x)=f(-x)\)</span>.</p>
+</div></li>
+<li><p><span class="math"><span class="math inline">\(f(x)=x+\operatorname{sen}(x)\)</span></span>, <button id="e1-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e1-2" class="collapse">
+<p>La función es impar. Es la suma de dos funciones impares, <span class="math inline">\(f(x)=x+\operatorname{sen}(x)\)</span>, así que <span class="math inline">\(f(-x)=-x-\operatorname{sen}(-x)=-x+\operatorname{sen}(x)=-f(x)\)</span> para cada <span class="math inline">\(x\in \mathbb{R}\)</span>.</p>
+</div></li>
+<li><p><span class="math"><span class="math inline">\(f(x)=\cos(x^3)\)</span></span>, <button id="e1-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e1-3" class="collapse">
+<p>La función es par. La función coseno es par así que <span class="math inline">\(f(x)=f(-x)\)</span> para cada <span class="math inline">\(x\in \mathbb{R}\)</span>.</p>
+</div></li>
+<li><p><span class="math"><span class="math inline">\(f(x)=x^{3}+1\)</span></span>, <button id="e1-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e1-4" class="collapse">
+<p>La función no es ni par ni impar. No es par ni impar porque <span class="math inline">\(f(1)=2\ne 0=\pm f(-1)\)</span>.</p>
+</div></li>
+</ol>
+</div>
+<p><strong>Periodicidad</strong></p>
+<p>Una función <span class="math"><span class="math inline">\(f \colon \mathbb{R} \to \mathbb{R}\)</span></span> es periódica si verifica que existe un número positivo <span class="math"><span class="math inline">\(T\)</span></span> para el que se verifica que <span class="math"><span class="math inline">\(f(x+T)=f(x)\)</span></span> para todo <span class="math"><span class="math inline">\(x\in \mathbb{R}\)</span></span>. Al más pequeño <span class="math"><span class="math inline">\(T\)</span></span> que verifica lo anterior se le llama periodo fundamental de la función <span class="math"><span class="math inline">\(f\)</span></span>. Los ejemplos más típicos de funciones periódicas hay que buscarlos en las funciones trigonométricas. Por ejemplo, las funciones <span style="color:red;">seno</span> y <span style="color:blue">coseno</span> son periódicas de periodo <span class="math"><span class="math inline">\(2\pi\)</span></span> o la función <span style="color:orange">tangente</span> que es de periodo <span class="math"><span class="math inline">\(\pi\)</span></span> (aunque esta función no esté definida en <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span>).</p>
+<div id="box3" class="jxgbox" style="width:400px; height:400px;margin:auto">
+
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="108" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 107;"><span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>board3 <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box3'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">4</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>curve31 <span class="op">=</span> board3<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(t))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>])<span class="op">;</span></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>curve32 <span class="op">=</span> board3<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(t))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"red"</span>})<span class="op">;</span></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>curve34 <span class="op">=</span> board3<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">tan</span>(t))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"orange"</span>})<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div id="exr-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2</strong></span> Decide si las siguientes funciones son periódicas y, en caso afirmativo, encuentra un periodo:</p>
+<ol type="1">
+<li><p><span class="math"><span class="math inline">\(f(x)=\cos(2x)\)</span></span>, <button id="e2-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e2-1" class="collapse">
+<p>La función es periódica. El periodo fundamental es <span class="math"><span class="math inline">\(\pi\)</span></span> ya que <span class="math"><span class="math inline">\(\cos(2(x+\pi))=\cos(2x+2\pi)=\cos(2x)\)</span></span>.</p>
+</div></li>
+<li><p><span class="math"><span class="math inline">\(f(x)=\cos(x)+\cos(3x)\)</span></span>, <button id="e2-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e2-2" class="collapse">
+<p>La función es periódica. El periodo fundamental es <span class="math"><span class="math inline">\(2\pi\)</span></span> ya que <span class="math"><span class="math inline">\(\cos(x+2\pi)+\cos(3(x+2\pi))=\cos(x)+\cos(3x)\)</span></span>.</p>
+</div></li>
+</ol>
+</div>
+<p><strong>Inyectividad</strong></p>
+<p>Una función es inyectiva si cumple que números distintos del dominio tienen siempre imágenes distintas. Dicho con nomenclatura matemática, si siempre que <span class="math"><span class="math inline">\(x,y\in \operatorname{dom}(f)\)</span></span> con <span class="math"><span class="math inline">\(x\ne y\)</span></span> entonces se verifica que <span class="math"><span class="math inline">\(f(x)\ne f(y)\)</span></span>. Otra forma alternativa de enunciar la anterior propiedad es decir que si dos números del dominio tienen la misma imagen entonces tienen que ser el mismo; es decir, si para cualesquiera <span class="math"><span class="math inline">\(x,y \in \operatorname{dom}(f)\)</span></span> con <span class="math"><span class="math inline">\(f(x)=f(y)\)</span></span> entonces <span class="math"><span class="math inline">\(x=y\)</span></span>. Piénsese que las dos afirmaciones que hemos dicho son exactamente la misma. Y otra cosa que hay que tener en cuenta es no confundir la noción de inyectividad con la condición que tiene que cumplir una función que es que cada elemento del dominio tiene una única imagen.</p>
+<p>Un ejemplo de una función inyectiva es la función <span class="math"><span class="math inline">\(f \colon \mathbb{R}\to \mathbb{R}\)</span></span> definida por <span class="math" style="color:blue;"><span class="math inline">\(f(x)=x^3+1\)</span></span>, para cada <span class="math"><span class="math inline">\(x\in \mathbb{R}\)</span></span>. En efecto, si tenemos dos números <span class="math"><span class="math inline">\(x\)</span></span> e <span class="math"><span class="math inline">\(y\)</span></span> que verifican que <span class="math"><span class="math inline">\(x\ne y\)</span></span> entonces <span class="math"><span class="math inline">\(x^3\ne y^3\)</span></span> y si sumamos <span class="math"><span class="math inline">\(1\)</span></span> siguen siendo distintos: <span class="math"><span class="math inline">\(x^3+1\ne y^3+1\)</span></span> y entonces <span class="math"><span class="math inline">\(f(x)\ne f(y)\)</span></span>. Un ejemplo de función no inyectiva es la función <span class="math"><span class="math inline">\(f \colon \mathbb{R}\to \mathbb{R}\)</span></span> dada por <span class="math" style="color:red"><span class="math inline">\(f(x)=x^2\)</span></span>, para <span class="math"><span class="math inline">\(x\in \mathbb{R}\)</span></span>. Ahora no ocurre que si <span class="math"><span class="math inline">\(x\)</span></span> e <span class="math"><span class="math inline">\(y\)</span></span> son números distintos necesariamente tienen que ser distintos <span class="math"><span class="math inline">\(x^2\)</span></span> e <span class="math"><span class="math inline">\(y^2\)</span></span> ya que números opuestos tienen el mismo cuadrado. Nos referimos a la situación de que <span class="math"><span class="math inline">\(3^2=(-3)^2=9\)</span></span>; es decir, <span class="math"><span class="math inline">\(f(3)=f(-3)\)</span></span>. Este ejemplo nos muestra que cuando intentamos comprobar si una función es inyectiva no tenemos que mirar únicamente la “fórmula” de la función sino que también hay que fijarse en el dominio de la función. Si la función <span class="math"><span class="math inline">\(f(x)=x^2\)</span></span> la definimos en <span class="math"><span class="math inline">\(\mathbb{R}^+\)</span></span> en vez de en <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span> entonces la función será inyectiva.</p>
+<div id="box4" class="jxgbox" style="width:400px; height:400px;margin:auto">
+
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="144" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 143;"><span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a>board4 <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box4'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">4</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a>curve41 <span class="op">=</span> board4<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[<span class="kw">function</span>(t){ <span class="cf">return</span>(t<span class="op">*</span>t<span class="op">*</span>t<span class="op">+</span><span class="dv">1</span>)}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>])<span class="op">;</span></span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a>curve42 <span class="op">=</span> board4<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(t<span class="op">,</span><span class="dv">2</span>))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"red"</span>})<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<p><strong>Sobreyectividad</strong></p>
+<p>Cuando tenemos una función <span class="math"><span class="math inline">\(f \colon A\to B\)</span></span> diremos que es sobreyectiva si la imagen de <span class="math"><span class="math inline">\(f\)</span></span> coincide con todo el codominio <span class="math"><span class="math inline">\(B\)</span></span>. Esta propiedad de las funciones depende profundamente tanto del dominio como del codominio de forma que, si se modifican, cambie el hecho de que una función sea sobreyectiva o no lo sea. En este sentido ocurre algo parecido con la inyectividad. Por ejemplo la función <span class="math"><span class="math inline">\(f\colon \mathbb{R}\to \mathbb{R}\)</span></span> definida por <span class="math"><span class="math inline">\(f(x)=x^2\)</span></span> para <span class="math"><span class="math inline">\(x\in \mathbb{R}\)</span></span> no es sobreyectiva (la imagen <span class="math"><span class="math inline">\(f(\mathbb{R})=
+\mathbb{R}^+_0\)</span></span>) pero si cambiamos el codominio y definimos <span class="math"><span class="math inline">\(f \colon \mathbb{R}
+\to \mathbb{R}^+_0\)</span></span> mediante la misma fórmula ahora sí que es sobreyectiva.</p>
+<p>Cuando una función es a la vez inyectiva y sobreyectiva se dice que es biyectiva o que es una biyección.</p>
+</section>
+<section id="operaciones-con-funciones" class="level2">
+<h2 class="anchored" data-anchor-id="operaciones-con-funciones">Operaciones con funciones</h2>
+<p>Podemos definir nuevas funciones a partir de unas dadas de varias formas.</p>
+<ul>
+<li><p><strong>Suma</strong></p>
+<p>Si tenemos dos funciones con el mismo dominio (consideremos para simplificar que el codominio es <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span>) <span class="math"><span class="math inline">\(f,g \colon A\to \mathbb{R}\)</span></span> entonces la función suma <span class="math"><span class="math inline">\(f+g \colon A\to \mathbb{R}\)</span></span> es la función definida por <span class="math"><span class="math inline">\((f+g)(x)=f(x)+g(x)\)</span></span> para cada <span class="math"><span class="math inline">\(x\in A\)</span></span>. Análogamente con la resta.</p></li>
+<li><p><strong>Producto</strong></p>
+<p>Si tenemos dos funciones otra vez con el mismo dominio <span class="math"><span class="math inline">\(f,g
+\colon A\to \mathbb{R}\)</span></span> entonces la función producto <span class="math"><span class="math inline">\(fg \colon A\to \mathbb{R}\)</span></span> es la función definida por <span class="math"><span class="math inline">\((fg)(x)=f(x)g(x)\)</span></span> para cada <span class="math"><span class="math inline">\(x\in A\)</span></span>.</p>
+<p>En este caso la división no es inmediata. Para poder definir el cociente de <span class="math"><span class="math inline">\(f\)</span></span> entre <span class="math"><span class="math inline">\(g\)</span></span> es necesario que <span class="math"><span class="math inline">\(g(x)\ne 0\)</span></span> para todo <span class="math"><span class="math inline">\(x\in A\)</span></span> (así no estamos dividiendo por <span class="math"><span class="math inline">\(0\)</span></span>). Si <span class="math"><span class="math inline">\(g\)</span></span> verifica esta condición entonces se tiene que el cociente <span class="math"><span class="math inline">\(\frac{f}{g} \colon A\to \mathbb{R}\)</span></span> es la función definida por <span class="math"><span class="math inline">\(\frac{f}{g}(x)=\frac{f(x)}{g(x)}\)</span></span> para cada <span class="math"><span class="math inline">\(x\in A\)</span></span>.</p></li>
+<li><p><strong>Composición</strong></p>
+<p>Esta operación no se corresponde con una operación aritmética clásica. Para poder componer dos funciones necesitamos que la imagen de una de ellas esté contenido en el dominio de la otra. Si tenemos <span class="math"><span class="math inline">\(f \colon A \to B\)</span></span> y <span class="math"><span class="math inline">\(g \colon C\to D\)</span></span> y se verifica que <span class="math"><span class="math inline">\(\operatorname{Im}(f)\subset C\)</span></span> entonces se define la composición de <span class="math"><span class="math inline">\(f\)</span></span> con <span class="math"><span class="math inline">\(g\)</span></span> (también se dice <span class="math"><span class="math inline">\(f\)</span></span> compuesta con <span class="math"><span class="math inline">\(g\)</span></span>) a la función <span class="math"><span class="math inline">\(g\circ f \colon A\to D\)</span></span> definida como <span class="math"><span class="math inline">\(g\circ f(x)=g(f(x))\)</span></span> para cada <span class="math"><span class="math inline">\(x\in A\)</span></span>.</p>
+<p>Hay que puntualizar algunas cuestiones respecto a la composición. En principio no siempre se pueden componer dos funciones cualesquiera. Es absolutamente necesario que la imagen de una esté contenida en el dominio de la otra (en el sentido del párrafo anterior). Por lo tanto pueden darse ejemplos de funciones <span class="math"><span class="math inline">\(f\)</span></span> y <span class="math"><span class="math inline">\(g\)</span></span> de forma que se pueda hacer <span class="math"><span class="math inline">\(f\circ g\)</span></span> pero no se pueda hacer la composición <span class="math"><span class="math inline">\(g\circ f\)</span></span>. Esta situación nos hace presumir que la operación “composición de funciones” no es conmutativa. Incluso, en el caso de que se puedan realizar tanto <span class="math"><span class="math inline">\(f\circ g\)</span></span> como <span class="math"><span class="math inline">\(g\circ f\)</span></span>, en general los resultados pueden ser distintos. Veamos algunos ejemplos.</p>
+<p>Vamos a trabajar con las funciones <span class="math"><span class="math inline">\(f \colon \mathbb{R}\to \mathbb{R}\)</span></span> dada por la fórmula <span class="math" style="color:red"><span class="math inline">\(f(x)=x^2-4\)</span></span> para <span class="math"><span class="math inline">\(x\)</span></span> real y <span class="math"><span class="math inline">\(g \colon \mathbb{R}\to \mathbb{R}\)</span></span> definida como <span class="math" style="color:blue"><span class="math inline">\(g(x)=\frac{1}{x^2+1}\)</span></span> también para <span class="math"><span class="math inline">\(x\)</span></span> real. ¿Podemos hacer en este caso las dos composiciones <span class="math" style="color:green"><span class="math inline">\(f\circ g\)</span></span> y <span class="math" style="color:orange"><span class="math inline">\(g\circ f\)</span></span>?</p>
+<center>
+<div id="box5" class="jxgbox" style="width:300px;height:300px;display:inline-block;">
+
+</div>
+<div id="box6" class="jxgbox" style="width:300px; height:300px;display:inline-block;">
+
+</div>
+</center>
+<p>Para poder hacer <span class="math"><span class="math inline">\(f\circ g\)</span></span> es necesario que la imagen de <span class="math"><span class="math inline">\(g\)</span></span> esté contenida en el dominio de <span class="math"><span class="math inline">\(f\)</span></span>. La fórmula <span class="math"><span class="math inline">\(\displaystyle g(x)=\frac{1}{x^2+1}\)</span></span> nos da que, cuando movemos <span class="math"><span class="math inline">\(x\)</span></span> en los números reales, entonces <span class="math"><span class="math inline">\(x^2\)</span></span> se mueve en los números mayores o iguales a <span class="math"><span class="math inline">\(0\)</span></span> (solamente será <span class="math"><span class="math inline">\(0\)</span></span> si <span class="math"><span class="math inline">\(x=0\)</span></span>). Al sumarle <span class="math"><span class="math inline">\(1\)</span></span> obtenemos un número <span class="math"><span class="math inline">\(\ge 1\)</span></span> y al invertir obtenemos números positivos menores o iguales a <span class="math"><span class="math inline">\(1\)</span></span> pero mayores que <span class="math"><span class="math inline">\(0\)</span></span>. En este caso <span class="math"><span class="math inline">\(\operatorname{Im}(g)=]0, 1]\)</span></span> que está contenido en el dominio de <span class="math"><span class="math inline">\(f\)</span></span>, que es todo <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span>. La composición <span class="math"><span class="math inline">\(f\circ g\)</span></span> tiene por fórmula entonces</p>
+<p><span class="math"><span class="math display">\[\begin{align*}
+f\circ g(x) =f(g(x)) &amp;=f\left(\frac{1}{x^2+1}\right)=\left( \frac{1}{x^2+1}\right) ^2-4 \\
+&amp;= \left( \frac{1}{x^4+2x^2+1}\right) -4= \frac{1-4x^4-8x^2-4}{x^4+2x^2+1}\\ &amp;=\frac{-4x^4-8x^2-3}{x^4+2x^2+1}.\end{align*}\]</span></span></p>
+<p>Por otro lado, si <span class="math"><span class="math inline">\(x\)</span></span> lo movemos dentro de los números reales ya hemos comentado que <span class="math"><span class="math inline">\(x^2\)</span></span> se mueve en los números mayores o iguales a <span class="math"><span class="math inline">\(0\)</span></span> y si restamos <span class="math"><span class="math inline">\(4\)</span></span> nos quedarán los números mayores o iguales que <span class="math"><span class="math inline">\(-4\)</span></span>. Por tanto la imagen de <span class="math"><span class="math inline">\(f\)</span></span> es el intervalo <span class="math"><span class="math inline">\([-4,+\infty [\)</span></span>, así que, como el dominio de <span class="math"><span class="math inline">\(g\)</span></span> es <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span>, tendremos que podemos hacer <span class="math"><span class="math inline">\(g\circ f\)</span></span> y nos quedará, para <span class="math"><span class="math inline">\(x\in \mathbb{R}\)</span></span>, <span class="math"><span class="math display">\[\begin{align*} g\circ f(x) &amp;=g(f(x))=g(x^2-4)\\ &amp;= \frac{1}{(x^2-4)^2+1}= \frac{1}{(x^4-8x^2+16)+1} \\ &amp; = \frac{1}{x^4-8x^2+17},\end{align*}\]</span></span> y queda claro que <span class="math"><span class="math inline">\(f\circ g \ne g\circ f\)</span></span>. En este ejemplo hemos hecho un trabajo extra ya que, como los dominios de las dos funciones eran todos los números reales, entonces el cálculo de la imagen de las dos funciones era superfluo (son funciones reales así que su imagen tiene que ser un subconjunto de los números reales). Lo hemos hecho solo por completitud.</p>
+<p>Veamos otro ejemplo donde no se pueden hacer las dos composiciones. Si consideramos la misma función <span class="math"><span class="math inline">\(f\)</span></span> del ejemplo anterior y como función <span class="math"><span class="math inline">\(g\)</span></span> consideramos <span class="math"><span class="math inline">\(g \colon \mathbb{R}^+ \to \mathbb{R}\)</span></span> definida por <span class="math"><span class="math inline">\(g(x)=\log (x)\)</span></span> para <span class="math"><span class="math inline">\(x\)</span></span> positivo entonces se tiene que la imagen de <span class="math"><span class="math inline">\(g\)</span></span> es todo <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span> y se puede hacer la composición <span class="math"><span class="math inline">\(f\circ g
+\colon \mathbb{R}^+\to \mathbb{R}\)</span></span> que resulta ser, para cualquier <span class="math"><span class="math inline">\(x\in \mathbb{R}^+\)</span></span>, <span class="math"><span class="math display">\[f\circ g(x)=f(\log (x))=\left( \log(x)\right) ^2-4.\]</span></span></p>
+<p>Sin embargo <span class="math"><span class="math inline">\(f\)</span></span> compuesta con <span class="math"><span class="math inline">\(g\)</span></span> no se puede hacer ya que la imagen de <span class="math"><span class="math inline">\(f\)</span></span> es <span class="math"><span class="math inline">\([-4,+\infty ) \nsubseteq \mathbb{R}^+\)</span></span>.</p></li>
+<li><p><strong>Función inversa</strong></p>
+<p>En el caso de que tengamos una función <span class="math"><span class="math inline">\(f \colon A\to B\)</span></span> biyectiva se verifica que, dado <span class="math"><span class="math inline">\(y\in B\)</span></span>, existe un elemento <span class="math"><span class="math inline">\(x\in A\)</span></span> de forma que <span class="math"><span class="math inline">\(f(x)=y\)</span></span> por la sobreyectividad. Además ese elemento <span class="math"><span class="math inline">\(x\)</span></span> es único para cada <span class="math"><span class="math inline">\(y\)</span></span> (por la inyectividad). Esto nos proporciona una función <span class="math"><span class="math inline">\(g \colon B\to A\)</span></span> que le hace corresponder a cada elemento <span class="math"><span class="math inline">\(y\in B\)</span></span> el único <span class="math"><span class="math inline">\(x\in A\)</span></span> para el que se verifica que <span class="math"><span class="math inline">\(f(x)=y\)</span></span>. Esta función se denomina la inversa de <span class="math"><span class="math inline">\(f\)</span></span> y se suele notar como <span class="math"><span class="math inline">\(f^{-1}\)</span></span>. Verifica que <span class="math"><span class="math inline">\(f\circ f^{-1} \colon B\to B\)</span></span> es la identidad en <span class="math"><span class="math inline">\(B\)</span></span> (es decir que <span class="math"><span class="math inline">\(f\circ f^{-1}(y)=y\)</span></span> para todo <span class="math"><span class="math inline">\(y\in B\)</span></span>), y por otro lado <span class="math"><span class="math inline">\(f^{-1}\circ f \colon A\to A\)</span></span> es la identidad en <span class="math"><span class="math inline">\(A\)</span></span>. Hay que tener cuidado con no confundir <span class="math"><span class="math inline">\(f^{-1}\)</span></span>, la inversa que acabamos de definir con la función <span class="math"><span class="math inline">\(1/f\)</span></span>. Son cosas totalmente distintas. El contexto nos dirá a que nos referimos.</p>
+<p>Si consideramos la función <span class="math"><span class="math inline">\(f\colon \mathbb{R}\to \mathbb{R}\)</span></span> la función definida por <span class="math"><span class="math inline">\(f(x)=x^3+2,\ \ \forall x\in \mathbb{R}\)</span></span> es muy fácil ver que la función <span class="math"><span class="math inline">\(f\)</span></span> es biyectiva y su inversa puede ser calculada fácilmente. Si <span class="math"><span class="math inline">\(f(x)=x^3+2=y\)</span></span> entonces <span class="math"><span class="math inline">\(x^3=y-2\)</span></span> de donde se obtiene <span class="math"><span class="math inline">\(x=\sqrt[3]{y-2}\)</span></span>, con lo que, el único <span class="math"><span class="math inline">\(x\)</span></span> que verifica que <span class="math"><span class="math inline">\(f(x)=y\)</span></span> es el número <span class="math"><span class="math inline">\(\sqrt[3]{y-2}\)</span></span>. Entonces <span class="math"><span class="math inline">\(f^{-1}\colon \mathbb{R}\to \mathbb{R}\)</span></span> es la función <span class="math"><span class="math inline">\(f^{-1}(x)=\sqrt[3]{x-2},\ \ \forall x\in \mathbb{R}\)</span></span>.</p>
+<div id="box7" class="jxgbox" style="width:400px; height:400px;margin:auto">
+
+</div></li>
+</ul>
+<div id="exr-3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 3</strong></span> Calcula la inversa de la función <span class="math"><span class="math inline">\(f: \mathbb{R}^{+}_{0} \to \mathbb{R}\)</span></span> dada por <span class="math"><span class="math inline">\(f(x)=x^2-5\)</span></span>, <button id="e3-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e3-1" class="collapse">
+<p>Para calcular la inversa, despejamos <span class="math"><span class="math inline">\(x\)</span></span> en la expresión <span class="math"><span class="math inline">\(y=x^2-5\)</span></span>. Se obtiene que <span class="math"><span class="math inline">\(x=\sqrt{y+5}\)</span></span>, con lo que la función inversa es <span class="math"><span class="math inline">\(f^{-1}(x)=\sqrt{x+5}\)</span></span>.</p>
+</div>
+</div>
+<p>Vamos ahora a repasar las principales funciones que aparecen en cálculo.</p>
+</section>
+<section id="funciones-polinómicas-y-racionales" class="level2">
+<h2 class="anchored" data-anchor-id="funciones-polinómicas-y-racionales">Funciones polinómicas y racionales</h2>
+<p>Son las más sencillas y las ponemos aquí solo para que el panorama sea más completo. Las funciones polinómicas o polinomios no creemos que sea necesario definirlas. Son funciones cuyo dominio es todo <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span> y son continuas y derivables en todo <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span>.</p>
+<p>Las funciones racionales son el cociente de dos polinomios. El dominio es todo <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span> salvo los números que hagan que el denominador sea <span class="math"><span class="math inline">\(0\)</span></span> (para evitar dividir por <span class="math"><span class="math inline">\(0\)</span></span>). También son continuas en su dominio y derivables y la derivada se obtiene con la regla de la derivada de un cociente.</p>
+</section>
+<section id="función-exponencial" class="level2">
+<h2 class="anchored" data-anchor-id="función-exponencial">Función exponencial</h2>
+<p>Las funciones exponenciales son las funciones <span class="math"><span class="math inline">\(f\)</span></span> para las que existe un número <span class="math"><span class="math inline">\(a&gt;0\)</span></span> de forma que <span class="math"><span class="math inline">\(f\colon \mathbb{R}\to \mathbb{R}\)</span></span> viene dada por <span class="math"><span class="math inline">\(f(x)=a^x\)</span></span>, <span class="math"><span class="math inline">\(\forall x\in \mathbb{R}\)</span></span>. En este caso se le llama función exponencial de base <span class="math"><span class="math inline">\(a\)</span></span>. Es continua y derivable en todo <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span> y su derivada vale <span class="math"><span class="math inline">\(f'(x)=a^x \log(a)\)</span></span>.</p>
+<p>Teniendo en cuenta que, para <span class="math"><span class="math inline">\(x\in \mathbb{R}\)</span></span>, se verifica que <span class="math"><span class="math inline">\(a^{-x}=\left( \frac{1}{a}\right) ^{x}\)</span></span>, entonces las propiedades que tienen las funciones exponenciales de base mayor que <span class="math"><span class="math inline">\(1\)</span></span> se traducen en propiedades de las funciones exponenciales de base <span class="math"><span class="math inline">\(&lt;1\)</span></span>.</p>
+<p>Veamos algunas características de estas funciones.</p>
+<ul>
+<li><p>El caso más trivial de este tipo de funciones corresponde al caso <span class="math"><span class="math inline">\(a=1\)</span></span>. En este caso <span class="math"><span class="math inline">\(f(x)=1,\ \ \forall x\in \mathbb{R}\)</span></span>.</p></li>
+<li><p>Si <span class="math"><span class="math inline">\(a\ne 1\)</span></span> entonces la función exponencial de base <span class="math"><span class="math inline">\(a\)</span></span> es inyectiva. De hecho es estrictamente creciente si <span class="math"><span class="math inline">\(a&gt;1\)</span></span> y, teniendo en cuenta la relación entre las funciones exponenciales de base mayor que <span class="math"><span class="math inline">\(1\)</span></span> y las funciones exponenciales de base menor que <span class="math"><span class="math inline">\(1\)</span></span>, se tiene que <span class="math"><span class="math inline">\(f\)</span></span> es estrictamente decreciente si <span class="math"><span class="math inline">\(a&lt;1\)</span></span>.</p></li>
+<li><p>En el caso de que <span class="math"><span class="math inline">\(a&gt;1\)</span></span> se verifica que <span class="math"><span class="math display">\[\lim _{x\to - \infty } a^x=0,\ \ \ \lim_{x\to +\infty }a^x=+\infty.\]</span></span></p>
+<p>Si <span class="math"><span class="math inline">\(a&lt;1\)</span></span> se tiene entonces que</p>
+<p><span class="math"><span class="math display">\[\lim _{x\to - \infty } a^x=+\infty ,\ \ \ \lim_{x\to +\infty }a^x=0.\]</span></span></p></li>
+<li><p>La imagen de la función exponencial de base <span class="math"><span class="math inline">\(a\)</span></span>, con <span class="math"><span class="math inline">\(a\ne 1\)</span></span>, es <span class="math"><span class="math inline">\(\mathbb{R}^+\)</span></span>.</p></li>
+<li><p>Se verifica que <span class="math"><span class="math inline">\(a^0=1\)</span></span> y que <span class="math"><span class="math inline">\(a^{x+y}=a^x a^y,\ \ \forall x,y\in \mathbb{R}.\)</span></span></p></li>
+</ul>
+<p>Puedes comprobar gráficamente las propiedades anteriores variando el valor de <span class="math inline">\(a\)</span> en la siguiente representación de la función exponencial.</p>
+<div id="box8" class="jxgbox" style="width:600px; height:300px;margin:auto">
+
+</div>
+<p>De entre todas las funciones exponenciales hay una destacada por su importancia en distintos campos de la ciencia y es la función exponencial de base <span class="math"><span class="math inline">\(e\)</span></span>. En este caso la derivada es <span class="math"><span class="math inline">\(f'(x)=e^x\)</span></span>. De hecho cuando se habla de la “función exponencial” sin hacer mención a ninguna base especial, nos referimos a ésta.</p>
+</section>
+<section id="función-logarítmica" class="level2">
+<h2 class="anchored" data-anchor-id="función-logarítmica">Función logarítmica</h2>
+<p>Cuando hemos comentado las propiedades de las funciones exponenciales de base <span class="math"><span class="math inline">\(a\ne 1\)</span></span> hemos visto que, tanto si <span class="math"><span class="math inline">\(a&gt;1\)</span></span> o <span class="math"><span class="math inline">\(a&lt;1\)</span></span>, dichas funciones son una biyección de <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span> sobre <span class="math"><span class="math inline">\(\mathbb{R}^+\)</span></span>. Por tanto tienen inversa. A la inversa de la función exponencial de base <span class="math"><span class="math inline">\(a\)</span></span> se le llama función logarítmica de base <span class="math"><span class="math inline">\(a\)</span></span>. Atendiendo a esta definición está claro que, para <span class="math"><span class="math inline">\(a\ne 1\)</span></span>, <span class="math"><span class="math inline">\(a&gt;0\)</span></span> la función logaritmo de base <span class="math"><span class="math inline">\(a\)</span></span>, <span class="math"><span class="math inline">\(\log _a \colon \mathbb{R}^{+}\to \mathbb{R}\)</span></span>. Es continua y derivable en <span class="math"><span class="math inline">\(\mathbb{R}^+\)</span></span> y su derivada vale <span class="math"><span class="math inline">\(\displaystyle f^{\prime} (x)=\frac{1}{x\log(a)}\)</span></span>.</p>
+<p>Las propiedades de <span class="math"><span class="math inline">\(\log _a\)</span></span> se obtienen de su definición como inversa de la función exponencial de base <span class="math"><span class="math inline">\(a\)</span></span>.</p>
+<ul>
+<li><p>Si <span class="math"><span class="math inline">\(a&gt;1\)</span></span> se verifica que <span class="math"><span class="math inline">\(\log _a\)</span></span> es estrictamente creciente y <span class="math"><span class="math display">\[\lim _{x\to 0}\log _a(x)=-\infty ,\ \ \lim _{x\to +\infty}\log _a(x)=+\infty.\]</span></span></p>
+<p>Si <span class="math"><span class="math inline">\(0&lt;a&lt;1\)</span></span> entonces <span class="math"><span class="math inline">\(\log _a\)</span></span> es estrictamente decreciente y <span class="math"><span class="math display">\[\lim _{x\to 0}\log _a(x)=+\infty ,\ \ \lim _{x\to +\infty}\log _a(x)=-\infty.\]</span></span></p></li>
+<li><p>Por ser la inversa de la función exponencial se verifica que <span class="math"><span class="math display">\[\log_a(a^x)=x,\ \ \forall x\in \mathbb{R},\ \ \ a^{\log _ a(x)}=x,\ \ \forall x\in \mathbb{R}^+.\]</span></span></p></li>
+<li><p><span class="math"><span class="math inline">\(\log _a(x^y)=y\log_a(x)\)</span></span> para <span class="math"><span class="math inline">\(x\)</span></span> positivo e <span class="math"><span class="math inline">\(y\)</span></span> real, y <span class="math"><span class="math inline">\(\log_a (xy)=\log_a (x)+\log_a (y)\)</span></span>, para <span class="math"><span class="math inline">\(x\)</span></span> e <span class="math"><span class="math inline">\(y\)</span></span> positivos.</p></li>
+</ul>
+<p>Puedes comprobar gráficamente las propiedades anteriores variando el valor de <span class="math inline">\(a\)</span> en la siguiente representación de la función logarítmica.</p>
+<div id="box9" class="jxgbox" style="width:400px; height:400px;margin:auto">
+
+</div>
+<p>Al igual que antes hay una función logarítmica destacada, y es cuando la base es el número <span class="math"><span class="math inline">\(e\)</span></span>. En este caso se llama logaritmo neperiano o simplemente logaritmo, y su derivada es <span class="math"><span class="math inline">\(\displaystyle f'(x)=\frac{1}{x}\)</span></span>.</p>
+<div id="exr-4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4</strong></span> Resuelve la ecuación <span class="math"><span class="math inline">\(2^{3\log_2(x)}=4\log_3(9)\)</span></span>, <button id="e4-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e4-1" class="collapse">
+<p>Simplificamos el lado derecho de la ecuación: <span class="math"><span class="math inline">\(4\log_3(9)=4\cdot 2=8\)</span></span>. Luego el lado izquierdo de la ecuación: <span class="math"><span class="math inline">\(2^{3\log_2(x)}=2^{\log_2(x^3)}=x^3\)</span></span>. Por lo tanto, la ecuación se reduce a <span class="math"><span class="math inline">\(x^3=8\)</span></span>, con lo que <span class="math"><span class="math inline">\(x=2\)</span></span>.</p>
+</div>
+</div>
+</section>
+<section id="función-potencial" class="level2">
+<h2 class="anchored" data-anchor-id="función-potencial">Función potencial</h2>
+<p>Dado un número <span class="math"><span class="math inline">\(b\in \mathbb{R}\)</span></span> la función potencial de potencia <span class="math"><span class="math inline">\(b\)</span></span> es la función <span class="math"><span class="math inline">\(f \colon \mathbb{R}^+\to \mathbb{R}^+\)</span></span> definida para cada <span class="math"><span class="math inline">\(x\in \mathbb{R}^+\)</span></span> por <span class="math"><span class="math inline">\(f(x)=x^b\)</span></span>. Es continua y derivable en <span class="math"><span class="math inline">\(\mathbb {R}^+\)</span></span> y su derivada vale <span class="math"><span class="math inline">\(f'(x)=bx^{b-1}\)</span></span>.</p>
+<p>Algunas de las propiedades de estas funciones dependen del valor de <span class="math"><span class="math inline">\(b\)</span></span>. El caso más trivial es cuando <span class="math"><span class="math inline">\(b=0\)</span></span> ya que entonces <span class="math"><span class="math inline">\(f\)</span></span> es la función constantemente igual a <span class="math"><span class="math inline">\(1\)</span></span>.</p>
+<p>Si <span class="math"><span class="math inline">\(b&gt;0\)</span></span> entonces <span class="math"><span class="math inline">\(x^b\)</span></span> es estrictamente creciente y cumple que <span class="math"><span class="math inline">\(\lim_{x\to 0} x^b=0\)</span></span> y <span class="math"><span class="math inline">\(\lim_{x\to +\infty }x^b=+\infty\)</span></span>, mientras que si <span class="math"><span class="math inline">\(b&lt;0\)</span></span> se tiene que <span class="math"><span class="math inline">\(x^b\)</span></span> es estrictamente decreciente y <span class="math"><span class="math inline">\(\lim_{x\to 0}x^b=+\infty\)</span></span> mientras que <span class="math"><span class="math inline">\(\lim_{x\to +\infty}x^b=0\)</span></span></p>
+<div id="box10" class="jxgbox" style="width:400px; height:400px;margin:auto">
+
+</div>
+<p>Tanto si <span class="math"><span class="math inline">\(b&gt;0\)</span></span> como si <span class="math"><span class="math inline">\(b&lt;0\)</span></span> la función potencial de potencia <span class="math"><span class="math inline">\(b\)</span></span> es una biyección de <span class="math"><span class="math inline">\(\mathbb{R}^+\)</span></span> sobre sí mismo cuya función inversa es la función potencial de potencia <span class="math"><span class="math inline">\(\frac{1}{b}\)</span></span>, <span class="math"><span class="math inline">\(x^{1/b}\)</span></span>.</p>
+</section>
+<section id="funciones-trigonométricas" class="level2">
+<h2 class="anchored" data-anchor-id="funciones-trigonométricas">Funciones trigonométricas</h2>
+<p>Las principales funciones trigonométricas son la función seno, la función coseno y la función tangente. A partir de estas se construyen sus inversas, arcoseno, arcocoseno y arcotangente. Es importante destacar que estamos hablando de las funciones en <em>radianes</em> y no en grados.</p>
+<ul>
+<li><p>La función <span style="color:red">seno</span> <span class="math"><span class="math inline">\(\mathrm{sen} \colon \mathbb{R}\to \mathbb{R}\)</span></span> es una función periódica de periodo <span class="math"><span class="math inline">\(2\pi\)</span></span> cuya imagen es el intervalo <span class="math"><span class="math inline">\([-1,1]\)</span></span>. Es una función impar (<span class="math"><span class="math inline">\(\mathrm{sen} (-x)=-\mathrm{sen} (x)\)</span></span>, <span class="math"><span class="math inline">\(\forall x\in \mathbb{R}\)</span></span>) y es estrictamente creciente en el intervalo <span class="math"><span class="math inline">\([-\pi/2,\pi/2]\)</span></span> y estrictamente decreciente en <span class="math"><span class="math inline">\([\pi /2,3\pi/2]\)</span></span> con <span class="math"><span class="math inline">\(\mathrm{sen} (0)=0\)</span></span>, <span class="math"><span class="math inline">\(\mathrm{sen} (\pi/2)=1\)</span></span> y <span class="math"><span class="math inline">\(\mathrm{sen}(\pi)=0\)</span></span>. Es continua y derivable en todo <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span> y su derivada vale <span class="math"><span class="math inline">\(\cos(x)\)</span></span>.</p></li>
+<li><p>La función <span style="color:blue">coseno</span> <span class="math"><span class="math inline">\(\cos \colon \mathbb{R}\to \mathbb{R}\)</span></span> es una función periódica de periodo <span class="math"><span class="math inline">\(2\pi\)</span></span> cuya imagen es también el intervalo <span class="math"><span class="math inline">\([-1,1]\)</span></span>. Es una función par (<span class="math"><span class="math inline">\(\cos (-x)=\cos (x)\)</span></span>, <span class="math"><span class="math inline">\(\forall x\in \mathbb{R}\)</span></span>) y es estrictamente decreciente en el intervalo <span class="math"><span class="math inline">\([0,\pi]\)</span></span> con <span class="math"><span class="math inline">\(\cos (0)=1\)</span></span>, <span class="math"><span class="math inline">\(\cos (\pi/2)=0\)</span></span> y <span class="math"><span class="math inline">\(\cos(\pi)=-1\)</span></span>. También es derivable en todo <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span> y su derivada vale <span class="math"><span class="math inline">\(-\mathrm{sen}(x)\)</span></span>.</p>
+<p>Tanto la función seno como coseno, al ser periódicas (y no constantes), no tienen límite ni en <span class="math"><span class="math inline">\(+\infty\)</span></span> ni en <span class="math"><span class="math inline">\(-\infty\)</span></span>.</p></li>
+<li><p>La función <span style="color:orange">tangente</span> es el cociente entre seno y coseno. Está definida en los números reales en los que coseno no vale <span class="math"><span class="math inline">\(0\)</span></span>, es decir en todo <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span> salvo en los múltiplos impares de <span class="math"><span class="math inline">\(\pi /2\)</span></span>. Es decir, <span class="math"><span class="math display">\[\tan \colon \mathbb{R}\setminus \{ (2k+1)\pi /2 : k\in \mathbb{Z} \} \to \mathbb{R},\ \ \tan(x)=\frac{\mathrm{sen}(x)}{\cos(x)} ,\]</span></span> para <span class="math"><span class="math inline">\(x\in \mathbb{R}\setminus \{ (2k+1)\pi /2 : k\in \mathbb{Z} \}\)</span></span>.</p>
+<p>Es una función periódica de periodo <span class="math"><span class="math inline">\(\pi\)</span></span> y si restringimos su dominio a <span class="math"><span class="math inline">\((-\pi/2,\pi/2)\)</span></span> entonces es estrictamente creciente y se verifica que <span class="math"><span class="math display">\[\lim_{x\to -\pi/2 ^+}\tan (x)=-\infty,\ \ \ \lim_{x\to \pi/2 ^-}\tan (x)=+\infty .\]</span></span></p>
+<p>Es continua y derivable en su dominio y la derivada vale <span class="math"><span class="math display">\[f'(x)=\frac{1}{\cos ^2(x)}=1+\tan ^2(x),\ \ \forall x\in \mathbb{R}\setminus
+\{ (2k+1)\pi /2 : k\in \mathbb{Z} \} .\]</span></span></p>
+<div id="box11" class="jxgbox" style="width:600px; height:400px;margin:auto">
+
+</div></li>
+</ul>
+<p>Hay dos o tres igualdades fundamentales que hay que conocer respecto a las funciones trigonométricas. Basándose en estas igualdades se obtienen todas las demás.</p>
+<ul>
+<li><p>La primera es la igualdad fundamental de la trigonometría; dice que para cualquier número real <span class="math"><span class="math inline">\(x\)</span></span> se verifica que <span class="math"><span class="math display">\[\cos ^2 (x)+\mathrm{sen} ^2(x)=1.\]</span></span></p></li>
+<li><p>Las otras dos igualdades importantes son las fórmulas para las razones trigonométricas de la suma de dos números. En el caso del seno queda que, <span class="math"><span class="math inline">\(\forall x,y \in \mathbb{R}\)</span></span>, se verifica que <span class="math"><span class="math display">\[\mathrm{sen} (x+y)=\mathrm{sen}(x)\cos(y)+ \cos (x)\mathrm{sen} (y).\]</span></span></p></li>
+<li><p>El coseno de la suma de dos números <span class="math"><span class="math inline">\(x\)</span></span> e <span class="math"><span class="math inline">\(y\)</span></span> vale <span class="math"><span class="math display">\[\cos(x+y)=\cos (x)\cos(y)-\mathrm{sen} (x)\mathrm{sen}(y).\]</span></span></p></li>
+</ul>
+<p>A partir de estas propiedades fundamentales surgen todas las propiedades de las funciones trigonométricas, por ejemplo si en las fórmulas del coseno y el seno de una suma hacemos las dos variables la misma obtenemos las fórmulas del seno y el coseno del ángulo doble (suele decirse del ángulo doble aunque nosotros hayamos definido las funciones trigonométricas sobre los números reales y no sobre ángulos).</p>
+<p><span class="math"><span class="math display">\[\begin{aligned}
+\cos(2x) &amp; =\cos^2(x)-\mathrm{sen}^2(x) \\
+\mathrm{sen}(2x) &amp; =2\mathrm{sen}(x)\cos(x)\end{aligned}\]</span></span></p>
+<p>También es conveniente recordar las razones trigonométricas de algunos números destacados <span class="math"><span class="math display">\[\begin{array}{ccccc}
+\cos(0)=1, &amp;\cos(\frac{\pi}{6})=\frac{\sqrt{3}}{2}, &amp;\cos (\frac{\pi}{4})=\frac{\sqrt{2}}{2}, &amp; \cos(\frac{\pi}{3})=\frac{1}{2},&amp;\cos(\frac{\pi}{2})=0
+\\
+\mathrm{sen}(0)=0, &amp;\mathrm{sen}(\frac{\pi}{6})=\frac{1}{2}, &amp;\mathrm{sen} (\frac{\pi}{4})=\frac{\sqrt{2}}{2}, &amp; \mathrm{sen}(\frac{\pi}{3})=\frac{\sqrt{3}}{2},&amp;\mathrm{sen}(\frac{\pi}{2})=1
+\end{array}\]</span></span></p>
+<p>Además podemos saber razones trigonométricas de otros muchos números utilizando las propiedades anteriores. Por ejemplo, tenemos que</p>
+<p><span class="math"><span class="math display">\[\mathrm{sen}(x+\tfrac{\pi}{2})=\mathrm{sen}(x)\cdot 0+\cos(x)\cdot 1=\cos (x),\]</span></span> y también <span class="math"><span class="math display">\[\cos(x+\tfrac{\pi}{2})=\cos(x)\cdot 0-\mathrm{sen}(x)\cdot 1=-\mathrm{sen} (x).\]</span></span></p>
+<div id="exr-5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 5</strong></span> Simplifica la expresión <span class="math"><span class="math inline">\(\displaystyle \frac{\operatorname{sen}^2(x)}{\cos(x)}+\cos(x)\)</span></span>, <button id="e5-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e5-1" class="collapse callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Usando la identidad fundamental de la trigonometría: <span class="math"><span class="math inline">\(\operatorname{sen}^2(x)=1-\cos^2(x)\)</span></span>. Luego, <span class="math"><span class="math inline">\(\displaystyle \frac{1-\cos^2(x)}{\cos(x)}+\cos(x)\)</span></span>. Simplificando obtenemos <span class="math"><span class="math inline">\(\displaystyle \frac{1}{\cos(x)}\)</span></span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="funciones-trigonométricas-inversas" class="level2">
+<h2 class="anchored" data-anchor-id="funciones-trigonométricas-inversas">Funciones trigonométricas inversas</h2>
+<p>Cuando restringimos la función seno al intervalo <span class="math"><span class="math inline">\([-\pi /2,\pi/2]\)</span></span> entonces seno es una biyección de dicho intervalo sobre el intervalo <span class="math"><span class="math inline">\([-1,1]\)</span></span> y su inversa es la función <span style="color:orange">arcoseno</span>, <span class="math"><span class="math inline">\(\mathrm{arcsen}\)</span></span>, que verifica que</p>
+<p><span class="math"><span class="math display">\[\begin{aligned}
+\mathrm{arcsen} (\mathrm{sen} (x)) &amp; =x , \ \forall x\in [-\pi /2,\pi /2],\\
+\mathrm{sen} (\mathrm{arcsen} (x)) &amp; =x,\ \forall x\in [-1,1].\end{aligned}\]</span></span></p>
+<center>
+<div id="box12b" class="jxgbox" style="width:160px; height:314px; display:inline-block;">
+
+</div>
+<div id="box12a" class="jxgbox" style="width:160px; height:314px; display:inline-block;">
+
+</div>
+</center>
+<p>La función arcoseno es continua en <span class="math"><span class="math inline">\([-1,1]\)</span></span> y derivable en <span class="math"><span class="math inline">\((-1,1)\)</span></span> y su derivada vale <span class="math"><span class="math inline">\(\displaystyle \frac{1}{\sqrt{1-x^2}}\)</span></span>.</p>
+<p>Análogamente la función coseno es una biyección decreciente del intervalo <span class="math"><span class="math inline">\([0,\pi]\)</span></span> sobre <span class="math"><span class="math inline">\([-1,1]\)</span></span> y su inversa es la función <span style="color:blue">arcocoseno</span> que verifica</p>
+<p><span class="math"><span class="math display">\[\begin{aligned}
+\arccos (\cos (x))&amp; =x, \ \forall x\in [0,\pi ],\\
+\cos (\arccos (x)) &amp; =x,\ \forall x\in [-1,1].\end{aligned}\]</span></span></p>
+<p>Al igual que arcoseno la función arcocoseno es continua en <span class="math"><span class="math inline">\([-1,1]\)</span></span> y derivable en <span class="math"><span class="math inline">\((-1,1)\)</span></span> y su derivada vale <span class="math"><span class="math inline">\(\displaystyle \frac{-1}{\sqrt{1-x^2}}\)</span></span>.</p>
+<p>Finalmente arcotangente es la inversa de la función tangente, cuando ésta la restringimos al intervalo <span class="math"><span class="math inline">\((-\pi /2, \pi /2)\)</span></span> y verifica que <span class="math"><span class="math display">\[\arctan (\tan (x))=x\ \ \forall x\in ( -\pi /2, \pi /2),\ \ \tan (\arctan (x))=x,\ \ \forall
+x\in \mathbb{R}.\]</span></span></p>
+<p>Es continua y derivable en todo <span class="math"><span class="math inline">\(\mathbb{R}\)</span></span> y su derivada vale <span class="math"><span class="math inline">\(\displaystyle \frac{1}{1+x^2}\)</span></span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="387" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 386;"><span id="cb6-387"><a href="#cb6-387" aria-hidden="true" tabindex="-1"></a>board5 <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box5'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">4</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb6-388"><a href="#cb6-388" aria-hidden="true" tabindex="-1"></a>curve51 <span class="op">=</span> board5<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="dv">1</span><span class="op">/</span>(t<span class="op">*</span>t<span class="op">+</span><span class="dv">1</span>))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>])<span class="op">;</span></span>
+<span id="cb6-389"><a href="#cb6-389" aria-hidden="true" tabindex="-1"></a>curve52 <span class="op">=</span> board5<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(t<span class="op">,</span><span class="dv">2</span>)<span class="op">-</span><span class="dv">4</span>)}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"red"</span>})<span class="op">;</span></span>
+<span id="cb6-390"><a href="#cb6-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-391"><a href="#cb6-391" aria-hidden="true" tabindex="-1"></a>board6 <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box6'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">5</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="op">-</span><span class="dv">5</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb6-392"><a href="#cb6-392" aria-hidden="true" tabindex="-1"></a>c61 <span class="op">=</span> board6<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[<span class="kw">function</span>(t){ <span class="cf">return</span>((<span class="op">-</span><span class="dv">4</span><span class="op">*</span>t<span class="op">*</span>t<span class="op">*</span>t<span class="op">*</span>t<span class="op">-</span><span class="dv">8</span><span class="op">*</span>t<span class="op">*</span>t<span class="op">-</span><span class="dv">3</span>)<span class="op">/</span>(t<span class="op">*</span>t<span class="op">*</span>t<span class="op">*</span>t<span class="op">+</span><span class="dv">2</span><span class="op">*</span>t<span class="op">*</span>t<span class="op">+</span><span class="dv">1</span>))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"green"</span>})<span class="op">;</span></span>
+<span id="cb6-393"><a href="#cb6-393" aria-hidden="true" tabindex="-1"></a>c62 <span class="op">=</span> board6<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="dv">1</span><span class="op">/</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(t<span class="op">,</span><span class="dv">4</span>)<span class="op">-</span><span class="dv">8</span><span class="op">*</span>t<span class="op">*</span>t<span class="op">+</span><span class="dv">17</span>))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"orange"</span>})<span class="op">;</span></span>
+<span id="cb6-394"><a href="#cb6-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-395"><a href="#cb6-395" aria-hidden="true" tabindex="-1"></a>board7 <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box7'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">4</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb6-396"><a href="#cb6-396" aria-hidden="true" tabindex="-1"></a>curve71 <span class="op">=</span> board7<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){ <span class="cf">return</span>(t<span class="op">*</span>t<span class="op">*</span>t<span class="op">+</span><span class="dv">2</span>)}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>])<span class="op">;</span></span>
+<span id="cb6-397"><a href="#cb6-397" aria-hidden="true" tabindex="-1"></a>curve72 <span class="op">=</span> board7<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){<span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(t<span class="op">-</span><span class="dv">2</span>)<span class="op">,</span><span class="dv">3</span>))}<span class="op">,</span> <span class="dv">2</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"red"</span>})<span class="op">;</span></span>
+<span id="cb6-398"><a href="#cb6-398" aria-hidden="true" tabindex="-1"></a>curve73 <span class="op">=</span> board7<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){<span class="cf">return</span>(<span class="op">-</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(t<span class="op">-</span><span class="dv">2</span>)<span class="op">,</span><span class="dv">3</span>))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">2</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"red"</span>})<span class="op">;</span></span>
+<span id="cb6-399"><a href="#cb6-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-400"><a href="#cb6-400" aria-hidden="true" tabindex="-1"></a>board8 <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box8'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">8</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="op">-</span><span class="dv">4</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb6-401"><a href="#cb6-401" aria-hidden="true" tabindex="-1"></a>aexp <span class="op">=</span> board8<span class="op">.</span><span class="fu">create</span>(<span class="st">'slider'</span><span class="op">,</span> [[<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">2</span>]<span class="op">,</span> [<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="op">-</span><span class="dv">2</span>]<span class="op">,</span> [<span class="op">.</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">5</span>]]<span class="op">,</span>{<span class="dt">name</span><span class="op">:</span><span class="st">'a'</span><span class="op">,</span><span class="dt">snapWidth</span><span class="op">:.</span><span class="dv">1</span>})<span class="op">;</span></span>
+<span id="cb6-402"><a href="#cb6-402" aria-hidden="true" tabindex="-1"></a>curve82 <span class="op">=</span> board8<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[<span class="kw">function</span>(t){<span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(aexp<span class="op">.</span><span class="fu">Value</span>()<span class="op">,</span>t))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"blue"</span>})<span class="op">;</span></span>
+<span id="cb6-403"><a href="#cb6-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-404"><a href="#cb6-404" aria-hidden="true" tabindex="-1"></a>board9 <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box9'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">8</span><span class="op">,</span> <span class="op">-</span><span class="dv">4</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb6-405"><a href="#cb6-405" aria-hidden="true" tabindex="-1"></a>alog <span class="op">=</span> board9<span class="op">.</span><span class="fu">create</span>(<span class="st">'slider'</span><span class="op">,</span> [[<span class="dv">2</span><span class="op">,</span> <span class="op">-</span><span class="dv">2</span>]<span class="op">,</span> [<span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">2</span>]<span class="op">,</span> [<span class="op">.</span><span class="dv">1</span><span class="op">,</span> <span class="fl">2.7</span><span class="op">,</span> <span class="dv">5</span>]]<span class="op">,</span>{<span class="dt">name</span><span class="op">:</span><span class="st">'a'</span><span class="op">,</span><span class="dt">snapWidth</span><span class="op">:.</span><span class="dv">15</span>})<span class="op">;</span></span>
+<span id="cb6-406"><a href="#cb6-406" aria-hidden="true" tabindex="-1"></a>curve92 <span class="op">=</span> board9<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){<span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(t)<span class="op">/</span><span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(alog<span class="op">.</span><span class="fu">Value</span>()))}<span class="op">,</span> <span class="dv">0</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"blue"</span>})<span class="op">;</span></span>
+<span id="cb6-407"><a href="#cb6-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-408"><a href="#cb6-408" aria-hidden="true" tabindex="-1"></a><span class="co">//insertTicks = false;</span></span>
+<span id="cb6-409"><a href="#cb6-409" aria-hidden="true" tabindex="-1"></a><span class="co">//JXG.Options.axis.ticks.ticksDistance = 1;</span></span>
+<span id="cb6-410"><a href="#cb6-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-411"><a href="#cb6-411" aria-hidden="true" tabindex="-1"></a>board10 <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box10'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">6</span><span class="op">,</span> <span class="op">-</span><span class="dv">2</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb6-412"><a href="#cb6-412" aria-hidden="true" tabindex="-1"></a>apot <span class="op">=</span> board10<span class="op">.</span><span class="fu">create</span>(<span class="st">'slider'</span><span class="op">,</span> [[<span class="dv">2</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> [<span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> [<span class="op">-</span><span class="dv">5</span><span class="op">,</span> <span class="fl">1.5</span><span class="op">,</span> <span class="dv">5</span>]]<span class="op">,</span>{<span class="dt">name</span><span class="op">:</span><span class="st">'a'</span><span class="op">,</span><span class="dt">snapWidth</span><span class="op">:.</span><span class="dv">1</span>})<span class="op">;</span></span>
+<span id="cb6-413"><a href="#cb6-413" aria-hidden="true" tabindex="-1"></a>curve102 <span class="op">=</span> board10<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[<span class="kw">function</span>(t){<span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(t<span class="op">,</span>apot<span class="op">.</span><span class="fu">Value</span>()))}<span class="op">,</span> <span class="dv">0</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"blue"</span>})<span class="op">;</span></span>
+<span id="cb6-414"><a href="#cb6-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-415"><a href="#cb6-415" aria-hidden="true" tabindex="-1"></a>board11 <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box11'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">5</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="op">-</span><span class="dv">4</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb6-416"><a href="#cb6-416" aria-hidden="true" tabindex="-1"></a>curve111 <span class="op">=</span> board11<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(t))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>])<span class="op">;</span></span>
+<span id="cb6-417"><a href="#cb6-417" aria-hidden="true" tabindex="-1"></a>curve112 <span class="op">=</span> board11<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(t))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"red"</span>})<span class="op">;</span></span>
+<span id="cb6-418"><a href="#cb6-418" aria-hidden="true" tabindex="-1"></a>curve114 <span class="op">=</span> board11<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">tan</span>(t))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"orange"</span>})<span class="op">;</span></span>
+<span id="cb6-419"><a href="#cb6-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-420"><a href="#cb6-420" aria-hidden="true" tabindex="-1"></a>board12a <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box12a'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="fl">1.3</span><span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">,</span> <span class="fl">1.3</span><span class="op">,</span> <span class="op">-</span><span class="fl">0.2</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb6-421"><a href="#cb6-421" aria-hidden="true" tabindex="-1"></a>curve12a <span class="op">=</span> board12a<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">acos</span>(t))}<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span><span class="dv">1</span>])<span class="op">;</span></span>
+<span id="cb6-422"><a href="#cb6-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-423"><a href="#cb6-423" aria-hidden="true" tabindex="-1"></a>board12b <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box12b'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="fl">1.3</span><span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">/</span><span class="dv">2</span><span class="op">,</span> <span class="fl">1.3</span><span class="op">,</span> <span class="op">-</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">/</span><span class="dv">2</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb6-424"><a href="#cb6-424" aria-hidden="true" tabindex="-1"></a>curve12b <span class="op">=</span> board12b<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">asin</span>(t))}<span class="op">,</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span><span class="dv">1</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"orange"</span>})<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-12" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-13" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-14" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-15" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-16" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-17" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-18" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-19" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-20" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-21" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-22" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-23" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-24" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-25" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-26" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-27" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<hr>
+<p><span class="small">Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada. Las representaciones gráficas se han realizado con <a href="http://jsxgraph.uni-bayreuth.de">JSXGraph</a>. Las animaciones en JSXGraph y el maquetado de la página han sido realizados por Pedro A. García Sánchez.</span></p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Volver arriba</a></main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImJvYXJkID0gSlhHLkpTWEdyYXBoLmluaXRCb2FyZCgnYm94Jywge2JvdW5kaW5nYm94OiBbLTQsIDQsIDQsIC00XSwgYXhpczp0cnVlLCBzaG93Q29weXJpZ2h0OmZhbHNlLCBzaG93TmF2aWdhdGlvbjpmYWxzZX0pO1xucGVuZCA9IGJvYXJkLmNyZWF0ZSgnc2xpZGVyJywgW1stMy41LCAyXSwgWy0xLjUsIDJdLCBbLTUsIDEsIDVdXSx7bmFtZTonbScsc25hcFdpZHRoOi4xfSk7XG5jdXJ2ZSA9IGJvYXJkLmNyZWF0ZSgnZnVuY3Rpb25ncmFwaCcsW2Z1bmN0aW9uKHQpeyByZXR1cm4odCpwZW5kLlZhbHVlKCkpfSwgLTEwLDEwXSk7XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJib2FyZDIgPSBKWEcuSlNYR3JhcGguaW5pdEJvYXJkKCdib3gyJywge2JvdW5kaW5nYm94OiBbLTQsIDQsIDQsIC00XSwgYXhpczp0cnVlLCBzaG93Q29weXJpZ2h0OmZhbHNlLCBzaG93TmF2aWdhdGlvbjpmYWxzZX0pO1xuY3VydmUyID0gYm9hcmQyLmNyZWF0ZSgnZnVuY3Rpb25ncmFwaCcsW2Z1bmN0aW9uKHQpeyByZXR1cm4odCp0KzEpfSwgLTEwLDEwXSk7XG5jdXJ2ZTJfMiA9IGJvYXJkMi5jcmVhdGUoJ2Z1bmN0aW9uZ3JhcGgnLFtmdW5jdGlvbih0KXsgcmV0dXJuKE1hdGguY29zKHQpLyh0KnQrMykpfSwgLTEwLDEwXSwge3N0cm9rZUNvbG9yOlwicmVkXCJ9KTtcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImJvYXJkMmIgPSBKWEcuSlNYR3JhcGguaW5pdEJvYXJkKCdib3gyYicsIHtib3VuZGluZ2JveDogWy00LCA0LCA0LCAtNF0sIGF4aXM6dHJ1ZSwgc2hvd0NvcHlyaWdodDpmYWxzZSwgc2hvd05hdmlnYXRpb246ZmFsc2V9KTtcbmN1cnZlMyA9IGJvYXJkMmIuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJyxcbiAgICAgICAgICAgICAgICAgIFtmdW5jdGlvbih0KXsgcmV0dXJuKHQpfSwgLTEwLDEwXSwge3N0cm9rZUNvbG9yOlwib3JhbmdlXCJ9KTtcbmN1cnZlNCA9IGJvYXJkMmIuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJyxcbiAgICAgICAgICAgICAgICAgIFtmdW5jdGlvbih0KXsgcmV0dXJuKE1hdGguc2luKHQqdCp0K3QpKX0sIC0xMCwxMF0sIHtzdHJva2VDb2xvcjpcIm1hZ2VudGFcIn0pO1xuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiYm9hcmQzID0gSlhHLkpTWEdyYXBoLmluaXRCb2FyZCgnYm94MycsIHtib3VuZGluZ2JveDogWy00LCA0LCA0LCAtNF0sIGF4aXM6dHJ1ZSwgc2hvd0NvcHlyaWdodDpmYWxzZSwgc2hvd05hdmlnYXRpb246ZmFsc2V9KTtcbmN1cnZlMzEgPSBib2FyZDMuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJywgW2Z1bmN0aW9uKHQpeyByZXR1cm4oTWF0aC5jb3ModCkpfSwgLTEwLDEwXSk7XG5jdXJ2ZTMyID0gYm9hcmQzLmNyZWF0ZSgnZnVuY3Rpb25ncmFwaCcsIFtmdW5jdGlvbih0KXsgcmV0dXJuKE1hdGguc2luKHQpKX0sIC0xMCwxMF0sIHtzdHJva2VDb2xvcjpcInJlZFwifSk7XG5jdXJ2ZTM0ID0gYm9hcmQzLmNyZWF0ZSgnZnVuY3Rpb25ncmFwaCcsIFtmdW5jdGlvbih0KXsgcmV0dXJuKE1hdGgudGFuKHQpKX0sIC0xMCwxMF0sIHtzdHJva2VDb2xvcjpcIm9yYW5nZVwifSk7XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJib2FyZDQgPSBKWEcuSlNYR3JhcGguaW5pdEJvYXJkKCdib3g0Jywge2JvdW5kaW5nYm94OiBbLTQsIDQsIDQsIC00XSwgYXhpczp0cnVlLCBzaG93Q29weXJpZ2h0OmZhbHNlLCBzaG93TmF2aWdhdGlvbjpmYWxzZX0pO1xuY3VydmU0MSA9IGJvYXJkNC5jcmVhdGUoJ2Z1bmN0aW9uZ3JhcGgnLFtmdW5jdGlvbih0KXsgcmV0dXJuKHQqdCp0KzEpfSwgLTEwLDEwXSk7XG5jdXJ2ZTQyID0gYm9hcmQ0LmNyZWF0ZSgnZnVuY3Rpb25ncmFwaCcsW2Z1bmN0aW9uKHQpeyByZXR1cm4oTWF0aC5wb3codCwyKSl9LCAtMTAsMTBdLCB7c3Ryb2tlQ29sb3I6XCJyZWRcIn0pO1xuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiYm9hcmQ1ID0gSlhHLkpTWEdyYXBoLmluaXRCb2FyZCgnYm94NScsIHtib3VuZGluZ2JveDogWy00LCA0LCA0LCAtNF0sIGF4aXM6dHJ1ZSwgc2hvd0NvcHlyaWdodDpmYWxzZSwgc2hvd05hdmlnYXRpb246ZmFsc2V9KTtcbmN1cnZlNTEgPSBib2FyZDUuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJyxbZnVuY3Rpb24odCl7IHJldHVybigxLyh0KnQrMSkpfSwgLTEwLDEwXSk7XG5jdXJ2ZTUyID0gYm9hcmQ1LmNyZWF0ZSgnZnVuY3Rpb25ncmFwaCcsW2Z1bmN0aW9uKHQpeyByZXR1cm4oTWF0aC5wb3codCwyKS00KX0sIC0xMCwxMF0sIHtzdHJva2VDb2xvcjpcInJlZFwifSk7XG5cbmJvYXJkNiA9IEpYRy5KU1hHcmFwaC5pbml0Qm9hcmQoJ2JveDYnLCB7Ym91bmRpbmdib3g6IFstNSwgNSwgNSwgLTVdLCBheGlzOnRydWUsIHNob3dDb3B5cmlnaHQ6ZmFsc2UsIHNob3dOYXZpZ2F0aW9uOmZhbHNlfSk7XG5jNjEgPSBib2FyZDYuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJyxbZnVuY3Rpb24odCl7IHJldHVybigoLTQqdCp0KnQqdC04KnQqdC0zKS8odCp0KnQqdCsyKnQqdCsxKSl9LCAtMTAsMTBdLCB7c3Ryb2tlQ29sb3I6XCJncmVlblwifSk7XG5jNjIgPSBib2FyZDYuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJyxbZnVuY3Rpb24odCl7IHJldHVybigxLyhNYXRoLnBvdyh0LDQpLTgqdCp0KzE3KSl9LCAtMTAsMTBdLCB7c3Ryb2tlQ29sb3I6XCJvcmFuZ2VcIn0pO1xuXG5ib2FyZDcgPSBKWEcuSlNYR3JhcGguaW5pdEJvYXJkKCdib3g3Jywge2JvdW5kaW5nYm94OiBbLTQsIDQsIDQsIC00XSwgYXhpczp0cnVlLCBzaG93Q29weXJpZ2h0OmZhbHNlLCBzaG93TmF2aWdhdGlvbjpmYWxzZX0pO1xuY3VydmU3MSA9IGJvYXJkNy5jcmVhdGUoJ2Z1bmN0aW9uZ3JhcGgnLCBbZnVuY3Rpb24odCl7IHJldHVybih0KnQqdCsyKX0sIC0xMCwxMF0pO1xuY3VydmU3MiA9IGJvYXJkNy5jcmVhdGUoJ2Z1bmN0aW9uZ3JhcGgnLCBbZnVuY3Rpb24odCl7cmV0dXJuKE1hdGguc3FydChNYXRoLmFicyh0LTIpLDMpKX0sIDIsMTBdLCB7c3Ryb2tlQ29sb3I6XCJyZWRcIn0pO1xuY3VydmU3MyA9IGJvYXJkNy5jcmVhdGUoJ2Z1bmN0aW9uZ3JhcGgnLCBbZnVuY3Rpb24odCl7cmV0dXJuKC1NYXRoLnNxcnQoTWF0aC5hYnModC0yKSwzKSl9LCAtMTAsMl0sIHtzdHJva2VDb2xvcjpcInJlZFwifSk7XG5cbmJvYXJkOCA9IEpYRy5KU1hHcmFwaC5pbml0Qm9hcmQoJ2JveDgnLCB7Ym91bmRpbmdib3g6IFstOCwgNCwgOCwgLTRdLCBheGlzOnRydWUsIHNob3dDb3B5cmlnaHQ6ZmFsc2UsIHNob3dOYXZpZ2F0aW9uOmZhbHNlfSk7XG5hZXhwID0gYm9hcmQ4LmNyZWF0ZSgnc2xpZGVyJywgW1stNCwgLTJdLCBbLTIsIC0yXSwgWy4xLCAyLCA1XV0se25hbWU6J2EnLHNuYXBXaWR0aDouMX0pO1xuY3VydmU4MiA9IGJvYXJkOC5jcmVhdGUoJ2Z1bmN0aW9uZ3JhcGgnLFtmdW5jdGlvbih0KXtyZXR1cm4oTWF0aC5wb3coYWV4cC5WYWx1ZSgpLHQpKX0sIC0xMCwxMF0sIHtzdHJva2VDb2xvcjpcImJsdWVcIn0pO1xuXG5ib2FyZDkgPSBKWEcuSlNYR3JhcGguaW5pdEJvYXJkKCdib3g5Jywge2JvdW5kaW5nYm94OiBbMCwgNCwgOCwgLTRdLCBheGlzOnRydWUsIHNob3dDb3B5cmlnaHQ6ZmFsc2UsIHNob3dOYXZpZ2F0aW9uOmZhbHNlfSk7XG5hbG9nID0gYm9hcmQ5LmNyZWF0ZSgnc2xpZGVyJywgW1syLCAtMl0sIFs0LCAtMl0sIFsuMSwgMi43LCA1XV0se25hbWU6J2EnLHNuYXBXaWR0aDouMTV9KTtcbmN1cnZlOTIgPSBib2FyZDkuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJywgW2Z1bmN0aW9uKHQpe3JldHVybihNYXRoLmxvZyh0KS9NYXRoLmxvZyhhbG9nLlZhbHVlKCkpKX0sIDAsMTBdLCB7c3Ryb2tlQ29sb3I6XCJibHVlXCJ9KTtcblxuLy9pbnNlcnRUaWNrcyA9IGZhbHNlO1xuLy9KWEcuT3B0aW9ucy5heGlzLnRpY2tzLnRpY2tzRGlzdGFuY2UgPSAxO1xuXG5ib2FyZDEwID0gSlhHLkpTWEdyYXBoLmluaXRCb2FyZCgnYm94MTAnLCB7Ym91bmRpbmdib3g6IFswLCA0LCA2LCAtMl0sIGF4aXM6dHJ1ZSwgc2hvd0NvcHlyaWdodDpmYWxzZSwgc2hvd05hdmlnYXRpb246ZmFsc2V9KTtcbmFwb3QgPSBib2FyZDEwLmNyZWF0ZSgnc2xpZGVyJywgW1syLCAtMV0sIFs0LCAtMV0sIFstNSwgMS41LCA1XV0se25hbWU6J2EnLHNuYXBXaWR0aDouMX0pO1xuY3VydmUxMDIgPSBib2FyZDEwLmNyZWF0ZSgnZnVuY3Rpb25ncmFwaCcsW2Z1bmN0aW9uKHQpe3JldHVybihNYXRoLnBvdyh0LGFwb3QuVmFsdWUoKSkpfSwgMCwxMF0sIHtzdHJva2VDb2xvcjpcImJsdWVcIn0pO1xuXG5ib2FyZDExID0gSlhHLkpTWEdyYXBoLmluaXRCb2FyZCgnYm94MTEnLCB7Ym91bmRpbmdib3g6IFstNSwgNCwgNSwgLTRdLCBheGlzOnRydWUsIHNob3dDb3B5cmlnaHQ6ZmFsc2UsIHNob3dOYXZpZ2F0aW9uOmZhbHNlfSk7XG5jdXJ2ZTExMSA9IGJvYXJkMTEuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJywgW2Z1bmN0aW9uKHQpeyByZXR1cm4oTWF0aC5jb3ModCkpfSwgLTEwLDEwXSk7XG5jdXJ2ZTExMiA9IGJvYXJkMTEuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJywgW2Z1bmN0aW9uKHQpeyByZXR1cm4oTWF0aC5zaW4odCkpfSwgLTEwLDEwXSwge3N0cm9rZUNvbG9yOlwicmVkXCJ9KTtcbmN1cnZlMTE0ID0gYm9hcmQxMS5jcmVhdGUoJ2Z1bmN0aW9uZ3JhcGgnLCBbZnVuY3Rpb24odCl7IHJldHVybihNYXRoLnRhbih0KSl9LCAtMTAsMTBdLCB7c3Ryb2tlQ29sb3I6XCJvcmFuZ2VcIn0pO1xuXG5ib2FyZDEyYSA9IEpYRy5KU1hHcmFwaC5pbml0Qm9hcmQoJ2JveDEyYScsIHtib3VuZGluZ2JveDogWy0xLjMsIE1hdGguUEksIDEuMywgLTAuMl0sIGF4aXM6dHJ1ZSwgc2hvd0NvcHlyaWdodDpmYWxzZSwgc2hvd05hdmlnYXRpb246ZmFsc2V9KTtcbmN1cnZlMTJhID0gYm9hcmQxMmEuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJyxbZnVuY3Rpb24odCl7IHJldHVybihNYXRoLmFjb3ModCkpfSwgLTEsMV0pO1xuXG5ib2FyZDEyYiA9IEpYRy5KU1hHcmFwaC5pbml0Qm9hcmQoJ2JveDEyYicsIHtib3VuZGluZ2JveDogWy0xLjMsIE1hdGguUEkvMiwgMS4zLCAtTWF0aC5QSS8yXSwgYXhpczp0cnVlLCBzaG93Q29weXJpZ2h0OmZhbHNlLCBzaG93TmF2aWdhdGlvbjpmYWxzZX0pO1xuY3VydmUxMmIgPSBib2FyZDEyYi5jcmVhdGUoJ2Z1bmN0aW9uZ3JhcGgnLCBbZnVuY3Rpb24odCl7IHJldHVybihNYXRoLmFzaW4odCkpfSwgLTEsMV0sIHtzdHJva2VDb2xvcjpcIm9yYW5nZVwifSk7XG5cbiJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../Funciones elementales";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Made with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

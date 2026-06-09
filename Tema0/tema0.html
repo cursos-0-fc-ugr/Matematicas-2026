@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Tema 0 – Cursos cero matemáticas</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-057e2dbeb2b66899786fd0203252f9c8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css">
+
+<style>
+div {
+  &.callout {
+    font-size: 2rem !important;
+  }
+}
+.callout-body-container {
+    font-size: 1rem !important;
+}
+  
+</style>
+
+<script>
+MathJax = {
+    output: {
+        font: 'mathjax-fira'
+    }
+};
+
+JXG.Options.text.useMathJax = true;
+JXG.Options.point.showInfobox = false;
+
+function show(divID) {
+    var sol = document.getElementById("solucion-"+divID);
+    var div = document.getElementById(divID);
+
+    console.log(sol);
+    sol.classList.toggle('collapse');
+
+    console.log("texto: " + div.innerHTML);
+
+//    if(div.innerHTML === "Solución"){
+    if(!sol.classList.contains('collapse')){
+        div.innerHTML = "Oculta solución";
+    }else{
+        div.innerHTML = "Solución";
+    }
+
+}
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Tema 0</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#cómo-leer-matemáticas" id="toc-cómo-leer-matemáticas" class="nav-link active" data-scroll-target="#cómo-leer-matemáticas">Cómo leer matemáticas</a>
+  <ul class="collapse">
+  <li><a href="#la-importancia-de-la-comprensión-lectora" id="toc-la-importancia-de-la-comprensión-lectora" class="nav-link" data-scroll-target="#la-importancia-de-la-comprensión-lectora">La importancia de la comprensión lectora</a></li>
+  <li><a href="#cómo-afrontar-una-pregunta-matemática" id="toc-cómo-afrontar-una-pregunta-matemática" class="nav-link" data-scroll-target="#cómo-afrontar-una-pregunta-matemática">¿Cómo afrontar una pregunta matemática?</a></li>
+  <li><a href="#algunos-símbolos-comunes" id="toc-algunos-símbolos-comunes" class="nav-link" data-scroll-target="#algunos-símbolos-comunes">Algunos símbolos comunes</a></li>
+  <li><a href="#axiomas-lemas-proposiciones-y-teoremas" id="toc-axiomas-lemas-proposiciones-y-teoremas" class="nav-link" data-scroll-target="#axiomas-lemas-proposiciones-y-teoremas">Axiomas, lemas, proposiciones y teoremas</a></li>
+  <li><a href="#la-biblioteca-ugr" id="toc-la-biblioteca-ugr" class="nav-link" data-scroll-target="#la-biblioteca-ugr">La biblioteca UGR</a></li>
+  </ul></li>
+  <li><a href="#cómo-escribir-matemáticas" id="toc-cómo-escribir-matemáticas" class="nav-link" data-scroll-target="#cómo-escribir-matemáticas">Cómo escribir matemáticas</a></li>
+  <li><a href="#lógica" id="toc-lógica" class="nav-link" data-scroll-target="#lógica">Lógica</a>
+  <ul class="collapse">
+  <li><a href="#proposiciones" id="toc-proposiciones" class="nav-link" data-scroll-target="#proposiciones">Proposiciones</a></li>
+  <li><a href="#predicados" id="toc-predicados" class="nav-link" data-scroll-target="#predicados">Predicados</a></li>
+  </ul></li>
+  <li><a href="#demostraciones" id="toc-demostraciones" class="nav-link" data-scroll-target="#demostraciones">Demostraciones</a>
+  <ul class="collapse">
+  <li><a href="#demostración-directa" id="toc-demostración-directa" class="nav-link" data-scroll-target="#demostración-directa">Demostración directa</a></li>
+  <li><a href="#el-contrarrecíproco" id="toc-el-contrarrecíproco" class="nav-link" data-scroll-target="#el-contrarrecíproco">El contrarrecíproco</a></li>
+  <li><a href="#reducción-al-absurdo" id="toc-reducción-al-absurdo" class="nav-link" data-scroll-target="#reducción-al-absurdo">Reducción al absurdo</a></li>
+  <li><a href="#contraejemplo" id="toc-contraejemplo" class="nav-link" data-scroll-target="#contraejemplo">Contraejemplo</a></li>
+  <li><a href="#demostración-por-inducción" id="toc-demostración-por-inducción" class="nav-link" data-scroll-target="#demostración-por-inducción">Demostración por inducción</a></li>
+  </ul></li>
+  <li><a href="#sec-estudiar" id="toc-sec-estudiar" class="nav-link" data-scroll-target="#sec-estudiar">Cómo estudiar matemáticas</a>
+  <ul class="collapse">
+  <li><a href="#lápiz-y-papel" id="toc-lápiz-y-papel" class="nav-link" data-scroll-target="#lápiz-y-papel">Lápiz y papel</a></li>
+  <li><a href="#herramientas-para-el-estudio-de-las-matemáticas" id="toc-herramientas-para-el-estudio-de-las-matemáticas" class="nav-link" data-scroll-target="#herramientas-para-el-estudio-de-las-matemáticas">Herramientas para el estudio de las matemáticas</a></li>
+  <li><a href="#la-importancia-de-asistir-a-clase" id="toc-la-importancia-de-asistir-a-clase" class="nav-link" data-scroll-target="#la-importancia-de-asistir-a-clase">La importancia de asistir a clase</a></li>
+  <li><a href="#cómo-acudir-a-una-tutoría" id="toc-cómo-acudir-a-una-tutoría" class="nav-link" data-scroll-target="#cómo-acudir-a-una-tutoría">Cómo acudir a una tutoría</a></li>
+  <li><a href="#sec-examenes" id="toc-sec-examenes" class="nav-link" data-scroll-target="#sec-examenes">Cómo afrontar un examen de matemáticas</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<p>En este capítulo veremos cómo entender las matemáticas, cómo estudiarlas y cómo pensar matemáticamente (para ello el principal recurso que emplearemos como referencia será <span class="citation" data-cites="houston2009think">(<a href="#ref-houston2009think" role="doc-biblioref">Houston 2009</a>)</span>). Lo primero que hemos de desterrar es la gran mentira que muchas personas se dicen a sí mismas, y quizás tú también:</p>
+<blockquote class="blockquote">
+<p>«No se me dan bien las matemáticas» o «yo es que soy de letras».</p>
+</blockquote>
+<p>Con total seguridad, en tu día a día —ya sea jugando a videojuegos, manejando las aplicaciones de tu móvil, o incluso comprando en una tienda— resolverás problemas complejos que te requerirán de unas capacidades que no se alejan demasiado de las que se requieren para la matemática. Simplemente, esa excusa que acabas de leer, o esa creencia limitante que tienes en tu cabeza, te aleja y te desanima en tu estudio de las matemáticas, y desde la desmotivación es muy difícil poner el trabajo necesario para comprenderlas; porque se requiere trabajo, pero no es una tarea imposible. Y la verdad es que quizás la forma en la que tienen de presentarse las matemáticas no ayuda. Si entras a la biblioteca de tu facultad (cosa que te recomendamos que hagas), coges un libro de matemáticas al azar y lo abres, encontrarás cosas como el siguiente teorema:</p>
+<div id="thm-valor-medio" class="theorem">
+<p><span class="theorem-title"><strong>Teorema 1</strong></span> Sea <span class="math inline">\(f : [a, b] \to \mathbb{R}\)</span> una función tal que <span class="math inline">\(f \in C\left( [a, b]  \right) \cap D \left( (a,b) \right)\)</span> con <span class="math inline">\(a, b \in \mathbb{R}, a &lt; b\)</span>. Entonces se tiene que</p>
+<p><span class="math display">\[
+\exists c \in (a, b) : f'(c) = \frac{f(b) - f(a)}{b - a}.
+\]</span></p>
+</div>
+<p>Este teorema, conocido como el Teorema del Valor Medio, nos está diciendo que:</p>
+<ol type="1">
+<li>Tenemos una cierta función (una máquina que al recibir una entrada devuelve una cierta salida según cómo esté configurada), que llamaremos <span class="math inline">\(f\)</span>, que va de un intervalo cerrado —cuyos extremos denominamos <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>— al conjunto de los números reales (todos los números que conoces).</li>
+<li>Además, sabemos que esta función es continua en el intervalo <span class="math inline">\([a,b]\)</span> y derivable en el intervalo abierto con mismos extremos. Siendo <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> números reales cualesquiera, de modo que <span class="math inline">\(a\)</span> es menor que <span class="math inline">\(b\)</span> para que tenga sentido el intervalo.</li>
+<li>Nos dice que entonces existirá un cierto número <span class="math inline">\(c\)</span> en el intervalo abierto <span class="math inline">\((a,b)\)</span>, es decir, un número entre <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> sin ser ninguno de los dos.</li>
+<li>Y ese número cumple que la derivada de <span class="math inline">\(f\)</span> evaluada en ese punto nos da como resultado la fracción que encontramos a la derecha de la igualdad.</li>
+<li>Esa fracción divide la diferencia entre el valor de la función en los puntos <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> con la diferencia entre los propios valores <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>.</li>
+</ol>
+<p>Como ves, la explicación del contenido del teorema se ha extendido bastante más que el propio teorema, y es que, no huyendo de escribir ciertas frases o incluso oraciones en lenguaje natural, las matemáticas tienen su propio lenguaje en distintos aspectos:</p>
+<ol type="1">
+<li>Tiene sus propios símbolos como <span class="math inline">\(\in\)</span> o <span class="math inline">\(\mathbb{R}\)</span>.</li>
+<li>Su propio vocabulario o jerga.</li>
+<li>Su propio estilo o tono.</li>
+<li>Su propio ritmo.</li>
+</ol>
+<p>Pero, por suerte, no es un lenguaje demasiado enrevesado o lleno de matices (te invitamos a leer un par de artículos del código penal), sino que es un lenguaje directo, preciso y sin ambigüedades. Solo necesitas un periodo de adaptación a él y ganas de aprender, te aseguramos que poco a poco todo encajará.</p>
+<section id="cómo-leer-matemáticas" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-leer-matemáticas">Cómo leer matemáticas</h2>
+<p>Comenzamos esta sección con algunas de las recomendaciones que se hacen en <span class="citation" data-cites="houston2009think">(<a href="#ref-houston2009think" role="doc-biblioref">Houston 2009</a>)</span> sobre cómo leer matemáticas:</p>
+<ol type="1">
+<li>Leer con un papel y un bolígrafo al lado (volveremos a esto en la <a href="#sec-estudiar" class="quarto-xref">Sección&nbsp;5</a>).</li>
+<li>Haz una primera lectura general, para tomar algo de contexto del tema que vas a estudiar. Esto te ayudará a ver a dónde se va a llegar con un determinado desarrollo.</li>
+<li>Detecta lo importante.</li>
+<li>Lee de una forma activa: haz resúmenes, toma anotaciones, haz los ejercicios…</li>
+<li>Reflexiona y hazte preguntas:
+<ul>
+<li>Intenta relacionar un tema con los anteriores.</li>
+<li>Pregúntate cómo se podría complicar un ejercicio determinado o de qué otras formas se podría preguntar lo mismo.</li>
+<li>Intenta explicar con tus propias palabras lo que has estudiado.</li>
+</ul></li>
+</ol>
+<section id="la-importancia-de-la-comprensión-lectora" class="level3">
+<h3 class="anchored" data-anchor-id="la-importancia-de-la-comprensión-lectora">La importancia de la comprensión lectora</h3>
+<p>La mayoría de dificultades que encontráis a la hora de enfrentaros a estudiar una asignatura de matemáticas o al enfrentaros a un problema de matemáticas es la falta de comprensión lectora.</p>
+<p>Esta es una capacidad que está fuera de las matemáticas en sí y que puedes entrenar leyendo de forma pausada artículos que te interesen o apuntes de tus asignaturas, incluso aficinionándote a la literatura y leyendo las novelas o relatos que más te gusten.</p>
+<p>Es fundamental que leas con detenimiento los enunciados de los ejercicios, parándote en cada punto y seguido, asegurándote de extraer toda la información de esa frase antes de pasar a la siguiente. Asegúrate de saber:</p>
+<ul>
+<li>Qué datos te está dando el ejercicio.</li>
+<li>Qué información es superflua o no es más que un «relleno» o un contexto para el ejercicio en sí (al final nos da igual si estamos calculando la edad de Fulanito o el número de manzanas que tiene Menganita).</li>
+<li>Entiende muy bien qué te está pidiendo el ejercicio:
+<ul>
+<li>¿Me están pidiendo que encuentre la opción falsa o la verdadera?</li>
+<li>¿Qué me están pidiendo que resuelva? No quiero perder el tiempo haciendo cálculos que no son necesarios.</li>
+<li>Me fijo en si me dicen que desarrolle o que solo indique algo.</li>
+</ul></li>
+<li>Puedes ayudarte de subrayados e incluso de colores (evita usar el rojo en los exámenes) para marcar la información relevante de un ejercicio.</li>
+</ul>
+<p>Aunque lo siguiente sea una perogrullada, a la hora de afrontar una pregunta o un reto matemático puedes seguir la siguiente «receta».</p>
+</section>
+<section id="cómo-afrontar-una-pregunta-matemática" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-afrontar-una-pregunta-matemática">¿Cómo afrontar una pregunta matemática?</h3>
+<p>En primer lugar, has de identificar la información que te proporciona el propio enunciado.</p>
+<p>Esta información puede estar ya escrita en forma matemática como <span class="math inline">\(x \in \mathbb{R}\)</span> o darse en lenguaje natural indicando, por ejemplo, que cierta magnitud «puede tomar cualquier valor negativo o positivo». O quizás sepas que la variable número de hermanos no puede ser negativa, con lo que sabrás que está dentro de los números naturales.</p>
+<p>Será entonces tu tarea <strong>traducir cada pieza de información que te dé el enunciado al vocabulario matemático particular que hayas visto en la asignatura</strong>; por ejemplo, si decides que vas a representar por <span class="math inline">\(y\)</span> a la variable que nota el número de hermanos, entonces indicarás que <span class="math inline">\(y \in \mathbb{N}\)</span>.</p>
+<p>En segundo lugar, identificarás qué te están pidiendo que calcules:</p>
+<ul>
+<li>¿Te están pidiendo cuánto gana como máximo una persona de una población donde el sueldo se modela según una cierta función <span class="math inline">\(f\)</span>? Pues entonces te están pidiendo que calcules el máximo de <span class="math inline">\(f\)</span>. Si esa función va en función de la edad, y te piden que determines cuánto gana una persona con <span class="math inline">\(22\)</span> años, entonces te están pidiendo que calcules <span class="math inline">\(f(22)\)</span>.</li>
+<li>Si te piden que calcules la probabilidad de que una persona tenga los ojos azules o marrones, y tú has decidido llamar <span class="math inline">\(A\)</span> y <span class="math inline">\(M\)</span> a los sucesos tener los ojos azules o marrones, respectivamente, entonces determinarás que te están pidiendo calcular <span class="math inline">\(\mathbb{P}\left( A \cup M \right)\)</span>. Será tu tarea la de identificar esto, y expresarlo también dependiendo del lenguaje o elementos de la asignatura que estés cursando. Y esto no es un mero capricho docente, querer que todo se exprese tal y como lo hemos expresado en clase, es algo que realmente te ayuda.</li>
+</ul>
+<p>En particular, te ayuda con el tercer y último paso: partiendo de los elementos que te da el enunciado y que has identificado en el primer paso, tendrás que emplear aquellos resultados que has visto en la asignatura hasta llegar a la respuesta que te piden y que has identificado en el segundo paso.</p>
+<p>Así, por ejemplo, volviendo al cálculo de la probabilidad, quizás el enunciado te haya dado la probabilidad de que una persona tenga los ojos azules, la probabilidad de que tenga los ojos marrones y te hayan indicado que es imposible que una persona tenga a la vez los ojos marrones y azules (aunque en realidad sabemos que esto sí se puede dar, <em>pero estamos en el contexto del ejercicio</em>), entonces emplearás que, como los sucesos son <em>incompatibles</em>, la probabilidad que te piden se calcula como</p>
+<p><span class="math display">\[
+\mathbb{P}\left( A \cup M \right) = \mathbb{P}(A) + \mathbb{P}(M).
+\]</span></p>
+<p>En resumen, los pasos a seguir serían:</p>
+<ol type="1">
+<li>Identificar la información que da el enunciado, traduciéndola al lenguaje matemático más cercano a la asignatura.</li>
+<li>Identificar qué información me está pidiendo el ejercicio: ¿qué tengo que calcular o demostrar?</li>
+<li>Encontrar las herramientas que te hagan, partiendo de la información del ejercicio, encontrar aquella que te están pidiendo.</li>
+</ol>
+</section>
+<section id="algunos-símbolos-comunes" class="level3">
+<h3 class="anchored" data-anchor-id="algunos-símbolos-comunes">Algunos símbolos comunes</h3>
+<p>Probablemente, cuando alguien quiere asustarte con las matemáticas que verás en tu grado, te haya enseñado una pizarra llena de símbolos extraños, poca letra y menos números. Y sí que esto puede asustar, ya hemos hablado de la mala forma que tienen las matemáticas de presentarse, pero estos símbolos son solo eso, símbolos que representan una idea, un concepto, una operación. Estos símbolos no son más que formas abreviadas de escribir algo; recuerda el <a href="#thm-valor-medio" class="quarto-xref">Teorema&nbsp;1</a> que hemos visto en la introducción. Y sí que se podría haber escrito todo en lenguaje natural, y quizás en algunos casos sería beneficioso, pero en general no. Ya no es que empleemos las matemáticas para enunciar teoremas o proposiciones, es que las usamos para demostrar esos teoremas y para resolver problemas: sería muy poco práctico expresar todas las ideas en lenguaje natural puro, demostraciones que ocupan un párrafo pasarían a ocupar varias páginas; sería impracticable. Y es por eso que surgen los símbolos, igual que en el lenguaje hablado acortamos las palabras o en WhatsApp usas emojis para expresar ideas de forma más abreviada. Y si sabes interpretar un mensaje tal que 💕💩🐿️, te será igual de sencillo leer matemáticas con todos sus símbolos. No obstante, aquí compilamos algunos de los más comunes.</p>
+<section id="letras-griegas" class="level4">
+<h4 class="anchored" data-anchor-id="letras-griegas">Letras griegas</h4>
+<p>En las matemáticas teóricas o más profundas los números pasan a un segundo plano (de hecho, como veremos en la Sección <a href="#sec-examenes" class="quarto-xref">Sección&nbsp;5.5</a>, el resultado final de un ejercicio es lo que menos importa a la hora de evaluar un examen; los profesores y profesoras solemos darle poco peso al resultado final, cargando la mayoría de la puntuación en el procedimiento y, en algunos casos, en la correcta formalización y escritura de las matemáticas empleadas). Es por ello que en matemáticas, más que números, verás letras como la <span class="math inline">\(x\)</span> o la <span class="math inline">\(y\)</span>, y también verás letras griegas, muchas. Así que para que dejes de llamar a las letras con nombres raros, o simplemente las llames «ese gusanito» o «ese cero tachado», aquí te dejamos una tabla con el alfabeto griego tanto en mayúscula como en minúscula:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Letra</th>
+<th>Nombre</th>
+<th>Letra</th>
+<th>Nombre</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\alpha\)</span> <span class="math inline">\(A\)</span></td>
+<td>alfa</td>
+<td><span class="math inline">\(\nu\)</span> <span class="math inline">\(N\)</span></td>
+<td>nu</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta\)</span> <span class="math inline">\(B\)</span></td>
+<td>beta</td>
+<td><span class="math inline">\(\xi\)</span> <span class="math inline">\(\Xi\)</span></td>
+<td>xi</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\gamma\)</span> <span class="math inline">\(\Gamma\)</span></td>
+<td>gamma</td>
+<td><span class="math inline">\(o\)</span> <span class="math inline">\(O\)</span></td>
+<td>ómicron</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\delta\)</span> <span class="math inline">\(\Delta\)</span></td>
+<td>delta</td>
+<td><span class="math inline">\(\pi\)</span> <span class="math inline">\(\Pi\)</span></td>
+<td>pi</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\epsilon\)</span> <span class="math inline">\(E\)</span></td>
+<td>épsilon</td>
+<td><span class="math inline">\(\rho\)</span> <span class="math inline">\(P\)</span></td>
+<td>rho</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\zeta\)</span> <span class="math inline">\(Z\)</span></td>
+<td>zeta</td>
+<td><span class="math inline">\(\sigma\)</span> <span class="math inline">\(\Sigma\)</span></td>
+<td>sigma</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\eta\)</span> <span class="math inline">\(H\)</span></td>
+<td>eta</td>
+<td><span class="math inline">\(\tau\)</span> <span class="math inline">\(T\)</span></td>
+<td>tau</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\theta\)</span> <span class="math inline">\(\Theta\)</span></td>
+<td>theta</td>
+<td><span class="math inline">\(\upsilon\)</span> <span class="math inline">\(\Upsilon\)</span></td>
+<td>upsilon</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\iota\)</span> <span class="math inline">\(I\)</span></td>
+<td>iota</td>
+<td><span class="math inline">\(\phi\)</span> <span class="math inline">\(\Phi\)</span></td>
+<td>phi</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\kappa\)</span> <span class="math inline">\(K\)</span></td>
+<td>kappa</td>
+<td><span class="math inline">\(\chi\)</span> <span class="math inline">\(X\)</span></td>
+<td>chi</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\lambda\)</span> <span class="math inline">\(\Lambda\)</span></td>
+<td>lambda</td>
+<td><span class="math inline">\(\psi\)</span> <span class="math inline">\(\Psi\)</span></td>
+<td>psi</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mu\)</span> <span class="math inline">\(M\)</span></td>
+<td>mu</td>
+<td><span class="math inline">\(\omega\)</span> <span class="math inline">\(\Omega\)</span></td>
+<td>omega</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="símbolos-aritmético-lógicos" class="level4">
+<h4 class="anchored" data-anchor-id="símbolos-aritmético-lógicos">Símbolos aritmético-lógicos</h4>
+<p>Además de distintas letras, hay símbolos que serán propios de cada materia, como puede ser la teoría de conjuntos, la lógica o la aritmética, muchos de ellos ya los conoces:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 29%">
+<col style="width: 20%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Símbolo</th>
+<th>Significado</th>
+<th>Símbolo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(+\)</span></td>
+<td>Adición</td>
+<td><span class="math inline">\(-\)</span></td>
+<td>Sustracción</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\cdot\)</span> <span class="math inline">\(\times\)</span></td>
+<td>Multiplicación</td>
+<td><span class="math inline">\(\div\)</span> <span class="math inline">\(/\)</span></td>
+<td>División</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(=\)</span></td>
+<td>Igualdad</td>
+<td><span class="math inline">\(\neq\)</span></td>
+<td>Desigualdad</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(&lt;\)</span></td>
+<td>Menor que</td>
+<td><span class="math inline">\(&gt;\)</span></td>
+<td>Mayor que</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\leq\)</span></td>
+<td>Menor o igual que</td>
+<td><span class="math inline">\(\geq\)</span></td>
+<td>Mayor o igual que</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\wedge\)</span></td>
+<td>Conjunción lógica (y)</td>
+<td><span class="math inline">\(\vee\)</span></td>
+<td>Disyunción lógica (o)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\neg\)</span></td>
+<td>Negación lógica (no)</td>
+<td><span class="math inline">\(\implies\)</span></td>
+<td>Implicación (si… entonces)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\iff\)</span></td>
+<td>Doble implicación (si y solo si)</td>
+<td><span class="math inline">\(\cap\)</span></td>
+<td>Intersección de conjuntos</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\cup\)</span></td>
+<td>Unión de conjuntos</td>
+<td><span class="math inline">\(\subset\)</span></td>
+<td>Subconjunto</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\subseteq\)</span></td>
+<td>Subconjunto o igual</td>
+<td><span class="math inline">\(\in\)</span></td>
+<td>Pertenencia a un conjunto</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\notin\)</span></td>
+<td>No pertenencia a un conjunto</td>
+<td><span class="math inline">\(\emptyset\)</span></td>
+<td>Conjunto vacío</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\forall\)</span></td>
+<td>Para todo</td>
+<td><span class="math inline">\(\exists\)</span></td>
+<td>Existe</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\nexists\)</span></td>
+<td>No existe</td>
+<td><span class="math inline">\(\exists_1\)</span></td>
+<td>Existe un único elemento</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\int\)</span></td>
+<td>Integral indefinida</td>
+<td><span class="math inline">\(\int_a^b\)</span></td>
+<td>Integral definida</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\frac{d}{dx}\)</span></td>
+<td>Derivada</td>
+<td><span class="math inline">\(\frac{\partial}{\partial x}\)</span></td>
+<td>Derivada parcial</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\sin\)</span></td>
+<td>Seno</td>
+<td><span class="math inline">\(\cos\)</span></td>
+<td>Coseno</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\tan\)</span></td>
+<td>Tangente</td>
+<td><span class="math inline">\(\cot\)</span></td>
+<td>Cotangente</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\sec\)</span></td>
+<td>Secante</td>
+<td><span class="math inline">\(\csc\)</span></td>
+<td>Cosecante</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\arcsin\)</span></td>
+<td>Arcoseno</td>
+<td><span class="math inline">\(\arccos\)</span></td>
+<td>Arcocoseno</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\arctan\)</span></td>
+<td>Arcotangente</td>
+<td><span class="math inline">\(\sinh\)</span></td>
+<td>Seno hiperbólico</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\cosh\)</span></td>
+<td>Coseno hiperbólico</td>
+<td><span class="math inline">\(\tanh\)</span></td>
+<td>Tangente hiperbólica</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="axiomas-lemas-proposiciones-y-teoremas" class="level3">
+<h3 class="anchored" data-anchor-id="axiomas-lemas-proposiciones-y-teoremas">Axiomas, lemas, proposiciones y teoremas</h3>
+<p>Cuando te enfrentes a unos apuntes de matemáticas, verás que la mayoría del conocimiento se estructura en axiomas, lemas, proposiciones y, por último, teoremas. Las matemáticas se construyen unas sobre otras; una vez que se ha demostrado un resultado, nos apoyamos en él para construir otros nuevos. Serían como bloques de LEGO que se van uniendo para crear estructuras cada vez más complejas. Por eso, es importante, cuando estudies matemáticas, que comprendas los primeros conceptos antes de pasar a los siguientes. Una vez que comprendas las ideas de un tema, podrás pasar a estudiar las ideas de otro, que se apoyarán en las anteriores y que darán por sabidas y triviales esas ideas previas. Aquí tienes una pequeña explicación de qué es cada uno de estos elementos principales en los que se organizan las matemáticas:</p>
+<dl>
+<dt>Axiomas</dt>
+<dd>
+Son la pieza fundamental, el punto de partida. Se dan por ciertos, sin necesidad de una demostración. Cada teoría matemática parte de un conjunto de axiomas; dependiendo del conjunto de axiomas, se podrán derivar unos resultados u otros, que sí que habrá que demostrar de forma rigurosa partiendo de estos axiomas o de otros resultados previos que hayan sido ya derivados.
+</dd>
+<dt>Lemas</dt>
+<dd>
+Resultados de menor relevancia, que se han demostrado y que sirven como base para demostrar ideas de mayor calado; son resultados auxiliares que pueden quedar fuera de la teoría matemática que se está desarrollando.
+</dd>
+<dt>Proposiciones</dt>
+<dd>
+Resultados más importantes que los lemas y que son parte de la teoría matemática que se esté estudiando.
+</dd>
+<dt>Teoremas</dt>
+<dd>
+Los resultados de mayor importancia y a los que se da una relevancia superior. Estos teoremas no son el punto final de una teoría matemática; pueden emplearse para derivar otros resultados.
+</dd>
+</dl>
+<p>Puedes ver esta idea de cómo las matemáticas se construyen unas sobre otras, partiendo de un conjunto de axiomas, en el siguiente vídeo de Mates Mike:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/6oXs7Yi4tGY?si=eS0924bBggUhU1dW?start=260" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+<section id="la-biblioteca-ugr" class="level3">
+<h3 class="anchored" data-anchor-id="la-biblioteca-ugr">La biblioteca UGR</h3>
+<p>Y para finalizar esta sección sobre cómo leer matemáticas, recordarte que tienes la suerte de tener acceso a muchos recursos que la Universidad de Granada pone a tu disposición. En particular, la biblioteca: puedes pasearte por la biblioteca de tu facultad, ir a la sección de matemáticas y ojear algunos libros y familiarizarte con la forma de escribir matemáticas. También puedes buscar recursos más allá de los apuntes de clase que te ayuden a ver las cosas con otro enfoque, ver otros ejemplos, completar tus apuntes… En la guía docente de las asignaturas tendrás una sección en la que se recomienda alguna bibliografía relacionada con la materia.</p>
+<p>Visita tu biblioteca, exprime los recursos que la UGR pone a tu disposición. También tienes acceso a muchos recursos en línea, puedes consultar el catálogo completo en <a href="https://granatensis.ugr.es/">granatensis.ugr.es</a>.</p>
+</section>
+</section>
+<section id="cómo-escribir-matemáticas" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-escribir-matemáticas">Cómo escribir matemáticas</h2>
+<p>Como hemos visto, las matemáticas tienen un lenguaje propio, o más que un lenguaje propio, una notación. Pero esto no hace a las matemáticas diferentes de otra materia (piensa en los diagramas que representan la estructura de un compuesto químico o los famosos diagramas de Feynman). En tu día a día también usas símbolos para expresarte; no lo sabemos, pero seguro que hay alguna interpretación para este mensaje de WhatsApp 💕💩🐿️. Si has sido capaz de comprender y aprender este lenguaje lleno de pictogramas, no vas a tener problemas escribiendo matemáticas. Desde las matemáticas más básicas vienes empleando notación, como cuando escribes <span class="math inline">\(2 + 2 = 4\)</span> en lugar de indicar que si a dos le agregas la cantidad de dos entonces el resultado de esa operación será <span class="math inline">\(4\)</span>, pero aquí ya has empleado notación:</p>
+<ul>
+<li>En primer lugar, unos símbolos que hemos llamado números y que nos sirven para designar cantidades; en nuestro caso, expresamos las cantidades con el sistema decimal. But podríamos expresarnos empleando notación hexadecimal (en ese caso el <span class="math inline">\(14\)</span> pasaría a notarse como <span class="math inline">\(E\)</span>), pero antes existieron los números romanos (donde el <span class="math inline">\(14\)</span> se expresa como <span class="math inline">\(XIV\)</span>) o los números mayas.</li>
+<li>Luego, has empleado el símbolo <span class="math inline">\(+\)</span> para expresar la operación de adición, aunque, como te podrían contar aquellas personas estudiosas del Álgebra, este símbolo puede representar otro tipo de operaciones entre otros tipos de elementos que no tienen por qué ser números. Pero para ti el <span class="math inline">\(+\)</span> siempre ha representado la acción de agregar una cantidad a otra.</li>
+<li>Y, por último, has empleado el símbolo <span class="math inline">\(=\)</span> para expresar que el resultado de la operación de adición es igual a <span class="math inline">\(4\)</span>.</li>
+</ul>
+<p>Y es que escribir matemáticas es algo fundamental. No solo porque estás aprendiendo una nueva disciplina y en cada materia existe la forma correcta de escribir —también has tenido que aprender a escribir correctamente en español. Además de esto, del propio estilo y corrección a la hora de escribir, el hecho de que aprendas a expresarte correctamente de un modo matemático tiene beneficios directos para ti:</p>
+<ul>
+<li>Una vez hayas adquirido la habilidad, expresarás las ideas de una forma más clara, lo que ayudará a que no cometas errores en los ejercicios. Si escribes de una forma precisa, cuidando el orden y la notación, la posibilidad de cometer errores disminuirá.</li>
+<li>Al respetar la forma de escribir y la notación que has visto en clase, es más probable que recuerdes cómo resolver un ejercicio, aunque sea por la propia memoria visual.</li>
+<li>A menudo pierdes puntos en tus ejercicios por no expresarlo todo de la forma correcta o explícita: pasos que no pueden valorarse porque no se han hecho y quizás has llegado al resultado de chiripa, razonamientos que no son correctos porque hay parte de la explicación que no has expresado correctamente o cálculos que no parecen correctos porque la notación que has empleado parece indicar que has realizado otra operación.</li>
+</ul>
+<p>Cuando escribes matemáticas, no todo son símbolos; en esta sección comentaremos algunas reglas básicas extraídas de los capítulos 3 y 4 de <span class="citation" data-cites="houston2009think">Houston (<a href="#ref-houston2009think" role="doc-biblioref">2009</a>)</span>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Advertencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No abuses del uso de símbolos, expresa las matemáticas con frases completas y bien redactadas. Las matemáticas tienen su propia notación y simbología, sí, pero no son jeroglíficos.</p>
+</div>
+</div>
+<ol type="1">
+<li>Escribe empleando frases u oraciones completas. No abuses de los símbolos. Claro que usarás símbolos para representar ciertos conceptos, son símbolos que se emplean porque resultaría muy tedioso y poco práctico escribir todo con lenguaje natural, pero no abuses de ellos. Escribe frases completas: «Sea <span class="math inline">\(f\)</span> una función derivable en el intervalo <span class="math inline">\([a, b]\)</span>» estará mucho mejor expresado que escribir directamente «<span class="math inline">\(f \in D([a, b])\)</span>».</li>
+<li>Usa correctamente la puntuación. Y aquí solo tienes que usar exactamente las mismas reglas de puntuación que cuando escribes en lenguaje natural: usa adecuadamente las comas, los puntos y coma; estructura correctamente tu explicación en párrafos… El hecho de que algunas palabras o partes completas de la oración estén representadas por símbolos no debe hacerte olvidar que estás escribiendo un texto y, por tanto, has de acompañarlo de los signos de puntuación adecuados.</li>
+<li>Escríbelo de la forma más simple o directa que puedas. No emplees largos párrafos enrevesados para expresar una idea. Tres o cuatro frases cortas, separadas mediante puntos, bastarán para expresar tu idea, sin errores y de forma clara.</li>
+<li>Trata de indicar lo que vas haciendo: no hagas una sucesión de pasos sin más. Informa de qué pasos estás dando y por qué. Una buena idea es, si por ejemplo estás expresando una cadena de igualdades, indicar bajo cada uno de los símbolos de igual en qué resultados te estás basando para que, efectivamente, esa igualdad sea cierta.</li>
+<li>Conectando con la última idea del punto anterior, siempre trata de hacer explícito en qué resultados te apoyas para afirmar algo. No hagas que parezca que has llegado ahí de casualidad o simplemente porque parece que es lo que mejor encaja hasta llegar a tu solución.</li>
+<li>Ordena bien tus ideas, no abuses de flechas y/o asteriscos para guiar al lector. Escribe las matemáticas como cualquier texto: de izquierda a derecha, y de arriba a abajo.</li>
+<li>Si vas a introducir una notación propia, más allá de la propia de la materia que estás estudiando, defínela bien. Por ejemplo, si vas a definir una variable aleatoria como <span class="math inline">\(X\)</span>, asegúrate de indicar qué representa esa variable: número de hijos, peso de un ornitorrinco…</li>
+</ol>
+</section>
+<section id="lógica" class="level2">
+<h2 class="anchored" data-anchor-id="lógica">Lógica</h2>
+<p>Una parte fundamental para elaborar matemáticas es la lógica. En cada ejercicio que resuelves, además de las nociones de la materia concreta o las técnicas que hayas aprendido, estarás aplicando la lógica de forma implícita.</p>
+<p>No hay ejercicio resuelto de forma correcta o demostración matemática correcta si no se realiza desde el punto de vista de la corrección de la lógica. Pero, aunque esto pueda parecer una desventaja, la rigidez de las matemáticas hace que realmente acaben siendo fáciles: aquí no hay posibles subjetividades, o enfoques distintos que estén mejor que otros. Si partes desde las premisas del ejercicio, y a partir de ellas das pasos lógicos, cuando llegues a una conclusión, esta conclusión o solución será correcta. Evidentemente, hay pasos «que te puedes saltar» gracias a emplear resultados previos que ya conozcas de la asignatura o que hayas demostrado previamente; no tienes que hacer una demostración desde cero. Un claro ejemplo de esto son los corolarios, que son resultados que se derivan de un teorema ya probado de una forma sencilla. En la demostración que se hace de estos resultados no partimos de cero, partimos de lo que ya ha sido demostrado para el teorema anterior.</p>
+<p>Debido a la gran importancia que tiene la lógica a la hora de hacer matemáticas, dedicamos una sección a repasar las nociones básicas de la misma. Para ello, comenzamos introduciendo el concepto de proposición.</p>
+<section id="proposiciones" class="level3">
+<h3 class="anchored" data-anchor-id="proposiciones">Proposiciones</h3>
+<p>Las proposiciones son enunciados a los que podemos asignar un valor de verdad: son simplemente afirmaciones que, en cada caso, pueden ser verdaderas o falsas. Usamos “<span class="math inline">\(V\)</span>” para verdadero y “<span class="math inline">\(F\)</span>” para falso. El correspondiente valor <span class="math inline">\(V\)</span> o <span class="math inline">\(F\)</span> se llama el <em>valor de verdad</em> de la proposición.</p>
+<p>La lógica proposicional describe las formas en que podemos combinar proposiciones verdaderas para producir otros enunciados verdaderos. Usualmente se consideran cinco operaciones principales de ese tipo (llamados <em>conectivos lógicos</em>). Estas operaciones son la conjunción, la disyunción, la negación, la implicación y la biimplicación.</p>
+<p>Sean <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> dos enunciados o proposiciones. Definimos la expresión «<span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>», también escrito <span class="math inline">\(A \wedge B\)</span>, y llamada la <em>conjunción</em> de <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> mediante una <em>tabla de verdad</em> (una tabla que nos da, dependiendo del valor que tome cada una de las dos proposiciones que se combinan, verdadero o falso, el valor que tendrá el enunciado producto de combinarlas):</p>
+<p><span class="math display">\[
+\begin{array}{c|cccc}
+A &amp; V &amp; V &amp; F &amp; F \\
+B &amp; V &amp; F &amp; V &amp; F \\
+\hline
+A\wedge B &amp; V &amp; F &amp; F &amp; F
+\end{array}
+\]</span></p>
+<p>Esta tabla muestra que <span class="math inline">\(A \wedge B\)</span> es verdad cuando <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son ambas verdaderas y es falso en el resto de los casos. Si decimos que «la capital de España es Madrid y la de Francia es París», entonces tendremos un resultado verdadero. En cambio, si decimos que «la capital de España es Madrid y la de Francia es Lyon», entonces tendremos un enunciado falso, al serlo, al menos, una de las dos.</p>
+<p>Una segunda forma en la que podemos combinar proposiciones es utilizando la <em>disyunción</em> «<span class="math inline">\(A\)</span> o <span class="math inline">\(B\)</span>», que también se escribe como «<span class="math inline">\(A \vee B\)</span>». Su tabla de verdad es:</p>
+<p><span class="math display">\[
+\begin{array}{c|cccc}
+A &amp; V &amp; V &amp; F &amp; F \\
+B &amp; V &amp; F &amp; V &amp; F \\
+\hline
+A\vee B &amp; V &amp; V &amp; V &amp; F
+\end{array}
+\]</span></p>
+<p>Esto quiere decir que <span class="math inline">\(A\vee B\)</span> es verdad si lo es alguna de las dos, <span class="math inline">\(A\)</span> o <span class="math inline">\(B\)</span>, o ambas. Si decimos «la capital de España es Madrid o Granada», esta proposición es cierta ya que al menos una de las dos lo es.</p>
+<p>A partir de cualquier proposición podemos formar su opuesta o <em>negación</em> insertando «no» en los lugares adecuados. En general, si <span class="math inline">\(A\)</span> es una proposición, su negación es «no <span class="math inline">\(A\)</span>», denotada también “$ A $”, que es verdadera precisamente cuando <span class="math inline">\(A\)</span> es falsa. Su tabla de verdad es:</p>
+<p><span class="math display">\[
+\begin{array}{c|cc}
+A &amp; V  &amp; F \\
+\hline
+\neg A &amp; F &amp; V
+\end{array}
+\]</span></p>
+<p>Decir que «la capital de España es Granada» es una proposición claramente falsa. En cambio, como es lógico, decir que «la capital de España <em>no</em> es Granada» es verdadero.</p>
+<p>La noción de <em>implicación</em> es especialmente importante y su uso en matemáticas difiere en algo de su uso corriente, aunque naturalmente el significado subyacente es el mismo. Así, «<span class="math inline">\(A\)</span> implica <span class="math inline">\(B\)</span>» o «si <span class="math inline">\(A\)</span> entonces <span class="math inline">\(B\)</span>» se denota por «<span class="math inline">\(A\implies B\)</span>» y significa que «<span class="math inline">\(A\)</span> es falsa o <span class="math inline">\(B\)</span> es verdadera», como se refleja en su tabla de verdad:</p>
+<p><span class="math display">\[
+\begin{array}{c|cccc}
+A &amp; V &amp; V &amp; F &amp; F \\
+B &amp; V &amp; F &amp; V &amp; F \\
+\hline
+A\implies B &amp; V &amp; F &amp; V &amp; V
+\end{array}
+\]</span></p>
+<p>Nótese que si <span class="math inline">\(A\)</span> es falsa, <span class="math inline">\(A\implies B\)</span> es verdadera para cualquier <span class="math inline">\(B\)</span>; en otras palabras:</p>
+<p>Un enunciado falso implica cualquier cosa.</p>
+<p>Esto puede parecer extraño al principio, pero tiene su análogo en el uso ordinario cuando subrayamos lo absurdo de una afirmación extrayendo un resultado aún más absurdo. Si la capital de España es Lepe, entonces la capital de Francia es Burdeos.</p>
+<p>El último conectivo de uso frecuente es la <em>biimplicación</em> o <em>equivalencia lógica</em> «<span class="math inline">\(A\iff B\)</span>», que se define como «<span class="math inline">\((A\implies B)\wedge (B\implies A)\)</span>», y que a menudo se suele leer como «si y solo si». Su tabla de verdad es:</p>
+<p><span class="math display">\[
+\begin{array}{c|cccc}
+A &amp; V &amp; V &amp; F &amp; F \\
+B &amp; V &amp; F &amp; V &amp; F \\
+\hline
+A\iff B &amp; V &amp; F &amp; F &amp; V
+\end{array}
+\]</span></p>
+<p>Con esto acabamos nuestro repaso a las distintas operaciones lógicas más importantes. Y aunque ahora mismo no lo veas, serán la base sobre la cual sustentarás las resoluciones de los ejercicios:</p>
+<ul>
+<li>Sabrás que para demostrar que un determinado objeto pertenece a una cierta categoría matemática tienes que comprobar que cumpla todas y cada una de las propiedades que definen a los objetos de esa categoría.</li>
+<li>Del mismo modo, si quieres demostrar que un objeto <em>no</em> pertenece a una categoría, sabrás que basta con comprobar que no cumple alguna de las características que caracterizan a esa propiedad. Y estas dos cosas las sabes porque hemos visto que la conjunción es falsa en cuanto alguna de las proposiciones lo es. Y es que si estar en una categoría consiste en que se cumplan 3 propiedades <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span> y <span class="math inline">\(r\)</span>, el pertenecer a una categoría será equivalente a probar que <span class="math inline">\(p \wedge q \wedge r\)</span>.</li>
+<li>Y si has de demostrar un determinado resultado que nos dice que algo pasa si y solo si pasa otra cosa, sabrás que para probar que es verdadero has de demostrar que <span class="math inline">\(A \implies B\)</span> y que <span class="math inline">\(B \implies A\)</span>.</li>
+</ul>
+</section>
+<section id="predicados" class="level3">
+<h3 class="anchored" data-anchor-id="predicados">Predicados</h3>
+<p>Usualmente los enunciados simples discutidos hasta ahora no son suficientes para tratar las situaciones matemáticas. Además de las proposiciones, necesitamos <em>funciones proposicionales</em> o <em>predicados</em>. Por ejemplo, «<span class="math inline">\(x\)</span> es un número impar» (<span class="math inline">\(x\)</span> recorre los números naturales) o «<span class="math inline">\(x\)</span> es mayor que <span class="math inline">\(y\)</span>» (<span class="math inline">\(x,y\)</span> son números naturales).</p>
+<p>En contraste con las proposiciones, un predicado ya no es verdadero o falso, sino que sólo llega a serlo cuando se sustituyen valores particulares para las variables: “2 es un número impar”, “3 es mayor que 2”.</p>
+<p>En la práctica, con frecuencia queremos decir que alguna afirmación <span class="math inline">\(P(x)\)</span> sobre <span class="math inline">\(x\)</span> es verdadera para <em>todo</em> <span class="math inline">\(x\)</span> (en el universo de discurso). Denotamos esto por:</p>
+<p><span class="math display">\[
+(\forall x)P(x)
+\]</span></p>
+<p>que se lee «para todo <span class="math inline">\(x\)</span> se verifica <span class="math inline">\(P(x)\)</span>». Decimos que la variable <span class="math inline">\(x\)</span> está acotada por el <em>cuantificador universal</em> <span class="math inline">\(\forall\)</span>.</p>
+<p>Por otro lado, para expresar que <span class="math inline">\(P(x)\)</span> se verifica para <em>algún</em> <span class="math inline">\(x\)</span>, escribimos:</p>
+<p><span class="math display">\[
+(\exists x)P(x)
+\]</span></p>
+<p>que leemos «existe un <span class="math inline">\(x\)</span> tal que <span class="math inline">\(P(x)\)</span>». Aquí <span class="math inline">\(x\)</span> está acotado por el <em>cuantificador existencial</em> <span class="math inline">\(\exists\)</span>.</p>
+<p>Finalmente, para expresar que <span class="math inline">\(P(x)\)</span> se verifica exactamente para <em>un solo valor</em> de <span class="math inline">\(x\)</span>, escribimos:</p>
+<p><span class="math display">\[
+(\exists_1 x)P(x)
+\]</span></p>
+<p>que leemos «existe un único <span class="math inline">\(x\)</span> tal que <span class="math inline">\(P(x)\)</span>». Ahora <span class="math inline">\(x\)</span> está acotado por el <em>cuantificador existencial especial</em> <span class="math inline">\(\exists_1\)</span>.</p>
+<p>Cuando todas las variables que aparecen en un predicado están acotadas por cuantificadores, tenemos una proposición. Por ejemplo, en el dominio de los números naturales, <span class="math inline">\((\forall x)(\forall y)(x+y=y+x)\)</span> significa que para cualesquiera <span class="math inline">\(x,y\)</span> la suma <span class="math inline">\(x+y\)</span> es independiente del orden de los términos, es decir, esta es la forma formal de expresar la propiedad conmutativa de la suma. De la misma manera, <span class="math inline">\((\forall x)(\exists y)(x&lt;y)\)</span> dice que para todo <span class="math inline">\(x\)</span> existe un <span class="math inline">\(y\)</span> mayor que <span class="math inline">\(x\)</span>, es decir, que no existe un número máximo.</p>
+<p>Nótese que si aplicamos los cuantificadores en orden inverso obtenemos la proposición <span class="math inline">\((\exists y)(\forall x)(x&lt;y)\)</span>, que dice que existe un <span class="math inline">\(y\)</span> mayor que todo <span class="math inline">\(x\)</span>. Evidentemente, esto es falso mientras que lo anterior es verdad, así que se debe prestar atención al orden en que se aplican los cuantificadores.</p>
+<p>Nótese también que una variable acotada puede siempre renombrarse sin cambiar el significado. Así, <span class="math inline">\((\forall x)P(x)\)</span> significa exactamente lo mismo que <span class="math inline">\((\forall y)P(y)\)</span>; por esta razón, una variable acotada se llama también «variable muda». Con frecuencia usamos esta libertad para evitar conflictos de anotación. Por ejemplo, en lugar de <span class="math inline">\((a=x+y)\wedge(\forall x)(a\neq 2x)\)</span> es preferible <span class="math inline">\((a=x+y)\wedge(\forall z)(a\neq 2z)\)</span>. Ambas formas significan lo mismo, pero la segunda es menos propicia a las malas interpretaciones.</p>
+<p>Los cuantificadores universal y existencial están relacionados por las equivalencias siguientes, que nos permiten definir uno de ellos en términos del otro:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\neg(\exists x)\neg P(x) &amp;\iff (\forall x)P(x) \\
+\neg(\forall x)\neg P(x) &amp;\iff (\exists x)P(x)
+\end{aligned}
+\]</span></p>
+<p>Leamos estas dos expresiones:</p>
+<ul>
+<li>Si no existe ningún valor de <span class="math inline">\(x\)</span> para el que no se dé <span class="math inline">\(P\)</span>, eso equivale a que para todo valor de <span class="math inline">\(x\)</span> se dé <span class="math inline">\(P\)</span>.</li>
+<li>Si no para todos los valores de <span class="math inline">\(x\)</span> <span class="math inline">\(P\)</span> es falso, eso equivale a que existe algún valor de <span class="math inline">\(x\)</span> para el que <span class="math inline">\(P\)</span> es verdadero. Con ayuda de estas fórmulas (y notando que <span class="math inline">\(\neg\neg A\iff A\)</span>) es fácil escribir la negación de cualquier fórmula con cuantificadores. Por ejemplo:</li>
+</ul>
+<p><span class="math display">\[
+\neg ((\forall x)(\exists y)(\forall z)F(x,y,z)) \iff (\exists x)(\forall y)(\exists z)(\neg F(x,y,z))
+\]</span></p>
+<p>Una vez hemos repasado los fundamentos de la lógica matemática, hablemos de uno de los principales elementos de las matemáticas, ya que a partir de ellos se construyen nuevos resultados a partir de otros anteriores, o al menos se comprueba que, efectivamente, dicha construcción es correcta. Así, vamos a ver los distintos mecanismos de demostración o estrategias que pueden emplearse en matemáticas para demostrar que un determinado resultado es verdadero.</p>
+</section>
+</section>
+<section id="demostraciones" class="level2">
+<h2 class="anchored" data-anchor-id="demostraciones">Demostraciones</h2>
+<p>Como hemos dicho antes, en cualquier teoría matemática hay axiomas de los que se derivan los teoremas mediante deducciones lógicas (<em>demostraciones</em>). Aunque la forma más efectiva para aprender a hacer demostraciones es leyendo muchas, puede ser útil exponer los principales métodos de demostración. Esto también te servirá para conocer distintas estrategias a través de las cuales resolver tus ejercicios.</p>
+<section id="demostración-directa" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-directa">Demostración directa</h3>
+<p>Una demostración directa usualmente tiene la forma: «<span class="math inline">\(A\)</span> es verdad y <span class="math inline">\(A\implies B\)</span> es verdad, luego <span class="math inline">\(B\)</span> es verdad». En la lógica escolástica este proceso se llama <em>modus ponens</em>. Digamos que son las demostraciones que se realizan dando pasos correctos partiendo de unas premisas.</p>
+<p>Este sería el enfoque más típico que tú sigues al resolver un ejercicio; partes de la información del enunciado (que la das como verdadera, serían como tus axiomas de partida) y de ahí, aplicando resultados conocidos u operaciones correctas, vas derivando nuevos resultados, hasta llegar a probar el resultado final o encontrar la solución del ejercicio.</p>
+<p>Es importante distinguir entre «<span class="math inline">\(A\implies B\)</span>» por un lado y «<span class="math inline">\(A\)</span>, de donde <span class="math inline">\(B\)</span>» por otro. La distinción puede parecer pedante cuando <span class="math inline">\(A\)</span> es verdad, pero ignorarla puede llevar a confusión. De hecho, hemos visto que si <span class="math inline">\(A\)</span> es falso entonces <span class="math inline">\(A \implies B\)</span> es verdadero, sea <span class="math inline">\(B\)</span> verdadero o no. Y lo que nos interesa es demostrar que <span class="math inline">\(B\)</span> es verdadero. Por lo tanto, los pasos siempre son de algo verdadero (empezando por esas premisas del enunciado) a otra cosa también verdadera.</p>
+</section>
+<section id="el-contrarrecíproco" class="level3">
+<h3 class="anchored" data-anchor-id="el-contrarrecíproco">El contrarrecíproco</h3>
+<p>A partir del enunciado <span class="math inline">\(A\implies B\)</span> podemos formar otros tres:</p>
+<ul>
+<li>El <em>recíproco</em> o <em>inverso</em> <span class="math inline">\(B\implies A\)</span>.</li>
+<li>El <em>contrario</em> <span class="math inline">\(\neg A\implies\neg B\)</span>.</li>
+<li>El <em>contrarrecíproco</em> <span class="math inline">\(\neg B\implies\neg A\)</span>.</li>
+</ul>
+<p>El contrarrecíproco es lógicamente equivalente al enunciado original (compruébense las tablas de verdad correspondientes). Por ello, otra forma de demostración es el <em>modus tollens</em>: “<span class="math inline">\(A\)</span> es verdad y <span class="math inline">\(\neg B\implies\neg A\)</span> es verdad, luego <span class="math inline">\(B\)</span> es verdad”.</p>
+<p>A veces se opta por demostrar el contrarrecíproco puesto que resulta más sencillo, bien sea porque hay resultados que nos ayudan a resolver el problema de, partiendo de que <span class="math inline">\(\neg B\)</span>, probar que entonces llegamos a <span class="math inline">\(\neg A\)</span>, o bien porque por nuestro modo de pensamiento vemos más claro ese camino.</p>
+<p>Hay que observar que el recíproco no es equivalente al enunciado dado (comprobar también las tablas de verdad), por lo que un razonamiento del tipo “<span class="math inline">\(A\)</span> es verdad y <span class="math inline">\(B\implies A\)</span> es verdad, luego <span class="math inline">\(B\)</span> es verdad” no es correcto. Por ejemplo, supongamos que queremos demostrar “<span class="math inline">\((\forall x)(x^2 \text{ par } \implies x \text{ es par})\)</span>”. No es correcto argumentar “Si <span class="math inline">\(x\)</span> es par, <span class="math inline">\(x^2\)</span> es par, de donde el resultado”, pero sí es correcto decir “Si <span class="math inline">\(x\)</span> es impar, <span class="math inline">\(x^2\)</span> es impar, de donde el resultado”.</p>
+<p>Por esto antes hemos visto que la definición de biimplicación era <span class="math inline">\((A \implies B) \wedge (B \implies A)\)</span>, y hemos dicho que para demostrar una biimplicación tendríamos que demostrar las dos demostraciones por separado; no basta con demostrar una de las dos: si llueve me mojo, pero si me mojo no tiene que implicar que esté lloviendo, puede que me haya caído a la piscina.</p>
+</section>
+<section id="reducción-al-absurdo" class="level3">
+<h3 class="anchored" data-anchor-id="reducción-al-absurdo">Reducción al absurdo</h3>
+<p>Otra forma de prueba indirecta es <em>por contradicción</em>, también llamado <em>reductio ad absurdum</em>: Para demostrar <span class="math inline">\(A\)</span>, mostramos que “<span class="math inline">\((\neg A)\implies F\)</span>”, es decir, demostramos que (no <span class="math inline">\(A\)</span>) lleva a una contradicción.</p>
+</section>
+<section id="contraejemplo" class="level3">
+<h3 class="anchored" data-anchor-id="contraejemplo">Contraejemplo</h3>
+<p>También existe la demostración <em>por contraejemplo</em>. Muchos enunciados tienen la forma <span class="math inline">\((\forall x)P(x)\)</span>. Si queremos demostrar que un tal enunciado es falso, debemos demostrar su negación, es decir, <span class="math inline">\((\exists x)\neg P(x)\)</span>, y esto se hace hallando un <span class="math inline">\(c\)</span> tal que <span class="math inline">\(\neg P(c)\)</span> sea cierto.</p>
+<p>Por ejemplo, para demostrar que todos los ornitorrincos son marrones, habría que recorrer todo el planeta, asegurarnos de observar a todos y cada uno de los ornitorrincos que existen y ver que, efectivamente, cada uno de ellos es marrón. En cambio, para demostrar que no todos los ornitorrincos son marrones, bastaría con encontrar uno que no lo fuese.</p>
+</section>
+<section id="demostración-por-inducción" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-por-inducción">Demostración por inducción</h3>
+<p>Un tipo particular de demostración es la estrategia de demostración por inducción, que se emplea en resultados que, por lo general, implican probar que una cierta propiedad se da para cualquier número natural, es decir, <span class="math inline">\(\forall n \in \mathbb{N}\)</span>.</p>
+<p>Esta demostración se basa en los axiomas de Peano, en particular en el cuarto axioma, que nos dice<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<blockquote class="blockquote">
+<p>Si el <span class="math inline">\(1\)</span> pertenece a cierto conjunto, y dado un número natural cualquiera <em>en dicho conjunto</em>, el sucesor también pertenece al conjunto, entonces todos los números naturales pertenecen al conjunto.</p>
+</blockquote>
+<p>Entonces, a la vista de este axioma, para demostrar que todos los números naturales cumplen algo, hemos de comprobar que si <span class="math inline">\(O\)</span> es el conjunto de todos los números que cumplen ese algo, entonces <span class="math inline">\(\mathbb{N} \subseteq O\)</span>. Y para ello, a la luz del axioma, hemos de probar dos cosas:</p>
+<ul>
+<li>Que el <span class="math inline">\(1 \in O\)</span>.</li>
+<li>Que si un cierto número, que llamamos <span class="math inline">\(n\)</span>, pertenece a <span class="math inline">\(O\)</span>, entonces su sucesor, que podemos llamar <span class="math inline">\(n + 1\)</span> (ya sabemos que dado un número el siguiente se obtiene sumándole 1), está también en <span class="math inline">\(O\)</span>. Es decir que dado un <span class="math inline">\(n \in \mathbb{N}\)</span>, si <span class="math inline">\(n \in O \implies n + 1 \in O\)</span>.</li>
+</ul>
+<p>Veamos un ejemplo muy simple para demostrar que dado cualquier número natural, <span class="math inline">\(2n\)</span> es un número par.</p>
+<div id="exm-induccion" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 1 (Demostración por inducción)</strong></span> Para demostrar este resultado, vamos a demostrar en primer lugar que el <span class="math inline">\(1\)</span> pertenece al conjunto de los números tales que si los multiplicamos por <span class="math inline">\(2\)</span> es par:</p>
+<p><span class="math inline">\(2 \times 1 = 2\)</span> y sabemos que <span class="math inline">\(2 \% 2 = 0\)</span>, donde por <span class="math inline">\(\%\)</span> notamos el módulo, o el operador que nos da el resto de una división. Es decir, aquí estamos indicando que al dividir <span class="math inline">\(2\)</span> por <span class="math inline">\(2\)</span> el resto es cero, es decir, que el <span class="math inline">\(2\)</span> es divisible por <span class="math inline">\(2\)</span>, es decir que es par.</p>
+<p>Entonces acabamos de ver que el <span class="math inline">\(1\)</span> cumple que es un número que al multiplicarlo por <span class="math inline">\(2\)</span> es un número par. Ahora tenemos que probar que si <span class="math inline">\(n \in \mathbb{N}\)</span> cumple que <span class="math inline">\(2n\)</span> es par, entonces su sucesor, <span class="math inline">\(n + 1\)</span>, también lo cumple.</p>
+<p>Para ello, suponemos entonces que tenemos un número natural <span class="math inline">\(n\)</span> que cumple que <span class="math inline">\(2n \% 2 = 0\)</span>. Y tenemos que probar que entonces <span class="math inline">\(2(n + 1) \% 2 = 0\)</span>, es decir, que el sucesor de ese número, <span class="math inline">\(n + 1\)</span>, cumple también que su doble es par. Es decir, estamos dando por cierto que <span class="math inline">\(2n \% 2 = 0\)</span>, esa es nuestra premisa, suponemos que eso es cierto. No sabemos qué número es <span class="math inline">\(n\)</span>, solo sabemos que <span class="math inline">\(2n \% 2 = 0\)</span>, y a partir de ello vamos a demostrar que <span class="math inline">\(2(n+1) \% 2 = 0\)</span>:</p>
+<p><span class="math display">\[
+2(n + 1) = 2n + 2.
+\]</span></p>
+<p>Y aquí nos quedaríamos porque no sabríamos cómo usar que <span class="math inline">\(2n \% 2 = 0\)</span>, pero podemos expresar la propiedad de ser par de otro modo, y es que un número <span class="math inline">\(a\)</span> es par si existe un cierto número entero <span class="math inline">\(k\)</span> tal que <span class="math inline">\(a = 2k\)</span>.</p>
+<p>Entonces vamos a enfocar la demostración por otro lado (es claro cómo se demostraría que el <span class="math inline">\(1\)</span> cumple lo que queremos con este enfoque). Sabemos entonces ahora que un cierto número natural <span class="math inline">\(n\)</span> cumple que <span class="math inline">\(n = 2k\)</span> con <span class="math inline">\(k \in \mathbb{Z}\)</span>, y vamos a probar que existe otro número entero <span class="math inline">\(l\)</span> tal que <span class="math inline">\(2(n+1) = 2l\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Esto es algo común en matemáticas. A menudo tomamos un camino a través del que demostrar algo (not siempre el camino de pasos a seguir es único, hay varias opciones potenciales para demostrar algo) y vemos que no podemos o no sabemos llegar a una demostración. Entonces simplemente vemos nuestras limitaciones, aprendemos de nuestros errores y buscamos otra alternativa. ¡Esto también es algo bonito en matemáticas!</p>
+</div>
+</div>
+<p><span class="math display">\[
+2(n + 1) = 2n + 2 \text{ y sabemos que $2n = 2k$, con lo que } 2n + 2 = 2k + 2 = 2(k + 1).
+\]</span></p>
+<p>Y ahora usamos que dado un número entero, <span class="math inline">\(k\)</span>, <span class="math inline">\(k + 1\)</span> es también un número entero. Por lo tanto, acabamos de probar que <span class="math inline">\(2(n+1) = 2l\)</span>, siendo <span class="math inline">\(l\)</span> un número entero (<span class="math inline">\(k + 1\)</span>). Y con esto concluiríamos la demostración, que se suele cerrar con un símbolo <span class="math inline">\(\blacksquare\)</span> o <span class="math inline">\(\square\)</span>.</p>
+</div>
+<div id="exm-contrajemplo" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2</strong></span> Supongamos ahora que queremos probar ahora que no para todo número real <span class="math inline">\(x\)</span>, <span class="math inline">\(2x\)</span> es un número par. Para ello, ya hemos visto cómo probar que el contrario de una proposición del tipo <span class="math inline">\((\forall x) P(x)\)</span>, basta encontrar un contraejemplo, un número real <span class="math inline">\(y \in \mathbb{R}\)</span> que no cumple <span class="math inline">\(P\)</span>. En este caso, tomamos por ejemplo el número <span class="math inline">\(3.5 \in \mathbb{R}\)</span>, y tenemos que <span class="math inline">\(2 \times 3.5 = 7\)</span>, que sabemos que no es un número real entero. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</section>
+</section>
+<section id="sec-estudiar" class="level2">
+<h2 class="anchored" data-anchor-id="sec-estudiar">Cómo estudiar matemáticas</h2>
+<section id="lápiz-y-papel" class="level3">
+<h3 class="anchored" data-anchor-id="lápiz-y-papel">Lápiz y papel</h3>
+<p>A la hora de afrontar el estudio de las matemáticas, no tienes más remedio que emborronar el papel: practica los ejercicios, escribe de nuevo tus apuntes prestando atención a lo que estás copiando, rehaz desde cero una demostración entendiendo cada uno de los pasos.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En matemáticas la memoria no es lo principal, y cuanto menos dependas de ella, mejor.</p>
+</div>
+</div>
+<p>Las matemáticas hay que entenderlas, sentarse tranquilo a la mesa y entender cada una de las líneas.</p>
+<p>Al final son muchos resultados, muchas demostraciones, es imposible acordarse de todo: si lo intentas, será muy fácil que cometas algún error o que te quedes en blanco. En particular, memorizar demostraciones es uno de los mayores errores que cometemos al comenzar a estudiar matemáticas. Si quieres, memoriza el hilo conductor de la demostración, los pasos clave, pero comprende el camino, cómo se va de cada uno de esos pasos al siguiente, te será más sencillo.</p>
+<p>Por otro lado, de nada sirve descargar una relación de ejercicios resueltos por otra persona y asentir mientras lo lees; cuando vemos la solución por escrito todo parece lógico y encaja, y es fácil crearse la falsa sensación de que sabríamos hacerlo sin problemas. Así que no tienes más remedio que hacerlo tú por tu cuenta, desde cero, con y sin apuntes, con y sin compañeros.</p>
+<p>Elige la libreta o el tipo de papel que más te guste. Cómprate varios bolígrafos o lápices de tu modelo favorito. O adquiere una pluma estilográfica que te guste y que te acompañe durante toda la carrera. Y no dejes de gastar papel y de derrochar tinta. Esa es la mejor forma de estudiar matemáticas.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Advertencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Las matemáticas no se estudian de memoria ni leyendo soluciones de otra persona. Solo aprenderás matemáticas <em>haciendo matemáticas</em>.</p>
+</div>
+</div>
+</section>
+<section id="herramientas-para-el-estudio-de-las-matemáticas" class="level3">
+<h3 class="anchored" data-anchor-id="herramientas-para-el-estudio-de-las-matemáticas">Herramientas para el estudio de las matemáticas</h3>
+<p>No obstante, no todo tiene por qué ser tan analógico; hay distintas herramientas informáticas, además de una buena calculadora (ya habrás notado, o notarás, que las cuentas no son lo importante en el estudio de las matemáticas), que pueden ayudarte a comprender mejor ciertos conceptos.</p>
+<ul>
+<li><a href="https://www.wolframalpha.com/">Wolfram Alpha</a> es una alternativa, menos potente, al <em>software</em> de pago Mathematica. Es una calculadora con capacidades de cálculo simbólico. Será muy cómoda para calcular integrales, derivadas, límites… También podrás graficar funciones.</li>
+<li><a href="https://www.desmos.com/calculator?lang=es">Desmos</a> es una calculadora gráfica, que te será muy útil para visualizar funciones, puntos de corte entre funciones…</li>
+<li><a href="https://www.geogebra.org/classic?lang=es">GeoGebra</a> es otra calculadora o conjuntos de calculadoras muy útiles. Tiene utilidades de calculadora gráfica que te pueden ayudar en problemas de geometría, calculadora de probabilidad que te puede servir para visualizar distintas distribuciones de probabilidad…</li>
+<li>Excel o cualquier otra hoja de cálculo puede ser muy útil para realizar cálculos tediosos; conviene saber usar bien este tipo de herramientas.</li>
+<li>Por último, si te gusta el mundo de la programación, distintas librerías de Python con <a href="https://www.sagemath.org/">SageMath</a> o <a href="https://pandas.pydata.org/">pandas</a> pueden ayudarte a realizar distintos cálculos simbólicos, aritméticos y estadísticos.</li>
+<li>También puedes aprender alguna herramienta para elaborar documentos que contengan matemáticas, con un mejor acabado y con mayor comodidad que Word (aunque al principio la curva de aprendizaje sea más pronunciada). Ejemplos de estas herramientas son <a href="https://www.latex-project.org/">LaTeX</a>, <a href="https://quarto.org/">Quarto</a> o <a href="https://typst.app/">Typst</a>.</li>
+</ul>
+<section id="la-ia-aliada-y-enemiga" class="level4">
+<h4 class="anchored" data-anchor-id="la-ia-aliada-y-enemiga">La IA: aliada y enemiga</h4>
+<p>En el anterior repaso a herramientas para el estudio de matemáticas no nos hemos olvidado de la Inteligencia Artificial. Y no vamos a decir que no sea útil; incluso nos puede ayudar a que nos explique cómo hacer un ejercicio o que nos explique de otro modo unos apuntes y que gracias a eso los entendamos, pero:</p>
+<ol type="1">
+<li>No todo lo que dice la IA es verdad, suele equivocarse bastante. Es verdad que cada vez menos, pero disfraza cualquier cosa que dice de total autoridad y seguridad. E incluso te dará la razón de cada cosa que tú le digas.</li>
+<li>Aunque nos dé perfectamente la solución a un problema, así no aprenderás nada; sería como mirar la solución de otra persona. Sí que lo puedes emplear como una corrección, o como una forma de conseguir una pista para realizar el ejercicio, pero no debes limitarte a copiar las soluciones que te dé.</li>
+<li>Puedes usarla para que te proponga otros ejercicios similares a otros que tú le pases de una relación, y así intentar ampliar la cantidad de ejercicios con la que practicar. Aunque esto también lo puedes hacer con otra persona de clase, y será más enriquecedor.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Precaución
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No todo lo que dice una inteligencia artificial es cierto. Podemos pedirle que demuestre que un determinado resultado matemático es cierto y también pedirle que demuestre que es falso, y que sea capaz de hacer ambas cosas con total confianza.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="la-importancia-de-asistir-a-clase" class="level3">
+<h3 class="anchored" data-anchor-id="la-importancia-de-asistir-a-clase">La importancia de asistir a clase</h3>
+<p>Hoy en día vemos como docentes que el absentismo cada vez es más común. No es raro escucharos decir cosas como «no voy a entrar a X asignatura» o «mejor nos vamos a la biblioteca a estudiar de verdad». Desde nuestro punto de vista, no asistir a clase es un error, aunque te parezca que el docente o la docente no explica bien o no te cae bien. Asistir a clase tiene los siguientes beneficios:</p>
+<ol type="1">
+<li>Es un primer estudio.</li>
+<li>Estás escuchando la lección con otra voz, viendo la explicación en pizarra, en otro escenario… De este modo expones tus sentidos de otro modo al estudio, lo que facilita el aprendizaje.</li>
+<li>Es común que se expliquen las cosas con otro enfoque distinto al que tú puedes encontrar en un libro o en un vídeo de YouTube. Será otro enfoque que quizás te ayude a ver las cosas desde otro ángulo.</li>
+<li>Las dudas en directo son una gran forma de aprender, así como las propias erratas del docente o la docente.</li>
+<li>También conoces la forma de hablar del docente o la docente, lo que te ayudará a comprender mejor sus explicaciones en tutorías o al hacer una consulta en el examen.</li>
+</ol>
+</section>
+<section id="cómo-acudir-a-una-tutoría" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-acudir-a-una-tutoría">Cómo acudir a una tutoría</h3>
+<p>También te invitamos a acudir a tutorías, pues son una forma complementaria de comprender los contenidos que en clase puedan quedarte no del todo claros. Pero para sacar el máximo partido a tus tutorías te sugerimos:</p>
+<ol type="1">
+<li>Estudia el tema primero por tu cuenta.</li>
+<li>Intenta hacer los ejercicios por tu cuenta sin rendirte a la primera.</li>
+<li>Anota todas las dudas en un papel para que no se te olvide nada durante la tutoría.</li>
+<li>Toma notas durante la tutoría o pídele al docente o la docente el folio que empleéis durante la tutoría.</li>
+<li>Puedes acudir a tutoría con varios compañeros y compañeras para que así solventéis dudas comunes a la vez.</li>
+<li>No te quedes con dudas por vergüenza al pensar que tu pregunta será tonta o trivial.</li>
+</ol>
+</section>
+<section id="sec-examenes" class="level3">
+<h3 class="anchored" data-anchor-id="sec-examenes">Cómo afrontar un examen de matemáticas</h3>
+<p>Es común que acudáis con nervios a los exámenes, en particular a los de matemáticas. A continuación os damos algunos consejos generales para afrontar un examen de matemáticas:</p>
+<ol type="1">
+<li>Lee detenidamente cada enunciado. Puedes ayudarte de un subrayador para marcar la información principal del enunciado.</li>
+<li>No esperes a los últimos 10 minutos para preguntar tus dudas; no tendrás margen de maniobra para corregir o hacer nada una vez solventada tu duda.</li>
+<li>Usa una página para cada ejercicio. De este modo será más fácil dejar un ejercicio a medias, para retomarlo más tarde, y que no quede el examen desorganizado.</li>
+<li>No te quedes en un ejercicio eternamente si no sabes cómo resolverlo. Pasa a otro, y quizás más adelante encuentres la solución.</li>
+<li>Escribe o resume las premisas del enunciado para arrancar.</li>
+<li>Expresa todo de la forma más explícita posible. De este modo tu cabeza se ordenará y, además, en caso de error, será más fácil que no pierdas muchos puntos si se puede detectar el error particular que has cometido.</li>
+<li>Expresa todo en la notación correcta; no solo ayuda a una mejor presentación, también te puede ayudar a recordar lo estudiado al ver los mismos símbolos que has visto durante tu estudio.</li>
+<li>Si un apartado depende de uno anterior, y no has sabido resolverlo, invéntate el resultado y trabaja el resto del ejercicio con ese resultado figurado. De este modo solo perderás los puntos del apartado anterior y no del resto. Aunque no escojas un resultado que haga que el siguiente apartado sea trivial; es probable que entonces no obtengas todos los puntos de ese apartado.</li>
+</ol>
+<hr>
+<p><span class="small">Contenidos confeccionados por Gustavo Rivas Gervilla; la parte correspondiente a lógica y demostraciones está inspirada en el curso OCW: M. Bullejos Lorenzo, P. Carrasco Carrasco, P. A. García Sánchez, A. Martínez Cegarra, A. Rodríguez Garzón, Álgebra Básica</span></p>
+
+
+
+</section>
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Volver arriba</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referencias</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-houston2009think" class="csl-entry" role="listitem">
+Houston, Kevin. 2009. <em>How to think like a mathematician: A companion to undergraduate mathematics</em>. Cambridge University Press.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p>Hay debate sobre si el <span class="math inline">\(0\)</span> pertenece o no a los números naturales. En este caso vamos a suponer que los números naturales no incluyen al cero.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Made with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

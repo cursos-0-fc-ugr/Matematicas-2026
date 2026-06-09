@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Fracciones y potencias – Cursos cero matemáticas</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-057e2dbeb2b66899786fd0203252f9c8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/viz.js/1.8.2/viz.js"></script>
+
+<style>
+div {
+  &.callout {
+    font-size: 2rem !important;
+  }
+}
+.callout-body-container {
+    font-size: 1rem !important;
+}
+  
+</style>
+
+<script>
+MathJax = {
+    output: {
+        font: 'mathjax-fira'
+    }
+};
+
+JXG.Options.text.useMathJax = true;
+JXG.Options.point.showInfobox = false;
+
+function show(divID) {
+    var sol = document.getElementById("solucion-"+divID);
+    var div = document.getElementById(divID);
+
+    console.log(sol);
+    sol.classList.toggle('collapse');
+
+    console.log("texto: " + div.innerHTML);
+
+//    if(div.innerHTML === "Solución"){
+    if(!sol.classList.contains('collapse')){
+        div.innerHTML = "Oculta solución";
+    }else{
+        div.innerHTML = "Solución";
+    }
+
+}
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Fracciones y potencias</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#fracciones" id="toc-fracciones" class="nav-link active" data-scroll-target="#fracciones">Fracciones</a></li>
+  <li><a href="#suma-y-resta-de-fracciones" id="toc-suma-y-resta-de-fracciones" class="nav-link" data-scroll-target="#suma-y-resta-de-fracciones">Suma y resta de fracciones</a></li>
+  <li><a href="#producto-fracción-inversa-y-división" id="toc-producto-fracción-inversa-y-división" class="nav-link" data-scroll-target="#producto-fracción-inversa-y-división">Producto, fracción inversa y división</a></li>
+  <li><a href="#operaciones-con-fracciones-uso-de-paréntesis-y-signos" id="toc-operaciones-con-fracciones-uso-de-paréntesis-y-signos" class="nav-link" data-scroll-target="#operaciones-con-fracciones-uso-de-paréntesis-y-signos">Operaciones con fracciones, uso de paréntesis y signos</a></li>
+  <li><a href="#potencias" id="toc-potencias" class="nav-link" data-scroll-target="#potencias">Potencias</a></li>
+  <li><a href="#radicales" id="toc-radicales" class="nav-link" data-scroll-target="#radicales">Radicales</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<section id="fracciones" class="level2">
+<h2 class="anchored" data-anchor-id="fracciones">Fracciones</h2>
+<p>Una fracción es el cociente entre dos números enteros: <span class="math inline">\(\dfrac{a}{b}\)</span> con <span class="math inline">\(b\not = 0\)</span>, el número en la parte superior se denomina <em>numerador</em> y el de la inferior <em>denominador</em>. Las fracciones se usan para expresar cantidades que no corresponden a número enteros, pero también éstos pueden representarse mediante fracciones. Distintas fracciones pueden representar a la misma cantidad, entonces se llaman <em>fracciones equivalentes</em>; entre todas las fracciones que representan a la misma cantidad hay solamente una que tiene la propiedad de que <span class="math inline">\(\operatorname{mcd}(a,b)=1\)</span>, es decir, numerador y denominador son primos relativos, este tipo de fracciones se llaman <em>irreducibles</em>.</p>
+<p>Partiendo de la fracción <span class="math inline">\(\dfrac{5}{6}\)</span> podemos construir fracciones equivalentes multiplicando numerador y denominador por el mismo número, por ejemplo, multiplicando por <span class="math inline">\(2\)</span> obtenemos <span class="math inline">\(\dfrac{10}{12}\)</span> y por <span class="math inline">\(3\)</span> nos da <span class="math inline">\(\dfrac{15}{18}\)</span>. Las tres son fracciones equivalentes, es decir, representan a la misma cantidad y por tanto podemos escribir <span class="math display">\[\frac{5}{6}=\frac{10}{12}=\frac{15}{18}.\]</span> De entre estas tres fracciones la primera es la fracción irreducible puesto que <span class="math inline">\(5\)</span> y <span class="math inline">\(6\)</span> son primos relativos.</p>
+<p>Para obtener la fracción irreducible equivalente a una dada podemos utilizar el <span class="math inline">\(\operatorname{mcd}\)</span> de numerador y denominador. Por ejemplo, para calcular la fracción irreducible equivalente con <span class="math inline">\(\dfrac{198}{825}\)</span> usamos que <span class="math inline">\(\operatorname{mcd}(198,825)=33\)</span> y así tanto numerador como denominador pueden escribirse como múltiplos de ese número y la fracción puede ser simplificada eliminando el mismo factor en numerador y denominador: <span class="math display">\[\dfrac{198}{825}= \dfrac{33\cdot 6}{33\cdot 25}= \dfrac{\require{cancel}\cancel{33}\cdot 6}{\cancel{ 33}\cdot 25}=\dfrac{6}{25}.\]</span> La fracción resultante es irreducible puesto que se han eliminado todos los factores primos comunes de numerador y denominador.</p>
+</section>
+<section id="suma-y-resta-de-fracciones" class="level2">
+<h2 class="anchored" data-anchor-id="suma-y-resta-de-fracciones">Suma y resta de fracciones</h2>
+<p>Para realizar la suma o resta de cantidades necesitamos representarlas mediante fracciones que tengan el mismo denominador, para ello basta elegir entre todas las fracciones equivalentes las adecuadas en cada caso. La forma más habitual es calcular el <span class="math inline">\(\operatorname{mcm}\)</span> de todos los denominadores que tengamos. Una vez que las fracciones tienen el mismo denominador las operaciones de suma y resta se efectúan sobre los numeradores.</p>
+<p>Si queremos calcular <span class="math display">\[\dfrac{5}{6} + 2 - \dfrac{4}{9},\]</span> debemos sustituir cada uno de los números por una fracción equivalente de forma que las tres tengan el mismo denominador. En primer lugar observemos que <span class="math inline">\(2=\dfrac{2}{1}\)</span>, así que tenemos los denominadores <span class="math inline">\(6,1,9\)</span>; el <span class="math inline">\(\operatorname{mcm}(6,1,9)=18\)</span>, que será el denominador común que necesitamos. Ahora cada una de las cantidades debe representarse por la fracción equivalente que tiene denominador <span class="math inline">\(18\)</span>; para <span class="math inline">\(\dfrac{5}{6}\)</span> calculamos el cociente entre <span class="math inline">\(18\)</span> y el denominador original <span class="math inline">\(6\)</span>, que es <span class="math inline">\(3\)</span> (siempre resultará entero, porque el <span class="math inline">\(\operatorname{mcm}\)</span> es un múltiplo como su nombre indica), por tanto, para que la fracción sea equivalente debemos multiplicar numerador y denominador por <span class="math inline">\(3\)</span> <span class="math display">\[\dfrac{5}{6}=\dfrac{5\cdot 3}{6\cdot 3}=\dfrac{15}{18}.\]</span> Del mismo modo, <span class="math display">\[2=\dfrac{2}{1}=\dfrac{2\cdot 18}{1\cdot 18}=\dfrac{36}{18}\]</span> y <span class="math display">\[\dfrac{4}{9}=\dfrac{4\cdot 2}{9\cdot 2}=\dfrac{8}{18}.\]</span> Ahora volvemos a escribir la operación a realizar <span class="math display">\[\dfrac{15}{18} + \dfrac{36}{18} - \dfrac{8}{18}=\dfrac{15+36-8}{18}=\dfrac{43}{18}.\]</span></p>
+</section>
+<section id="producto-fracción-inversa-y-división" class="level2">
+<h2 class="anchored" data-anchor-id="producto-fracción-inversa-y-división">Producto, fracción inversa y división</h2>
+<p>Para multiplicar dos fracciones se multiplican ambos numeradores y ambos denominadores: <span class="math display">\[\dfrac{a}{b}\cdot \dfrac{c}{d}= \dfrac{a\cdot c}{b \cdot d}.\]</span></p>
+<p>La <em>fracción inversa</em> de una dada es la que tiene por numerador al denominador de la primera y viceversa. La fracción inversa de <span class="math inline">\(\dfrac{a}{b}\)</span> es <span class="math inline">\(\dfrac{b}{a}\)</span>, es decir, la fracción inversa es aquella que al multiplicarla por la dada nos da como resultado el número 1.</p>
+<p><span class="math display">\[\dfrac{a}{b}\cdot \dfrac{b}{a}= \dfrac{a\cdot b}{b\cdot a}=\dfrac{\cancel{a}\cdot \cancel{b}\cdot 1}{\cancel{a}\cdot \cancel{b}\cdot 1}=\dfrac{1}{1}=1.\]</span></p>
+<p>Observemos que el número <span class="math inline">\(0=\dfrac{0}{1}\)</span> no tiene fracción inversa puesto que <span class="math inline">\(0\)</span> no es admitido como denominador.</p>
+<p>Para dividir dos fracciones se puede usar la regla de multiplicar en cruz o sustituir la división por el producto con la fracción inversa del divisor, es decir:</p>
+<p><span class="math display">\[\dfrac{a}{b}\colon \dfrac{c}{d}= \dfrac{\frac{a}{b}}{\frac{c}{d}}= \dfrac{a}{b}\cdot \dfrac{d}{c}=\dfrac{a\cdot d}{b \cdot c}.\]</span></p>
+</section>
+<section id="operaciones-con-fracciones-uso-de-paréntesis-y-signos" class="level2">
+<h2 class="anchored" data-anchor-id="operaciones-con-fracciones-uso-de-paréntesis-y-signos">Operaciones con fracciones, uso de paréntesis y signos</h2>
+<p>Ahora ejercitaremos las operaciones recordando que el producto tiene prioridad sobre la suma pero que esta prioridad puede cambiarse mediante el uso de paréntesis. También prestaremos atención a los signos que aparecen.</p>
+<p>Efectuaremos las operaciones</p>
+<ol type="1">
+<li><p><span class="math inline">\(\dfrac{2}{5}\cdot \dfrac{1}{3}- \dfrac{1}{4}\)</span></p></li>
+<li><p><span class="math inline">\(\dfrac{2}{5}\cdot \left( \dfrac{1}{3}- \dfrac{1}{4}\right)\)</span></p></li>
+</ol>
+<p>y comprobaremos que los resultados son diferentes. En la primera se efectúa en primer lugar el producto y después la resta: <span class="math display">\[\dfrac{2}{5}\cdot \dfrac{1}{3}- \dfrac{1}{4}=\dfrac{2\cdot 1}{5\cdot 3}-\dfrac{1}{4}=\dfrac{2}{15}-\dfrac{1}{4}= \dfrac{8-15}{60}=-\dfrac{7}{60}.\]</span> En la segunda primero se efectúa la operación entre paréntesis y después el producto: <span class="math display">\[\dfrac{2}{5}\cdot \left( \dfrac{1}{3}- \dfrac{1}{4}\right)=\dfrac{2}{5}\cdot \left( \dfrac{4-3}{12}\right)=\dfrac{2}{5}\cdot \dfrac{1}{12}=\dfrac{2}{60}=\dfrac{1}{30}.\]</span></p>
+<p>Los signos se manejan como en los números enteros, teniendo en cuenta que siempre podemos elegir que el signo del denominador sea positivo sin más multiplicar, si es necesario, arriba y abajo por <span class="math inline">\(-1\)</span>. <span class="math display">\[\left( -\dfrac{1}{3}\right)\colon \left( \dfrac{2}{5}-\dfrac{1}{2}\right)=
+\left( -\dfrac{1}{3}\right)\colon \left( \dfrac{4-5}{10}\right)
+=\left( -\dfrac{1}{3}\right)\colon \left( -\dfrac{1}{10}\right)=
+\left( -\dfrac{1}{3}\right)\cdot \left(- \dfrac{10}{1}\right)= \dfrac{10}{3}.\]</span></p>
+<div id="exr-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1</strong></span> Calcula y devuelve el resultado como fracción irreducible.</p>
+<ol type="1">
+<li><p><span class="math inline">\(\left(-2+\dfrac{1}{3}\right)\left(\dfrac{7}{5}-1\right) - \dfrac{1}{5}\left(\dfrac{2}{3}-\dfrac{1}{4}\right)\)</span> <span id="solucion-e1-1" class="collapse"><span class="math inline">\(= -\dfrac{3}{4}\)</span></span>. <button id="e1-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p></li>
+<li><p><span class="math inline">\(\dfrac{\left( -\dfrac{3}{5}\right)\left(-\dfrac{5}{6}\right)}{\dfrac{1}{3}-\dfrac{1}{2}-\dfrac{1}{5}}\)</span> <span id="solucion-e1-2" class="collapse"><span class="math inline">\(= -\dfrac{15}{11}\)</span></span>. <button id="e1-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p></li>
+<li><p><span class="math inline">\(\left(\dfrac{1}{5}+\dfrac{1}{2}\right)\colon \left( \left(\dfrac{2}{3}-\dfrac{4}{5}\right)+ \dfrac{1}{4}\left(\dfrac{1}{5}-\dfrac{2}{3}\right)\right)\)</span> <span id="solucion-e1-3" class="collapse"><span class="math inline">\(= -\dfrac{14}{5}\)</span></span>. <button id="e1-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p></li>
+<li><p><span class="math inline">\(1+\dfrac{2}{\dfrac{4}2}\)</span> <span id="solucion-e1-4" class="collapse"><span class="math inline">\(= 1+\dfrac{2}2= 2\)</span></span>. <button id="e1-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p></li>
+<li><p><span class="math inline">\(\dfrac{\dfrac{2}4}{2}+2\)</span> <span id="solucion-e1-5" class="collapse"><span class="math inline">\(= 2+\dfrac{1}2\dfrac{1}2 =2+ \dfrac{1}4= \dfrac{9}4\)</span></span>. <button id="e1-5" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p></li>
+</ol>
+<p>La división no es "asociativa". No podemos por tanto escribir <span class="math inline">\(2/3/4\)</span>, puesto que no es lo mismo <span class="math inline">\(\dfrac{2}{\dfrac{3}4}\)</span> que <span class="math inline">\(\dfrac{\dfrac{2}3}4\)</span>.</p>
+</div>
+</section>
+<section id="potencias" class="level2">
+<h2 class="anchored" data-anchor-id="potencias">Potencias</h2>
+<p>El concepto inicial de potencia es una forma de denotar a un producto en el que todos los factores son idénticos, por ejemplo si queremos expresar el producto <span class="math inline">\(2\times 2 \times 2 \times 2 \times 2\)</span> usaremos la expresión <span class="math inline">\(2^5\)</span>, es decir, se escribe el factor que se repite, al que llamaremos <em>base de la potencia</em>, en este caso <span class="math inline">\(2\)</span>, y se le añade como superíndice el número de veces que aparece en el producto, a lo que llamaremos <em>exponente</em>, en este caso <span class="math inline">\(5\)</span>. En general escribimos</p>
+<p><span class="math display">\[\overbrace{a\cdot a\cdot \dots \cdot a}^{\mbox{n veces}}=a^n.\]</span></p>
+<p>Como convenio, para cualquier número <span class="math inline">\(a\)</span> distinto de cero, <span class="math inline">\(a^0=1\)</span>. Observemos que si la base es un número negativo es necesario usar paréntesis para indicar su potencia, por ejemplo <span class="math inline">\((-2)^4=16\)</span> mientras que <span class="math inline">\(-2^4=-16\)</span>.</p>
+<ol type="1">
+<li><p><span class="math inline">\(a^n \cdot a^m = a^{n+m}\)</span>.</p></li>
+<li><p><span class="math inline">\((a\cdot b)^n=a^n \cdot b^n\)</span>.</p></li>
+<li><p><span class="math inline">\((a^n)^m=a^{n\cdot m}\)</span>.</p></li>
+<li><p><span class="math inline">\(\dfrac{a^n}{a^m}=a^{n-m}\)</span>.</p></li>
+<li><p><span class="math inline">\(a^{-n}=\dfrac{1}{a^n}\)</span>.</p></li>
+<li><p><span class="math inline">\(\left(\dfrac{a}{b}\right)^n=\dfrac{a^n}{b^n}\)</span>.</p></li>
+</ol>
+<p>Calculamos <span class="math display">\[\left( -\dfrac{1}{2} \right)^{-2}= \dfrac{1}{\left( -\dfrac{1}{2} \right)^{2}}= \dfrac{1}{ \dfrac{(-1)^2}{2^2}}= 1\cdot \dfrac{2^2}{1}=2^2.\]</span></p>
+<p>Usamos las propiedades anteriores y la simplificación de fracciones para obtener una expresión simplificada de una dada: <span class="math display">\[a^2\cdot b^3\cdot \left(\dfrac{1}{ab^2}\right)^2= a^2\cdot b^3\cdot \dfrac{1^2}{(ab^2)^2}= \dfrac{\cancel{a^2}\cdot b^3}{\cancel{a^2}\cdot b^4}= b^{3-4}=b^{-1}= \dfrac{1}{b}.\]</span> Podemos observar que la cancelación de <span class="math inline">\(a^2\)</span> también podría realizarse haciendo uso de las propiedades de las potencias, puesto que <span class="math display">\[\dfrac{a^2}{a^2}=a^{2-2}=a^0 = 1.\]</span></p>
+<div id="exr-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2</strong></span> Simplifica las siguientes expresiones</p>
+<ol type="1">
+<li><p><span class="math inline">\(\dfrac{a^2}{(a^2)^{-3}\cdot a^4}\)</span> <span id="solucion-e2-1" class="collapse"><span class="math inline">\(= a^4\)</span></span>. <button id="e2-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p></li>
+<li><p><span class="math inline">\(\dfrac{(a^5\cdot a^{-2})^3}{a^{-3}}\)</span> <span id="solucion-e2-2" class="collapse"><span class="math inline">\(= a^{12}\)</span></span>. <button id="e2-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p></li>
+<li><p><span class="math inline">\(\left(\dfrac{a}{b}\right)^3\cdot\left(\dfrac{b}{a}\right)^{-2}\cdot \left(\dfrac{1}{a}\right)^{-1}\)</span> <span id="solucion-e2-3" class="collapse"><span class="math inline">\(= \dfrac{a^{6}}{b^5}\)</span></span>. <button id="e2-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p></li>
+</ol>
+<p>"Elevar a" no es asociativo. No tiene sentido escribir <span class="math inline">\({2^3}^4\)</span>, pues no es lo mismo <span class="math inline">\(2^{(3^4)}\)</span> que <span class="math inline">\((2^3)^4\)</span> (el primero vale <span class="math inline">\(2417851639229258349412352\)</span> y el segundo <span class="math inline">\(4096\)</span>).</p>
+</div>
+</section>
+<section id="radicales" class="level2">
+<h2 class="anchored" data-anchor-id="radicales">Radicales</h2>
+<p>Definimos la raíz n-ésima de un número no negativo <span class="math inline">\(a\)</span> como aquella cantidad no negativa <span class="math inline">\(x\)</span> tal que <span class="math inline">\(x^n=a\)</span>, y la denotaremos por <span class="math inline">\(\sqrt[n]{a}\)</span>: <span class="math display">\[\sqrt[n]{a}=x \text{ implica que } x^n=a.\]</span></p>
+<p>Estamos escogiendo raíces no negativas, si quitamos esa restricción, puede que exista más de una. Por ejemplo, existen dos raíces cuadradas de <span class="math inline">\(1\)</span>, pues tanto <span class="math inline">\((-1)^2\)</span> como <span class="math inline">\(1^2\)</span> valen <span class="math inline">\(1\)</span>. También estamos considerando raíces de números no negativos. Como el cuadrado de un número real es siempre no negativo, no podemos encontrar una raíz real cuadrada de un número negativo. Sin embargo, sí podemos encontrar una cúbica. Por ejemplo, <span class="math inline">\((-1)^3=-1\)</span>, por lo que <span class="math inline">\(-1\)</span> es una raíz cúbica de <span class="math inline">\(-1\)</span>.</p>
+<p>La expresión de los radicales también puede realizarse mediante potencias, si <span class="math inline">\(x=\sqrt[n]{a}\)</span>, entonces <span class="math inline">\(x=a^{\frac{1}{n}}\)</span> puesto que <span class="math display">\[x^n= (a^{\frac{1}{n}})^n= a^{\frac{n}{n}}=a^1 = a.\]</span></p>
+<p>La expresión de radicales como potencias con exponentes fraccionarios tiene las mismas propiedades, usando las operaciones correspondientes con dichos números.</p>
+<p>Podemos escribir en forma de potencia la siguiente expresión</p>
+<p><span class="math display">\[\left(\sqrt[12]{a^4b^8}\right)^3  = \left( (a^4 b^8)^{\frac{1}{12}} \right)^3 = \left( a^{\frac{4}{12}}b^{\frac{8}{12}} \right)^3 =a^{\frac{4\cdot 3}{12}}b^{\frac{8\cdot 3}{12}} = ab^2.\]</span></p>
+<div id="exr-3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 3</strong></span> Simplifica las siguientes expresiones:</p>
+<ol type="1">
+<li><p><span class="math inline">\(\sqrt[3]{\sqrt{a^5 a^7}}\)</span> <span id="solucion-e3-1" class="collapse"><span class="math inline">\(= a^2\)</span></span>. <button id="e3-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p></li>
+<li><p><span class="math inline">\(\left(\sqrt[3]{\sqrt[7]{\sqrt{8a^3}}}\right)^7\)</span> <span id="solucion-e3-2" class="collapse"><span class="math inline">\(= \sqrt{2a}\)</span></span>. <button id="e3-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p></li>
+<li><p><span class="math inline">\(\dfrac{(\sqrt{x})^3}{\left(\sqrt[3]{\sqrt[4]{x}}\right)^6}\)</span> <span id="solucion-e3-3" class="collapse"><span class="math inline">\(= x\)</span></span>. <button id="e3-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p></li>
+</ol>
+</div>
+<hr>
+<p><span class="small">Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada.</span></p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Volver arriba</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Made with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

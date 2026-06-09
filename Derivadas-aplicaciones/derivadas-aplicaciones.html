@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Aplicaciones de la derivada – Cursos cero matemáticas</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-057e2dbeb2b66899786fd0203252f9c8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css">
+
+<style>
+div {
+  &.callout {
+    font-size: 2rem !important;
+  }
+}
+.callout-body-container {
+    font-size: 1rem !important;
+}
+  
+</style>
+
+<script>
+MathJax = {
+    output: {
+        font: 'mathjax-fira',
+        displayOverflow: 'scroll'
+    },
+    loader: {load: ['[tex]/color','[tex]/cancel']},
+    tex: {packages: {'[+]': ['color','cancel']}}
+};
+
+JXG.Options.text.useMathJax = true;
+JXG.Options.point.showInfobox = false;
+
+function show(divID) {
+    var sol = document.getElementById("solucion-"+divID);
+    var div = document.getElementById(divID);
+
+    console.log(sol);
+    sol.classList.toggle('collapse');
+
+    console.log("texto: " + div.innerHTML);
+
+//    if(div.innerHTML === "Solución"){
+    if(!sol.classList.contains('collapse')){
+        div.innerHTML = "Oculta solución";
+    }else{
+        div.innerHTML = "Solución";
+    }
+
+}
+</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Aplicaciones de la derivada</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#estudio-de-una-función" id="toc-estudio-de-una-función" class="nav-link active" data-scroll-target="#estudio-de-una-función">Estudio de una función</a>
+  <ul class="collapse">
+  <li><a href="#crecimiento-y-decrecimiento" id="toc-crecimiento-y-decrecimiento" class="nav-link" data-scroll-target="#crecimiento-y-decrecimiento">Crecimiento y decrecimiento</a></li>
+  <li><a href="#extremos-relativos" id="toc-extremos-relativos" class="nav-link" data-scroll-target="#extremos-relativos">Extremos relativos</a></li>
+  <li><a href="#concavidad-y-convexidad" id="toc-concavidad-y-convexidad" class="nav-link" data-scroll-target="#concavidad-y-convexidad">Concavidad y convexidad</a></li>
+  <li><a href="#puntos-de-inflexión" id="toc-puntos-de-inflexión" class="nav-link" data-scroll-target="#puntos-de-inflexión">Puntos de inflexión</a></li>
+  </ul></li>
+  <li><a href="#geometría" id="toc-geometría" class="nav-link" data-scroll-target="#geometría">Geometría</a></li>
+  <li><a href="#optimización" id="toc-optimización" class="nav-link" data-scroll-target="#optimización">Optimización</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<section id="estudio-de-una-función" class="level2">
+<h2 class="anchored" data-anchor-id="estudio-de-una-función">Estudio de una función</h2>
+<section id="crecimiento-y-decrecimiento" class="level3">
+<h3 class="anchored" data-anchor-id="crecimiento-y-decrecimiento">Crecimiento y decrecimiento</h3>
+<p>Si <span class="math"><span class="math inline">\(f\)</span></span> es una función derivable definida en un intervalo, entonces</p>
+<ul>
+<li><p><span class="math"><span class="math inline">\(f\)</span></span> es creciente si, y sólo si, la derivada es mayor o igual que cero;</p></li>
+<li><p><span class="math"><span class="math inline">\(f\)</span></span> es decreciente si, y sólo si, la derivada es menor o igual que cero; y</p></li>
+<li><p><span class="math"><span class="math inline">\(f\)</span></span> es constante si, y sólo si, la derivada es cero.</p></li>
+</ul>
+<p>Para estudiar el crecimiento de la función <span class="math"><span class="math inline">\(f(x)=2x^3-3x^2-12x+1\)</span></span>, estudiamos el signo de la derivada. Primero vemos dónde se anula. <span class="math"><span class="math display">\[f'(x)=6x^2-6x-12=0 \text{&nbsp;si y sólo si } x\in\{-1,2\}.\]</span></span> Como sabemos donde se anula la derivada, también sabemos donde <em>no</em> se anula. Esto es, la función es monótona en <span class="math"><span class="math inline">\(]-\infty,-1]\)</span></span>, en <span class="math"><span class="math inline">\([-1,2]\)</span></span> y en <span class="math"><span class="math inline">\([2,+\infty[\)</span></span>. Evaluando la derivada en un punto de cada intervalo, terminamos:</p>
+<ul>
+<li><p><span class="math"><span class="math inline">\(f'(-3)=60 &gt; 0\)</span></span>, y por tanto <span class="math"><span class="math inline">\(f\)</span></span> es creciente <span class="math"><span class="math inline">\(]-\infty,-1]\)</span></span>;</p></li>
+<li><p><span class="math"><span class="math inline">\(f'(0)=-12 &lt; 0\)</span></span>, en consecuencia <span class="math"><span class="math inline">\(f\)</span></span> es decreciente <span class="math"><span class="math inline">\([-1,2]\)</span></span>; y,</p></li>
+<li><p><span class="math"><span class="math inline">\(f'(8)=324 &gt; 0\)</span></span>, por lo que <span class="math"><span class="math inline">\(f\)</span></span> es creciente <span class="math"><span class="math inline">\([2,+\infty[\)</span></span>.</p></li>
+</ul>
+<p>¿Sabrías decir algo sobre los máximos y mínimos relativos de esta función?</p>
+</section>
+<section id="extremos-relativos" class="level3">
+<h3 class="anchored" data-anchor-id="extremos-relativos">Extremos relativos</h3>
+<p>El cálculo de los máximos y mínimos relativos de una función <span class="math"><span class="math inline">\(f\)</span></span> se suele hacer en dos pasos.</p>
+<ol type="1">
+<li><p>En primer lugar se calculan los puntos críticos, es decir, resolvemos la ecuación <span class="math"><span class="math inline">\(f'(x)=0\)</span></span>.</p></li>
+<li><p>Los cambios en la monotonía son suficientes para descubrir los extremos relativos: si la función pasa de creciente a decreciente alcanza un máximo relativo y si pasa de decreciente a creciente tiene un mínimo relativo</p></li>
+<li><p>También podemos sustituir el segundo paso por el estudio de la segunda derivada en los puntos críticos:</p>
+<ul>
+<li><p>si <span class="math"><span class="math inline">\(f'(a)=0\)</span></span>, y además <span class="math"><span class="math inline">\(f''(a) &gt; 0\)</span></span>, entonces <span class="math"><span class="math inline">\(f\)</span></span> tiene un mínimo relativo en <span class="math"><span class="math inline">\(a\)</span></span>;</p></li>
+<li><p>si <span class="math"><span class="math inline">\(f'(a)=0\)</span></span>, y además <span class="math"><span class="math inline">\(f''(a) &lt; 0\)</span></span>, entonces <span class="math"><span class="math inline">\(f\)</span></span> tiene un máximo relativo en <span class="math"><span class="math inline">\(a\)</span></span>.</p></li>
+</ul></li>
+</ol>
+<p>Si analizamos el signo de la derivada segunda de la función del ejemplo anterior en los puntos críticos que habíamos obtenido, concluimos cuál es mínimo y cuál es máximo. Como <span class="math"><span class="math inline">\(f''(x)= 12x-6\)</span></span>, tenemos:</p>
+<ul>
+<li><p><span class="math"><span class="math inline">\(f''(-1)=-18 &lt; 0\)</span></span>, por tanto en <span class="math"><span class="math inline">\(x=-1\)</span></span> tenemos un máximo relativo;</p></li>
+<li><p><span class="math"><span class="math inline">\(f''(2)=18 &gt; 0\)</span></span>, por tanto en <span class="math"><span class="math inline">\(x=2\)</span></span> tenemos un mínimo relativo.</p></li>
+</ul>
+<p>A esta misma conclusión se llega usando los cambios de monotonía que ya hemos calculado anteriormente.</p>
+<div id="exr-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 1</strong></span> Calcula los extremos relativos de <span class="math inline">\(f(x)=x^4+7\)</span>.</p>
+</div>
+</section>
+<section id="concavidad-y-convexidad" class="level3">
+<h3 class="anchored" data-anchor-id="concavidad-y-convexidad">Concavidad y convexidad</h3>
+<p>Si <span class="math"><span class="math inline">\(f\)</span></span> es una función dos veces derivable,</p>
+<ul>
+<li><p>Una función es convexa si, y sólo si, la segunda derivada es mayor o igual que cero; y</p></li>
+<li><p>una función es cóncava si, y sólo si, la segunda derivada es menor o igual que cero.</p></li>
+</ul>
+</section>
+<section id="puntos-de-inflexión" class="level3">
+<h3 class="anchored" data-anchor-id="puntos-de-inflexión">Puntos de inflexión</h3>
+<p>Si <span class="math"><span class="math inline">\(f''(a)=0\)</span></span> y <span class="math"><span class="math inline">\(f'''(a)\neq 0\)</span></span>, decimos que <span class="math"><span class="math inline">\(f\)</span></span> tiene un punto de inflexión en <span class="math"><span class="math inline">\(a\)</span></span>. Esto quiere decir que en dicho punto la función pasa de ser cóncava a convexa o al revés.</p>
+<p>Seguimos con la función del ejemplo 2. Como <span class="math"><span class="math inline">\(f''(x)=12x-6\)</span></span> tenemos que <span class="math inline">\(12x-6=0\)</span>, o lo que es lo mismo, <span class="math inline">\(x=1/2\)</span>. Ya tenemos nuestro candidato a punto de inflexión. Ahora calculamos la derivada tercera: <span class="math"><span class="math inline">\(f'''(x)=12\)</span></span>, con lo que <span class="math"><span class="math inline">\(f'''(1/2)=12 &gt; 0\)</span></span>. Por tanto, tenemos un punto de inflexión en <span class="math"><span class="math inline">\(x=1/2\)</span></span>. Vamos a calcular ahora si pasa de cóncava a convexa, o viceversa. Para ello, evaluamos <span class="math"><span class="math inline">\(f''\)</span></span> en puntos a ambos lados de <span class="math"><span class="math inline">\(x=1/2\)</span></span>:</p>
+<ul>
+<li><p><span class="math"><span class="math inline">\(f''(0)=-6 &lt; 0\)</span></span>, por lo que la función antes de <span class="math"><span class="math inline">\(1/2\)</span></span> es cóncava.</p></li>
+<li><p><span class="math"><span class="math inline">\(f''(1)=6 &gt; 0\)</span></span>, por lo que la función después de <span class="math"><span class="math inline">\(1/2\)</span></span> es convexa.</p></li>
+</ul>
+<div id="box2" class="jxgbox" style="width:400px; height:400px;margin:auto">
+
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="86" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 85;"><span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>board <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box2'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">5</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="op">-</span><span class="dv">20</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>curve <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="dv">2</span><span class="op">*</span>t<span class="op">*</span>t<span class="op">*</span>t<span class="op">-</span><span class="dv">3</span><span class="op">*</span>t<span class="op">*</span>t<span class="op">-</span><span class="dv">12</span><span class="op">*</span>t<span class="op">+</span><span class="dv">1</span>)}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>])<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div id="exm-1" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 1</strong></span> Vamos a aplicar todos los apartados anteriores para hacer el estudio completo de la función <span class="math"><span class="math inline">\(f \colon \mathbb{R}\rightarrow \mathbb{R}\)</span></span> definida como <span class="math"><span class="math inline">\(f(x)=x^{3}+3x^{2}-9x\)</span></span>.</p>
+<p><strong>Crecimiento y decrecimiento</strong></p>
+<p>Calculamos los puntos donde se anula la derivada para averiguar el signo del resto. <span class="math"><span class="math display">\[f'(x)=3x^2+6x-9 =0,\ x\in\{-3,1\}.\]</span></span> Miramos el signo de la derivada en algunos puntos intermedios: por ejemplo, <span class="math"><span class="math inline">\(f'(-10) &gt; 0\)</span></span>, <span class="math"><span class="math inline">\(f'(0) &lt; 0\)</span></span> y <span class="math"><span class="math inline">\(f'(5) &gt; 0\)</span></span>. Por tanto,</p>
+<ul>
+<li><p><span class="math"><span class="math inline">\(f\)</span></span> es creciente en <span class="math"><span class="math inline">\(]-\infty , -3]\)</span></span>,</p></li>
+<li><p><span class="math"><span class="math inline">\(f\)</span></span> es decreciente en <span class="math"><span class="math inline">\([-3,1]\)</span></span> y</p></li>
+<li><p><span class="math"><span class="math inline">\(f\)</span></span> es creciente en <span class="math"><span class="math inline">\([1,+\infty[\)</span></span>.</p></li>
+</ul>
+<p><strong>Extremos relativos</strong></p>
+<p>Directamente de los cambios de monotonía ya podemos deducir que</p>
+<ul>
+<li><p><span class="math"><span class="math inline">\(f\)</span></span> tiene un máximo relativo en <span class="math"><span class="math inline">\(-3\)</span></span> y</p></li>
+<li><p><span class="math"><span class="math inline">\(f\)</span></span> tiene un mínimo relativo en <span class="math"><span class="math inline">\(1\)</span></span>.</p></li>
+</ul>
+<p>A la misma conclusión llegamos si evaluamos la segunda derivada: <span class="math"><span class="math display">\[f''(x)=6x+6, \quad f''(-3)=-12, \quad \text{y} \quad f''(1)=12.\]</span></span></p>
+<p><strong>Convexidad y concavidad</strong></p>
+<p>Para estudiar la concavidad y convexidad de una función, miramos el signo de la segunda derivada: <span class="math"><span class="math display">\[f''(x)=6x+6=0,\ x= -1.\]</span></span> Por tanto,</p>
+<ul>
+<li><p><span class="math"><span class="math inline">\(f''(x)\)</span></span> es negativa en <span class="math"><span class="math inline">\(]-\infty,-1]\)</span></span> (función cóncava)</p></li>
+<li><p><span class="math"><span class="math inline">\(f''(x)\)</span></span> es positiva en <span class="math"><span class="math inline">\([-1,+\infty[\)</span></span> (función convexa)</p></li>
+</ul>
+<p><strong>Puntos de inflexión</strong></p>
+<p>En <span class="math"><span class="math inline">\(-1\)</span></span> la función tiene un punto de inflexión ya que cambia de convexa a cóncava.</p>
+<div id="box3" class="jxgbox" style="width:400px; height:400px;margin:auto;">
+
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="131" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 130;"><span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>board3 <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box3'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">10</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="op">-</span><span class="dv">30</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>curve3 <span class="op">=</span> board3<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){ <span class="cf">return</span>(t<span class="op">*</span>t<span class="op">*</span>t<span class="op">+</span><span class="dv">3</span><span class="op">*</span>t<span class="op">*</span>t<span class="op">-</span><span class="dv">9</span><span class="op">*</span>t)}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>])<span class="op">;</span></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>pintae32<span class="op">=</span><span class="kw">function</span>(){</span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> f<span class="op">=</span>t <span class="kw">=&gt;</span> <span class="op">-</span>t<span class="op">*</span>t<span class="op">+</span><span class="dv">2</span><span class="op">*</span>t<span class="op">;</span></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> t1 <span class="op">=</span> t <span class="kw">=&gt;</span> <span class="dv">2</span><span class="op">*</span>t<span class="op">;</span></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> t2 <span class="op">=</span> t <span class="kw">=&gt;</span> <span class="op">-</span><span class="dv">2</span><span class="op">*</span>(t<span class="op">-</span><span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> board <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'ebox32'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> curve <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>                    [f<span class="op">,</span> <span class="op">-</span><span class="dv">5</span><span class="op">,</span><span class="dv">5</span>]<span class="op">,</span>{<span class="dt">frozen</span><span class="op">:</span><span class="kw">true</span>})<span class="op">;</span></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>    board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[t1<span class="op">,-</span><span class="dv">5</span><span class="op">,</span><span class="dv">5</span>]<span class="op">,</span>{<span class="dt">dash</span><span class="op">:</span><span class="dv">1</span><span class="op">,</span><span class="dt">strokeColor</span><span class="op">:</span><span class="st">"orange"</span>})</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>    board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[t2<span class="op">,-</span><span class="dv">5</span><span class="op">,</span><span class="dv">5</span>]<span class="op">,</span>{<span class="dt">dash</span><span class="op">:</span><span class="dv">1</span><span class="op">,</span><span class="dt">strokeColor</span><span class="op">:</span><span class="st">"red"</span>})</span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>p32<span class="op">=</span><span class="fu">pintae32</span>()<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 2</strong></span> &nbsp;</p>
+<ol type="1">
+<li><p>Estudia la función <span class="math"><span class="math inline">\(f \colon \mathbb{R} \rightarrow \mathbb{R}\)</span></span> definida como <span class="math"><span class="math inline">\(f(x)=3\,{x}^{4}-4\,{x}^{3}-6\,{x}^{2}+12\,x\)</span></span>.</p></li>
+<li><p>Esboza la gráfica de una función <span class="math"><span class="math inline">\(f\)</span></span> definida en <span class="math"><span class="math inline">\([0,2]\)</span></span> que verifique que <span class="math"><span class="math inline">\(f(0)=f(2)=0\)</span></span>, <span class="math"><span class="math inline">\(f'(0)=2\)</span></span> y <span class="math"><span class="math inline">\(f'(2)=-2\)</span></span>. <button id="e2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e2" class="collapse">
+<p>Al darnos estos datos, nos están mostrando cómo son las tangentes a la gráfica en <span class="math inline">\(0\)</span> y en <span class="math inline">\(2\)</span>: <span style="color:orange"><span class="math inline">\(y=2x\)</span></span> e <span style="color:red"><span class="math inline">\(y=-2(x-2)\)</span></span>, respectivamente.</p>
+<div id="ebox32" class="jxgbox" style="width:400px; height:400px;margin:auto;">
+
+</div>
+<p>Como nos dan cuatro condiciones, podemos probar con un polinomio de grado <span class="math inline">\(3\)</span> (que tiene cuatro coeficientes). Supongamos que dicho polinomio es <span class="math inline">\(p(x)= ax^3+bx^2+cx+d\)</span>. La condición <span class="math inline">\(p(0)=0\)</span> implica que <span class="math inline">\(d=0\)</span>, y la condición <span class="math inline">\(p'(0)=2\)</span> lleva a <span class="math inline">\(c=2\)</span>. Por tanto, nuestro polinomio es <span class="math inline">\(p(x)=ax^3+bx^2+2x\)</span>, al que tenemos que imponer también que <span class="math inline">\(p(2)=0=8a+4b+4\)</span> y <span class="math inline">\(p'(2)=-2=12a+4b+2\)</span>.<br>
+Resolviendo ese sistema de dos ecuaciones con dos incógnitas, obtenemos <span class="math inline">\(a=0\)</span>, <span class="math inline">\(b=-1\)</span>. Así <span style="color:blue"><span class="math inline">\(p(x)=-x^2+2x\)</span></span>.</p>
+</div></li>
+<li><p>Considera la función <span class="math"><span class="math inline">\(f \colon \mathbb{R} \to \mathbb{R}\)</span></span> definida como <span class="math"><span class="math inline">\(f(x)=\displaystyle e^{\frac{2x}{x^2+1}}\)</span></span>.</p>
+<ol type="1">
+<li><p>Calcula las asíntotas de la gráfica de <span class="math"><span class="math inline">\(f\)</span></span>.</p></li>
+<li><p>Determina los intervalos de monotonía (crecimiento y decrecimiento).</p></li>
+<li><p>Determina los extremos relativos de <span class="math"><span class="math inline">\(f\)</span></span>.</p></li>
+<li><p>Esboza la gráfica de <span class="math"><span class="math inline">\(f\)</span></span>.</p></li>
+</ol></li>
+<li><p>Haz un estudio completo de la función <span class="math"><span class="math inline">\(f(x)=\frac{x^2+1}{x}\)</span></span> y representa su gráfica.</p></li>
+<li><p>Haz un estudio completo de la función <span class="math"><span class="math inline">\(f(x)=\frac{x}{x^2-1}\)</span></span> y representa su gráfica.</p></li>
+<li><p>A partir de la gráfica de <span class="math"><span class="math inline">\(f(x)=\cos(x)\)</span></span>, dibuja la gráfica de las funciones siguientes:</p>
+<ol type="1">
+<li><p><span class="math"><span class="math inline">\(f(x)=\cos(x+1)\)</span></span>,</p></li>
+<li><p><span class="math"><span class="math inline">\(f(x)=\cos(x-1)\)</span></span>,</p></li>
+<li><p><span class="math"><span class="math inline">\(f(x)=\cos(2x)\)</span></span>,</p></li>
+<li><p><span class="math"><span class="math inline">\(f(x)=\cos(x)-1\)</span></span>,</p></li>
+<li><p><span class="math"><span class="math inline">\(f(x)=\cos(x)+1\)</span></span>,</p></li>
+<li><p><span class="math"><span class="math inline">\(f(x)=\lvert\cos(x)\rvert\)</span></span>.</p></li>
+</ol></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="geometría" class="level2">
+<h2 class="anchored" data-anchor-id="geometría">Geometría</h2>
+<p>La <em>recta tangente</em> a una función <span class="math"><span class="math inline">\(f\)</span></span> en un punto de la gráfica <span class="math"><span class="math inline">\((a,f(a))\)</span></span> es <span class="math"><span class="math display">\[y=f(a)+f'(a)(x-a).\]</span></span> Por ejemplo, la recta tangente a la función <span class="math"><span class="math inline">\(f(x)=\log (x)\)</span></span> en <span class="math"><span class="math inline">\(x=2\)</span></span> es, teniendo en cuenta que <span class="math"><span class="math inline">\(f'(x)=1/x\)</span></span>, <span class="math"><span class="math display">\[y=f(2)+f'(2)(x-2)=\log(2)+\frac{1}{2} (x-2).\]</span></span></p>
+<p>En el siguiente gráfico se representa la función <span style="color:blue"><span class="math inline">\(\log(x)\)</span></span> y la <span style="color:red">tangente</span> en el punto <span class="math inline">\(A=(a,\log(a))\)</span>. Puedes desplazar este punto y ver cómo varía la tangente.</p>
+<div id="boxg1" class="jxgbox" style="width:400px; height:400px;margin:auto">
+
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="206" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 205;"><span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>pinta_log<span class="op">=</span> <span class="kw">function</span>(){</span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> board <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'boxg1'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">4</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> curve <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span></span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>                    [<span class="kw">function</span>(t){ <span class="cf">return</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(t))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>])<span class="op">;</span></span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> a <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'glider'</span><span class="op">,</span>[<span class="dv">2</span><span class="op">,</span><span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span>)<span class="op">,</span>curve]<span class="op">,</span> {<span class="dt">name</span><span class="op">:</span><span class="st">'A'</span><span class="op">,</span><span class="dt">label</span><span class="op">:</span>{<span class="dt">offset</span><span class="op">:</span>[<span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]}<span class="op">,</span> <span class="dt">strokeColor</span><span class="op">:</span><span class="st">"black"</span><span class="op">,</span><span class="dt">fillColor</span><span class="op">:</span><span class="st">"white"</span>})</span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>    board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){<span class="cf">return</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(a<span class="op">.</span><span class="fu">X</span>())<span class="op">+</span><span class="dv">1</span><span class="op">/</span>a<span class="op">.</span><span class="fu">X</span>()<span class="op">*</span>(t<span class="op">-</span>a<span class="op">.</span><span class="fu">X</span>()))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span>{<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"red"</span>})</span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>pg1<span class="op">=</span><span class="fu">pinta_log</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<p>La <em>recta normal</em> en <span class="math"><span class="math inline">\(x=a\)</span></span> es la recta perpendicular a la recta tangente que pasa por el punto <span class="math"><span class="math inline">\((a,f(a))\)</span></span>. Su pendiente será, por tanto, <span class="math"><span class="math inline">\(-1/f'(a)\)</span></span>. La ecuación de la recta normal a la función <span class="math"><span class="math inline">\(f\)</span></span> en el mismo punto es <span class="math"><span class="math display">\[y=f(a)-\frac{1}{f'(a)}(x-a).\]</span></span></p>
+<div id="exr-3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 3</strong></span> Responde a las siguientes preguntas sobre la parábola <span class="math inline">\(y=x^2\)</span>.</p>
+<ol type="1">
+<li><p>Calcula la recta tangente a la parábola <span class="math"><span class="math inline">\(y=x^2\)</span></span> en el punto <span class="math"><span class="math inline">\((3,9)\)</span></span>. <button id="e3-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e3-1" class="collapse">
+<p>La derivada de la función <span class="math inline">\(f(x)=x^2\)</span> es <span class="math inline">\(f'(x)=2x\)</span>. Por tanto, la recta tangente en el punto <span class="math inline">\((3,f(3))=(3,9)\)</span> es <span class="math display">\[y=f(3)+f'(3)(x-3)=9+6(x-3)=6x-9.\]</span></p>
+</div></li>
+<li><p>¿Pasa dicha recta por el punto <span class="math"><span class="math inline">\((1,3)\)</span></span>? <button id="e3-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e3-2" class="collapse">
+<p>La recta tangente pasa por el punto <span class="math inline">\((1,3)\)</span> si dicho punto cumple la ecuación de la recta. Veamos, <span class="math inline">\(3 \neq 6\cdot 1 -9 = -3\)</span>. El punto no pertenece a la recta tangente.</p>
+</div></li>
+<li><p>Calcula aquellos puntos que cumplen que la recta tangente a la parábola pasa por el punto <span class="math"><span class="math inline">\((1,-3)\)</span></span>. <button id="e3-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e3-3" class="collapse">
+<p>La recta tangente en un punto arbitrario <span class="math inline">\((a,f(a))\)</span> es <span class="math display">\[y=f(a)+f'(a)(x-a)=a^2+2a(x-a)=2ax-a^2\]</span> y lo que queremos encontrar son aquellos valores de <span class="math inline">\(a\)</span> que hacen que el punto <span class="math inline">\((1,-3)\)</span> verifique esta ecuación (pertenezca a la recta). Sustituimos <span class="math inline">\(x\)</span> por <span class="math inline">\(1\)</span> e <span class="math inline">\(y\)</span> por <span class="math inline">\(-3\)</span> y resolvemos:</p>
+<p><span class="math display">\[\begin{aligned}
+-3=2a\cdot 1 -a^2 &amp; \text{ si y solo si } a^2-2a -3=0, \\
+&amp; \text{ que equivale a } a= \frac{2\pm \sqrt{4-4\cdot(-3)}}{2}, \\
+&amp; \text{ o sea } a = \frac{2\pm 4}{2} = -1 \text{ ó } 3.
+\end{aligned}\]</span></p>
+<p>Resumiendo, la recta tangente en los puntos <span class="math inline">\((-1,1)\)</span> y <span class="math inline">\((3,9)\)</span> pasa por el punto <span class="math inline">\((1,-3)\)</span>.</p>
+</div></li>
+<li><p>Calcula la recta normal a la parábola en el punto <span class="math"><span class="math inline">\((3,9)\)</span></span>. <button id="e3-4" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e3-4" class="collapse">
+<p>Aplicando la ecuación de la recta normal y teniendo en cuenta que <span class="math inline">\(f'(3)=6\)</span> nos queda: <span class="math display">\[y=f(a)-\frac{1}{f'(a)}(x-a)=9-\frac{1}{6}(x-3)= \frac{57-x}{6}.\]</span></p>
+</div></li>
+</ol>
+<p>En el siguiente gráfico se representa la función <span style="color:blue"><span class="math inline">\(x^2\)</span></span>, y la <span style="color:red">tangente</span> y la <span style="color:green">normal</span> en el punto <span class="math inline">\(A=(a,a^2)\)</span>. Puedes desplazar este punto y ver cómo varían las rectas tangente y normal.</p>
+<div id="boxg2" class="jxgbox" style="width:400px; height:400px;margin:auto;">
+
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="266" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 265;"><span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a>pinta_parabola <span class="op">=</span> <span class="kw">function</span>(){</span>
+<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> board <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'boxg2'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">5</span><span class="op">,</span> <span class="dv">9</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> curve <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span></span>
+<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a>                    [<span class="kw">function</span>(t){ <span class="cf">return</span>(t<span class="op">*</span>t)}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>])<span class="op">;</span></span>
+<span id="cb4-270"><a href="#cb4-270" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> A <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'glider'</span><span class="op">,</span>[<span class="dv">1</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span>curve]<span class="op">,</span> {<span class="dt">name</span><span class="op">:</span><span class="st">'A'</span><span class="op">,</span> <span class="dt">strokeColor</span><span class="op">:</span><span class="st">"black"</span><span class="op">,</span><span class="dt">fillColor</span><span class="op">:</span><span class="st">'white'</span>})<span class="op">;</span></span>
+<span id="cb4-271"><a href="#cb4-271" aria-hidden="true" tabindex="-1"></a>    <span class="co">//punto = board.create('point',[function(){return pend.Value()},function(){return pend.Value()*pend.Value()}], {strokeColor:"black",fillColor:'white', name:''})</span></span>
+<span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a>    board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){<span class="cf">return</span> (A<span class="op">.</span><span class="fu">Y</span>()<span class="op">+</span><span class="dv">2</span><span class="op">*</span>A<span class="op">.</span><span class="fu">X</span>()<span class="op">*</span>(t<span class="op">-</span>A<span class="op">.</span><span class="fu">X</span>()))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span>{<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"red"</span>})</span>
+<span id="cb4-273"><a href="#cb4-273" aria-hidden="true" tabindex="-1"></a>    board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span> [<span class="kw">function</span>(t){<span class="cf">return</span> (A<span class="op">.</span><span class="fu">Y</span>()<span class="op">-</span><span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>A<span class="op">.</span><span class="fu">X</span>())<span class="op">*</span>(t<span class="op">-</span>A<span class="op">.</span><span class="fu">X</span>()))}<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span>{<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"green"</span>})</span>
+<span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-275"><a href="#cb4-275" aria-hidden="true" tabindex="-1"></a>pg2<span class="op">=</span><span class="fu">pinta_parabola</span>()</span>
+<span id="cb4-276"><a href="#cb4-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-277"><a href="#cb4-277" aria-hidden="true" tabindex="-1"></a>pintae21<span class="op">=</span><span class="kw">function</span>(){</span>
+<span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> f<span class="op">=</span><span class="kw">function</span>(t){</span>
+<span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="dv">4</span><span class="op">*</span>t<span class="op">*</span>t<span class="op">*</span>t<span class="op">-</span><span class="dv">2</span><span class="op">*</span>t<span class="op">*</span>t<span class="op">+</span>t<span class="op">-</span><span class="dv">1</span>)<span class="op">;</span></span>
+<span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> t1<span class="op">=</span><span class="kw">function</span>(t){</span>
+<span id="cb4-282"><a href="#cb4-282" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">+</span>t<span class="op">;</span></span>
+<span id="cb4-283"><a href="#cb4-283" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-284"><a href="#cb4-284" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> t2<span class="op">=</span><span class="kw">function</span>(t){</span>
+<span id="cb4-285"><a href="#cb4-285" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">20</span><span class="op">/</span><span class="dv">27</span><span class="op">+</span>t<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">3</span><span class="op">;</span></span>
+<span id="cb4-286"><a href="#cb4-286" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-287"><a href="#cb4-287" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> board <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'ebox2-1'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="op">-</span><span class="dv">2</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb4-288"><a href="#cb4-288" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> curve <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span></span>
+<span id="cb4-289"><a href="#cb4-289" aria-hidden="true" tabindex="-1"></a>                    [f<span class="op">,</span> <span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>])<span class="op">;</span></span>
+<span id="cb4-290"><a href="#cb4-290" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> tan1<span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[t1<span class="op">,-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span>{<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"red"</span>})<span class="op">;</span></span>
+<span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> tan2<span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span>[t2<span class="op">,-</span><span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]<span class="op">,</span> {<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"orange"</span>})<span class="op">;</span></span>
+<span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> bis <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'line'</span><span class="op">,</span>[[<span class="op">-</span><span class="dv">10</span><span class="op">,-</span><span class="dv">10</span>]<span class="op">,</span>[<span class="dv">10</span><span class="op">,</span><span class="dv">10</span>]]<span class="op">,</span>{<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"gray"</span><span class="op">,</span><span class="dt">dash</span><span class="op">:</span><span class="dv">1</span>})<span class="op">;</span></span>
+<span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-294"><a href="#cb4-294" aria-hidden="true" tabindex="-1"></a>pg21<span class="op">=</span><span class="fu">pintae21</span>()<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 4</strong></span> &nbsp;</p>
+<ol type="1">
+<li><p>Calcula la ecuación de la recta (o rectas) tangentes a la gráfica de <span class="math"><span class="math inline">\(f(x)=4x^3-2x^2+x-1\)</span></span> pararela a la bisectriz del primer cuadrante. <button id="e4-1" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e4-1" class="collapse">
+<p>La bisectriz del primer cuadrante es <span class="math inline">\(y=x\)</span>. Por tanto estamos buscando una tangente a <span class="math inline">\(f(x)\)</span> con pendiente <span class="math inline">\(1\)</span>, es decir, buscamos <span class="math inline">\(a\)</span> con <span class="math inline">\(f'(a)=1\)</span>.</p>
+<p>Tenemos pues que resolver la ecuación <span class="math inline">\(f'(x)=12x^2-4x+1=1\)</span>, que equivale a <span class="math inline">\(12x^2-4x=x(12x-4)=0\)</span>. Así las soluciones son <span class="math inline">\(x=0\)</span> y <span class="math inline">\(x=\frac{1}3\)</span>.</p>
+<p>Sabemos que la recta tangente a <span class="math" style="color:blue"><span class="math inline">\(y=f(x)\)</span></span> en un punto <span class="math inline">\(a\)</span> es <span class="math inline">\(y=f(a)+f'(a)(x-a)\)</span>, por tanto, las rectas tangentes que buscamos son <span class="math" style="color:red"><span class="math inline">\(y=-1+x\)</span></span> e <span class="math" style="color:orange"><span class="math inline">\(y=-\frac{29}{27}+x\)</span></span>.</p>
+<div id="ebox2-1" class="jxgbox" style="width:400px; height:400px;margin:auto;">
+
+</div>
+</div></li>
+<li><p>Halla los valores de la constante <span class="math"><span class="math inline">\(\lambda\)</span></span> para los que las rectas tangentes a las funciones <span class="math"><span class="math inline">\(f(x)=x^3\)</span></span> y <span class="math"><span class="math inline">\(g(x)=(x+\lambda)x\)</span></span> en el punto <span class="math"><span class="math inline">\(x=1\)</span></span> sean:</p>
+<ol type="1">
+<li><p>paralelas,</p></li>
+<li><p>perpendiculares.</p></li>
+</ol></li>
+</ol>
+</div>
+</section>
+<section id="optimización" class="level2">
+<h2 class="anchored" data-anchor-id="optimización">Optimización</h2>
+<p>En los problemas en los que hay que optimizar una cantidad, ya sea buscar un máximo o un mínimo, los pasos suelen ser los siguientes.</p>
+<ol type="1">
+<li><p>Planteamos analíticamente la función a optimizar utilizando tantas variables como sean necesarias.</p></li>
+<li><p>Buscamos las relaciones entre las diferentes variables usando los datos del enunciado y dejamos todas en función de una de ellas.</p></li>
+<li><p>Derivamos, igualamos a cero y calculamos los puntos críticos.</p></li>
+<li><p>Comprobamos con la segunda derivada o con el estudio de la monotonía que tenemos un máximo o un mínimo relativo.</p></li>
+</ol>
+<div id="exm-2" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2</strong></span> Vamos a calcular las dimensiones del rectángulo de mayor área que puede inscribirse en un semicírculo de radio <span class="math"><span class="math inline">\(10\)</span></span>.</p>
+<p>En la siguiente representación gráfica, puedes desplazar el punto rojo. El área del rectángulo correspondiente se calculará automáticamente.</p>
+<div id="box4" class="jxgbox" style="width:400px; height:300px;margin:auto">
+
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="347" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 346;"><span id="cb5-347"><a href="#cb5-347" aria-hidden="true" tabindex="-1"></a>pinta_rect<span class="op">=</span><span class="kw">function</span>(){</span>
+<span id="cb5-348"><a href="#cb5-348" aria-hidden="true" tabindex="-1"></a>    <span class="co">//JXG.Options.text.useMathJax = true;</span></span>
+<span id="cb5-349"><a href="#cb5-349" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> board <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'box4'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">15</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="op">-</span><span class="dv">5</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb5-350"><a href="#cb5-350" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> q1 <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'point'</span><span class="op">,</span>[<span class="op">-</span><span class="dv">10</span><span class="op">,</span><span class="dv">0</span>]<span class="op">,</span>{<span class="dt">visible</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb5-351"><a href="#cb5-351" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> q2 <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'point'</span><span class="op">,</span>[<span class="dv">10</span><span class="op">,</span><span class="dv">0</span>]<span class="op">,</span>{<span class="dt">visible</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb5-352"><a href="#cb5-352" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> sc <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'semicircle'</span><span class="op">,</span>[q1<span class="op">,</span>q2]<span class="op">,</span>{<span class="dt">withLabel</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">fixed</span><span class="op">:</span><span class="kw">true</span>} )<span class="op">;</span></span>
+<span id="cb5-353"><a href="#cb5-353" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> ox <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'segment'</span><span class="op">,</span>[[<span class="dv">0</span><span class="op">,</span><span class="dv">0</span>]<span class="op">,</span>[<span class="dv">10</span><span class="op">,</span><span class="dv">0</span>]]<span class="op">,</span>{<span class="dt">fixed</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">visible</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb5-354"><a href="#cb5-354" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> p1 <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'glider'</span><span class="op">,</span>[<span class="dv">5</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span>ox]<span class="op">,</span>{<span class="dt">name</span><span class="op">:</span><span class="st">'x'</span>})<span class="op">;</span></span>
+<span id="cb5-355"><a href="#cb5-355" aria-hidden="true" tabindex="-1"></a>    board<span class="op">.</span><span class="fu">create</span>(<span class="st">'polygon'</span><span class="op">,</span> [[<span class="kw">function</span>(){<span class="cf">return</span> <span class="op">-</span>p1<span class="op">.</span><span class="fu">X</span>()}<span class="op">,</span><span class="dv">0</span>]<span class="op">,</span>[<span class="kw">function</span>(){<span class="cf">return</span> p1<span class="op">.</span><span class="fu">X</span>()}<span class="op">,</span><span class="dv">0</span>]<span class="op">,</span>[<span class="kw">function</span>(){<span class="cf">return</span> p1<span class="op">.</span><span class="fu">X</span>()}<span class="op">,</span><span class="kw">function</span>(){<span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">100</span><span class="op">-</span>p1<span class="op">.</span><span class="fu">X</span>()<span class="op">*</span>p1<span class="op">.</span><span class="fu">X</span>())}]<span class="op">,</span>[<span class="kw">function</span>(){<span class="cf">return</span> <span class="op">-</span>p1<span class="op">.</span><span class="fu">X</span>()}<span class="op">,</span><span class="kw">function</span>(){<span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">100</span><span class="op">-</span>p1<span class="op">.</span><span class="fu">X</span>()<span class="op">*</span>p1<span class="op">.</span><span class="fu">X</span>())}]]<span class="op">,</span> {<span class="dt">vertices</span><span class="op">:</span>{<span class="dt">fixed</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">visible</span><span class="op">:</span><span class="kw">false</span>}} )<span class="op">;</span></span>
+<span id="cb5-356"><a href="#cb5-356" aria-hidden="true" tabindex="-1"></a>    <span class="co">//board.create('text',[function(){return p1.X()+.5},function(){return Math.sqrt(100-p1.X()*p1.X())+.5},function(){return "\\( \\left(x,\\sqrt{100-x^2}\\right)\\)"}],{fixed:true})</span></span>
+<span id="cb5-357"><a href="#cb5-357" aria-hidden="true" tabindex="-1"></a>    board<span class="op">.</span><span class="fu">create</span>(<span class="st">'text'</span><span class="op">,</span>[<span class="op">-</span><span class="dv">10</span><span class="op">,-</span><span class="dv">2</span><span class="op">,</span><span class="kw">function</span>(){</span>
+<span id="cb5-358"><a href="#cb5-358" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> a <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>p1<span class="op">.</span><span class="fu">X</span>()<span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">100</span><span class="op">-</span>p1<span class="op">.</span><span class="fu">X</span>()<span class="op">*</span>p1<span class="op">.</span><span class="fu">X</span>())<span class="op">;</span></span>
+<span id="cb5-359"><a href="#cb5-359" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Área "</span><span class="op">+</span> a<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>) }]<span class="op">,</span>{<span class="dt">fontSize</span><span class="op">:</span><span class="dv">14</span>})</span>
+<span id="cb5-360"><a href="#cb5-360" aria-hidden="true" tabindex="-1"></a>    board<span class="op">.</span><span class="fu">update</span>()</span>
+<span id="cb5-361"><a href="#cb5-361" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-362"><a href="#cb5-362" aria-hidden="true" tabindex="-1"></a>pr5<span class="op">=</span> <span class="fu">pinta_rect</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p>Según hemos comentado, el primer paso es encontrar la función a optimizar. Si llamamos <span class="math"><span class="math inline">\(x\)</span></span> al extremo inferior derecho del rectángulo e <span class="math"><span class="math inline">\(y\)</span></span> a la altura, el área es <span class="math"><span class="math inline">\(2xy\)</span></span>.</p></li>
+<li><p>¿Cómo podemos relacionar <span class="math"><span class="math inline">\(x\)</span></span> e <span class="math"><span class="math inline">\(y\)</span></span>? Hay varias formas de hacerlo: la circunferencia centrada en el origen y de radio <span class="math inline">\(10\)</span> está formada por los puntos <span class="math"><span class="math inline">\((x,y)\)</span></span> que cumplen la ecuación <span class="math"><span class="math display">\[x^2+y^2=100\]</span></span> con lo que despejando, <span class="math"><span class="math inline">\(y = \sqrt{100-x^2}\)</span></span>. Ya podemos escribir la función a optimizar: <span class="math"><span class="math display">\[f\colon [0,10]\rightarrow \mathbb{R}, \quad f(x)=2xy=2x\sqrt{100-x^2}.\]</span></span></p></li>
+<li><p>Derivamos</p>
+<p><span class="math display">\[
+\begin{aligned}
+f'(x) &amp; = 2\left( \sqrt{100-x^{2}}- \frac{\cancel{2}x^{2}}{\cancel{2}\sqrt{100-x^{2}}} \right)
+= 2\left( \frac{100 -x^2}{\sqrt{100-x^2}} - \frac{x^{2}}{\sqrt{100-x^{2}}} \right)
+\\
+&amp; = \frac{2\, (100 -2x^2)}{\sqrt{100-x^2}},\end{aligned}
+\]</span></p>
+<p>e igualamos a cero <span class="math"><span class="math display">\[f'(x)=0 \text{ que equivale a } 100-2x^{2}=0.\]</span></span> Por tanto las raíces son <span class="math inline">\(-5\sqrt{2}\)</span> y <span class="math inline">\(5\sqrt{2}\)</span>. Como la <span class="math inline">\(x\)</span> tiene que ser positiva, llegamos a que la función tiene un punto crítico en <span class="math inline">\(5\sqrt{2}\)</span>.</p></li>
+<li><p>Para comprobar que es un máximo, vemos que la segunda derivada es negativa: <span class="math"><span class="math display">\[f''(x)=-\frac{6x}{\sqrt{100-{x}^{2}}}-\frac{2x^{3}}{{\left( 100-{x}^{2}\right) }^{\frac{3}{2}}}\]</span></span> y <span class="math"><span class="math inline">\(f''(5\sqrt{2})=-8\)</span></span>.</p>
+<p>También podemos comprobar si es un máximo, estudiando el signo de la primera derivada a ambos lados del punto crítico. En este caso, el signo de <span class="math inline">\(f'(x)\)</span> queda determinado por el signo de <span class="math inline">\(g(x)=100-2x^2\)</span>. Evaluando <span class="math inline">\(g\)</span> en, por ejemplo, <span class="math inline">\(5\sqrt{2}-\frac{1}{2}\)</span> y <span class="math inline">\(5\sqrt{2}+\frac{1}{2}\)</span>, obtenemos aproximadamente <span class="math inline">\(3.62\)</span> y <span class="math inline">\(-4.48\)</span>, respectivamente. De aquí deducimos que la función <span class="math inline">\(f\)</span> crece a la izquierda de <span class="math inline">\(5\sqrt{2}\)</span> y decrece a su derecha. Por tanto, en <span class="math inline">\(5\sqrt{2}\)</span> se alcanza un máximo relativo.</p></li>
+<li><p>El área máxima es <span class="math inline">\(100\)</span>.</p></li>
+</ol>
+</div>
+<div id="exr-5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Ejercicio 5</strong></span> Dibuja la región del primer cuadrante limitada por las gráficas de <span class="math"><span class="math inline">\(y=\sqrt{x}\)</span></span>, <span class="math"><span class="math inline">\(x=6\)</span></span>, <span class="math"><span class="math inline">\(y=0\)</span></span> y calcula las dimensiones del rectángulo inscrito de lados paralelos a los ejes y que tenga máxima área. <button id="e5" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button></p>
+<div id="solucion-e5" class="collapse">
+<p>Al ser un rectángulo inscrito en dichas gráficas y de lados paralelos a los ejes, dos de sus lados se tienen que apoyar en <span class="math inline">\(y=0\)</span> y en <span class="math inline">\(x=6\)</span>, respectivamente. Por tanto, tiene que tener el siguiente aspecto.</p>
+<p>Puedes desplazar el punto rojo y ver cómo varía el área.</p>
+<div id="ebox5" class="jxgbox" style="width:400px; height:400px;margin:auto;">
+
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="406" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 405;"><span id="cb6-406"><a href="#cb6-406" aria-hidden="true" tabindex="-1"></a>pintae5<span class="op">=</span> <span class="kw">function</span> (){</span>
+<span id="cb6-407"><a href="#cb6-407" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> f<span class="op">=</span><span class="kw">function</span>(t){</span>
+<span id="cb6-408"><a href="#cb6-408" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>((t<span class="op">&lt;=</span><span class="dv">0</span>) <span class="op">||</span> (t<span class="op">&gt;</span><span class="dv">6</span>)){</span>
+<span id="cb6-409"><a href="#cb6-409" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-410"><a href="#cb6-410" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-411"><a href="#cb6-411" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(t)<span class="op">;</span></span>
+<span id="cb6-412"><a href="#cb6-412" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-413"><a href="#cb6-413" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> board <span class="op">=</span> JXG<span class="op">.</span><span class="at">JSXGraph</span><span class="op">.</span><span class="fu">initBoard</span>(<span class="st">'ebox5'</span><span class="op">,</span> {<span class="dt">boundingbox</span><span class="op">:</span> [<span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]<span class="op">,</span> <span class="dt">axis</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">showCopyright</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">showNavigation</span><span class="op">:</span><span class="kw">false</span>})<span class="op">;</span></span>
+<span id="cb6-414"><a href="#cb6-414" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> curve <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'functiongraph'</span><span class="op">,</span></span>
+<span id="cb6-415"><a href="#cb6-415" aria-hidden="true" tabindex="-1"></a>                    [f<span class="op">,</span> <span class="op">-.</span><span class="dv">1</span><span class="op">,</span><span class="fl">6.1</span>]<span class="op">,</span>{<span class="dt">frozen</span><span class="op">:</span><span class="kw">true</span>})<span class="op">;</span></span>
+<span id="cb6-416"><a href="#cb6-416" aria-hidden="true" tabindex="-1"></a>    board<span class="op">.</span><span class="fu">create</span>(<span class="st">'integral'</span><span class="op">,</span> [[<span class="dv">0</span><span class="op">,</span><span class="dv">6</span>]<span class="op">,</span> curve]<span class="op">,</span> {<span class="dt">withLabel</span><span class="op">:</span><span class="kw">false</span><span class="op">,</span> <span class="dt">fixed</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">curveRight</span><span class="op">:</span>{<span class="dt">visible</span><span class="op">:</span><span class="kw">false</span>}<span class="op">,</span> <span class="dt">curveLeft</span><span class="op">:</span>{<span class="dt">visible</span><span class="op">:</span><span class="kw">false</span>}<span class="op">,</span><span class="dt">color</span><span class="op">:</span><span class="st">"gray"</span><span class="op">,</span><span class="dt">frozen</span><span class="op">:</span><span class="kw">true</span>})<span class="op">;</span></span>
+<span id="cb6-417"><a href="#cb6-417" aria-hidden="true" tabindex="-1"></a>    board<span class="op">.</span><span class="fu">create</span>(<span class="st">'line'</span><span class="op">,</span>[[<span class="dv">6</span><span class="op">,-</span><span class="dv">10</span>]<span class="op">,</span>[<span class="dv">6</span><span class="op">,</span><span class="dv">10</span>]]<span class="op">,</span>{<span class="dt">strokeColor</span><span class="op">:</span><span class="st">"gray"</span><span class="op">,</span><span class="dt">dash</span><span class="op">:</span><span class="dv">1</span><span class="op">,</span><span class="dt">fixed</span><span class="op">:</span><span class="kw">true</span>})<span class="op">;</span></span>
+<span id="cb6-418"><a href="#cb6-418" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> ds <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'glider'</span><span class="op">,</span>[<span class="dv">2</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span>curve]<span class="op">,</span>{<span class="dt">name</span><span class="op">:</span><span class="st">''</span>})<span class="op">;</span></span>
+<span id="cb6-419"><a href="#cb6-419" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> pol <span class="op">=</span> board<span class="op">.</span><span class="fu">create</span>(<span class="st">'polygon'</span><span class="op">,</span>[[<span class="kw">function</span>(){<span class="cf">return</span> ds<span class="op">.</span><span class="fu">X</span>()}<span class="op">,</span><span class="dv">0</span>]<span class="op">,</span>[<span class="dv">6</span><span class="op">,</span><span class="dv">0</span>]<span class="op">,</span>[<span class="dv">6</span><span class="op">,</span><span class="kw">function</span>(){<span class="cf">return</span> ds<span class="op">.</span><span class="fu">Y</span>()}]<span class="op">,</span>[<span class="kw">function</span>(){<span class="cf">return</span> ds<span class="op">.</span><span class="fu">X</span>()}<span class="op">,</span> <span class="kw">function</span>(){<span class="cf">return</span> ds<span class="op">.</span><span class="fu">Y</span>()}]]<span class="op">,</span> {<span class="dt">vertices</span><span class="op">:</span>{<span class="dt">fixed</span><span class="op">:</span><span class="kw">true</span><span class="op">,</span> <span class="dt">visible</span><span class="op">:</span><span class="kw">false</span>}})<span class="op">;</span></span>
+<span id="cb6-420"><a href="#cb6-420" aria-hidden="true" tabindex="-1"></a>    board<span class="op">.</span><span class="fu">create</span>(<span class="st">'text'</span><span class="op">,</span>[<span class="dv">2</span><span class="op">,-.</span><span class="dv">5</span><span class="op">,</span><span class="kw">function</span>(){</span>
+<span id="cb6-421"><a href="#cb6-421" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> a <span class="op">=</span> (<span class="dv">6</span><span class="op">-</span>ds<span class="op">.</span><span class="fu">X</span>())<span class="op">*</span>ds<span class="op">.</span><span class="fu">Y</span>()<span class="op">;</span></span>
+<span id="cb6-422"><a href="#cb6-422" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Área "</span><span class="op">+</span> a<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>) }]<span class="op">,</span>{<span class="dt">fontSize</span><span class="op">:</span><span class="dv">14</span>})</span>
+<span id="cb6-423"><a href="#cb6-423" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-424"><a href="#cb6-424" aria-hidden="true" tabindex="-1"></a>p5<span class="op">=</span>  <span class="fu">pintae5</span>()<span class="op">;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<p>El área que hay que maximizar es por tanto <span class="math inline">\(f(x)=(6-x)\sqrt{x}\)</span>, que alcanza el valor máximo <span class="math inline">\(4\sqrt{2}\)</span> en <span class="math inline">\(x=2\)</span>.</p>
+</div>
+</div>
+<hr>
+<p><span class="small">Esta página está basada en las transparencias de Jerónimo Alaminos Prats, José Extremera Lizana y Pilar Muñoz Rivas para el Curso Cero de la ETSIIT de la Universidad de Granada. Las representaciones gráficas se han realizado con <a href="http://jsxgraph.uni-bayreuth.de">JSXGraph</a>. Las animaciones en JSXGraph y el maquetado de la página han sido realizados por Pedro A. García Sánchez.</span></p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Volver arriba</a></main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImJvYXJkID0gSlhHLkpTWEdyYXBoLmluaXRCb2FyZCgnYm94MicsIHtib3VuZGluZ2JveDogWy01LCAyMCwgNSwgLTIwXSwgYXhpczp0cnVlLCBzaG93Q29weXJpZ2h0OmZhbHNlLCBzaG93TmF2aWdhdGlvbjpmYWxzZX0pO1xuY3VydmUgPSBib2FyZC5jcmVhdGUoJ2Z1bmN0aW9uZ3JhcGgnLCBbZnVuY3Rpb24odCl7IHJldHVybigyKnQqdCp0LTMqdCp0LTEyKnQrMSl9LCAtMTAsMTBdKTtcblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiYm9hcmQzID0gSlhHLkpTWEdyYXBoLmluaXRCb2FyZCgnYm94MycsIHtib3VuZGluZ2JveDogWy0xMCwgMzAsIDEwLCAtMzBdLCBheGlzOnRydWUsIHNob3dDb3B5cmlnaHQ6ZmFsc2UsIHNob3dOYXZpZ2F0aW9uOmZhbHNlfSk7XG5jdXJ2ZTMgPSBib2FyZDMuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJywgW2Z1bmN0aW9uKHQpeyByZXR1cm4odCp0KnQrMyp0KnQtOSp0KX0sIC0xMCwxMF0pO1xucGludGFlMzI9ZnVuY3Rpb24oKXtcbiAgICB2YXIgZj10ID0+IC10KnQrMip0O1xuICAgIHZhciB0MSA9IHQgPT4gMip0O1xuICAgIHZhciB0MiA9IHQgPT4gLTIqKHQtMik7XG4gICAgdmFyIGJvYXJkID0gSlhHLkpTWEdyYXBoLmluaXRCb2FyZCgnZWJveDMyJywge2JvdW5kaW5nYm94OiBbLTEsIDMsIDMsIC0xXSwgYXhpczp0cnVlLCBzaG93Q29weXJpZ2h0OmZhbHNlLCBzaG93TmF2aWdhdGlvbjpmYWxzZX0pO1xuICAgIHZhciBjdXJ2ZSA9IGJvYXJkLmNyZWF0ZSgnZnVuY3Rpb25ncmFwaCcsXG4gICAgICAgICAgICAgICAgICAgIFtmLCAtNSw1XSx7ZnJvemVuOnRydWV9KTtcbiAgICBib2FyZC5jcmVhdGUoJ2Z1bmN0aW9uZ3JhcGgnLFt0MSwtNSw1XSx7ZGFzaDoxLHN0cm9rZUNvbG9yOlwib3JhbmdlXCJ9KVxuICAgIGJvYXJkLmNyZWF0ZSgnZnVuY3Rpb25ncmFwaCcsW3QyLC01LDVdLHtkYXNoOjEsc3Ryb2tlQ29sb3I6XCJyZWRcIn0pXG59XG5wMzI9cGludGFlMzIoKTtcblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoicGludGFfbG9nPSBmdW5jdGlvbigpe1xuICAgIHZhciBib2FyZCA9IEpYRy5KU1hHcmFwaC5pbml0Qm9hcmQoJ2JveGcxJywge2JvdW5kaW5nYm94OiBbLTQsIDQsIDQsIC00XSwgYXhpczp0cnVlLCBzaG93Q29weXJpZ2h0OmZhbHNlLCBzaG93TmF2aWdhdGlvbjpmYWxzZX0pO1xuICAgIHZhciBjdXJ2ZSA9IGJvYXJkLmNyZWF0ZSgnZnVuY3Rpb25ncmFwaCcsXG4gICAgICAgICAgICAgICAgICAgIFtmdW5jdGlvbih0KXsgcmV0dXJuKE1hdGgubG9nKHQpKX0sIC0xMCwxMF0pO1xuICAgIHZhciBhID0gYm9hcmQuY3JlYXRlKCdnbGlkZXInLFsyLE1hdGgubG9nKDIpLGN1cnZlXSwge25hbWU6J0EnLGxhYmVsOntvZmZzZXQ6Wy0xMCwxMF19LCBzdHJva2VDb2xvcjpcImJsYWNrXCIsZmlsbENvbG9yOlwid2hpdGVcIn0pXG4gICAgYm9hcmQuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJywgW2Z1bmN0aW9uKHQpe3JldHVybiAoTWF0aC5sb2coYS5YKCkpKzEvYS5YKCkqKHQtYS5YKCkpKX0sIC0xMCwxMF0se3N0cm9rZUNvbG9yOlwicmVkXCJ9KVxufVxucGcxPXBpbnRhX2xvZygpXG5cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InBpbnRhX3BhcmFib2xhID0gZnVuY3Rpb24oKXtcbiAgICB2YXIgYm9hcmQgPSBKWEcuSlNYR3JhcGguaW5pdEJvYXJkKCdib3hnMicsIHtib3VuZGluZ2JveDogWy01LCA5LCA1LCAtMV0sIGF4aXM6dHJ1ZSwgc2hvd0NvcHlyaWdodDpmYWxzZSwgc2hvd05hdmlnYXRpb246ZmFsc2V9KTtcbiAgICB2YXIgY3VydmUgPSBib2FyZC5jcmVhdGUoJ2Z1bmN0aW9uZ3JhcGgnLFxuICAgICAgICAgICAgICAgICAgICBbZnVuY3Rpb24odCl7IHJldHVybih0KnQpfSwgLTEwLDEwXSk7XG4gICAgdmFyIEEgPSBib2FyZC5jcmVhdGUoJ2dsaWRlcicsWzEsMSxjdXJ2ZV0sIHtuYW1lOidBJywgc3Ryb2tlQ29sb3I6XCJibGFja1wiLGZpbGxDb2xvcjond2hpdGUnfSk7XG4gICAgLy9wdW50byA9IGJvYXJkLmNyZWF0ZSgncG9pbnQnLFtmdW5jdGlvbigpe3JldHVybiBwZW5kLlZhbHVlKCl9LGZ1bmN0aW9uKCl7cmV0dXJuIHBlbmQuVmFsdWUoKSpwZW5kLlZhbHVlKCl9XSwge3N0cm9rZUNvbG9yOlwiYmxhY2tcIixmaWxsQ29sb3I6J3doaXRlJywgbmFtZTonJ30pXG4gICAgYm9hcmQuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJywgW2Z1bmN0aW9uKHQpe3JldHVybiAoQS5ZKCkrMipBLlgoKSoodC1BLlgoKSkpfSwgLTEwLDEwXSx7c3Ryb2tlQ29sb3I6XCJyZWRcIn0pXG4gICAgYm9hcmQuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJywgW2Z1bmN0aW9uKHQpe3JldHVybiAoQS5ZKCktMS8oMipBLlgoKSkqKHQtQS5YKCkpKX0sIC0xMCwxMF0se3N0cm9rZUNvbG9yOlwiZ3JlZW5cIn0pXG4gICAgfVxucGcyPXBpbnRhX3BhcmFib2xhKClcblxucGludGFlMjE9ZnVuY3Rpb24oKXtcbiAgICB2YXIgZj1mdW5jdGlvbih0KXtcbiAgICAgICAgcmV0dXJuICg0KnQqdCp0LTIqdCp0K3QtMSk7XG4gICAgfVxuICAgIHZhciB0MT1mdW5jdGlvbih0KXtcbiAgICAgICAgcmV0dXJuIC0xK3Q7XG4gICAgfVxuICAgIHZhciB0Mj1mdW5jdGlvbih0KXtcbiAgICAgICAgcmV0dXJuIC0yMC8yNyt0LTEvMztcbiAgICB9XG4gICAgdmFyIGJvYXJkID0gSlhHLkpTWEdyYXBoLmluaXRCb2FyZCgnZWJveDItMScsIHtib3VuZGluZ2JveDogWy0yLCAyLCAyLCAtMl0sIGF4aXM6dHJ1ZSwgc2hvd0NvcHlyaWdodDpmYWxzZSwgc2hvd05hdmlnYXRpb246ZmFsc2V9KTtcbiAgICB2YXIgY3VydmUgPSBib2FyZC5jcmVhdGUoJ2Z1bmN0aW9uZ3JhcGgnLFxuICAgICAgICAgICAgICAgICAgICBbZiwgLTEwLDEwXSk7XG4gICAgdmFyIHRhbjE9IGJvYXJkLmNyZWF0ZSgnZnVuY3Rpb25ncmFwaCcsW3QxLC0xMCwxMF0se3N0cm9rZUNvbG9yOlwicmVkXCJ9KTtcbiAgICB2YXIgdGFuMj0gYm9hcmQuY3JlYXRlKCdmdW5jdGlvbmdyYXBoJyxbdDIsLTEwLDEwXSwge3N0cm9rZUNvbG9yOlwib3JhbmdlXCJ9KTtcbiAgICB2YXIgYmlzID0gYm9hcmQuY3JlYXRlKCdsaW5lJyxbWy0xMCwtMTBdLFsxMCwxMF1dLHtzdHJva2VDb2xvcjpcImdyYXlcIixkYXNoOjF9KTtcbn1cbnBnMjE9cGludGFlMjEoKTtcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InBpbnRhX3JlY3Q9ZnVuY3Rpb24oKXtcbiAgICAvL0pYRy5PcHRpb25zLnRleHQudXNlTWF0aEpheCA9IHRydWU7XG4gICAgdmFyIGJvYXJkID0gSlhHLkpTWEdyYXBoLmluaXRCb2FyZCgnYm94NCcsIHtib3VuZGluZ2JveDogWy0xNSwgMTUsIDE1LCAtNV0sIGF4aXM6dHJ1ZSwgc2hvd0NvcHlyaWdodDpmYWxzZSwgc2hvd05hdmlnYXRpb246ZmFsc2V9KTtcbiAgICB2YXIgcTEgPSBib2FyZC5jcmVhdGUoJ3BvaW50JyxbLTEwLDBdLHt2aXNpYmxlOmZhbHNlfSk7XG4gICAgdmFyIHEyID0gYm9hcmQuY3JlYXRlKCdwb2ludCcsWzEwLDBdLHt2aXNpYmxlOmZhbHNlfSk7XG4gICAgdmFyIHNjID0gYm9hcmQuY3JlYXRlKCdzZW1pY2lyY2xlJyxbcTEscTJdLHt3aXRoTGFiZWw6ZmFsc2UsIGZpeGVkOnRydWV9ICk7XG4gICAgdmFyIG94ID0gYm9hcmQuY3JlYXRlKCdzZWdtZW50JyxbWzAsMF0sWzEwLDBdXSx7Zml4ZWQ6dHJ1ZSwgdmlzaWJsZTpmYWxzZX0pO1xuICAgIHZhciBwMSA9IGJvYXJkLmNyZWF0ZSgnZ2xpZGVyJyxbNSwwLG94XSx7bmFtZToneCd9KTtcbiAgICBib2FyZC5jcmVhdGUoJ3BvbHlnb24nLCBbW2Z1bmN0aW9uKCl7cmV0dXJuIC1wMS5YKCl9LDBdLFtmdW5jdGlvbigpe3JldHVybiBwMS5YKCl9LDBdLFtmdW5jdGlvbigpe3JldHVybiBwMS5YKCl9LGZ1bmN0aW9uKCl7cmV0dXJuIE1hdGguc3FydCgxMDAtcDEuWCgpKnAxLlgoKSl9XSxbZnVuY3Rpb24oKXtyZXR1cm4gLXAxLlgoKX0sZnVuY3Rpb24oKXtyZXR1cm4gTWF0aC5zcXJ0KDEwMC1wMS5YKCkqcDEuWCgpKX1dXSwge3ZlcnRpY2VzOntmaXhlZDp0cnVlLCB2aXNpYmxlOmZhbHNlfX0gKTtcbiAgICAvL2JvYXJkLmNyZWF0ZSgndGV4dCcsW2Z1bmN0aW9uKCl7cmV0dXJuIHAxLlgoKSsuNX0sZnVuY3Rpb24oKXtyZXR1cm4gTWF0aC5zcXJ0KDEwMC1wMS5YKCkqcDEuWCgpKSsuNX0sZnVuY3Rpb24oKXtyZXR1cm4gXCJcXFxcKCBcXFxcbGVmdCh4LFxcXFxzcXJ0ezEwMC14XjJ9XFxcXHJpZ2h0KVxcXFwpXCJ9XSx7Zml4ZWQ6dHJ1ZX0pXG4gICAgYm9hcmQuY3JlYXRlKCd0ZXh0JyxbLTEwLC0yLGZ1bmN0aW9uKCl7XG4gICAgdmFyIGEgPSAyKnAxLlgoKSpNYXRoLnNxcnQoMTAwLXAxLlgoKSpwMS5YKCkpO1xuICAgIHJldHVybiBcIsOBcmVhIFwiKyBhLnRvRml4ZWQoMykgfV0se2ZvbnRTaXplOjE0fSlcbiAgICBib2FyZC51cGRhdGUoKVxufVxucHI1PSBwaW50YV9yZWN0KClcblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXG5waW50YWU1PSBmdW5jdGlvbiAoKXtcbiAgICB2YXIgZj1mdW5jdGlvbih0KXtcbiAgICAgICAgaWYoKHQ8PTApIHx8ICh0PjYpKXtcbiAgICAgICAgICAgIHJldHVybiAwO1xuICAgICAgICB9XG4gICAgICAgIHJldHVybiBNYXRoLnNxcnQodCk7XG4gICAgfVxuICAgIHZhciBib2FyZCA9IEpYRy5KU1hHcmFwaC5pbml0Qm9hcmQoJ2Vib3g1Jywge2JvdW5kaW5nYm94OiBbLTEsIDMsIDcsIC0xXSwgYXhpczp0cnVlLCBzaG93Q29weXJpZ2h0OmZhbHNlLCBzaG93TmF2aWdhdGlvbjpmYWxzZX0pO1xuICAgIHZhciBjdXJ2ZSA9IGJvYXJkLmNyZWF0ZSgnZnVuY3Rpb25ncmFwaCcsXG4gICAgICAgICAgICAgICAgICAgIFtmLCAtLjEsNi4xXSx7ZnJvemVuOnRydWV9KTtcbiAgICBib2FyZC5jcmVhdGUoJ2ludGVncmFsJywgW1swLDZdLCBjdXJ2ZV0sIHt3aXRoTGFiZWw6ZmFsc2UsIGZpeGVkOnRydWUsIGN1cnZlUmlnaHQ6e3Zpc2libGU6ZmFsc2V9LCBjdXJ2ZUxlZnQ6e3Zpc2libGU6ZmFsc2V9LGNvbG9yOlwiZ3JheVwiLGZyb3plbjp0cnVlfSk7XG4gICAgYm9hcmQuY3JlYXRlKCdsaW5lJyxbWzYsLTEwXSxbNiwxMF1dLHtzdHJva2VDb2xvcjpcImdyYXlcIixkYXNoOjEsZml4ZWQ6dHJ1ZX0pO1xuICAgIHZhciBkcyA9IGJvYXJkLmNyZWF0ZSgnZ2xpZGVyJyxbMiw0LGN1cnZlXSx7bmFtZTonJ30pO1xuICAgIHZhciBwb2wgPSBib2FyZC5jcmVhdGUoJ3BvbHlnb24nLFtbZnVuY3Rpb24oKXtyZXR1cm4gZHMuWCgpfSwwXSxbNiwwXSxbNixmdW5jdGlvbigpe3JldHVybiBkcy5ZKCl9XSxbZnVuY3Rpb24oKXtyZXR1cm4gZHMuWCgpfSwgZnVuY3Rpb24oKXtyZXR1cm4gZHMuWSgpfV1dLCB7dmVydGljZXM6e2ZpeGVkOnRydWUsIHZpc2libGU6ZmFsc2V9fSk7XG4gICAgYm9hcmQuY3JlYXRlKCd0ZXh0JyxbMiwtLjUsZnVuY3Rpb24oKXtcbiAgICAgICAgdmFyIGEgPSAoNi1kcy5YKCkpKmRzLlkoKTtcbiAgICAgICAgcmV0dXJuIFwiw4FyZWEgXCIrIGEudG9GaXhlZCgzKSB9XSx7Zm9udFNpemU6MTR9KVxufVxucDU9ICBwaW50YWU1KCk7XG5cbiJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../Derivadas-aplicaciones";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Made with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
