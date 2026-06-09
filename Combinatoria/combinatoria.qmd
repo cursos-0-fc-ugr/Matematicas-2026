@@ -474,5 +474,5 @@ Veamos cuáles son estas combinaciones:
 :::
 
 
----
+----
 [Contenidos creados por Gustavo Rivas Gervilla]{.small}
