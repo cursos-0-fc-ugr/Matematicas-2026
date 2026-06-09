@@ -38,6 +38,7 @@ Si encuentra algún error, o quiere que se introduzca algún contenido adicional
 7. [Derivadas y aplicaciones](Derivadas-aplicaciones/derivadas-aplicaciones.qmd)
 10. [Integrales](Integrales/integrales.qmd)
 1. [Probabilidad](Probabilidad/03-probabilidad.qmd)
+1. [Combinatoria](Combinatoria/combinatoria.qmd)
 
 
 ## Referencias

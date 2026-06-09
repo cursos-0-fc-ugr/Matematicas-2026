@@ -1,7 +1,17 @@
 ---
 title: "Tema 0"
 bibliography: tema0.bib
-lang: "es"
+title-block-banner: true
+lang: es
+execute:
+  echo: false
+format: 
+  html: 
+    include-in-header: includes-header.html
+    toc: true
+    page-layout: full
+    format-links: true
+
 ---
 
 En este capítulo veremos cómo entender las matemáticas, cómo estudiarlas y cómo pensar matemáticamente (para ello el principal recurso que emplearemos como referencia será [@houston2009think]).

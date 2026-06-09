@@ -1,7 +1,17 @@
 ---
 title: "Combinatoria"
 bibliography: combinatoria.bib
-lang: "es"
+title-block-banner: true
+lang: es
+execute:
+  echo: false
+format: 
+  html: 
+    include-in-header: includes-header.html
+    toc: true
+    page-layout: full
+    format-links: true
+
 ---
 
 La combinatoria resulta muy importante en muchas áreas matemáticas. En particular, resultará de vital importancia tener unas nociones básicas de combinatoria en asignaturas de estadística y probabilidad. Y es que si te preguntaran cuál es la probabilidad de obtener cara al lanzar una moneda (balanceada) dirías sin titubear que es de un $50\%$ o $\frac{1}{2}$. Del mismo modo, si te preguntase cuál es la probabilidad de sacar la sota de bastos al escoger una carta al azar de la baraja españoña dirías, tal pensar en cuántas cartas tiene la baraja, que la probabilidad es de $\frac{1}{48}$ o aproximadamente de un $2.0833\%$.
