@@ -12,7 +12,7 @@ Se han tomado como base las transparencias de Jerónimo Alaminos Prats, José Ex
 
 La maquetación e inclusión de gráficos la ha llevado a cabo Pedro A. García Sánchez; ejemplos desarrollados con la ayuda de María Burgos.
 
-Para esta edición se han actualizado los contenidos y adaptado a la LOMLOE, con la colaboración de Ana García Burgos, Gustavo Rivas Gervilla, María Burgos, Jerónimo Alaminos Prats y Óscar Sánchez Romero.
+Para esta edición se han actualizado los contenidos y adaptado a la LOMLOE, con la colaboración de Ana García Burgos, Gustavo Rivas Gervilla, María Burgos, Jerónimo Alaminos Prats y Óscar Sánchez Romero. La versión anterior está disponible en este [enlace](https://cursos-0-fc-ugr.github.io/Matematicas/).
 
 Este respositorio se pude visualizar en [GitHub pages](https://github.com/cursos-0-fc-ugr/Matematicas-2026).
 
