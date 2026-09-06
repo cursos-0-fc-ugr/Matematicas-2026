@@ -1513,8 +1513,6 @@ P(A\cup B\cup C)=0.85.
 \]</span></p>
 </div>
 </div>
-<hr>
-<p><span class="small">Contenidos confeccionados por Ana García Burgos</span></p>
 
 
 </section>
@@ -1593,7 +1591,7 @@ P(A\cup B\cup C)=0.85.
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/cursos-0-fc-ugr\.github\.io\/Matematicas-2026\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
