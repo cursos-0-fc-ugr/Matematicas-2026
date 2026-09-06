@@ -139,11 +139,11 @@ curve = board.create('functiongraph', [function(t){ return(t*t*t*t-9)}, -10,10])
 2.  La ecuación $x^3-6x^2+9x=0$ puede resolverse sacando factor común $x$, con lo que obtenemos dos factores $x(x^2-6x+9)=0$ así que una solución es $x=0$ y la otra es $x=3$ que es la raíz doble de $x^2-6x+9=0$.
 
     ::: {#box2 .jxgbox style="width:400px; height:400px;"}
+    :::
     ```{ojs}
 board2 = JXG.JSXGraph.initBoard('box2', {boundingbox: [-5, 5, 5, -5], axis:true, showCopyright:false, showNavigation:false});
 curve2 = board2.create('functiongraph', [function(t){ return(t*t*t-6*t*t+9*t)}, -10,10]);
     ```
-    :::
 
 3.  Para $x^4-6x^2+9=0$ podemos usar la sustitución $t=x^2$ y obtenemos una ecuación de grado 2: $t^2-6t+9=0$ que tiene una raíz doble: $t=3$; así que nos queda resolver $x^2=3$ y obtenemos que hay dos soluciones dobles, $x=\sqrt{3}$ y $x=-\sqrt{3}$.
 
