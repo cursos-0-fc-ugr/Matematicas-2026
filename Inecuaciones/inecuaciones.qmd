@@ -219,7 +219,7 @@ x^2+1 & \le x^2-x, \\
 -1 & \ge x.\end{aligned}
 $$
 
-Parecería entonces que la solución es el conjunto $(-\infty,-1\]$. Sin embargo, es fácil comprobar que el punto $x=0$ es solución de la inecuación y, evidentemente, no pertenece al conjunto solución que acabamos de dar. ¿Qué ha pasado entonces? Ha pasado que, en el primer paso que hemos dado (multiplicar ambos miembros de la inecuación por el denominador $x-1$), hemos \"presupuesto\" que $x-1>0$, es decir, que $x>1$. Por lo que el conjunto solución que hemos obtenido por ahora no tiene sentido con la suposición que hemos hecho de $x>1$. Por tanto, como en el caso $x-1>0$ no habría solución, tenemos que contemplar la posibilidad de que $x-1<0$, es decir, de que $x$ fuera menor que $1$. Consideramos este caso ahora, con lo que al multiplicar por el denominador, la desigualdad se invierte.
+Parecería entonces que la solución es el conjunto $(-\infty,-1]$. Sin embargo, es fácil comprobar que el punto $x=0$ es solución de la inecuación y, evidentemente, no pertenece al conjunto solución que acabamos de dar. ¿Qué ha pasado entonces? Ha pasado que, en el primer paso que hemos dado (multiplicar ambos miembros de la inecuación por el denominador $x-1$), hemos \"presupuesto\" que $x-1>0$, es decir, que $x>1$. Por lo que el conjunto solución que hemos obtenido por ahora no tiene sentido con la suposición que hemos hecho de $x>1$. Por tanto, como en el caso $x-1>0$ no habría solución, tenemos que contemplar la posibilidad de que $x-1<0$, es decir, de que $x$ fuera menor que $1$. Consideramos este caso ahora, con lo que al multiplicar por el denominador, la desigualdad se invierte.
 
 $$
 \begin{aligned}
