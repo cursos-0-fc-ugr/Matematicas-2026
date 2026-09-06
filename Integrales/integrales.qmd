@@ -196,7 +196,7 @@ Calcula una primitiva de las siguientes funciones:
 
 ### Integración por partes
 
-Si [$u$]{.math} y [$v$]{.math} son dos funciones derivables, teniendo en cuenta que [$(u\cdot v)'=u\cdot v'+v\cdot u'$]{.math}, obtenemos que [$$\int u(x)v'(x)\, dx=u(x)v(x)-\int v(x)u'(x)\, dx.$$]{.math} Esta fórmula aparece escrita en muchas ocasiones de la forma [$$\int u \, dv = uv - \int v \, du.$$]{.math} El siguiente teorema especifica con un poco más de rigor las condiciones necesarias.
+Si [$u$]{.math} y [$v$]{.math} son dos funciones derivables, teniendo en cuenta que [$(u\cdot v)'=u\cdot v'+v\cdot u'$]{.math}, obtenemos que [$$\int u(x)v'(x)\, dx=u(x)v(x)-\int v(x)u'(x)\, dx.$$]{.math} Esta fórmula aparece escrita en muchas ocasiones de la forma [$$\int u \, dv = uv - \int v \, du.$$]{.math}
 
 
 ::: {#exm-1}
