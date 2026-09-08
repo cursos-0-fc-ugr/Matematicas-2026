@@ -70,7 +70,7 @@ Comenzamos esta sección con algunas de las recomendaciones que se hacen en [@ho
 
 La mayoría de dificultades que encontráis a la hora de enfrentaros a estudiar una asignatura de matemáticas o al enfrentaros a un problema de matemáticas es la falta de comprensión lectora.
 
-Esta es una capacidad que está fuera de las matemáticas en sí y que puedes entrenar leyendo de forma pausada artículos que te interesen o apuntes de tus asignaturas, incluso aficinionándote a la literatura y leyendo las novelas o relatos que más te gusten.
+Esta es una capacidad que está fuera de las matemáticas en sí y que puedes entrenar leyendo de forma pausada artículos que te interesen o apuntes de tus asignaturas, incluso aficionándote a la literatura y leyendo las novelas o relatos que más te gusten.
 
 Es fundamental que leas con detenimiento los enunciados de los ejercicios, parándote en cada punto y seguido, asegurándote de extraer toda la información de esa frase antes de pasar a la siguiente.
 Asegúrate de saber:
@@ -486,7 +486,7 @@ Y aquí nos quedaríamos porque no sabríamos cómo usar que $2n \% 2 = 0$, pero
 Entonces vamos a enfocar la demostración por otro lado (es claro cómo se demostraría que el $1$ cumple lo que queremos con este enfoque). Sabemos entonces ahora que un cierto número natural $n$ cumple que $n = 2k$ con $k \in \mathbb{Z}$, y vamos a probar que existe otro número entero $l$ tal que $2(n+1) = 2l$.
 
 ::: {.callout-note}
-Esto es algo común en matemáticas. A menudo tomamos un camino a través del que demostrar algo (not siempre el camino de pasos a seguir es único, hay varias opciones potenciales para demostrar algo) y vemos que no podemos o no sabemos llegar a una demostración.
+Esto es algo común en matemáticas. A menudo tomamos un camino a través del que demostrar algo (no siempre el camino de pasos a seguir es único, hay varias opciones potenciales para demostrar algo) y vemos que no podemos o no sabemos llegar a una demostración.
 Entonces simplemente vemos nuestras limitaciones, aprendemos de nuestros errores y buscamos otra alternativa. ¡Esto también es algo bonito en matemáticas!
 :::
 
