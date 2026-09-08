@@ -221,7 +221,7 @@ Si has sido capaz de comprender y aprender este lenguaje lleno de pictogramas, n
 Desde las matemáticas más básicas vienes empleando notación, como cuando escribes $2 + 2 = 4$ en lugar de indicar que si a dos le agregas la cantidad de dos entonces el resultado de esa operación será $4$, pero aquí ya has empleado notación:
 
 - En primer lugar, unos símbolos que hemos llamado números y que nos sirven para designar cantidades; en nuestro caso, expresamos las cantidades con el sistema decimal.
-But podríamos expresarnos empleando notación hexadecimal (en ese caso el $14$ pasaría a notarse como $E$), pero antes existieron los números romanos (donde el $14$ se expresa como $XIV$) o los números mayas.
+Pero podríamos expresarnos empleando notación hexadecimal (en ese caso el $14$ pasaría a notarse como $E$), pero antes existieron los números romanos (donde el $14$ se expresa como $XIV$) o los números mayas.
 - Luego, has empleado el símbolo $+$ para expresar la operación de adición, aunque, como te podrían contar aquellas personas estudiosas del Álgebra, este símbolo puede representar otro tipo de operaciones entre otros tipos de elementos que no tienen por qué ser números.
 Pero para ti el $+$ siempre ha representado la acción de agregar una cantidad a otra.
 - Y, por último, has empleado el símbolo $=$ para expresar que el resultado de la operación de adición es igual a $4$.
