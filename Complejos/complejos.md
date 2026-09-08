@@ -51,7 +51,7 @@ $$(a,b)=(a,0)+(0,b)=(a,0)+(b,0)(0,1)=a+b\,i,\, \text{ para todo
 } (a,b)\in \mathbb{C}.
 $$
 
-La expresión $a+b\,i$ es la llamada *forma binómica* del complejo $(a,b)$. La forma binómica es muy útil desde el punto de vista aritmético porque permite aprovechar la estructura de cuerpo de $\mathbb{C}$ a la hora de operar con números complejos. Lo único que hemos de saber es que 
+La expresión $a+b\,i$ es la llamada *forma binómica* del complejo $(a,b)$. La forma binómica es muy útil desde el punto de vista aritmético porque permite aprovechar la estructura de cuerpo de $\mathbb{C}$ a la hora de operar con números complejos. Lo único que hemos de saber es que
 
 $$i\, i=(0,1)(0,1)=(-1,0)=-1
 $$
@@ -61,7 +61,6 @@ Ni siquiera es necesario recordar la definición de la suma o el producto en $\m
 $$\begin{aligned} &z+w=(a+bi)+(c+di)=(a+c)+(b+d)i\,, \\
 &zw=(a+bi)(c+di)=(ac-bd)+(ad+bc)i.\end{aligned}
 $$
-
 
 También de esta forma es fácil considerar $\mathbb R$, el conjunto de los números reales, como subconjunto de $\mathbb C$. Los números reales se corresponden con los números complejos $a+b i$ con $b=0$.
 
@@ -77,7 +76,7 @@ La suma y diferencia se hacen coordenada a coordenada, por lo que $z_1+z_2=(0,4)
 
 En forma binómica, $z_1+z_2=4i$ y $z_1-z_2=4-2i$.
 
-El producto es $z_1z_2=(-7,4)$, y en forma binómica, $-7+4i$. Por último, $\dfrac{z_1}{z_2}= \left(-\frac{1}{13},-\frac{8}{13} \right)$, que en forma binómica es $-\dfrac{1}13-\dfrac{8}{13} i.$
+El producto es $z_1z_2=(-7,4)$, y en forma binómica, $-7+4i$. Por último, $\dfrac{z_1}{z_2}= \left(-\frac{1}{13},-\frac{8}{13} \right)$, que en forma binómica es $-\dfrac{1}{13}-\dfrac{8}{13} i.$
 :::
 
 <!---::: {.callout title="Solución" collapse=true #e1-1}
@@ -144,7 +143,7 @@ Como $0 < 4-r\leq 4$, entonces $i^{4-r}$ es una de las primeras potencias de exp
     ::: {#solucion-e2-1 .callout .collapse}
     El resto de dividir $155$ entre $4$ es $3$, por lo que $i^{155}=i^3=-i$. Lo mismo ocurre con $7$ y $23$. Para exponente $9$, $i^9=i^{2\times 4+1}=i$. 
     
-    Por último, $-19=-18+1=-5\times 4+1$, y por tanto $i^{-19}=(i^{4})^{-5}i=1 i=i$.
+    Por último, $-19=-20+1=-5\times 4+1$, y por tanto $i^{-19}=(i^{4})^{-5}i=1 i=i$.
     :::
 
 2.  Expresa los números complejos $z_1=(-1,1)$, $z_2=(1,2)$ y $z_3=(4,-1)$ en forma binómica y realiza las operaciones siguientes:
@@ -396,9 +395,9 @@ $z_4=1.$
         -1+i\sqrt{3}$ y $z_2=3\left(\cos\left( \frac{\pi}2 \right) +
         i \operatorname{sen}\left(\frac{\pi}2 \right) \right)= 3i $.
 
-        El producto es $z_1z_1=(2\times 6)_{120^o+45^o}=(12)_{165^o}$,
+        El producto es $z_1z_2=(2\times 3)_{120^o+45^o}=(6)_{165^o}$,
         y la división es
-        $\dfrac{z_1}{z_2}=\left(\dfrac{2}6\right)_{120^o-45^o}=\left(\dfrac{1}3\right)_{75^o}$.
+        $\dfrac{z_1}{z_2}=\left(\dfrac{2}3\right)_{120^o-45^o}=\left(\dfrac{2}3\right)_{75^o}$.
         ::::
 
 1.  Escribe el número complejo $z=-1+\sqrt{3}i$ en forma polar y calcula $z^6$ en dicha forma. Pasa el resultado a la forma binómica. <button id="e4-3" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
