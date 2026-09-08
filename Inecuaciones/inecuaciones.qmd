@@ -42,7 +42,7 @@ Por tanto la solución de la inecuación son todos los números reales que verif
     La solución es $x >\dfrac{-13}{3}$.
     :::
 
-2.  Resuelve la inecuación $2(-x+5)-(6+x)>4+2(x-3)$, y razona si los números $-3, -1, 0$ y $ 1$ son solución de la misma.
+2.  Resuelve la inecuación $2(-x+5)-(6+x)>4+2(x-3)$, y razona si los números $-3, -1, 0$ y $1$ son solución de la misma.
     <button id="e1-2" class="btn btn-light btn-sm" onclick="show(this.id);">Solución</button>
 
     ::: {#solucion-e1-2 .collapse}
